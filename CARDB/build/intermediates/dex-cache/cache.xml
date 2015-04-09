@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/enrico/AndroidStudioProjects/CARDB/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="/home/enrico/AndroidStudioProjects/CARDB/app/build/intermediates/pre-dexed/debug/classes-e8475248194d96e5b8cb95eb277037a9b5e3b314.jar" />
+    </item>
+    <item
+        jar="/home/enrico/AndroidStudioProjects/CARDB/app/libs/postgresql-9.4-1201.jdbc4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b46544ef0eaf0405504089dcc71f36e3f190ef09">
+        <dex dex="/home/enrico/AndroidStudioProjects/CARDB/app/build/intermediates/pre-dexed/debug/postgresql-9.4-1201.jdbc4-11c12f6ed4378e6aab1183532f5ff15e0617b157.jar" />
+    </item>
+    <item
+        jar="/home/enrico/AndroidStudioProjects/CARDB/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/home/enrico/AndroidStudioProjects/CARDB/app/build/intermediates/pre-dexed/debug/classes-59ad13792b36962f8f8cc3e3e1458ce696b9f240.jar" />
+    </item>
+    <item
+        jar="/home/enrico/android-sdks/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/home/enrico/AndroidStudioProjects/CARDB/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-6fb342d864754da5dd44b1cd7a6dc85e1dbf90e1.jar" />
+    </item>
+    <item
+        jar="/home/enrico/AndroidStudioProjects/CARDB/app/libs/jsch-0.1.44.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="563d2c4728da8351559154925b5903c259382c5b">
+        <dex dex="/home/enrico/AndroidStudioProjects/CARDB/app/build/intermediates/pre-dexed/debug/jsch-0.1.44-c54fda7ea3a40c4bffc683a1343af23e211e4a49.jar" />
+    </item>
+    <item
+        jar="/home/enrico/AndroidStudioProjects/CARDB/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/home/enrico/AndroidStudioProjects/CARDB/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-c66117ffe2eb13c17cca20039d9e2ebacfb6c2aa.jar" />
+    </item>
+
+</items>
