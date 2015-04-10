@@ -3,33 +3,45 @@ package bd1415.unipd.dei.it.cardb;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements ClientiMenuFragment.OnMenufragListener,
+        VeicoliMenuFragment.OnMenufragListener, LavorazioniMenuFragment.OnMenufragListener,
+        PagamentiMenuFragment.OnMenufragListener, GestioneMenuFragment.OnMenufragListener {
 
+    public static String[] params;
+    public static boolean isLogged = false;
+    public static boolean isWrong = false;
+    public static boolean errorRetrievingData = false;
+    protected static Context ctx;
+    protected static Activity act;
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private ListView leftDrawerList;
     private ArrayAdapter<String> navigationDrawerAdapter;
     private String[] leftSliderData = {"Clienti", "Veicoli", "Lavorazioni", "Pagamenti", "Gestione"};
-    protected static Context ctx;
-    protected static Activity act;
-    public static String[] params;
-    public static boolean isLogged = false;
-    public static boolean isWrong = false;
-    public static boolean errorRetrievingData = false;
+    private FrameLayout container;
+    private LinearLayout clienti;
+    private LinearLayout veicoli;
+    private LinearLayout lavorazioni;
+    private LinearLayout pagamenti;
+    private LinearLayout gestione;
+    private View current;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,17 +58,25 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         initView();
         if (toolbar != null) {
-            toolbar.setTitle("Navigation Drawer");
+            toolbar.setTitle("Clienti");
             setSupportActionBar(toolbar);
         }
         initDrawer();
+        container = (FrameLayout) findViewById(R.id.container);
+        clienti = (LinearLayout) findViewById(R.id.clienti);
+        veicoli = (LinearLayout) findViewById(R.id.veicoli);
+        lavorazioni = (LinearLayout) findViewById(R.id.lavorazioni);
+        pagamenti = (LinearLayout) findViewById(R.id.pagamenti);
+        gestione = (LinearLayout) findViewById(R.id.gestione);
+        container.removeAllViewsInLayout();
+        container.addView(clienti);
     }
 
     private void initView() {
         leftDrawerList = (ListView) findViewById(R.id.left_drawer);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        navigationDrawerAdapter=new ArrayAdapter<String>( MainActivity.this, android.R.layout.simple_list_item_1, leftSliderData);
+        navigationDrawerAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, leftSliderData);
         leftDrawerList.setAdapter(navigationDrawerAdapter);
     }
 
@@ -77,6 +97,34 @@ public class MainActivity extends ActionBarActivity {
             }
         };
         drawerLayout.setDrawerListener(drawerToggle);
+        leftDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+    }
+
+    @Override
+    public void onMenufrag(String s) {
+
+    }
+
+    private void selectItem(int position) {
+        if (position == 0) {
+            container.removeAllViewsInLayout();
+            container.addView(clienti);
+        } else if (position == 1) {
+            container.removeAllViewsInLayout();
+            container.addView(veicoli);
+        } else if (position == 2) {
+            container.removeAllViewsInLayout();
+            container.addView(lavorazioni);
+        } else if (position == 3) {
+            container.removeAllViewsInLayout();
+            container.addView(pagamenti);
+        } else if (position == 4) {
+            container.removeAllViewsInLayout();
+            container.addView(gestione);
+        }
+        leftDrawerList.setItemChecked(position, true);
+        toolbar.setTitle(leftSliderData[position]);
+        drawerLayout.closeDrawer(Gravity.LEFT);
     }
 
     @Override
@@ -104,9 +152,8 @@ public class MainActivity extends ActionBarActivity {
             if (isLogged) {
                 Toast.makeText(MainActivity.ctx, "Già correttamente loggato!", Toast.LENGTH_LONG).show();
                 return true;
-            }
-            else {
-                new LoginDialog(ctx,act);
+            } else {
+                new LoginDialog(ctx, act);
             }
             return true;
         }
@@ -114,5 +161,12 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            selectItem(position);
+        }
     }
 }
