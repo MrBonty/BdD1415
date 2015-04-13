@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends ActionBarActivity implements ClientiMenuFragment.OnMenufragListener,
         VeicoliMenuFragment.OnMenufragListener, LavorazioniMenuFragment.OnMenufragListener,
         PagamentiMenuFragment.OnMenufragListener, GestioneMenuFragment.OnMenufragListener {
@@ -42,6 +44,7 @@ public class MainActivity extends ActionBarActivity implements ClientiMenuFragme
     private LinearLayout pagamenti;
     private LinearLayout gestione;
     private View current;
+    public static ArrayList<Veicolo> veicolo = new ArrayList<Veicolo>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +157,7 @@ public class MainActivity extends ActionBarActivity implements ClientiMenuFragme
                 return true;
             } else {
                 new LoginDialog(ctx, act);
+                //Veicolo vc = new Veicolo("pippo", "targa");
             }
             return true;
         }

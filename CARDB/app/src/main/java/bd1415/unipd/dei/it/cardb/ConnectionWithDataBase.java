@@ -15,11 +15,13 @@ import java.util.Properties;
 
 public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
 
+    public static Session session;
+    public static Connection con;
     private Toast toast;
 
     @Override
     protected void onPreExecute() {
-        // here go all the graphics things
+        // here go all the graphics stuffs
         toast = Toast.makeText(MainActivity.ctx, "Connecting...", Toast.LENGTH_SHORT);
         toast.show();
     }
@@ -27,7 +29,6 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
         String s = "";
         Statement st = null;
-        Connection con = null;
         try {
             // SSH loging username
             String strSshUser = params[0];
@@ -48,7 +49,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
             // create JSch object
             final JSch jsch = new JSch();
             // create a session for the ssh connection
-            Session session = jsch.getSession(strSshUser, strSshHost, 22);
+            session = jsch.getSession(strSshUser, strSshHost, 22);
             // set session password
             session.setPassword(strSshPassword);
             // create valid properties configuration
@@ -80,19 +81,29 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
         }
         try {
             if (st != null && con != null) {
-                ResultSet rs = st.executeQuery("SELECT datname FROM pg_database\n" +
-                        "WHERE datistemplate = false;");
+                ResultSet rs = st.executeQuery("SELECT * FROM main.Veicolo;");
                 while (rs.next()) {
-                    s = s + rs.getString("datname");
+                    s = s + rs.getString("numero_telaio");
+                    s = s + rs.getString("targa");
+                    s = s + rs.getString("azienda");
+                    s = s + rs.getString("privato");
+                    s = s + rs.getString("modello_cod_prod");
+                    s = s + rs.getString("modello_marca");
+                    s = s + "\n\n";
+                    Veicolo veicolo = new Veicolo();
+                    veicolo.setNumero_telaio(rs.getString("numero_telaio"));
+                    veicolo.setTarga(rs.getString("targa"));
+                    veicolo.setAzienda(rs.getString("azienda"));
+                    veicolo.setPrivato(rs.getString("privato"));
+                    veicolo.setModello_cod_prod(rs.getString("modello_cod_prod"));
+                    veicolo.setModello_marca(rs.getString("modello_marca"));
+                    MainActivity.veicolo.add(veicolo);
                 }
                 if (rs != null) {
                     rs.close();
                 }
                 if (st != null) {
                     st.close();
-                }
-                if (con != null) {
-                    con.close();
                 }
             }
             MainActivity.errorRetrievingData = false;
@@ -106,7 +117,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        // here go all the graphics things
+        // here go all the graphics stuffs
         if (MainActivity.isWrong) {
             toast.cancel();
             Toast.makeText(
@@ -119,5 +130,6 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
             toast.cancel();
             Toast.makeText(MainActivity.ctx, result, Toast.LENGTH_LONG).show();
         }
+        MainActivity.veicolo.get(1).updateValueInDataBase("jyfjrd", "targa");
     }
 }
