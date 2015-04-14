@@ -28,6 +28,17 @@ public class Edificio {
         new UpdateValueInDataBase().execute(params);
     }
 
+    public void updateValueInDatabase(AddressType nuovo_valore, String nome_attributo){
+        String[] params = new String[5];
+        params[0] = "Edficio";
+        params[1] = nome_attributo;
+        params[2] = "ROW('" + nuovo_valore.indirizzo + "', '" + nuovo_valore.numero_civico
+                + "', '" + nuovo_valore.città + "', '" + nuovo_valore.provincia + "')";
+        params[3] = "id";
+        params[4] = ""+this.id;
+        new UpdateValueInDataBase().execute(params);
+    }
+
     public int getId() {
         return id;
     }
