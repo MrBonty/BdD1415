@@ -22,7 +22,7 @@ public class Contiene {
 
     public void updateValueInDatabase(int nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Edficio";
+        params[0] = "Contiene";
         params[1] = nome_attributo;
         params[2] = ""+nuovo_valore;
         params[3] = "(ordine_data, ordine_fornitore, pezzo)";

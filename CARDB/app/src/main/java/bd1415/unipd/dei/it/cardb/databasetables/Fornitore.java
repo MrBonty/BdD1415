@@ -2,59 +2,51 @@ package bd1415.unipd.dei.it.cardb.databasetables;
 
 import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
 
-public class Personale {
+public class Fornitore {
 
-    private String cf; //PRIMARY-KEY
+    private String piva; //PRIMARY-KEY
     private String nome;
-    private String cognome;
     private String telefono;
     private AddressType indirizzo;
     private String iban;
-    private String contratto;
-    private int responsabile = 0;
-    private int edificio;
 
     public void updateValueInDataBase(String nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Personale";
+        params[0] = "Fonitore";
         params[1] = nome_attributo;
         params[2] = "'"+nuovo_valore+"'";
-        params[3] = "cf";
-        params[4] = "'"+this.cf+"'";
+        params[3] = "piva";
+        params[4] = "'"+this.piva+"'";
         new UpdateValueInDataBase().execute(params);
     }
 
     public void updateValueInDatabase(int nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Personale";
+        params[0] = "Fornitore";
         params[1] = nome_attributo;
         params[2] = ""+nuovo_valore;
-        params[3] = "cf";
-        params[4] = "'"+this.cf+"'";
+        params[3] = "piva";
+        params[4] = "'" + this.piva + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
     public void updateValueInDatabase(AddressType nuovo_valore, String nome_attributo){
         String[] params = new String[5];
-        params[0] = "Personale";
+        params[0] = "Fornitore";
         params[1] = nome_attributo;
         params[2] = "ROW('" + nuovo_valore.indirizzo + "', '" + nuovo_valore.numero_civico
                 + "', '" + nuovo_valore.città + "', '" + nuovo_valore.provincia + "')";
-        params[3] = "cf";
-        params[4] = "'"+this.cf+"'";
+        params[3] = "piva";
+        params[4] = "'"+this.piva+"'";
         new UpdateValueInDataBase().execute(params);
     }
 
-    public String getCf() {
-        return cf;
+    public String getPiva() {
+        return piva;
     }
 
     public String getNome() {
         return nome;
-    }
-
-    public String getCognome() {
-        return cognome;
     }
 
     public String getTelefono() {
@@ -69,28 +61,12 @@ public class Personale {
         return iban;
     }
 
-    public String getContratto() {
-        return contratto;
-    }
-
-    public int getResponsabile() {
-        return responsabile;
-    }
-
-    public int getEdificio() {
-        return edificio;
-    }
-
-    public void setCf(String cf) {
-        this.cf = cf;
+    public void setPiva(String piva) {
+        this.piva = piva;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
     }
 
     public void setTelefono(String telefono) {
@@ -103,18 +79,6 @@ public class Personale {
 
     public void setIban(String iban) {
         this.iban = iban;
-    }
-
-    public void setContratto(String contratto) {
-        this.contratto = contratto;
-    }
-
-    public void setResponsabile(int responsabile) {
-        this.responsabile = responsabile;
-    }
-
-    public void setEdificio(int edificio) {
-        this.edificio = edificio;
     }
 
 }
