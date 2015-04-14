@@ -1,4 +1,6 @@
-package bd1415.unipd.dei.it.cardb;
+package bd1415.unipd.dei.it.cardb.databasetables;
+
+import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
 
 public class Personale {
 
@@ -31,6 +33,8 @@ public class Personale {
         params[4] = "'"+this.cf+"'";
         new UpdateValueInDataBase().execute(params);
     }
+
+    //TODO
 
     public String getCf() {
         return cf;
@@ -101,10 +105,7 @@ public class Personale {
     }
 
     public void setEdificio(int edificio) {
-        if (edificio > 0)
-            this.edificio = edificio;
-        else
-            return;
+        this.edificio = edificio;
     }
 
 }

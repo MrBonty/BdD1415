@@ -1,4 +1,4 @@
-package bd1415.unipd.dei.it.cardb;
+package bd1415.unipd.dei.it.cardb.databasetables;
 
 public class AddressType {
 

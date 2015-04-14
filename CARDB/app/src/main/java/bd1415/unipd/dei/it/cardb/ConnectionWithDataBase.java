@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
 
+import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
+
 public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
 
     public static Session session;

@@ -1,14 +1,17 @@
-package bd1415.unipd.dei.it.cardb;
+package bd1415.unipd.dei.it.cardb.databasetables;
 
-public class Edificio {
+import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
 
-    private int id;
-    private String tipologia;
-    private AddressType indirizzo;
+public class Fattura {
+
+    private int id; //PRIMARY-KEY
+    private int pagato = 0;
+    private String azienda;
+    private String privato;
 
     public void updateValueInDataBase(String nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Edificio";
+        params[0] = "Fattura";
         params[1] = nome_attributo;
         params[2] = "'"+nuovo_valore+"'";
         params[3] = "id";
@@ -18,7 +21,7 @@ public class Edificio {
 
     public void updateValueInDatabase(int nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Edficio";
+        params[0] = "Fattura";
         params[1] = nome_attributo;
         params[2] = ""+nuovo_valore;
         params[3] = "id";
@@ -30,24 +33,31 @@ public class Edificio {
         return id;
     }
 
-    public String getTipologia() {
-        return tipologia;
+    public int getPagato() {
+        return pagato;
     }
 
-    public AddressType getIndirizzo() {
-        return indirizzo;
+    public String getAzienda() {
+        return azienda;
+    }
+
+    public String getPrivato() {
+        return privato;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setTipologia(String tipologia) {
-        this.tipologia = tipologia;
+    public void setPagato(int pagato) {
+        this.pagato = pagato;
     }
 
-    public void setInditizzo(AddressType indirizzo) {
-        this.indirizzo = indirizzo;
+    public void setAzienda(String azienda) {
+        this.azienda = azienda;
     }
 
+    public void setPrivato(String privato) {
+        this.privato = privato;
+    }
 }

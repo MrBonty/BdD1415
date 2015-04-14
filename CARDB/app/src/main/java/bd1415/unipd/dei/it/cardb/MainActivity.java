@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
+
 public class MainActivity extends ActionBarActivity implements ClientiMenuFragment.OnMenufragListener,
         VeicoliMenuFragment.OnMenufragListener, LavorazioniMenuFragment.OnMenufragListener,
         PagamentiMenuFragment.OnMenufragListener, GestioneMenuFragment.OnMenufragListener {

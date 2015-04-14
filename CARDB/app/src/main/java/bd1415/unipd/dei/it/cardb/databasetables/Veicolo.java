@@ -1,4 +1,6 @@
-package bd1415.unipd.dei.it.cardb;
+package bd1415.unipd.dei.it.cardb.databasetables;
+
+import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
 
 public class Veicolo {
 
@@ -14,16 +16,6 @@ public class Veicolo {
         params[0] = "Veicolo";
         params[1] = nome_attributo;
         params[2] = "'"+nuovo_valore+"'";
-        params[3] = "numero_telaio";
-        params[4] = "'"+this.numero_telaio+"'";
-        new UpdateValueInDataBase().execute(params);
-    }
-
-    public void updateValueInDatabase(int nuovo_valore, String nome_attributo) {
-        String[] params = new String[5];
-        params[0] = "Veicolo";
-        params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
         params[3] = "numero_telaio";
         params[4] = "'"+this.numero_telaio+"'";
         new UpdateValueInDataBase().execute(params);
