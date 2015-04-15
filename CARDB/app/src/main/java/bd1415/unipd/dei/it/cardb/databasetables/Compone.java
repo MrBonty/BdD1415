@@ -10,7 +10,7 @@ public class Compone {
 
     public void updateValueInDataBase(String nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Contiene";
+        params[0] = "Compone";
         params[1] = nome_attributo;
         params[2] = "'"+nuovo_valore+"'";
         params[3] = "(modello_cod_prod, modello_marca, pezzo)";
@@ -20,7 +20,7 @@ public class Compone {
 
     public void updateValueInDatabase(int nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Edficio";
+        params[0] = "Compone";
         params[1] = nome_attributo;
         params[2] = ""+nuovo_valore;
         params[3] = "(modello_cod_prod, modello_marca, pezzo)";

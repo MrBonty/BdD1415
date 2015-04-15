@@ -1,13 +1,33 @@
 package bd1415.unipd.dei.it.cardb.databasetables;
 
+import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
+
 public class Lavora_a {
 
-    private String personale;
-    private int lavoro;
+    private String personale; //PRIMARY-KEY
+    private int lavoro; //PRIMARY-KEY
     private int straordinari;
     private int ore_lavoro;
 
-    //TODO -- mancano i metodi per l'update.
+    public void updateValueInDataBase(String nuovo_valore, String nome_attributo) {
+        String[] params = new String[5];
+        params[0] = "Lavora_a";
+        params[1] = nome_attributo;
+        params[2] = "'"+nuovo_valore+"'";
+        params[3] = "(personale, lavoro)";
+        params[4] = "(" + this.personale + ", '" + this.lavoro + "')";
+        new UpdateValueInDataBase().execute(params);
+    }
+
+    public void updateValueInDatabase(int nuovo_valore, String nome_attributo) {
+        String[] params = new String[5];
+        params[0] = "Lavora_a";
+        params[1] = nome_attributo;
+        params[2] = ""+nuovo_valore;
+        params[3] = "(personale, lavoro)";
+        params[4] = "(" + this.personale + ", '" + this.lavoro + "')";
+        new UpdateValueInDataBase().execute(params);
+    }
 
     public String getPersonale() {
         return personale;

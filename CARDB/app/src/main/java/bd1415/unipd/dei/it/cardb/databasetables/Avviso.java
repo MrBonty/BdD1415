@@ -10,7 +10,7 @@ public class Avviso {
 
     public void updateValueInDataBase(String nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Contiene";
+        params[0] = "Avviso";
         params[1] = nome_attributo;
         params[2] = "'"+nuovo_valore+"'";
         params[3] = "(manutenzione, veicolo)";
@@ -20,7 +20,7 @@ public class Avviso {
 
     public void updateValueInDatabase(int nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Edficio";
+        params[0] = "Avviso";
         params[1] = nome_attributo;
         params[2] = ""+nuovo_valore;
         params[3] = "(manutenzione, veicolo)";
