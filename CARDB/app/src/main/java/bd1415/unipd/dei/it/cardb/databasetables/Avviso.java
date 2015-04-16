@@ -1,6 +1,7 @@
 package bd1415.unipd.dei.it.cardb.databasetables;
 
 import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
+import bd1415.unipd.dei.it.cardb.Util;
 import bd1415.unipd.dei.it.cardb.insertclasses.InsertAvvisoInDataBase;
 
 public class Avviso {
@@ -24,6 +25,10 @@ public class Avviso {
         params[2] = "(" +  manutenzione + ", '"+veicolo+"')";
         params[3] = ";"; //TODO ALL ALL ALL ALL
         //TODO new InsertAvvisoInDataBase.execute(params);
+
+        while (!Util.isSet());
+        process(Util.getOutput());
+        Util.setToNull();
     }
 
     public void updateValueInDataBase(String nuovo_valore, String nome_attributo) {
