@@ -9,10 +9,36 @@ import java.sql.Statement;
 import bd1415.unipd.dei.it.cardb.ConnectionWithDataBase;
 import bd1415.unipd.dei.it.cardb.LoginDialog;
 import bd1415.unipd.dei.it.cardb.MainActivity;
+import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 
 public class InsertPersonaleInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
+
+    public static final String TABLE_PERSONALE = "Personale";
+    // Personale Columns
+    public static final String PERSONALE_PK_CF = "cf";
+    public static final String PERSONALE_NOME = "nome";
+    public static final String PERSONALE_COGNOME = "cognome";
+    public static final String PERSONALE_TELEFONO = "telefono";
+    public static final String PERSONALE_INDIRIZZO = "indirizzo";
+    public static final String PERSONALE_CIVICO = "civico";
+    public static final String PERSONALE_CITTA = "città";
+    public static final String PERSONALE_PROVINCIA = "provincia";
+    public static final String PERSONALE_IBAN = "iban";
+    public static final String PERSONALE_CONTRATTO = "contratto";
+    public static final String PERSONALE_RESPONSABILE = "responsabile";
+    public static final String PERSONALE_EDIFICIO = "edificio";
+
+    private String cf = null; //PRIMARY-KEY
+    private String nome = null;
+    private String cognome = null;
+    private String telefono = null;
+    private AddressType indirizzo = null;
+    private String iban = null;
+    private String contratto = null;
+    private int responsabile = 0; // boolean
+    private int edificio = -1; //>0
 
     @Override
     protected void onPreExecute() {

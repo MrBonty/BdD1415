@@ -14,6 +14,20 @@ public class InsertContieneInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
+    public static final String TABLE_CONTIENE = "Contiene";
+    // Contiene Columns
+    public static final String CONTIENE_PK_ORDINE_DATA = "ordine_data";
+    public static final String CONTIENE_PK_ORDINE_FORNITORE = "ordine_fornitore";
+    public static final String CONTIENE_PK_PEZZO = "pezzo";
+    public static final String CONTIENE_NUMERO_PEZZI = "numero_pezzi";
+    public static final String CONTIENE_PREZZO_PEZZO = "prezzo_pezzo";
+
+    private String ordine_data = null; //PRIMARY-KEY
+    private String ordine_fornitore = null; //PRIMARY-KEY
+    private int pezzo = -1; //PRIMARY-KEY //>0
+    private int numero_pezzi = -1; //>0
+    private float prezzo_pezzo = -1; //>0
+
     @Override
     protected void onPreExecute() {
         // here go all the graphics things

@@ -13,6 +13,15 @@ import bd1415.unipd.dei.it.cardb.MainActivity;
 public class InsertUsatoInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
+    public static final String TABLE_USATO = "Usato";
+    // Usato Columns
+    public static final String USATO_PK_LAVORO = "lavoro";
+    public static final String USATO_PK_PEZZO = "pezzo";
+    public static final String USATO_NUMERO_PEZZI = "numero_pezzi";
+
+    private int lavoro = -1; //PRIMARY-KEY //>0
+    private int pezzo; //PRIMARY-KEY //>0
+    private int numero_pezzi = -1; //>0
 
     @Override
     protected void onPreExecute() {

@@ -1,16 +1,34 @@
 package bd1415.unipd.dei.it.cardb.databasetables;
 
 import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
+import bd1415.unipd.dei.it.cardb.insertclasses.InsertAvvisoInDataBase;
 
 public class Avviso {
 
-    private int manutenzione; //PRIMARY-KEY
-    private String veicolo; //PRIMARY-KEY
+
+    public static final String TABLE_AVVISO = "Avviso";
+    // Avviso Columns
+    public static final String AVVISO_PK_MANUTENZIONE = "manutenzione";
+    public static final String AVVISO_PK_VEICOLO = "veicolo";
+    public static final String AVVISO_DATA_POSSIMA = "data_possima";
+
+    private int manutenzione; //PRIMARY-KEY //FOREYNG KEY
+    private String veicolo; //PRIMARY-KEY //FOREYNG KEY
     private String data_possima;
+    private String resulte;
+
+    public Avviso(int manutenzione, String veicolo){
+        String[] params = new String[3];
+        params[0] = TABLE_AVVISO;
+        params[1] = "(" + AVVISO_PK_MANUTENZIONE + "," + AVVISO_PK_VEICOLO + ")";
+        params[2] = "(" +  manutenzione + ", '"+veicolo+"')";
+        params[3] = ";"; //TODO ALL ALL ALL ALL
+        //TODO new InsertAvvisoInDataBase.execute(params);
+    }
 
     public void updateValueInDataBase(String nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Avviso";
+        params[0] = TABLE_AVVISO;
         params[1] = nome_attributo;
         params[2] = "'"+nuovo_valore+"'";
         params[3] = "(manutenzione, veicolo)";
@@ -20,7 +38,7 @@ public class Avviso {
 
     public void updateValueInDatabase(int nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Avviso";
+        params[0] = TABLE_AVVISO;
         params[1] = nome_attributo;
         params[2] = ""+nuovo_valore;
         params[3] = "(manutenzione, veicolo)";
@@ -52,4 +70,7 @@ public class Avviso {
         this.veicolo = veicolo;
     }
 
+    public static void process(String result){
+
+    }
 }

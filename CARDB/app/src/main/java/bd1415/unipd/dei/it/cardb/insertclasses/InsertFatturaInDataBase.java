@@ -14,6 +14,18 @@ public class InsertFatturaInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
+    public static final String TABLE_FATTURA = "Fattura";
+    // Fattura Columns
+    public static final String FATTURA_PK_ID = "id";
+    public static final String FATTURA_PAGATO = "pagato";
+    public static final String FATTURA_AZIENDA = "azienda";
+    public static final String FATTURA_PRIVATO = "privato";
+
+    private int id = -1; //PRIMARY-KEY //>0
+    private int pagato = 0; //boolean
+    private String azienda = null;
+    private String privato = null;
+
     @Override
     protected void onPreExecute() {
         // here go all the graphics things

@@ -14,6 +14,20 @@ public class InsertLavoroInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
+    public static final String TABLE_LAVORO = "Lavoro";
+    // Lavoro Columns
+    public static final String LAVORO_PK_ID = "id";
+    public static final String LAVORO_DATA_INIZIO = "data_inzio";
+    public static final String LAVORO_DATA_FINE = "data_fine";
+    public static final String LAVORO_VEICOLO = "veicolo";
+    public static final String LAVORO_FATTURA = "fattura";
+
+    private int id = -1; //PRIMARY -KEY //>0
+    private String data_inizio = null;
+    private String data_fine = null;
+    private String veicolo = null;
+    private int fattura = -1; //>0
+
     @Override
     protected void onPreExecute() {
         // here go all the graphics things

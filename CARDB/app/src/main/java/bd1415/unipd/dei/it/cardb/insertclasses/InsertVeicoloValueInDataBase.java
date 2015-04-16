@@ -14,6 +14,22 @@ public class InsertVeicoloValueInDataBase extends AsyncTask<String, Void, String
 
     private Toast toast;
 
+    public static final String TABLE_VEICOLO = "Veicolo";
+    // Veicolo Columns
+    public static final String VEICOLO_PK_NUMERO_TELAIO = "numero_telaio";
+    public static final String VEICOLO_TARGA = "targa";
+    public static final String VEICOLO_AZIENDA = "azienda";
+    public static final String VEICOLO_PRIVATO = "privato";
+    public static final String VEICOLO_MODELLO_COD_PROD = "modello_cod_prod";
+    public static final String VEICOLO_MODELLO_MARCA = "modello_marca";
+
+    private String numero_telaio = null; //PRIMARY-KEY
+    private String targa = null;
+    private String azienda = null;
+    private String privato = null;
+    private String modello_cod_prod = null;
+    private String modello_marca = null;
+
     @Override
     protected void onPreExecute() {
         // here go all the graphics things

@@ -5,20 +5,29 @@ import android.widget.Toast;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import bd1415.unipd.dei.it.cardb.ConnectionWithDataBase;
 import bd1415.unipd.dei.it.cardb.LoginDialog;
 import bd1415.unipd.dei.it.cardb.MainActivity;
+import bd1415.unipd.dei.it.cardb.databasetables.Avviso;
 
 public class InsertAvvisoInDataBase extends AsyncTask<String, Void, String> {
 
+    //TODO create a generic one...
+
     private Toast toast;
+
+    private int manutenzione = -1; //PRIMARY-KEY //>0
+    private String veicolo = null; //PRIMARY-KEY
+    private String data_possima = null;
 
     @Override
     protected void onPreExecute() {
         // here go all the graphics things
         toast = Toast.makeText(MainActivity.ctx, "Connecting...", Toast.LENGTH_SHORT);
         toast.show();
+
     }
 
     protected String doInBackground(String... params) {
@@ -27,8 +36,8 @@ public class InsertAvvisoInDataBase extends AsyncTask<String, Void, String> {
         try {
             st = ConnectionWithDataBase.con.createStatement();
             if (st != null && ConnectionWithDataBase.con != null) {
-                ResultSet rs = st.executeQuery("UPDATE main." + params[0] + " SET " + params[1] + " = "
-                        + params[2] + " WHERE " + params[3] + " = " + params[4] + " RETURNING " + params[0] + ";");
+                ResultSet rs = st.executeQuery("INSERT INTO main." + params[0] + params[1] + " VALUES "
+                        + params[2] + params[3]);
                 while (rs.next()) {
                     s = s + rs.getString(params[0]);
 
@@ -64,6 +73,8 @@ public class InsertAvvisoInDataBase extends AsyncTask<String, Void, String> {
             toast.cancel();
             Toast.makeText(MainActivity.ctx, result, Toast.LENGTH_LONG).show();
         }
+
+        Avviso.process(result);
     }
 
 }

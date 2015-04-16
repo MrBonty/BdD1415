@@ -13,6 +13,13 @@ import bd1415.unipd.dei.it.cardb.MainActivity;
 public class InsertR7InDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
+    public static final String TABLE_R7 = "r7";
+    // R7 Columns
+    public static final String R7_PK_LAVORO = "lavoro";
+    public static final String R7_PK_GUASTO = "guasto";
+
+    private int lavoro = -1; //PRIMARY-KEY //>0
+    private int guasto = -1; //PRIMARY-KEY //>0
 
     @Override
     protected void onPreExecute() {

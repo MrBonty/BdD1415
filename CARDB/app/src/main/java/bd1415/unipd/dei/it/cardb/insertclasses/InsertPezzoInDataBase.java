@@ -14,6 +14,18 @@ public class InsertPezzoInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
+    public static final String TABLE_PEZZO = "Pezzo";
+    // Pezzo Columns
+    public static final String PEZZO_PK_ID = "id";
+    public static final String PEZZO_DESCRIZIONE = "descrizione";
+    public static final String PEZZO_NUMERO_TOTALE_PEZZI = "numero_totale_pezzi";
+    public static final String PEZZO_PREZZO_VENDITA = "prezzo_vedita";
+
+    private int id = -1; //PRIMARY-KEY //>0
+    private String descrizione = null;
+    private int numero_totale_pezzi = -1; //>0
+    private float prezzo_vendita = -1; //>0
+
     @Override
     protected void onPreExecute() {
         // here go all the graphics things

@@ -9,10 +9,24 @@ import java.sql.Statement;
 import bd1415.unipd.dei.it.cardb.ConnectionWithDataBase;
 import bd1415.unipd.dei.it.cardb.LoginDialog;
 import bd1415.unipd.dei.it.cardb.MainActivity;
+import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 
 public class InsertEdificioInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
+
+    public static final String TABLE_EDIFICIO = "Edificio";
+    // Edificio Columns
+    public static final String EDIFICIO_PK_ID = "id";
+    public static final String EDIFICIO_TIPOLOGIA = "tipologia";
+    public static final String EDIFICIO_INDIRIZZO = "indirizzo";
+    public static final String EDIFICIO_CIVICO = "civico";
+    public static final String EDIFICIO_CITTA = "città";
+    public static final String EDIFICIO_PROVINCIA = "provincia";
+
+    private int id = -1; //PRIMARY-KEY //>0
+    private String tipologia = null;
+    private AddressType indirizzo = null;
 
     @Override
     protected void onPreExecute() {

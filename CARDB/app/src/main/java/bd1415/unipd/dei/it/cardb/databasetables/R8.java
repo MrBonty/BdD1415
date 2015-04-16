@@ -4,8 +4,8 @@ import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
 
 public class R8 {
 
-    private int lavoro;
-    private int manutenzione;
+    private int lavoro; //PRIMARY-KEY
+    private int manutenzione; //PRIMARY-KEY
 
     public void updateValueInDatabase(int nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
