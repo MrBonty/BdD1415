@@ -31,8 +31,8 @@ public class MainActivity extends ActionBarActivity implements ClientiMenuFragme
     public static boolean isLogged = false;
     public static boolean isWrong = false;
     public static boolean errorRetrievingData = false;
-    protected static Context ctx;
-    protected static Activity act;
+    public static Context ctx;
+    public static Activity act;
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
