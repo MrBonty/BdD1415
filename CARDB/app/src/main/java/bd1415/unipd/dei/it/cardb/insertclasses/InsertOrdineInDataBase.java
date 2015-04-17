@@ -14,12 +14,6 @@ public class InsertOrdineInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
-    public static final String TABLE_ORDINE = "Ordine";
-    // Ordine Columns
-    public static final String ORDINE_PK_DATA_OR = "dat_or";
-    public static final String ORDINE_PK_FORNITORE = "fornitore";
-    public static final String ORDINE_QUANTITA_FORNITURA = "quantità_fornitura";
-
     private String data_or = null; //PRIMARY-KEY
     private String fornitore = null; //PRIMARY-KEY
     private int quantita_fornita = -1; //>0

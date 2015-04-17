@@ -21,7 +21,7 @@ public class Fornitore {
     private String iban;
 
     public Fornitore(String piva){
-        String[] params = new String[5];
+        String[] params = new String[4];
         params[0] = TABLE_FORNITORE;
         params[1] = "(" + FORNITORE_PK_PIVA + ")";
         params[2] = "('" + piva + "')";

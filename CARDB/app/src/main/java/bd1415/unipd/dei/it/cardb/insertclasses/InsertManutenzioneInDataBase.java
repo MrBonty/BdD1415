@@ -14,11 +14,6 @@ public class InsertManutenzioneInDataBase extends AsyncTask<String, Void, String
 
     private Toast toast;
 
-    public static final String TABLE_MANUTENZIONE = "Manutenzione";
-    // Manutenzione Columns
-    public static final String MANUTENZIONE_PK_ID = "id";
-    public static final String MANUTENZIONE_DESCRIZIONE = "descrizione";
-
     private int id = -1; //PRIMARY-KEY //>0
     private String descrizione = null;
 

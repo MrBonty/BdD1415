@@ -14,13 +14,6 @@ public class InsertModelloInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
-    public static final String TABLE_MODELLO = "Modello";
-    // Modello Columns
-    public static final String MODELLO_PK_CODICE_PRODUZIONE = "codice_poduzione";
-    public static final String MODELLO_PK_MARCA = "marca";
-    public static final String MODELLO_NOME = "nome";
-    public static final String MODELLO_ANNO = "anno";
-
     private String codice_produzione = null; //PRIMARY-KEY
     private String marca = null; //PRIMARY-KEY
     private String nome = null;

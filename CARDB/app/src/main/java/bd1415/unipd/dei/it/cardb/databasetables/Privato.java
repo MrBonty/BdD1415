@@ -4,6 +4,14 @@ import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
 
 public class Privato {
 
+    public static final String TABLE_PRIVATO = "Privato";
+    // Privato Columns
+    public static final String PRIVATO_PK_CF = "cf";
+    public static final String PRIVATO_NOME = "nome";
+    public static final String PRIVATO_COGNOME = "cognome";
+    public static final String PRIVATO_TELEFONO = "telefono";
+    public static final String PRIVATO_INDIRIZZO = "indirizzo";
+
     private String cf; //PRIMARY-KEY
     private String nome;
     private String cognome;

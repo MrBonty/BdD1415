@@ -15,21 +15,6 @@ public class InsertPersonaleInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
-    public static final String TABLE_PERSONALE = "Personale";
-    // Personale Columns
-    public static final String PERSONALE_PK_CF = "cf";
-    public static final String PERSONALE_NOME = "nome";
-    public static final String PERSONALE_COGNOME = "cognome";
-    public static final String PERSONALE_TELEFONO = "telefono";
-    public static final String PERSONALE_INDIRIZZO = "indirizzo";
-    public static final String PERSONALE_CIVICO = "civico";
-    public static final String PERSONALE_CITTA = "città";
-    public static final String PERSONALE_PROVINCIA = "provincia";
-    public static final String PERSONALE_IBAN = "iban";
-    public static final String PERSONALE_CONTRATTO = "contratto";
-    public static final String PERSONALE_RESPONSABILE = "responsabile";
-    public static final String PERSONALE_EDIFICIO = "edificio";
-
     private String cf = null; //PRIMARY-KEY
     private String nome = null;
     private String cognome = null;

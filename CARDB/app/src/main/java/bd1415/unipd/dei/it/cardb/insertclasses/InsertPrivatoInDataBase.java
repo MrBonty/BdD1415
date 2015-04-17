@@ -15,17 +15,6 @@ public class InsertPrivatoInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
-    public static final String TABLE_PRIVATO = "Privato";
-    // Privato Columns
-    public static final String PRIVATO_PK_CF = "cf";
-    public static final String PRIVATO_NOME = "nome";
-    public static final String PRIVATO_COGNOME = "cognome";
-    public static final String PRIVATO_TELEFONO = "telefono";
-    public static final String PRIVATO_INDIRIZZO = "indirizzo";
-    public static final String PRIVATO_CIVICO = "civico";
-    public static final String PRIVATO_CITTA = "città";
-    public static final String PRIVATO_PROVINCIA = "provincia";
-
     private String cf = null; //PRIMARY-KEY
     private String nome = null;
     private String cognome = null;
