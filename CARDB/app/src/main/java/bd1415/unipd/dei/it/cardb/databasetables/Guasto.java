@@ -4,6 +4,11 @@ import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
 
 public class Guasto {
 
+    public static final String TABLE_GUASTO = "Guasto";
+    // Guasto Columns
+    public static final String GUASTO_PK_ID = "id";
+    public static final String GUASTO_DESCRIZIONE = "descrizione";
+
     private int id; //PRIMARY-KEY
     private String descrizione;
 

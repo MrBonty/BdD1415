@@ -14,11 +14,6 @@ public class InsertGuastoInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
-    public static final String TABLE_GUASTO = "Guasto";
-    // Guasto Columns
-    public static final String GUASTO_PK_ID = "id";
-    public static final String GUASTO_DESCRIZIONE = "descrizione";
-
     private int id = -1; //PRIMARY-KEY //>0
     private String descrizione = null;
 
