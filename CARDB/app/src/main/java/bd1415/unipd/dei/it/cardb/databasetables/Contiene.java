@@ -1,32 +1,68 @@
 package bd1415.unipd.dei.it.cardb.databasetables;
 
+import bd1415.unipd.dei.it.cardb.InsertInDataBase;
 import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
+import bd1415.unipd.dei.it.cardb.Util;
 
 public class Contiene {
 
-    private String ordine_data; //PRIMARY-KEY
-    private String ordine_fornitore; //PRIMARY-KEY
-    private int pezzo; //PRIMARY-KEY
+    public static final String TABLE_CONTIENE = "Contiene";
+    // Contiene Columns
+    public static final String CONTIENE_PK_ORDINE_DATA = "ordine_data";
+    public static final String CONTIENE_PK_ORDINE_FORNITORE = "ordine_fornitore";
+    public static final String CONTIENE_PK_PEZZO = "pezzo";
+    public static final String CONTIENE_NUMERO_PEZZI = "numero_pezzi";
+    public static final String CONTIENE_PREZZO_PEZZO = "prezzo_pezzo";
+
+    private String ordine_data; //PRIMARY-KEY //FOREING KEY
+    private String ordine_fornitore; //PRIMARY-KEY //FOREING KEY
+    private int pezzo; //PRIMARY-KEY //FOREING KEY
     private int numero_pezzi;
     private float prezzo_pezzo;
 
-    public void updateValueInDataBase(String nuovo_valore, String nome_attributo) {
+    public Contiene(String ordine_data, String ordine_fornitore, int pezzo){
+        String[] params = new String[4];
+        params[0] = TABLE_CONTIENE;
+        params[1] = "(" + CONTIENE_PK_ORDINE_DATA + ", " + CONTIENE_PK_ORDINE_FORNITORE  + ", " + CONTIENE_PK_PEZZO + ")";
+        params[2] = "('" + ordine_data + "', '" + ordine_fornitore + "'" + pezzo + ")";
+        params[3] = ";";
+        new InsertInDataBase().execute(params);
+
+        this.ordine_data = ordine_data;
+        this.ordine_fornitore = ordine_fornitore;
+        this.pezzo = pezzo;
+
+        while (!Util.isSet());
+        Util.setToNull();
+    }
+
+    public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Contiene";
+        params[0] = TABLE_CONTIENE;
         params[1] = nome_attributo;
         params[2] = "'"+nuovo_valore+"'";
-        params[3] = "(ordine_data, ordine_fornitore, pezzo)";
+        params[3] = "(" + CONTIENE_PK_ORDINE_DATA + ", " + CONTIENE_PK_ORDINE_FORNITORE  + ", " + CONTIENE_PK_PEZZO + ")";
         params[4] = "('" + this.ordine_data + "', '" + this.ordine_data + "', " + this.pezzo + ")";
         new UpdateValueInDataBase().execute(params);
     }
 
     public void updateValueInDatabase(int nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Contiene";
+        params[0] = TABLE_CONTIENE;
         params[1] = nome_attributo;
         params[2] = ""+nuovo_valore;
-        params[3] = "(ordine_data, ordine_fornitore, pezzo)";
-        params[4] =  "('" + this.ordine_data + "', '" + this.ordine_data + "', " + this.pezzo + ")";
+        params[3] = "(" + CONTIENE_PK_ORDINE_DATA + ", " + CONTIENE_PK_ORDINE_FORNITORE  + ", " + CONTIENE_PK_PEZZO + ")";
+        params[4] = "('" + this.ordine_data + "', '" + this.ordine_data + "', " + this.pezzo + ")";
+        new UpdateValueInDataBase().execute(params);
+    }
+
+    public void updateValueInDatabase(float nuovo_valore, String nome_attributo) {
+        String[] params = new String[5];
+        params[0] = TABLE_CONTIENE;
+        params[1] = nome_attributo;
+        params[2] = ""+nuovo_valore;
+        params[3] = "(" + CONTIENE_PK_ORDINE_DATA + ", " + CONTIENE_PK_ORDINE_FORNITORE  + ", " + CONTIENE_PK_PEZZO + ")";
+        params[4] = "('" + this.ordine_data + "', '" + this.ordine_data + "', " + this.pezzo + ")";
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -52,23 +88,27 @@ public class Contiene {
 
     public void setPrezzo_pezzo(float prezzo_pezzo) {
         this.prezzo_pezzo = prezzo_pezzo;
+        updateValueInDatabase(prezzo_pezzo, CONTIENE_PREZZO_PEZZO);
     }
 
     public void setOrdine_data(String ordine_data) {
         this.ordine_data = ordine_data;
+        updateValueInDatabase(ordine_data, CONTIENE_PK_ORDINE_DATA);
     }
 
     public void setOrdine_fornitore(String ordine_fornitore) {
         this.ordine_fornitore = ordine_fornitore;
+        updateValueInDatabase(ordine_fornitore, CONTIENE_PK_ORDINE_FORNITORE);
     }
 
     public void setPezzo(int pezzo) {
         this.pezzo = pezzo;
-
+        updateValueInDatabase(pezzo, CONTIENE_PK_PEZZO);
     }
 
     public void setNumero_pezzi(int numero_pezzi) {
         this.numero_pezzi = numero_pezzi;
+        updateValueInDatabase(numero_pezzi, CONTIENE_NUMERO_PEZZI);
     }
 
 }

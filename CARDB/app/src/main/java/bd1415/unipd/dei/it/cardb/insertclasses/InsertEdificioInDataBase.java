@@ -15,15 +15,6 @@ public class InsertEdificioInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
-    public static final String TABLE_EDIFICIO = "Edificio";
-    // Edificio Columns
-    public static final String EDIFICIO_PK_ID = "id";
-    public static final String EDIFICIO_TIPOLOGIA = "tipologia";
-    public static final String EDIFICIO_INDIRIZZO = "indirizzo";
-    public static final String EDIFICIO_CIVICO = "civico";
-    public static final String EDIFICIO_CITTA = "città";
-    public static final String EDIFICIO_PROVINCIA = "provincia";
-
     private int id = -1; //PRIMARY-KEY //>0
     private String tipologia = null;
     private AddressType indirizzo = null;
@@ -43,6 +34,7 @@ public class InsertEdificioInDataBase extends AsyncTask<String, Void, String> {
             if (st != null && ConnectionWithDataBase.con != null) {
                 ResultSet rs = st.executeQuery("UPDATE main." + params[0] + " SET " + params[1] + " = "
                         + params[2] + " WHERE " + params[3] + " = " + params[4] + " RETURNING " + params[0] + ";");
+
                 while (rs.next()) {
                     s = s + rs.getString(params[0]);
 

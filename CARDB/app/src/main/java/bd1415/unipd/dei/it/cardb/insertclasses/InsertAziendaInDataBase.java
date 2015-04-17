@@ -15,15 +15,7 @@ public class InsertAziendaInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
-    public static final String TABLE_AZIENDA = "Azienda";
-    // Azienda Columns
-    public static final String AZIENDA_PK_PIVA = "piva";
-    public static final String AZIENDA_NOME = "nome";
-    public static final String AZIENDA_TELEFONO = "telefono";
-    public static final String AZIENDA_INDIRIZZO = "indirizzo";
-    public static final String AZIENDA_CIVICO = "civico";
-    public static final String AZIENDA_CITTA = "città";
-    public static final String AZIENDA_PROVINCIA = "provincia";
+
 
     private String piva = null; //PRIMARY-KEY
     private String nome = null;

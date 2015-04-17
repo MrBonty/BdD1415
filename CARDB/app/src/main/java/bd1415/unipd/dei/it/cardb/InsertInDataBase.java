@@ -6,27 +6,17 @@ import android.widget.Toast;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import bd1415.unipd.dei.it.cardb.ConnectionWithDataBase;
-import bd1415.unipd.dei.it.cardb.LoginDialog;
-import bd1415.unipd.dei.it.cardb.MainActivity;
-import bd1415.unipd.dei.it.cardb.databasetables.Avviso;
-
 public class InsertInDataBase extends AsyncTask<String, Void, String> {
 
-    //TODO create a generic one...
-
+    public static final String DIVISOR = "##";
+    private static final int MIN_PARAM_LENGTH = 4; //minimal legth of params array: params[0]...
     private Toast toast;
-
-    private int manutenzione = -1; //PRIMARY-KEY //>0
-    private String veicolo = null; //PRIMARY-KEY
-    private String data_possima = null;
 
     @Override
     protected void onPreExecute() {
         // here go all the graphics things
         toast = Toast.makeText(MainActivity.ctx, "Connecting...", Toast.LENGTH_SHORT);
         toast.show();
-
     }
 
     protected String doInBackground(String... params) {
@@ -37,9 +27,11 @@ public class InsertInDataBase extends AsyncTask<String, Void, String> {
             if (st != null && ConnectionWithDataBase.con != null) {
                 ResultSet rs = st.executeQuery("INSERT INTO main." + params[0] + params[1] + " VALUES "
                         + params[2] + params[3]);
-                while (rs.next()) {
-                    s = s + rs.getString(params[0]);
-
+                int parLen = params.length;
+                while (rs.next() && parLen> MIN_PARAM_LENGTH) {
+                    for(int i = MIN_PARAM_LENGTH; i< parLen; i++) {
+                        s = s + rs.getString(params[i])+ DIVISOR;
+                    }
                 }
                 if (rs != null) {
                     rs.close();
@@ -72,8 +64,6 @@ public class InsertInDataBase extends AsyncTask<String, Void, String> {
             toast.cancel();
             Toast.makeText(MainActivity.ctx, result, Toast.LENGTH_LONG).show();
         }
-
         Util.setOutput(result);
     }
-
 }

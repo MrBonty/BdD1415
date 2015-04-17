@@ -42,11 +42,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Avviso.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Avviso.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Avviso.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40470588" vertical-offset="316" max-vertical-offset="1650">
-              <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="338" max-vertical-offset="1782">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,22 +54,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InsertAvvisoInDataBase.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertAvvisoInDataBase.java">
+      <file leaf-file-name="Edificio.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Edificio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="1672">
-              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InsertInDataBase.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/InsertInDataBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="770" max-vertical-offset="1672">
-              <caret line="75" column="23" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="294" max-vertical-offset="2134">
+              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="27" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,14 +69,46 @@
       <file leaf-file-name="Util.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/Util.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="682">
-              <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="792">
+              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
               <folding>
-                <element signature="e#274#275#0" expanded="true" />
-                <element signature="e#303#304#0" expanded="true" />
-                <element signature="e#339#340#0" expanded="true" />
-                <element signature="e#367#368#0" expanded="true" />
+                <element signature="e#287#288#0" expanded="true" />
+                <element signature="e#316#317#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InsertInDataBase.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/InsertInDataBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1650">
+              <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Fornitore.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Fornitore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.42352942" vertical-offset="778" max-vertical-offset="2398">
+              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InsertFornitoreInDataBase.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertFornitoreInDataBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="44" max-vertical-offset="1606">
+              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -842,37 +866,24 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/Manuenzione.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/Guasto.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/Edificio.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/Usato.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/Veicolo.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/Personale.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/Fattura.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/Contiene.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Edificio.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Lavoro.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Contiene.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Ordine.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Personale.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Fornitore.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Privato.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/AddressType.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Lavora_a.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Modello.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Compone.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Usato.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertAvvisoValueInDataBase.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/InsertLavora_aInDataBase.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Azienda.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertAziendaInDataBase.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertComponeInDataBase.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertContieneInDataBase.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertEdificioInDataBase.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertFatturaInDataBase.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertFornitoreInDataBase.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertGuastoInDataBase.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertLavora_aInDataBase.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertLavoroInDataBase.java" />
@@ -890,9 +901,22 @@
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/R8.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertAvvisoInDataBase.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertInDataBase.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/UpdateValueInDataBase.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertAziendaInDataBase.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertComponeInDataBase.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertContieneInDataBase.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertEdificioInDataBase.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/InsertInDataBase.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/Util.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Compone.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Azienda.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Avviso.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Contiene.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/Util.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertFatturaInDataBase.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Edificio.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Fattura.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertFornitoreInDataBase.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Fornitore.java" />
       </list>
     </option>
   </component>
@@ -931,6 +955,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1019,7 +1044,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -1102,6 +1126,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cardb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CARDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cardb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="insertclasses" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1388,7 +1446,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1053" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1053" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1405,7 +1463,7 @@
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.66918105" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21184632" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21184632" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1476,13 +1534,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/LoginDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.04575893" vertical-offset="35" max-vertical-offset="931">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ClientiMenuFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="124" max-vertical-offset="1007">
@@ -1530,48 +1581,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="3564">
           <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Azienda.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23294118" vertical-offset="0" max-vertical-offset="1430">
-          <caret line="9" column="34" selection-start-line="8" selection-start-column="28" selection-end-line="9" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Compone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="1122">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="8" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Contiene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1408">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="10" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Edificio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1320">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="8" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Fattura.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1166">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Fornitore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1540">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="10" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1650,48 +1659,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1232">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="11" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertAziendaInDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44" vertical-offset="88" max-vertical-offset="1804">
-          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertComponeInDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33647057" vertical-offset="66" max-vertical-offset="1694">
-          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertContieneInDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="1782">
-          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertEdificioInDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33647057" vertical-offset="132" max-vertical-offset="1760">
-          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertFatturaInDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3882353" vertical-offset="66" max-vertical-offset="1738">
-          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertFornitoreInDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5176471" vertical-offset="66" max-vertical-offset="1848">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1801,14 +1768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/UpdateValueInDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.44" vertical-offset="30" max-vertical-offset="1474">
-          <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertAvvisoInDataBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1892">
@@ -1817,31 +1776,159 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/UpdateValueInDataBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6047059" vertical-offset="0" max-vertical-offset="1540">
+          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertAziendaInDataBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1628">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertComponeInDataBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12941177" vertical-offset="22" max-vertical-offset="1562">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertContieneInDataBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="22" max-vertical-offset="1606">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Compone.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="1870">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2558#2559#0" expanded="true" />
+            <element signature="e#2586#2587#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Azienda.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.79294115" vertical-offset="1350" max-vertical-offset="2200">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Contiene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="2420">
+          <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Android/android-sdk/sources/android-22/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3321385" vertical-offset="33733" max-vertical-offset="39336">
+          <caret line="1650" column="37" selection-start-line="1650" selection-start-column="37" selection-end-line="1650" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertEdificioInDataBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="1584">
+          <caret line="37" column="32" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertFatturaInDataBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="44" max-vertical-offset="1584">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/Util.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="682">
-          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="792">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
           <folding>
-            <element signature="e#274#275#0" expanded="true" />
-            <element signature="e#303#304#0" expanded="true" />
-            <element signature="e#339#340#0" expanded="true" />
-            <element signature="e#367#368#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+            <element signature="e#316#317#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/insertclasses/InsertFornitoreInDataBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="44" max-vertical-offset="1606">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/InsertInDataBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="770" max-vertical-offset="1672">
-          <caret line="75" column="23" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1650">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Fattura.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="74" max-vertical-offset="1980">
+          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Edificio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="294" max-vertical-offset="2134">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="27" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Avviso.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40470588" vertical-offset="316" max-vertical-offset="1650">
-          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="338" max-vertical-offset="1782">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/databasetables/Fornitore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.42352942" vertical-offset="778" max-vertical-offset="2398">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

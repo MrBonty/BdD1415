@@ -14,12 +14,6 @@ public class InsertComponeInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
-    public static final String TABLE_COMPONE = "Compone";
-    // Compone Columns
-    public static final String COMPONE_PK_MODELLO_COD_PROD = "modello_cod_prod";
-    public static final String COMPONE_PK_MODELLO_MARCA = "modello_marca";
-    public static final String COMPONE_PK_PEZZO = "pezzo";
-
     private String modello_cod_prod = null; //PRIMARY-KEY
     private String modello_marca = null; //PRIMARY-KEY
     private int pezzo = -1; //PRIMARY-KEY //>0

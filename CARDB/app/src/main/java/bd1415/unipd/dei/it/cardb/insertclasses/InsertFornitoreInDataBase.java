@@ -15,17 +15,6 @@ public class InsertFornitoreInDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
-    public static final String TABLE_FORNITORE = "Fornitore";
-    // Fornitore Columns
-    public static final String FORNITORE_PK_PIVA = "piva";
-    public static final String FORNITORE_NOME = "nome";
-    public static final String FORNITORE_TELEFONO = "telefono";
-    public static final String FORNITORE_IBAN = "iban";
-    public static final String FORNITORE_INDIRIZZO = "indirizzo";
-    public static final String FORNITORE_CIVICO = "civico";
-    public static final String FORNITORE_CITTA = "città";
-    public static final String FORNITORE_PROVINCIA = "provincia";
-
     private String piva = null; //PRIMARY-KEY
     private String nome = null;
     private String telefono = null;

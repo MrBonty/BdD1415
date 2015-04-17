@@ -61,5 +61,4 @@ public class UpdateValueInDataBase extends AsyncTask<String, Void, String> {
             Toast.makeText(MainActivity.ctx, result, Toast.LENGTH_LONG).show();
         }
     }
-
 }
