@@ -18,21 +18,25 @@ public class Edificio {
     private String tipologia; //NOT NULL
     private AddressType indirizzo;
 
-    public Edificio(String tipologia){
-        String[] params = new String[5];
-        params[0] = TABLE_EDIFICIO;
-        params[1] = "(" + EDIFICIO_TIPOLOGIA + ")";
-        params[2] = "('" + tipologia + "')";
-        params[3] = " RETURNING " + EDIFICIO_PK_ID + ";";
-        params[4] = EDIFICIO_PK_ID;
-        new InsertInDataBase().execute(params);
+    public Edificio(String tipologia, boolean insert){
+        if(insert) {
+            String[] params = new String[5];
+            params[0] = TABLE_EDIFICIO;
+            params[1] = "(" + EDIFICIO_TIPOLOGIA + ")";
+            params[2] = "('" + tipologia + "')";
+            params[3] = " RETURNING " + EDIFICIO_PK_ID + ";";
+            params[4] = EDIFICIO_PK_ID;
+            new InsertInDataBase().execute(params);
+        }
 
         this.tipologia = tipologia;
 
-        while (!Util.isSet());
-        String[] tmp = Util.getOutput();
-        id = Integer.parseInt(tmp[0]);
-        Util.setToNull();
+        if(insert) {
+            while (!Util.isSet()) ;
+            String[] tmp = Util.getOutput();
+            id = Integer.parseInt(tmp[0]);
+            Util.setToNull();
+        }
     }
 
 
@@ -79,19 +83,25 @@ public class Edificio {
         return indirizzo;
     }
 
-    public void setId(int id) {
+    public void setId(int id, boolean upgrade) {
         this.id = id;
-        updateValueInDatabase(id, EDIFICIO_PK_ID);
+        if(upgrade) {
+            updateValueInDatabase(id, EDIFICIO_PK_ID);
+        }
     }
 
-    public void setTipologia(String tipologia) {
+    public void setTipologia(String tipologia, boolean update) {
         this.tipologia = tipologia;
-        updateValueInDatabase(tipologia, EDIFICIO_TIPOLOGIA);
+        if(update) {
+            updateValueInDatabase(tipologia, EDIFICIO_TIPOLOGIA);
+        }
     }
 
-    public void setInditizzo(AddressType indirizzo) {
+    public void setInditizzo(AddressType indirizzo, boolean update) {
         this.indirizzo = indirizzo;
-        updateValueInDatabase(indirizzo, EDIFICIO_INDIRIZZO);
+        if(update) {
+            updateValueInDatabase(indirizzo, EDIFICIO_INDIRIZZO);
+        }
     }
 
 }

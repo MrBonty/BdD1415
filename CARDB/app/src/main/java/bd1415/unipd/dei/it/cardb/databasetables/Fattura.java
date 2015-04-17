@@ -18,20 +18,22 @@ public class Fattura {
     private String azienda; //FORING KEY but not null
     private String privato; //FORING KEY but not null
 
-    public Fattura(){
-        String[] params = new String[5];
-        params[0] = TABLE_FATTURA;
-        params[1] = " DEFAULT ";
-        params[2] = "";
-        params[3] = " RETURNING " + FATTURA_PK_ID + ";";
-        params[4] = FATTURA_PK_ID;
-        new InsertInDataBase().execute(params);
+    public Fattura(boolean insert){
+        if(insert) {
+            String[] params = new String[5];
+            params[0] = TABLE_FATTURA;
+            params[1] = " DEFAULT ";
+            params[2] = "";
+            params[3] = " RETURNING " + FATTURA_PK_ID + ";";
+            params[4] = FATTURA_PK_ID;
+            new InsertInDataBase().execute(params);
 
 
-        while (!Util.isSet());
-        String[] tmp = Util.getOutput();
-        id = Integer.parseInt(tmp[0]);
-        Util.setToNull();
+            while (!Util.isSet()) ;
+            String[] tmp = Util.getOutput();
+            id = Integer.parseInt(tmp[0]);
+            Util.setToNull();
+        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
@@ -70,23 +72,31 @@ public class Fattura {
         return privato;
     }
 
-    public void setId(int id) {
+    public void setId(int id, boolean update) {
         this.id = id;
-        updateValueInDatabase(id, FATTURA_PK_ID);
+        if(update) {
+            updateValueInDatabase(id, FATTURA_PK_ID);
+        }
     }
 
-    public void setPagato(int pagato) {
+    public void setPagato(int pagato, boolean update) {
         this.pagato = pagato;
-        updateValueInDatabase(pagato, FATTURA_PAGATO);
+        if(update) {
+            updateValueInDatabase(pagato, FATTURA_PAGATO);
+        }
     }
 
-    public void setAzienda(String azienda) {
+    public void setAzienda(String azienda, boolean update) {
         this.azienda = azienda;
-        updateValueInDatabase(azienda, FATTURA_AZIENDA);
+        if(update) {
+            updateValueInDatabase(azienda, FATTURA_AZIENDA);
+        }
     }
 
-    public void setPrivato(String privato) {
+    public void setPrivato(String privato, boolean update) {
         this.privato = privato;
-        updateValueInDatabase(privato, FATTURA_PRIVATO);
+        if(update) {
+            updateValueInDatabase(privato, FATTURA_PRIVATO);
+        }
     }
 }

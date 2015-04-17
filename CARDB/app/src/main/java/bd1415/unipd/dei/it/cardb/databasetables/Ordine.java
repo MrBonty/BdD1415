@@ -16,19 +16,23 @@ public class Ordine {
     private String fornitore; //PRIMARY-KEY
     private int quantita_fornita;
 
-    public Ordine(String data_or, String fornitore) {
-        String[] params = new String[4];
-        params[0] = TABLE_ORDINE;
-        params[1] = "(" + ORDINE_PK_DATA_OR + ", " + ORDINE_PK_FORNITORE + ")";
-        params[2] = "(" +  data_or + ", '"+ fornitore +"')";
-        params[3] = ";";
-        new InsertInDataBase().execute(params);
+    public Ordine(String data_or, String fornitore, boolean insert) {
+        if (insert) {
+            String[] params = new String[4];
+            params[0] = TABLE_ORDINE;
+            params[1] = "(" + ORDINE_PK_DATA_OR + ", " + ORDINE_PK_FORNITORE + ")";
+            params[2] = "(" + data_or + ", '" + fornitore + "')";
+            params[3] = ";";
+            new InsertInDataBase().execute(params);
+        }
 
         this.data_or = data_or;
         this.fornitore = fornitore;
 
-        while (!Util.isSet());
-        Util.setToNull();
+        if (insert) {
+            while (!Util.isSet()) ;
+            Util.setToNull();
+        }
     }
 
         public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
@@ -63,19 +67,25 @@ public class Ordine {
         return quantita_fornita;
     }
 
-    public void setData_or(String data_or) {
+    public void setData_or(String data_or, boolean update) {
         this.data_or = data_or;
-        updateValueInDatabase(data_or, ORDINE_PK_DATA_OR);
+        if (update) {
+            updateValueInDatabase(data_or, ORDINE_PK_DATA_OR);
+        }
     }
 
-    public void setFornitore(String fornitore) {
+    public void setFornitore(String fornitore, boolean update) {
         this.fornitore = fornitore;
-        updateValueInDatabase(fornitore, ORDINE_PK_FORNITORE);
+        if (update) {
+            updateValueInDatabase(fornitore, ORDINE_PK_FORNITORE);
+        }
     }
 
-    public void setQuantita_fornita(int quantita_fornita) {
+    public void setQuantita_fornita(int quantita_fornita, boolean update) {
         this.quantita_fornita = quantita_fornita;
-        updateValueInDatabase(quantita_fornita, ORDINE_QUANTITA_FORNITURA);
+        if (update) {
+            updateValueInDatabase(quantita_fornita, ORDINE_QUANTITA_FORNITURA);
+        }
     }
 
 }

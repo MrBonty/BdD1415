@@ -18,37 +18,41 @@ public class Lavora_a {
     private int straordinari;
     private int ore_lavoro;
 
-    public Lavora_a(String personale, int lavoro){
-        String[] params = new String[4];
-        params[0] = TABLE_LAVORA_A;
-        params[1] = "(" + LAVORA_A_PK_PERSONALE + ", " + LAVORA_A_PK_LAVORO + ")";
-        params[2] = "('" + personale + "', " + lavoro + ")";
-        params[3] = ";";
-        new InsertInDataBase().execute(params);
+    public Lavora_a(String personale, int lavoro, boolean insert){
+        if(insert) {
+            String[] params = new String[4];
+            params[0] = TABLE_LAVORA_A;
+            params[1] = "(" + LAVORA_A_PK_PERSONALE + ", " + LAVORA_A_PK_LAVORO + ")";
+            params[2] = "('" + personale + "', " + lavoro + ")";
+            params[3] = ";";
+            new InsertInDataBase().execute(params);
+        }
 
         this.lavoro = lavoro;
         this.personale = personale;
 
-        while (!Util.isSet());
-        Util.setToNull();
+        if(insert) {
+            while (!Util.isSet()) ;
+            Util.setToNull();
+        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Lavora_a";
+        params[0] = TABLE_LAVORA_A;
         params[1] = nome_attributo;
         params[2] = "'"+nuovo_valore+"'";
-        params[3] = "(personale, lavoro)";
+        params[3] = "(" + LAVORA_A_PK_PERSONALE + ", " + LAVORA_A_PK_LAVORO + ")";
         params[4] = "(" + this.personale + ", '" + this.lavoro + "')";
         new UpdateValueInDataBase().execute(params);
     }
 
     public void updateValueInDatabase(int nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
-        params[0] = "Lavora_a";
+        params[0] = TABLE_LAVORA_A;
         params[1] = nome_attributo;
         params[2] = ""+nuovo_valore;
-        params[3] = "(personale, lavoro)";
+        params[3] = "(" + LAVORA_A_PK_PERSONALE + ", " + LAVORA_A_PK_LAVORO + ")";
         params[4] = "(" + this.personale + ", '" + this.lavoro + "')";
         new UpdateValueInDataBase().execute(params);
     }
@@ -69,23 +73,31 @@ public class Lavora_a {
         return straordinari;
     }
 
-    public void setPersonale(String personale) {
+    public void setPersonale(String personale, boolean update) {
         this.personale = personale;
-        updateValueInDatabase(personale, LAVORA_A_PK_PERSONALE);
+        if(update) {
+            updateValueInDatabase(personale, LAVORA_A_PK_PERSONALE);
+        }
     }
 
-    public void setLavoro(int lavoro) {
+    public void setLavoro(int lavoro, boolean update) {
         this.lavoro = lavoro;
-        updateValueInDatabase(lavoro, LAVORA_A_PK_LAVORO);
+        if(update) {
+            updateValueInDatabase(lavoro, LAVORA_A_PK_LAVORO);
+        }
     }
 
-    public void setOre_lavoro(int ore_lavoro) {
+    public void setOre_lavoro(int ore_lavoro, boolean update) {
         this.ore_lavoro = ore_lavoro;
-        updateValueInDatabase(ore_lavoro, LAVORA_A_ORE_LAVORO);
+        if(update) {
+            updateValueInDatabase(ore_lavoro, LAVORA_A_ORE_LAVORO);
+        }
     }
 
-    public void setStraordinari(int straordinari) {
+    public void setStraordinari(int straordinari, boolean update) {
         this.straordinari = straordinari;
-        updateValueInDatabase(straordinari, LAVORA_A_STRAORDINARI);
+        if (update) {
+            updateValueInDatabase(straordinari, LAVORA_A_STRAORDINARI);
+        }
     }
 }

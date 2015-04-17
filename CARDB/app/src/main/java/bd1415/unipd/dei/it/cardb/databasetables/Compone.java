@@ -16,21 +16,24 @@ public class Compone {
     private String modello_marca; //PRIMARY-KEY //FOREIGN KEY
     private int pezzo; //PRIMARY-KEY //FOREIGN KEY
 
-    public Compone(String modello_cod_prod, String modello_marca, int pezzo){
-        String[] params = new String[4];
-        params[0] = TABLE_COMPONE;
-        params[1] = "(" + COMPONE_PK_MODELLO_COD_PROD + ", " + COMPONE_PK_MODELLO_MARCA + ", " +  COMPONE_PK_PEZZO + ")";
-        params[2] = "('" + modello_cod_prod + "', '" + modello_marca + "', " + pezzo + ")";
-        params[3] = ";";
-
-        new InsertInDataBase().execute(params);
+    public Compone(String modello_cod_prod, String modello_marca, int pezzo, boolean insert){
+        if(insert) {
+            String[] params = new String[4];
+            params[0] = TABLE_COMPONE;
+            params[1] = "(" + COMPONE_PK_MODELLO_COD_PROD + ", " + COMPONE_PK_MODELLO_MARCA + ", " + COMPONE_PK_PEZZO + ")";
+            params[2] = "('" + modello_cod_prod + "', '" + modello_marca + "', " + pezzo + ")";
+            params[3] = ";";
+            new InsertInDataBase().execute(params);
+        }
 
         this.modello_cod_prod = modello_cod_prod;
         this.modello_marca = modello_marca;
         this.pezzo = pezzo;
 
-        while (!Util.isSet());
-        Util.setToNull();
+        if(insert) {
+            while (!Util.isSet()) ;
+            Util.setToNull();
+        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
@@ -65,19 +68,25 @@ public class Compone {
         return pezzo;
     }
 
-    public void setModello_cod_prod(String modello_cod_prod) {
+    public void setModello_cod_prod(String modello_cod_prod, boolean update) {
         this.modello_cod_prod = modello_cod_prod;
-        updateValueInDatabase(modello_cod_prod, COMPONE_PK_MODELLO_COD_PROD);
+        if(update) {
+            updateValueInDatabase(modello_cod_prod, COMPONE_PK_MODELLO_COD_PROD);
+        }
     }
 
-    public void setModello_marca(String modello_marca) {
+    public void setModello_marca(String modello_marca, boolean update) {
         this.modello_marca = modello_marca;
-        updateValueInDatabase(modello_marca, COMPONE_PK_MODELLO_MARCA);
+        if(update) {
+            updateValueInDatabase(modello_marca, COMPONE_PK_MODELLO_MARCA);
+        }
     }
 
-    public void setPezzo(int pezzo) {
+    public void setPezzo(int pezzo, boolean update) {
         this.pezzo = pezzo;
-        updateValueInDatabase(pezzo, COMPONE_PK_PEZZO);
+        if(update) {
+            updateValueInDatabase(pezzo, COMPONE_PK_PEZZO);
+        }
     }
 
 }

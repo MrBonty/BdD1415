@@ -30,19 +30,23 @@ public class Personale {
     private int responsabile = 0;
     private int edificio; //FOREING KEY
 
-    public Personale(String cf, int edificio){
-        String[] params = new  String[4];
-        params[0] = TABLE_PERSONALE;
-        params[1] = "(" + PERSONALE_PK_CF + PERSONALE_EDIFICIO + ")";
-        params[2] = "('" + cf + "', " + edificio + ")";
-        params[3] = ";";
-        new InsertInDataBase().execute(params);
+    public Personale(String cf, int edificio, boolean insert){
+        if(insert) {
+            String[] params = new String[4];
+            params[0] = TABLE_PERSONALE;
+            params[1] = "(" + PERSONALE_PK_CF + PERSONALE_EDIFICIO + ")";
+            params[2] = "('" + cf + "', " + edificio + ")";
+            params[3] = ";";
+            new InsertInDataBase().execute(params);
+        }
 
         this.cf = cf;
         this.edificio = edificio;
 
-        while (!Util.isSet());
-        Util.setToNull();
+        if (insert) {
+            while (!Util.isSet()) ;
+            Util.setToNull();
+        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
@@ -112,49 +116,67 @@ public class Personale {
         return edificio;
     }
 
-    public void setCf(String cf) {
+    public void setCf(String cf, boolean update) {
         this.cf = cf;
-        updateValueInDatabase(cf, PERSONALE_PK_CF);
+        if (update) {
+            updateValueInDatabase(cf, PERSONALE_PK_CF);
+        }
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome, boolean update) {
         this.nome = nome;
-        updateValueInDatabase(nome, PERSONALE_NOME);
+        if (update) {
+            updateValueInDatabase(nome, PERSONALE_NOME);
+        }
     }
 
-    public void setCognome(String cognome) {
+    public void setCognome(String cognome, boolean update) {
         this.cognome = cognome;
-        updateValueInDatabase(cognome, PERSONALE_COGNOME);
+        if (update) {
+            updateValueInDatabase(cognome, PERSONALE_COGNOME);
+        }
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(String telefono, boolean update) {
         this.telefono = telefono;
-        updateValueInDatabase(telefono, PERSONALE_INDIRIZZO);
+        if (update) {
+            updateValueInDatabase(telefono, PERSONALE_INDIRIZZO);
+        }
     }
 
-    public void setIndirizzo(AddressType indirizzo) {
+    public void setIndirizzo(AddressType indirizzo, boolean update) {
         this.indirizzo = indirizzo;
-        updateValueInDatabase(indirizzo, PERSONALE_INDIRIZZO);
+        if (update) {
+            updateValueInDatabase(indirizzo, PERSONALE_INDIRIZZO);
+        }
     }
 
-    public void setIban(String iban) {
+    public void setIban(String iban, boolean update) {
         this.iban = iban;
-        updateValueInDatabase(iban, PERSONALE_IBAN);
+        if (update) {
+            updateValueInDatabase(iban, PERSONALE_IBAN);
+        }
     }
 
-    public void setContratto(String contratto) {
+    public void setContratto(String contratto, boolean update) {
         this.contratto = contratto;
-        updateValueInDatabase(contratto, PERSONALE_CONTRATTO);
+        if (update) {
+            updateValueInDatabase(contratto, PERSONALE_CONTRATTO);
+        }
     }
 
-    public void setResponsabile(int responsabile) {
+    public void setResponsabile(int responsabile, boolean update) {
         this.responsabile = responsabile;
-        updateValueInDatabase(responsabile, PERSONALE_RESPONSABILE);
+        if (update) {
+            updateValueInDatabase(responsabile, PERSONALE_RESPONSABILE);
+        }
     }
 
-    public void setEdificio(int edificio) {
+    public void setEdificio(int edificio, boolean update) {
         this.edificio = edificio;
-        updateValueInDatabase(edificio, PERSONALE_EDIFICIO);
+        if (update) {
+            updateValueInDatabase(edificio, PERSONALE_EDIFICIO);
+        }
     }
 
 }

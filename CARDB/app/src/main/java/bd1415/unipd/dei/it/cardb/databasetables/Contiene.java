@@ -20,20 +20,24 @@ public class Contiene {
     private int numero_pezzi;
     private float prezzo_pezzo;
 
-    public Contiene(String ordine_data, String ordine_fornitore, int pezzo){
-        String[] params = new String[4];
-        params[0] = TABLE_CONTIENE;
-        params[1] = "(" + CONTIENE_PK_ORDINE_DATA + ", " + CONTIENE_PK_ORDINE_FORNITORE  + ", " + CONTIENE_PK_PEZZO + ")";
-        params[2] = "('" + ordine_data + "', '" + ordine_fornitore + "'" + pezzo + ")";
-        params[3] = ";";
-        new InsertInDataBase().execute(params);
+    public Contiene(String ordine_data, String ordine_fornitore, int pezzo, boolean insert){
+        if(insert) {
+            String[] params = new String[4];
+            params[0] = TABLE_CONTIENE;
+            params[1] = "(" + CONTIENE_PK_ORDINE_DATA + ", " + CONTIENE_PK_ORDINE_FORNITORE + ", " + CONTIENE_PK_PEZZO + ")";
+            params[2] = "('" + ordine_data + "', '" + ordine_fornitore + "', " + pezzo + ")";
+            params[3] = ";";
+            new InsertInDataBase().execute(params);
+        }
 
         this.ordine_data = ordine_data;
         this.ordine_fornitore = ordine_fornitore;
         this.pezzo = pezzo;
 
-        while (!Util.isSet());
-        Util.setToNull();
+        if(insert) {
+            while (!Util.isSet()) ;
+            Util.setToNull();
+        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
@@ -86,29 +90,39 @@ public class Contiene {
         return prezzo_pezzo;
     }
 
-    public void setPrezzo_pezzo(float prezzo_pezzo) {
+    public void setPrezzo_pezzo(float prezzo_pezzo, boolean update) {
         this.prezzo_pezzo = prezzo_pezzo;
-        updateValueInDatabase(prezzo_pezzo, CONTIENE_PREZZO_PEZZO);
+        if(update) {
+            updateValueInDatabase(prezzo_pezzo, CONTIENE_PREZZO_PEZZO);
+        }
     }
 
-    public void setOrdine_data(String ordine_data) {
+    public void setOrdine_data(String ordine_data, boolean update) {
         this.ordine_data = ordine_data;
-        updateValueInDatabase(ordine_data, CONTIENE_PK_ORDINE_DATA);
+        if(update) {
+            updateValueInDatabase(ordine_data, CONTIENE_PK_ORDINE_DATA);
+        }
     }
 
-    public void setOrdine_fornitore(String ordine_fornitore) {
+    public void setOrdine_fornitore(String ordine_fornitore, boolean update) {
         this.ordine_fornitore = ordine_fornitore;
-        updateValueInDatabase(ordine_fornitore, CONTIENE_PK_ORDINE_FORNITORE);
+        if(update) {
+            updateValueInDatabase(ordine_fornitore, CONTIENE_PK_ORDINE_FORNITORE);
+        }
     }
 
-    public void setPezzo(int pezzo) {
+    public void setPezzo(int pezzo, boolean update) {
         this.pezzo = pezzo;
-        updateValueInDatabase(pezzo, CONTIENE_PK_PEZZO);
+        if(update) {
+            updateValueInDatabase(pezzo, CONTIENE_PK_PEZZO);
+        }
     }
 
-    public void setNumero_pezzi(int numero_pezzi) {
+    public void setNumero_pezzi(int numero_pezzi, boolean update) {
         this.numero_pezzi = numero_pezzi;
-        updateValueInDatabase(numero_pezzi, CONTIENE_NUMERO_PEZZI);
+        if(update) {
+            updateValueInDatabase(numero_pezzi, CONTIENE_NUMERO_PEZZI);
+        }
     }
 
 }

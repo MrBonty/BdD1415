@@ -14,11 +14,6 @@ public class InsertR8InDataBase extends AsyncTask<String, Void, String> {
 
     private Toast toast;
 
-    public static final String TABLE_R8 = "r8";
-    // R8 Columns
-    public static final String R8_PK_LAVORO = "lavoro";
-    public static final String R8_PK_MANUTENZIONE = "manutenzione";
-
     private int lavoro = -1; //PRIMARY KEY //>0
     private int manutenzione = -1; //PRIMARY KEY //>0
 

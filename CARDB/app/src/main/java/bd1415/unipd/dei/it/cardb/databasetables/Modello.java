@@ -18,19 +18,23 @@ public class Modello {
     private String nome;
     private String anno;
 
-    public Modello(String codice_produzione, String marca){
-        String[] params = new String[4];
-        params[0] = TABLE_MODELLO;
-        params[1] = "(" + MODELLO_PK_CODICE_PRODUZIONE + ", " + MODELLO_PK_MARCA + ")";
-        params[2] = "('" +  codice_produzione + "', '" + marca + "')";
-        params[3] = ";";
-        new InsertInDataBase().execute(params);
+    public Modello(String codice_produzione, String marca, boolean insert){
+        if(insert) {
+            String[] params = new String[4];
+            params[0] = TABLE_MODELLO;
+            params[1] = "(" + MODELLO_PK_CODICE_PRODUZIONE + ", " + MODELLO_PK_MARCA + ")";
+            params[2] = "('" + codice_produzione + "', '" + marca + "')";
+            params[3] = ";";
+            new InsertInDataBase().execute(params);
+        }
 
         this.codice_produzione = codice_produzione;
         this.marca = marca;
 
-        while (!Util.isSet());
-        Util.setToNull();
+        if(insert) {
+            while (!Util.isSet()) ;
+            Util.setToNull();
+        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
@@ -59,23 +63,31 @@ public class Modello {
         return anno;
     }
 
-    public void setCodice_produzione(String codice_produzione) {
+    public void setCodice_produzione(String codice_produzione, boolean update) {
         this.codice_produzione = codice_produzione;
-        updateValueInDatabase(codice_produzione, MODELLO_PK_CODICE_PRODUZIONE);
+        if (update) {
+            updateValueInDatabase(codice_produzione, MODELLO_PK_CODICE_PRODUZIONE);
+        }
     }
 
-    public void setMarca(String marca) {
+    public void setMarca(String marca, boolean update) {
         this.marca = marca;
-        updateValueInDatabase(marca, MODELLO_PK_MARCA);
+        if (update) {
+            updateValueInDatabase(marca, MODELLO_PK_MARCA);
+        }
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome, boolean update) {
         this.nome = nome;
-        updateValueInDatabase(nome, MODELLO_NOME);
+        if (update) {
+            updateValueInDatabase(nome, MODELLO_NOME);
+        }
     }
 
-    public void setAnno(String anno) {
+    public void setAnno(String anno, boolean update) {
         this.anno = anno;
-        updateValueInDatabase(anno, MODELLO_ANNO);
+        if (update) {
+            updateValueInDatabase(anno, MODELLO_ANNO);
+        }
     }
 }

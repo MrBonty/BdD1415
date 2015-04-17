@@ -20,21 +20,25 @@ public class Lavoro {
     private String veicolo; //FOREING KEY
     private int fattura;
 
-    public Lavoro(String veicolo){
-        String[] params = new String[5];
-        params[0] = TABLE_LAVORO;
-        params[1] = "(" + LAVORO_VEICOLO + ")";
-        params[2] = "('" + veicolo + "')";
-        params[3] = " RETURNING " + LAVORO_PK_ID + ";";
-        params[4] = LAVORO_PK_ID;
-        new InsertInDataBase().execute(params);
+    public Lavoro(String veicolo, boolean insert){
+        if(insert) {
+            String[] params = new String[5];
+            params[0] = TABLE_LAVORO;
+            params[1] = "(" + LAVORO_VEICOLO + ")";
+            params[2] = "('" + veicolo + "')";
+            params[3] = " RETURNING " + LAVORO_PK_ID + ";";
+            params[4] = LAVORO_PK_ID;
+            new InsertInDataBase().execute(params);
+        }
 
         this.veicolo = veicolo;
 
-        while (!Util.isSet());
-        String[] tmp = Util.getOutput();
-        id = Integer.parseInt(tmp[0]);
-        Util.setToNull();
+        if(insert) {
+            while (!Util.isSet()) ;
+            String[] tmp = Util.getOutput();
+            id = Integer.parseInt(tmp[0]);
+            Util.setToNull();
+        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
@@ -77,29 +81,39 @@ public class Lavoro {
         return fattura;
     }
 
-    public void setId(int id) {
+    public void setId(int id, boolean update) {
         this.id = id;
-        updateValueInDatabase(id, LAVORO_PK_ID);
+        if(update) {
+            updateValueInDatabase(id, LAVORO_PK_ID);
+        }
     }
 
-    public void setData_inizio(String data_inizio) {
+    public void setData_inizio(String data_inizio, boolean update) {
         this.data_inizio = data_inizio;
-        updateValueInDatabase(data_inizio, LAVORO_DATA_INIZIO);
+        if(update) {
+            updateValueInDatabase(data_inizio, LAVORO_DATA_INIZIO);
+        }
     }
 
-    public void setData_fine(String data_fine) {
+    public void setData_fine(String data_fine, boolean update) {
         this.data_fine = data_fine;
-        updateValueInDatabase(data_fine, LAVORO_DATA_FINE);
+        if(update) {
+            updateValueInDatabase(data_fine, LAVORO_DATA_FINE);
+        }
     }
 
-    public void setVeicolo(String veicolo) {
+    public void setVeicolo(String veicolo, boolean update) {
         this.veicolo = veicolo;
-        updateValueInDatabase(veicolo, LAVORO_VEICOLO);
+        if(update) {
+            updateValueInDatabase(veicolo, LAVORO_VEICOLO);
+        }
     }
 
-    public void setFattura(int fattura) {
+    public void setFattura(int fattura, boolean update) {
         this.fattura = fattura;
-        updateValueInDatabase(fattura, LAVORO_FATTURA);
+        if(update) {
+            updateValueInDatabase(fattura, LAVORO_FATTURA);
+        }
     }
 
 }

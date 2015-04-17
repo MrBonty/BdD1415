@@ -18,18 +18,22 @@ public class Azienda {
     private String telefono;
     private AddressType indirizzo;
 
-    public Azienda(String piva){
-        String[] params = new String[4];
-        params[0] = TABLE_AZIENDA;
-        params[1] = "(" + AZIENDA_PK_PIVA  + ")";
-        params[2] = "('"+ piva +"')";
-        params[3] = ";";
-        new InsertInDataBase().execute(params);
+    public Azienda(String piva, boolean insert){
+        if(insert) {
+            String[] params = new String[4];
+            params[0] = TABLE_AZIENDA;
+            params[1] = "(" + AZIENDA_PK_PIVA + ")";
+            params[2] = "('" + piva + "')";
+            params[3] = ";";
+            new InsertInDataBase().execute(params);
+        }
 
         this.piva = piva;
 
-        while (!Util.isSet());
-        Util.setToNull();
+        if(insert) {
+            while (!Util.isSet()) ;
+            Util.setToNull();
+        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
@@ -79,24 +83,32 @@ public class Azienda {
         return indirizzo;
     }
 
-    public void setPiva(String piva) {
+    public void setPiva(String piva, boolean update) {
         this.piva = piva;
-        updateValueInDatabase(piva, AZIENDA_PK_PIVA);
+        if(update) {
+            updateValueInDatabase(piva, AZIENDA_PK_PIVA);
+        }
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome, boolean update) {
         this.nome = nome;
-        updateValueInDatabase(nome, AZIENDA_NOME);
+        if(update) {
+            updateValueInDatabase(nome, AZIENDA_NOME);
+        }
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(String telefono, boolean update) {
         this.telefono = telefono;
-        updateValueInDatabase(telefono , AZIENDA_TELEFONO);
+        if(update) {
+            updateValueInDatabase(telefono, AZIENDA_TELEFONO);
+        }
     }
 
-    public void setIndirizzo(AddressType indirizzo) {
+    public void setIndirizzo(AddressType indirizzo, boolean update) {
         this.indirizzo = indirizzo;
-        updateValueInDatabase(indirizzo , AZIENDA_INDIRIZZO);
+        if(update) {
+            updateValueInDatabase(indirizzo, AZIENDA_INDIRIZZO);
+        }
     }
 
 }

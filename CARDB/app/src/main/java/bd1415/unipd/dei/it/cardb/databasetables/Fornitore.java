@@ -20,18 +20,22 @@ public class Fornitore {
     private AddressType indirizzo;
     private String iban;
 
-    public Fornitore(String piva){
-        String[] params = new String[4];
-        params[0] = TABLE_FORNITORE;
-        params[1] = "(" + FORNITORE_PK_PIVA + ")";
-        params[2] = "('" + piva + "')";
-        params[3] = ";";
-        new InsertInDataBase().execute(params);
+    public Fornitore(String piva, boolean insert){
+        if(insert) {
+            String[] params = new String[4];
+            params[0] = TABLE_FORNITORE;
+            params[1] = "(" + FORNITORE_PK_PIVA + ")";
+            params[2] = "('" + piva + "')";
+            params[3] = ";";
+            new InsertInDataBase().execute(params);
+        }
 
         this.piva = piva;
 
-        while (!Util.isSet());
-        Util.setToNull();
+        if(insert) {
+            while (!Util.isSet()) ;
+            Util.setToNull();
+        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
@@ -85,29 +89,39 @@ public class Fornitore {
         return iban;
     }
 
-    public void setPiva(String piva) {
+    public void setPiva(String piva, boolean update) {
         this.piva = piva;
-        updateValueInDatabase(piva, FORNITORE_PK_PIVA);
+        if(update) {
+            updateValueInDatabase(piva, FORNITORE_PK_PIVA);
+        }
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome, boolean update) {
         this.nome = nome;
-        updateValueInDatabase(nome, FORNITORE_NOME);
+        if(update) {
+            updateValueInDatabase(nome, FORNITORE_NOME);
+        }
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(String telefono, boolean update) {
         this.telefono = telefono;
-        updateValueInDatabase(telefono, FORNITORE_TELEFONO);
+        if(update) {
+            updateValueInDatabase(telefono, FORNITORE_TELEFONO);
+        }
     }
 
-    public void setIndirizzo(AddressType indirizzo) {
+    public void setIndirizzo(AddressType indirizzo, boolean update) {
         this.indirizzo = indirizzo;
-        updateValueInDatabase(indirizzo, FORNITORE_INDIRIZZO);
+        if(update) {
+            updateValueInDatabase(indirizzo, FORNITORE_INDIRIZZO);
+        }
     }
 
-    public void setIban(String iban) {
+    public void setIban(String iban, boolean update) {
         this.iban = iban;
-        updateValueInDatabase(iban, FORNITORE_IBAN);
+        if(update) {
+            updateValueInDatabase(iban, FORNITORE_IBAN);
+        }
     }
 
 }

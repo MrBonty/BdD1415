@@ -18,19 +18,21 @@ public class Pezzo {
     private int numero_totale_pezzi;
     private float prezzo_vendita;
 
-    public Pezzo(){
-        String[] params = new String[5];
-        params[0] = TABLE_PEZZO;
-        params[1] = " DEFAULT ";
-        params[2] = "";
-        params[3] = " RETURNING " + PEZZO_PK_ID + ";";
-        params[4] = PEZZO_PK_ID;
-        new InsertInDataBase().execute(params);
+    public Pezzo(boolean insert){
+        if (insert) {
+            String[] params = new String[5];
+            params[0] = TABLE_PEZZO;
+            params[1] = " DEFAULT ";
+            params[2] = "";
+            params[3] = " RETURNING " + PEZZO_PK_ID + ";";
+            params[4] = PEZZO_PK_ID;
+            new InsertInDataBase().execute(params);
 
-        while (!Util.isSet());
-        String[] tmp = Util.getOutput();
-        id = Integer.parseInt(tmp[0]);
-        Util.setToNull();
+            while (!Util.isSet()) ;
+            String[] tmp = Util.getOutput();
+            id = Integer.parseInt(tmp[0]);
+            Util.setToNull();
+        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
@@ -79,24 +81,32 @@ public class Pezzo {
         return prezzo_vendita;
     }
 
-    public void setId(int id) {
+    public void setId(int id, boolean update) {
         this.id = id;
-        updateValueInDatabase(id, PEZZO_PK_ID);
+        if (update) {
+            updateValueInDatabase(id, PEZZO_PK_ID);
+        }
     }
 
-    public void setDescrizione(String descrizione) {
+    public void setDescrizione(String descrizione, boolean update) {
         this.descrizione = descrizione;
-        updateValueInDatabase(descrizione, PEZZO_DESCRIZIONE);
+        if (update) {
+            updateValueInDatabase(descrizione, PEZZO_DESCRIZIONE);
+        }
     }
 
-    public void setNumero_totale_pezzi(int numero_totale_pezzi) {
+    public void setNumero_totale_pezzi(int numero_totale_pezzi, boolean update) {
         this.numero_totale_pezzi = numero_totale_pezzi;
-        updateValueInDatabase(numero_totale_pezzi, PEZZO_NUMERO_TOTALE_PEZZI);
+        if (update) {
+            updateValueInDatabase(numero_totale_pezzi, PEZZO_NUMERO_TOTALE_PEZZI);
+        }
     }
 
-    public void setPrezzo_vendita(float prezzo_vendita) {
+    public void setPrezzo_vendita(float prezzo_vendita, boolean update) {
         this.prezzo_vendita = prezzo_vendita;
-        updateValueInDatabase(prezzo_vendita, PEZZO_PREZZO_VENDITA);
+        if (update) {
+            updateValueInDatabase(prezzo_vendita, PEZZO_PREZZO_VENDITA);
+        }
     }
 
 }
