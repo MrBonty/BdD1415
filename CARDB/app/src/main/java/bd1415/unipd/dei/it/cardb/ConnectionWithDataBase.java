@@ -93,13 +93,13 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     s = s + rs.getString("modello_marca");
                     s = s + "\n\n";
                     Veicolo veicolo = new Veicolo();
-                    veicolo.setNumero_telaio(rs.getString("numero_telaio"));
-                    veicolo.setTarga(rs.getString("targa"));
-                    veicolo.setAzienda(rs.getString("azienda"));
-                    veicolo.setPrivato(rs.getString("privato"));
-                    veicolo.setModello_cod_prod(rs.getString("modello_cod_prod"));
-                    veicolo.setModello_marca(rs.getString("modello_marca"));
-                    MainActivity.veicolo.add(veicolo);
+                    veicolo.setNumero_telaio(rs.getString("numero_telaio"), false);
+                    veicolo.setTarga(rs.getString("targa"), false);
+                    veicolo.setAzienda(rs.getString("azienda"), false);
+                    veicolo.setPrivato(rs.getString("privato"), false);
+                    veicolo.setModello_cod_prod(rs.getString("modello_cod_prod"), false);
+                    veicolo.setModello_marca(rs.getString("modello_marca"), false);
+                    MainActivity.veicoli.add(veicolo);
                 }
                 if (rs != null) {
                     rs.close();
@@ -132,6 +132,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
             toast.cancel();
             Toast.makeText(MainActivity.ctx, result, Toast.LENGTH_LONG).show();
         }
-        MainActivity.veicolo.get(1).updateValueInDataBase("jyfjrd", "targa");
+        MainActivity.veicoli.get(1).updateValueInDataBase("jyfjrd", "targa");
+
     }
 }

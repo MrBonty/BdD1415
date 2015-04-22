@@ -4,13 +4,12 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
+import java.sql.Statement;;
 
 import bd1415.unipd.dei.it.cardb.ConnectionWithDataBase;
 import bd1415.unipd.dei.it.cardb.LoginDialog;
 import bd1415.unipd.dei.it.cardb.MainActivity;
-import bd1415.unipd.dei.it.cardb.databasetables.Avviso;
+import bd1415.unipd.dei.it.cardb.Util;
 
 public class InsertAvvisoInDataBase extends AsyncTask<String, Void, String> {
 
@@ -73,8 +72,6 @@ public class InsertAvvisoInDataBase extends AsyncTask<String, Void, String> {
             toast.cancel();
             Toast.makeText(MainActivity.ctx, result, Toast.LENGTH_LONG).show();
         }
-
-        Avviso.process(result);
     }
 
 }

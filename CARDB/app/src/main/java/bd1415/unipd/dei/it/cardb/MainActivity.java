@@ -23,8 +23,8 @@ import java.util.ArrayList;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
-public class MainActivity extends ActionBarActivity implements ClientiMenuFragment.OnMenufragListener,
-        VeicoliMenuFragment.OnMenufragListener, LavorazioniMenuFragment.OnMenufragListener,
+public class MainActivity extends ActionBarActivity implements ClientiMenuFragment.OnMenufragListener/*,
+        VeicoliMenuFragment.OnMenufragListener*/, LavorazioniMenuFragment.OnMenufragListener,
         PagamentiMenuFragment.OnMenufragListener, GestioneMenuFragment.OnMenufragListener {
 
     public static String[] params;
@@ -41,12 +41,13 @@ public class MainActivity extends ActionBarActivity implements ClientiMenuFragme
     private String[] leftSliderData = {"Clienti", "Veicoli", "Lavorazioni", "Pagamenti", "Gestione"};
     private FrameLayout container;
     private LinearLayout clienti;
-    private LinearLayout veicoli;
+    private LinearLayout veicoliLayout;
     private LinearLayout lavorazioni;
     private LinearLayout pagamenti;
     private LinearLayout gestione;
     private View current;
-    public static ArrayList<Veicolo> veicolo = new ArrayList<Veicolo>();
+    public static ArrayList<Veicolo> veicoli = new ArrayList<Veicolo>();
+    private FloatingActionButton fabButton = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,10 @@ public class MainActivity extends ActionBarActivity implements ClientiMenuFragme
         params[4] = "3366";
         params[5] = "5432";
         super.onCreate(savedInstanceState);
+        if (!isLogged) {
+            new LoginDialog(ctx, act);
+            isLogged = true;
+        }
         setContentView(R.layout.activity_main);
         initView();
         if (toolbar != null) {
@@ -69,12 +74,20 @@ public class MainActivity extends ActionBarActivity implements ClientiMenuFragme
         initDrawer();
         container = (FrameLayout) findViewById(R.id.container);
         clienti = (LinearLayout) findViewById(R.id.clienti);
-        veicoli = (LinearLayout) findViewById(R.id.veicoli);
+        veicoliLayout = (LinearLayout) findViewById(R.id.veicoli);
         lavorazioni = (LinearLayout) findViewById(R.id.lavorazioni);
         pagamenti = (LinearLayout) findViewById(R.id.pagamenti);
         gestione = (LinearLayout) findViewById(R.id.gestione);
         container.removeAllViewsInLayout();
         container.addView(clienti);
+        fabButton = new FloatingActionButton.Builder(this)
+                .withDrawable(
+                        getResources().getDrawable(
+                                R.drawable.ic_add_black_24dp))
+                .withButtonColor(getResources().getColor(R.color.primaryColor))
+                .withGravity(Gravity.BOTTOM | Gravity.END)
+                .withMargins(0, 0, 16, 16).create();
+
     }
 
     private void initView() {
@@ -92,13 +105,13 @@ public class MainActivity extends ActionBarActivity implements ClientiMenuFragme
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
-
+                fabButton.showFloatingActionButton();
             }
 
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-
+                fabButton.hideFloatingActionButton();
             }
         };
         drawerLayout.setDrawerListener(drawerToggle);
@@ -116,7 +129,7 @@ public class MainActivity extends ActionBarActivity implements ClientiMenuFragme
             container.addView(clienti);
         } else if (position == 1) {
             container.removeAllViewsInLayout();
-            container.addView(veicoli);
+            container.addView(veicoliLayout);
         } else if (position == 2) {
             container.removeAllViewsInLayout();
             container.addView(lavorazioni);
