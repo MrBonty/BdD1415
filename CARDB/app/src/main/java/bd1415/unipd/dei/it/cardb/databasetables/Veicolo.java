@@ -15,6 +15,13 @@ public class Veicolo {
     public static final String VEICOLO_MODELLO_COD_PROD = "modello_cod_prod";
     public static final String VEICOLO_MODELLO_MARCA = "modello_marca";
 
+    public static final String VEICOLO_COLUMS = "(" + VEICOLO_PK_NUMERO_TELAIO + ", "
+            + VEICOLO_TARGA + ", "
+            + VEICOLO_AZIENDA + ", "
+            + VEICOLO_PRIVATO + ", "
+            + VEICOLO_MODELLO_COD_PROD + ", "
+            + VEICOLO_MODELLO_MARCA + ")";
+
     private String numero_telaio; //PRIMARY-KEY
     private String targa;
     private String azienda;//FOREING KEY but...

@@ -2,6 +2,7 @@ package bd1415.unipd.dei.it.cardb;
 
 public class Util {
 
+    public static final String DIVISOR = "##";
     private static String[] output;
     private static boolean isSet = false;
 
@@ -25,7 +26,7 @@ public class Util {
 
 
     private static String[] process(String result) {
-        String[] tmp = result.split(InsertInDataBase.DIVISOR);
+        String[] tmp = result.split(DIVISOR);
         return tmp;
     }
 

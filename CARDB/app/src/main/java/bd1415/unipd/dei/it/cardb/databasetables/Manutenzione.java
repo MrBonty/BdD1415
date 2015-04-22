@@ -11,6 +11,9 @@ public class Manutenzione {
     public static final String MANUTENZIONE_PK_ID = "id";
     public static final String MANUTENZIONE_DESCRIZIONE = "descrizione";
 
+    public static final String MANUTENZIONE_COLUMS = "(" + MANUTENZIONE_PK_ID + ", "
+            + MANUTENZIONE_DESCRIZIONE + ")";
+
     private int id; //PRIMARY-KEY
     private String descrizione;
 

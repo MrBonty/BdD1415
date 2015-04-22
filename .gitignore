@@ -17,7 +17,7 @@ gen/
 build/
 
 # Intellij
-.idea/
+/.idea/
 *.iml
 *.iws
 workspace.xml
@@ -31,7 +31,3 @@ proguard/
 # Log Files
 *.log
 
-# Intellij
-.idea/
-*.iml
-*.iws

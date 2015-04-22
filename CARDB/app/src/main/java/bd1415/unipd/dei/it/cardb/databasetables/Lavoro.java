@@ -14,6 +14,12 @@ public class Lavoro {
     public static final String LAVORO_VEICOLO = "veicolo";
     public static final String LAVORO_FATTURA = "fattura";
 
+    public static final String LAVORO_COLUMS = "(" + LAVORO_PK_ID + ", "
+            + LAVORO_DATA_INIZIO + ", "
+            + LAVORO_DATA_FINE + ", "
+            + LAVORO_VEICOLO + ", "
+            + LAVORO_FATTURA + ")";
+
     private int id; //PRIMARY-KEY
     private String data_inizio;
     private String data_fine;

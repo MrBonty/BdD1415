@@ -8,7 +8,6 @@ import java.sql.Statement;
 
 public class InsertInDataBase extends AsyncTask<String, Void, String> {
 
-    public static final String DIVISOR = "##";
     private static final int MIN_PARAM_LENGTH = 4; //minimal legth of params array: params[0]...
     private Toast toast;
 
@@ -30,7 +29,7 @@ public class InsertInDataBase extends AsyncTask<String, Void, String> {
                 int parLen = params.length;
                 while (rs.next() && parLen> MIN_PARAM_LENGTH && params[MIN_PARAM_LENGTH] != null) {
                     for(int i = MIN_PARAM_LENGTH; i< parLen; i++) {
-                        s = s + rs.getString(params[i])+ DIVISOR;
+                        s = s + rs.getString(params[i])+ Util.DIVISOR;
                     }
                 }
                 if (rs != null) {

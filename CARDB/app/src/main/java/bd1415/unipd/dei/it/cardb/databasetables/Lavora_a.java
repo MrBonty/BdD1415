@@ -13,6 +13,11 @@ public class Lavora_a {
     public static final String LAVORA_A_STRAORDINARI = "straordinari";
     public static final String LAVORA_A_ORE_LAVORO = "ore_lavoro";
 
+    public static final String LAVORA_A_COLUMS = "(" + LAVORA_A_PK_PERSONALE + ", "
+            + LAVORA_A_PK_LAVORO + ", "
+            + LAVORA_A_STRAORDINARI + ", "
+            + LAVORA_A_ORE_LAVORO + ")";
+
     private String personale; //PRIMARY-KEY //FOREING KEY
     private int lavoro; //PRIMARY-KEY //FOREING KEY
     private int straordinari;

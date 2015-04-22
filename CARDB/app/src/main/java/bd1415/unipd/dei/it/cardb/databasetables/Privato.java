@@ -16,6 +16,12 @@ public class Privato {
     public static final String PRIVATO_TELEFONO = "telefono";
     public static final String PRIVATO_INDIRIZZO = "indirizzo";
 
+    public static final String PRIVATO_COLUMS = "(" + PRIVATO_PK_CF  + ", "
+            + PRIVATO_NOME + ", "
+            + PRIVATO_COGNOME + ", "
+            + PRIVATO_TELEFONO + ", "
+            + PRIVATO_INDIRIZZO  + ")";
+
     private String cf; //PRIMARY-KEY
     private String nome;
     private String cognome;

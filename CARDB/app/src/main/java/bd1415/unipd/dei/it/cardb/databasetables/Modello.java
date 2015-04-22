@@ -13,6 +13,11 @@ public class Modello {
     public static final String MODELLO_NOME = "nome";
     public static final String MODELLO_ANNO = "anno";
 
+    public static final String MODELLO_COLUMS = "(" + MODELLO_PK_CODICE_PRODUZIONE + ", "
+            + MODELLO_PK_MARCA + ", "
+            + MODELLO_NOME + ", "
+            + MODELLO_ANNO + ")";
+
     private String codice_produzione; //PRIMARY-KEY
     private String marca; //PRIMARY-KEY
     private String nome;

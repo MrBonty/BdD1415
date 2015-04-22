@@ -12,6 +12,10 @@ public class Ordine {
     public static final String ORDINE_PK_FORNITORE = "fornitore";
     public static final String ORDINE_QUANTITA_FORNITURA = "quantita_fornitura";
 
+    public static final String ORDINE_COLUMS = "(" + ORDINE_PK_DATA_OR + ", "
+            + ORDINE_PK_FORNITORE + ", "
+            + ORDINE_QUANTITA_FORNITURA + ")";
+
     private String data_or; //PRIMARY-KEY
     private String fornitore; //PRIMARY-KEY
     private int quantita_fornita;

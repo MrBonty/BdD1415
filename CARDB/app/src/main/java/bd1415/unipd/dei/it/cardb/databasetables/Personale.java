@@ -20,6 +20,16 @@ public class Personale {
     public static final String PERSONALE_RESPONSABILE = "responsabile";
     public static final String PERSONALE_EDIFICIO = "edificio";
 
+    public static final String PERSONALE_COLUMS = "(" + PERSONALE_PK_CF + ", "
+            + PERSONALE_NOME + ", "
+            + PERSONALE_COGNOME + ", "
+            + PERSONALE_TELEFONO + ", "
+            + PERSONALE_INDIRIZZO + ", "
+            + PERSONALE_IBAN + ", "
+            + PERSONALE_CONTRATTO + ", "
+            + PERSONALE_RESPONSABILE + ", "
+            + PERSONALE_EDIFICIO + ")";
+
     private String cf; //PRIMARY-KEY
     private String nome;
     private String cognome;
@@ -140,7 +150,7 @@ public class Personale {
     public void setTelefono(String telefono, boolean update) {
         this.telefono = telefono;
         if (update) {
-            updateValueInDatabase(telefono, PERSONALE_INDIRIZZO);
+            updateValueInDatabase(telefono, PERSONALE_TELEFONO);
         }
     }
 
