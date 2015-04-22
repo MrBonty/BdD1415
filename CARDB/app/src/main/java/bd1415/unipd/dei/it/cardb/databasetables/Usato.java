@@ -12,6 +12,10 @@ public class Usato {
     public static final String USATO_PK_PEZZO = "pezzo";
     public static final String USATO_NUMERO_PEZZI = "numero_pezzi";
 
+    public static final String USATO_COLUMS = "(" + USATO_PK_LAVORO + ", "
+            + USATO_PK_PEZZO + ", "
+            + USATO_NUMERO_PEZZI + ")";
+
     private int lavoro; //PRIMARY-KEY
     private int pezzo; //PRIMARY-KEY
     private int numero_pezzi;

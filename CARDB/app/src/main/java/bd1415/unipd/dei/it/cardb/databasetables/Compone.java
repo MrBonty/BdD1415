@@ -12,6 +12,10 @@ public class Compone {
     public static final String COMPONE_PK_MODELLO_MARCA = "modello_marca";
     public static final String COMPONE_PK_PEZZO = "pezzo";
 
+    public static final String COMPONE_COLUMS = "(" + COMPONE_PK_MODELLO_COD_PROD + ", "
+            + COMPONE_PK_MODELLO_MARCA + ", "
+            + COMPONE_PK_PEZZO + ")";
+
     private String modello_cod_prod; //PRIMARY-KEY //FOREIGN KEY
     private String modello_marca; //PRIMARY-KEY //FOREIGN KEY
     private int pezzo; //PRIMARY-KEY //FOREIGN KEY

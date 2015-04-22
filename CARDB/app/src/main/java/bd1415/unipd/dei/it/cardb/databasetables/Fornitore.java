@@ -14,14 +14,20 @@ public class Fornitore {
     public static final String FORNITORE_IBAN = "iban";
     public static final String FORNITORE_INDIRIZZO = "indirizzo";
 
+    public static final String FORNITORE_COLUMS = "(" + FORNITORE_PK_PIVA + ", "
+            + FORNITORE_NOME + ", "
+            + FORNITORE_TELEFONO + ", "
+            + FORNITORE_IBAN + ", "
+            + FORNITORE_INDIRIZZO + ")";
+
     private String piva; //PRIMARY-KEY
     private String nome;
     private String telefono;
     private AddressType indirizzo;
     private String iban;
 
-    public Fornitore(String piva, boolean insert){
-        if(insert) {
+    public Fornitore(String piva, boolean insert) {
+        if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_FORNITORE;
             params[1] = "(" + FORNITORE_PK_PIVA + ")";
@@ -32,7 +38,7 @@ public class Fornitore {
 
         this.piva = piva;
 
-        if(insert) {
+        if (insert) {
             while (!Util.isSet()) ;
             Util.setToNull();
         }
@@ -42,9 +48,9 @@ public class Fornitore {
         String[] params = new String[5];
         params[0] = TABLE_FORNITORE;
         params[1] = nome_attributo;
-        params[2] = "'"+nuovo_valore+"'";
+        params[2] = "'" + nuovo_valore + "'";
         params[3] = FORNITORE_PK_PIVA;
-        params[4] = "'"+this.piva+"'";
+        params[4] = "'" + this.piva + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -52,20 +58,20 @@ public class Fornitore {
         String[] params = new String[5];
         params[0] = TABLE_FORNITORE;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = FORNITORE_PK_PIVA;
         params[4] = "'" + this.piva + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
-    public void updateValueInDatabase(AddressType nuovo_valore, String nome_attributo){
+    public void updateValueInDatabase(AddressType nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
         params[0] = TABLE_FORNITORE;
         params[1] = nome_attributo;
         params[2] = "ROW('" + nuovo_valore.indirizzo + "', '" + nuovo_valore.numero_civico
                 + "', '" + nuovo_valore.città + "', '" + nuovo_valore.provincia + "')";
         params[3] = FORNITORE_PK_PIVA;
-        params[4] = "'"+this.piva+"'";
+        params[4] = "'" + this.piva + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -91,35 +97,35 @@ public class Fornitore {
 
     public void setPiva(String piva, boolean update) {
         this.piva = piva;
-        if(update) {
+        if (update) {
             updateValueInDatabase(piva, FORNITORE_PK_PIVA);
         }
     }
 
     public void setNome(String nome, boolean update) {
         this.nome = nome;
-        if(update) {
+        if (update) {
             updateValueInDatabase(nome, FORNITORE_NOME);
         }
     }
 
     public void setTelefono(String telefono, boolean update) {
         this.telefono = telefono;
-        if(update) {
+        if (update) {
             updateValueInDatabase(telefono, FORNITORE_TELEFONO);
         }
     }
 
     public void setIndirizzo(AddressType indirizzo, boolean update) {
         this.indirizzo = indirizzo;
-        if(update) {
+        if (update) {
             updateValueInDatabase(indirizzo, FORNITORE_INDIRIZZO);
         }
     }
 
     public void setIban(String iban, boolean update) {
         this.iban = iban;
-        if(update) {
+        if (update) {
             updateValueInDatabase(iban, FORNITORE_IBAN);
         }
     }

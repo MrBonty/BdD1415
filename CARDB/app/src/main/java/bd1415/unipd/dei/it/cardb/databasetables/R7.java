@@ -11,6 +11,8 @@ public class R7 {
     public static final String R7_PK_LAVORO = "lavoro";
     public static final String R7_PK_GUASTO = "guasto";
 
+    public static final String R7_COLUMS = "(" + R7_PK_LAVORO + ", " + R7_PK_GUASTO + ")";
+
     private int lavoro; //PRIMARY-KEY
     private int guasto; //PRIMARY-KEY
 

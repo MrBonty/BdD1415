@@ -13,6 +13,11 @@ public class Azienda {
     public static final String AZIENDA_TELEFONO = "telefono";
     public static final String AZIENDA_INDIRIZZO = "indirizzo";
 
+    public static final String AZIENDA_COLUMS = "(" + AZIENDA_PK_PIVA + ", "
+                                                + AZIENDA_NOME + ", "
+                                                + AZIENDA_TELEFONO + ", "
+                                                + AZIENDA_INDIRIZZO + ")";
+
     private String piva; //PRIMARY-KEY
     private String nome;
     private String telefono;

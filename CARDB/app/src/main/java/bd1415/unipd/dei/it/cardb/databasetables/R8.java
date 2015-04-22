@@ -11,6 +11,8 @@ public class R8 {
     public static final String R8_PK_LAVORO = "lavoro";
     public static final String R8_PK_MANUTENZIONE = "manutenzione";
 
+    public static final String R8_COLUMS = "(" + R8_PK_LAVORO + ", " + R8_PK_MANUTENZIONE + ")";
+
     private int lavoro; //PRIMARY-KEY
     private int manutenzione; //PRIMARY-KEY
 

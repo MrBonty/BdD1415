@@ -11,6 +11,9 @@ public class Guasto {
     public static final String GUASTO_PK_ID = "id";
     public static final String GUASTO_DESCRIZIONE = "descrizione";
 
+    public static final String GUASTO_COLUMS = "(" + GUASTO_PK_ID + ", "
+            + GUASTO_DESCRIZIONE + ")";
+
     private int id; //PRIMARY-KEY
     private String descrizione;
 

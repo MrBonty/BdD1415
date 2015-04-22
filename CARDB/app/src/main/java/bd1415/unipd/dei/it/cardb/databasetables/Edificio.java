@@ -14,6 +14,10 @@ public class Edificio {
     public static final String EDIFICIO_TIPOLOGIA = "tipologia";
     public static final String EDIFICIO_INDIRIZZO = "indirizzo";
 
+    public static final String EDIFICIO_COLUMS = "(" + EDIFICIO_PK_ID + ", "
+                                                   + EDIFICIO_TIPOLOGIA + ", "
+                                                   + EDIFICIO_INDIRIZZO + ")";
+
     private int id; //PRIMARY-KEY
     private String tipologia; //NOT NULL
     private AddressType indirizzo;

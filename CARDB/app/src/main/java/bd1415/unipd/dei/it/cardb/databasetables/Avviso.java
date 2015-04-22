@@ -12,6 +12,12 @@ public class Avviso {
     public static final String AVVISO_PK_VEICOLO = "veicolo";
     public static final String AVVISO_DATA_POSSIMA = "data_possima";
 
+    public static final String AVVISO_COLUMS = "(" + AVVISO_PK_MANUTENZIONE + ", "
+                                               + AVVISO_PK_VEICOLO + ", "
+                                               + AVVISO_DATA_POSSIMA + ")";
+
+
+
     private int manutenzione; //PRIMARY-KEY //FOREING KEY
     private String veicolo; //PRIMARY-KEY //FOREING KEY
     private String data_possima;

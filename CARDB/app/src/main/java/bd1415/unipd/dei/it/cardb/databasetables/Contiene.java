@@ -14,6 +14,12 @@ public class Contiene {
     public static final String CONTIENE_NUMERO_PEZZI = "numero_pezzi";
     public static final String CONTIENE_PREZZO_PEZZO = "prezzo_pezzo";
 
+    public static final String CONTIENE_COLUMS = "(" + CONTIENE_PK_ORDINE_DATA + ", "
+                                                 + CONTIENE_PK_ORDINE_FORNITORE + ", "
+                                                 + CONTIENE_PK_PEZZO + ", "
+                                                 + CONTIENE_NUMERO_PEZZI + ", "
+                                                 + CONTIENE_PREZZO_PEZZO + ")";
+
     private String ordine_data; //PRIMARY-KEY //FOREING KEY
     private String ordine_fornitore; //PRIMARY-KEY //FOREING KEY
     private int pezzo; //PRIMARY-KEY //FOREING KEY
@@ -35,7 +41,7 @@ public class Contiene {
         this.pezzo = pezzo;
 
         if(insert) {
-            while (!Util.isSet()) ;
+            while (!Util.isSet());
             Util.setToNull();
         }
     }
