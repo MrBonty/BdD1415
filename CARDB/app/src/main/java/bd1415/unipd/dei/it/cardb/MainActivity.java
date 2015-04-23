@@ -2,6 +2,7 @@ package bd1415.unipd.dei.it.cardb;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -21,10 +22,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
-public class MainActivity extends ActionBarActivity implements ClientiMenuFragment.OnMenufragListener/*,
-        VeicoliMenuFragment.OnMenufragListener*/, LavorazioniMenuFragment.OnMenufragListener,
+public class MainActivity extends ActionBarActivity implements LavorazioniMenuFragment.OnMenufragListener,
         PagamentiMenuFragment.OnMenufragListener, GestioneMenuFragment.OnMenufragListener {
 
     public static String[] params;
@@ -39,15 +40,16 @@ public class MainActivity extends ActionBarActivity implements ClientiMenuFragme
     private ListView leftDrawerList;
     private ArrayAdapter<String> navigationDrawerAdapter;
     private String[] leftSliderData = {"Clienti", "Veicoli", "Lavorazioni", "Pagamenti", "Gestione"};
-    private FrameLayout container;
+    public static FrameLayout container;
     private LinearLayout clienti;
     private LinearLayout veicoliLayout;
     private LinearLayout lavorazioni;
     private LinearLayout pagamenti;
     private LinearLayout gestione;
     private View current;
-    public static ArrayList<Veicolo> veicoli = new ArrayList<Veicolo>();
     private FloatingActionButton fabButton = null;
+    public static LinearLayout corrente;
+    public static Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +63,6 @@ public class MainActivity extends ActionBarActivity implements ClientiMenuFragme
         params[4] = "3366";
         params[5] = "5432";
         super.onCreate(savedInstanceState);
-        if (!isLogged) {
-            new LoginDialog(ctx, act);
-            isLogged = true;
-        }
         setContentView(R.layout.activity_main);
         initView();
         if (toolbar != null) {
@@ -78,8 +76,10 @@ public class MainActivity extends ActionBarActivity implements ClientiMenuFragme
         lavorazioni = (LinearLayout) findViewById(R.id.lavorazioni);
         pagamenti = (LinearLayout) findViewById(R.id.pagamenti);
         gestione = (LinearLayout) findViewById(R.id.gestione);
+        corrente = clienti;
+        ApplicationData.posizioneCorrente = 0;
         container.removeAllViewsInLayout();
-        container.addView(clienti);
+        container.addView(corrente);
         fabButton = new FloatingActionButton.Builder(this)
                 .withDrawable(
                         getResources().getDrawable(
@@ -87,6 +87,10 @@ public class MainActivity extends ActionBarActivity implements ClientiMenuFragme
                 .withButtonColor(getResources().getColor(R.color.primaryColor))
                 .withGravity(Gravity.BOTTOM | Gravity.END)
                 .withMargins(0, 0, 16, 16).create();
+        intent = getIntent();
+        Privato prv = new Privato();
+        prv.setCf("7378", false);
+        ApplicationData.clienti.add(prv);
 
     }
 
@@ -127,18 +131,22 @@ public class MainActivity extends ActionBarActivity implements ClientiMenuFragme
         if (position == 0) {
             container.removeAllViewsInLayout();
             container.addView(clienti);
+            corrente = clienti;
         } else if (position == 1) {
             container.removeAllViewsInLayout();
             container.addView(veicoliLayout);
+            corrente = veicoliLayout;
         } else if (position == 2) {
             container.removeAllViewsInLayout();
             container.addView(lavorazioni);
         } else if (position == 3) {
             container.removeAllViewsInLayout();
             container.addView(pagamenti);
+            corrente = pagamenti;
         } else if (position == 4) {
             container.removeAllViewsInLayout();
             container.addView(gestione);
+            corrente = gestione;
         }
         leftDrawerList.setItemChecked(position, true);
         toolbar.setTitle(leftSliderData[position]);

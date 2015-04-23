@@ -1,55 +1,50 @@
 package bd1415.unipd.dei.it.cardb;
 
-import android.app.Activity;
 import android.app.Fragment;
+import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
 
 // extended from compatibility Fragment for pre-HC fragment support
-public class ClientiMenuFragment extends Fragment {
+public class ClientiMenuFragment extends ListFragment {
 
-    // views
-    Button btn1;
+    private boolean isLarge = true;
 
-    // activity listener
-    private OnMenufragListener menufragListener;
-
-    // onAttach
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            menufragListener = (OnMenufragListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString() + " must implement OnMenufragListener");
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        setListAdapter(new ClientiArrayAdapter(inflater.getContext(), ApplicationData.clienti));
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public void onListItemClick(ListView list, View v, int pos, long id) {
+        super.onListItemClick(list, v, pos, id);
+        if (isLarge) {
+            resizeFragment(this, (int) getResources().getDimension(R.dimen.small));
+            isLarge = false;
+            //Qui va il codice che avvia le modifiche sul secondo fragment.
+        } else {
+            resizeFragment(this, (int) getResources().getDimension(R.dimen.large));
+            isLarge = true;
+        }
+
+        Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
+    }
+
+
+    private void resizeFragment(Fragment f, int newWidth) {
+        if (f != null) {
+            View view = f.getView();
+            LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(newWidth, getView().getHeight());
+            view.setLayoutParams(p);
+            view.requestLayout();
         }
     }
 
-    // onCreate
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    // onActivityCreated
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    // onCreateView
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.clienti_menu_fragment, container, false);
-        return view;
-    }
-
-    // interface for communication with activity
-    public interface OnMenufragListener {
-        public void onMenufrag(String s);
-    }
 
 }

@@ -26,7 +26,7 @@
                 android:layout_height="match_parent">
 
                 <fragment
-                    android:layout_width="250dp"
+                    android:layout_width="@dimen/large"
                     android:layout_height="match_parent"
                     class="bd1415.unipd.dei.it.cardb.ClientiMenuFragment"
                     tools:layout="@layout/clienti_menu_fragment"
@@ -49,7 +49,7 @@
                 android:layout_height="match_parent">
 
                 <fragment
-                    android:layout_width="250dp"
+                    android:layout_width="@dimen/large"
                     android:layout_height="match_parent"
                     class="bd1415.unipd.dei.it.cardb.VeicoliMenuFragment"
                     tools:layout="@layout/veicoli_menu_fragment"/>
@@ -70,7 +70,7 @@
                 android:layout_height="match_parent">
 
                 <fragment
-                    android:layout_width="250dp"
+                    android:layout_width="@dimen/large"
                     android:layout_height="match_parent"
                     class="bd1415.unipd.dei.it.cardb.LavorazioniMenuFragment"
                     tools:layout="@layout/lavorazioni_menu_fragment">
@@ -93,7 +93,7 @@
                 android:layout_height="match_parent">
 
                 <fragment
-                    android:layout_width="250dp"
+                    android:layout_width="@dimen/large"
                     android:layout_height="match_parent"
                     class="bd1415.unipd.dei.it.cardb.PagamentiMenuFragment"
                     tools:layout="@layout/pagamenti_menu_fragment">
@@ -116,7 +116,7 @@
                 android:layout_height="match_parent">
 
                 <fragment
-                    android:layout_width="250dp"
+                    android:layout_width="@dimen/large"
                     android:layout_height="match_parent"
                     class="bd1415.unipd.dei.it.cardb.GestioneMenuFragment"
                     tools:layout="@layout/gestione_menu_fragment">
