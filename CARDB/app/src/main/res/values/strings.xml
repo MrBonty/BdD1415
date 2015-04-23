@@ -7,6 +7,22 @@
     <string name="cancel">Annulla</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+
+    <string name="veicolo_targa_tag">Targa:\u0020</string>
+    <string name="veicolo_proprietario_tag">Proprietario:\u0020</string>
+    <string name="veicolo_telaio_tag">N. Telaio:\u0020</string>
+    <string name="veicolo_modello_marca_tag">Marca:\u0020</string>
+    <string name="veicolo_modello_nome_tag">Modello:\u0020</string>
+    <string name="veicolo_modello_anno_tag">Anno modello:\u0020</string>
+
+    <string name="cliente_nome_tag">Nome:\u0020</string>
+    <string name="cliente_cognome_tag">Cognome:\u0020</string>
+    <string name="cliente_cf_tag">CF:\u0020</string>
+    <string name="cliente_telefono_tag">Telefono:\u0020</string>
+    <string name="cliente_piva_tag">IVA:\u0020</string>
+    <string name="cliente_indirizzo_tag">Indirizzo:\u0020</string>
+    <string name="cliente_citta_tag">Città:\u0020</string>
+    <string name="cliente_provincia_tag">Provincia:\u0020</string>
 </resources>
 
 

@@ -10,11 +10,11 @@ public class Avviso {
     // Avviso Columns
     public static final String AVVISO_PK_MANUTENZIONE = "manutenzione";
     public static final String AVVISO_PK_VEICOLO = "veicolo";
-    public static final String AVVISO_DATA_POSSIMA = "data_possima";
+    public static final String AVVISO_DATA_PROSSIMA = "data_prossima";
 
     public static final String AVVISO_COLUMS = "(" + AVVISO_PK_MANUTENZIONE + ", "
                                                + AVVISO_PK_VEICOLO + ", "
-                                               + AVVISO_DATA_POSSIMA + ")";
+                                               + AVVISO_DATA_PROSSIMA + ")";
 
 
 
@@ -88,7 +88,7 @@ public class Avviso {
     public void setData_possima(String data_possima, boolean update) {
         this.data_possima = data_possima;
         if(update) {
-            updateValueInDatabase(data_possima, AVVISO_DATA_POSSIMA);
+            updateValueInDatabase(data_possima, AVVISO_DATA_PROSSIMA);
         }
     }
 
