@@ -1,5 +1,6 @@
 package bd1415.unipd.dei.it.cardb;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -99,7 +100,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     veicolo.setPrivato(rs.getString("privato"), false);
                     veicolo.setModello_cod_prod(rs.getString("modello_cod_prod"), false);
                     veicolo.setModello_marca(rs.getString("modello_marca"), false);
-                    MainActivity.veicoli.add(veicolo);
+                    ApplicationData.veicoli.add(veicolo);
                 }
                 if (rs != null) {
                     rs.close();
@@ -132,7 +133,9 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
             toast.cancel();
             Toast.makeText(MainActivity.ctx, result, Toast.LENGTH_LONG).show();
         }
-        MainActivity.veicoli.get(1).updateValueInDataBase("jyfjrd", "targa");
+        ApplicationData.veicoli.get(1).updateValueInDataBase("jyfjrd", "targa");
+        MainActivity.act.finish();
+        MainActivity.act.startActivity(MainActivity.intent);
 
     }
 }

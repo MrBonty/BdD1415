@@ -28,6 +28,8 @@ public class Privato {
     private String telefono;
     private AddressType indirizzo;
 
+    public Privato() {}
+
     public Privato(String cf, boolean insert){
         if (insert) {
             String[] params = new String[4];
