@@ -25,6 +25,14 @@ import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavora_a;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
 import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
+import bd1415.unipd.dei.it.cardb.databasetables.Modello;
+import bd1415.unipd.dei.it.cardb.databasetables.Ordine;
+import bd1415.unipd.dei.it.cardb.databasetables.Personale;
+import bd1415.unipd.dei.it.cardb.databasetables.Pezzo;
+import bd1415.unipd.dei.it.cardb.databasetables.Privato;
+import bd1415.unipd.dei.it.cardb.databasetables.R7;
+import bd1415.unipd.dei.it.cardb.databasetables.R8;
+import bd1415.unipd.dei.it.cardb.databasetables.Usato;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
@@ -127,7 +135,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                 }
                 rs = st.executeQuery("SELECT * FROM main.Avviso;");
                 while (rs.next()) {
-                    Avviso avviso = new Avviso(rs.getString("veicolo"),
+                    Avviso avviso = new Avviso(rs.getInt("manutenzione"), rs.getString("veicolo"),
                             false);
                     avviso.setData_prossima(rs.getString("data_prossima"), false);
                     avviso.setManutenzione(rs.getInt("manutezione"), false);
@@ -169,6 +177,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     fattura.setPagato(rs.getInt("pagato"), false);
                     fattura.setPrivato(rs.getString("privato"), false);
                     fattura.setId(rs.getInt("id"), false);
+                    ApplicationData.fatture.add(fattura);
                 }
                 rs = st.executeQuery("SELECT * FROM main.Fornitore;");
                 while (rs.next()) {
@@ -212,6 +221,78 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     manutenzione.setId(rs.getInt("id"), false);
                     manutenzione.setDescrizione(rs.getString("descrizione"), false);
                     ApplicationData.manutenzioni.add(manutenzione);
+                }
+                rs = st.executeQuery("SELECT * FROM main.Modello;");
+                while (rs.next()) {
+                    Modello modello = new Modello(rs.getString("codice_produzione"), rs.getString("marca"), false);
+                    modello.setCodice_produzione(rs.getString("codice_produzione"), false);
+                    modello.setMarca(rs.getString("marca"), false);
+                    modello.setNome(rs.getString("nome"), false);
+                    modello.setAnno(rs.getString("anno"), false);
+                    ApplicationData.modelli.add(modello);
+                }
+                rs = st.executeQuery("SELECT * FROM main.Ordine;");
+                while (rs.next()) {
+                    Ordine ordine = new Ordine(rs.getString("data_or"), rs.getString("fornitore"), false);
+                    ordine.setData_or(rs.getString("data_or"), false);
+                    ordine.setFornitore(rs.getString("fornitore"), false);
+                    ordine.setQuantita_fornita(rs.getInt("quantita_fornita"), false);
+                    ApplicationData.ordini.add(ordine);
+                }
+                rs = st.executeQuery("SELECT * FROM main.Personale;");
+                while (rs.next()) {
+                    Personale personale = new Personale(rs.getString("cf"), rs.getInt("edificio"), false);
+                    personale.setCf(rs.getString("cf"), false);
+                    personale.setNome(rs.getString("nome"), false);
+                    personale.setCognome(rs.getString("cognome"), false);
+                    personale.setContratto(rs.getString("contratto"), false);
+                    personale.setEdificio(rs.getInt("id"), false);
+                    //personale.setIndirizzo(rs.getString("indirizzo"), false);
+                    personale.setTelefono(rs.getString("telefono"), false);
+                    personale.setIban(rs.getString("iban"), false);
+                    personale.setResponsabile(rs.getInt("responsabile"), false);
+                    ApplicationData.personale.add(personale);
+                }
+                rs = st.executeQuery("SELECT * FROM main.Pezzo;");
+                while (rs.next()) {
+                    Pezzo pezzo = new Pezzo(false);
+                    pezzo.setId(rs.getInt("id"), false);
+                    pezzo.setDescrizione(rs.getString("descrizione"), false);
+                    pezzo.setNumero_totale_pezzi(rs.getInt("numero_totale_pezzi"), false);
+                    pezzo.setPrezzo_vendita(rs.getFloat("prezzo_vendita"), false);
+                    ApplicationData.pezzi.add(pezzo);
+                }
+                rs = st.executeQuery("SELECT * FROM main.Privato;");
+                while (rs.next()) {
+                    Privato privato = new Privato(rs.getString("cf"), false);
+                    privato.setTelefono(rs.getString("telefono"), false);
+                    //privato.setIndirizzo(rs.getString("indirizzo"), false);
+                    privato.setCf(rs.getString("cf"), false);
+                    privato.setCognome(rs.getString("cognome"), false);
+                    privato.setNome(rs.getString("nome"), false);
+                    ApplicationData.privati.add(privato);
+                }
+                rs = st.executeQuery("SELECT * FROM main.R7;");
+                while (rs.next()) {
+                    R7 r7 = new R7(rs.getInt("lavoro"), rs.getInt("guasto"), false);
+                    r7.setGuasto(rs.getInt("guasto"), false);
+                    r7.setLavoro(rs.getInt("lavoro"), false);
+                    ApplicationData.r7.add(r7);
+                }
+                rs = st.executeQuery("SELECT * FROM main.R8;");
+                while (rs.next()) {
+                    R8 r8 = new R8(rs.getInt("lavoro"), rs.getInt("manutenzione"), false);
+                    r8.setManutenzione(rs.getInt("manutenzione"), false);
+                    r8.setLavoro(rs.getInt("lavoro"), false);
+                    ApplicationData.r8.add(r8);
+                }
+                rs = st.executeQuery("SELECT * FROM main.Usato8;");
+                while (rs.next()) {
+                    Usato usato = new Usato(rs.getInt("lavoro"), rs.getInt("pezzo"), false);
+                    usato.setPezzo(rs.getInt("pezzo"), false);
+                    usato.setLavoro(rs.getInt("lavoro"), false);
+                    usato.setNumero_pezzi(rs.getInt("numero_pezzi"), false);
+                    ApplicationData.usato.add(usato);
                 }
                 if (rs != null) {
                     rs.close();

@@ -21,7 +21,7 @@ public class Avviso {
     private String veicolo; //PRIMARY-KEY //FOREING KEY
     private String data_prossima;
 
-    public Avviso(String veicolo, boolean insert) {
+    public Avviso(int manutenzione, String veicolo, boolean insert) {
         if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_AVVISO;
