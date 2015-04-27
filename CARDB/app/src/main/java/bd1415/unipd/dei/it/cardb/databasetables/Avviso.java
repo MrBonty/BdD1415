@@ -13,9 +13,8 @@ public class Avviso {
     public static final String AVVISO_DATA_PROSSIMA = "data_prossima";
 
     public static final String AVVISO_COLUMS = "(" + AVVISO_PK_MANUTENZIONE + ", "
-                                               + AVVISO_PK_VEICOLO + ", "
-                                               + AVVISO_DATA_PROSSIMA + ")";
-
+            + AVVISO_PK_VEICOLO + ", "
+            + AVVISO_DATA_PROSSIMA + ")";
 
 
     private int manutenzione; //PRIMARY-KEY //FOREING KEY
@@ -65,7 +64,7 @@ public class Avviso {
 
     public void setManutenzione(int manutenzione, boolean update) {
         this.manutenzione = manutenzione;
-        if(update) {
+        if (update) {
             updateValueInDatabase(manutenzione, AVVISO_PK_MANUTENZIONE);
         }
     }
@@ -76,7 +75,7 @@ public class Avviso {
 
     public void setVeicolo(String veicolo, boolean update) {
         this.veicolo = veicolo;
-        if(update) {
+        if (update) {
             updateValueInDatabase(veicolo, AVVISO_PK_VEICOLO);
         }
     }
@@ -87,7 +86,7 @@ public class Avviso {
 
     public void setData_possima(String data_possima, boolean update) {
         this.data_possima = data_possima;
-        if(update) {
+        if (update) {
             updateValueInDatabase(data_possima, AVVISO_DATA_PROSSIMA);
         }
     }

@@ -23,8 +23,8 @@ public class Modello {
     private String nome;
     private String anno;
 
-    public Modello(String codice_produzione, String marca, boolean insert){
-        if(insert) {
+    public Modello(String codice_produzione, String marca, boolean insert) {
+        if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_MODELLO;
             params[1] = "(" + MODELLO_PK_CODICE_PRODUZIONE + ", " + MODELLO_PK_MARCA + ")";
@@ -36,7 +36,7 @@ public class Modello {
         this.codice_produzione = codice_produzione;
         this.marca = marca;
 
-        if(insert) {
+        if (insert) {
             while (!Util.isSet()) ;
             Util.setToNull();
         }
@@ -46,7 +46,7 @@ public class Modello {
         String[] params = new String[5];
         params[0] = TABLE_MODELLO;
         params[1] = nome_attributo;
-        params[2] = "'"+nuovo_valore+"'";
+        params[2] = "'" + nuovo_valore + "'";
         params[3] = "(" + MODELLO_PK_CODICE_PRODUZIONE + ", " + MODELLO_PK_MARCA + ")";
         params[4] = "(" + this.codice_produzione + ", '" + this.marca + "')";
         new UpdateValueInDataBase().execute(params);

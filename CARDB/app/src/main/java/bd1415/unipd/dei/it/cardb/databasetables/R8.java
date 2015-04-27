@@ -16,8 +16,8 @@ public class R8 {
     private int lavoro; //PRIMARY-KEY
     private int manutenzione; //PRIMARY-KEY
 
-    public R8(int lavoro, int manutenzione, boolean insert){
-        if(insert){
+    public R8(int lavoro, int manutenzione, boolean insert) {
+        if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_R8;
             params[1] = "(" + R8_PK_LAVORO + ", " + R8_PK_MANUTENZIONE + ")";
@@ -29,7 +29,7 @@ public class R8 {
         this.lavoro = lavoro;
         this.manutenzione = manutenzione;
 
-        if (insert){
+        if (insert) {
             while (!Util.isSet()) ;
             Util.setToNull();
         }
@@ -39,9 +39,9 @@ public class R8 {
         String[] params = new String[5];
         params[0] = TABLE_R8;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = "(" + R8_PK_LAVORO + ", " + R8_PK_MANUTENZIONE + ")";
-        params[4] = "("+this.lavoro + ", " + this.manutenzione + ")";
+        params[4] = "(" + this.lavoro + ", " + this.manutenzione + ")";
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -55,14 +55,14 @@ public class R8 {
 
     public void setLavoro(int lavoro, boolean update) {
         this.lavoro = lavoro;
-        if (update){
+        if (update) {
             updateValueInDatabase(lavoro, R8_PK_LAVORO);
         }
     }
 
     public void setManutenzione(int manutenzione, boolean update) {
         this.manutenzione = manutenzione;
-        if (update){
+        if (update) {
             updateValueInDatabase(manutenzione, R8_PK_MANUTENZIONE);
         }
     }

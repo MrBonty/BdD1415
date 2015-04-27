@@ -15,12 +15,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
@@ -37,8 +40,9 @@ public class MainActivity extends ActionBarActivity implements LavorazioniMenuFr
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
-    private ListView leftDrawerList;
+    private ExpandableListView leftDrawerList;
     private ArrayAdapter<String> navigationDrawerAdapter;
+    private ExpandableListAdapter exp;
     private String[] leftSliderData = {"Clienti", "Veicoli", "Lavorazioni", "Pagamenti", "Gestione"};
     public static FrameLayout container;
     private LinearLayout clienti;
@@ -50,6 +54,8 @@ public class MainActivity extends ActionBarActivity implements LavorazioniMenuFr
     private FloatingActionButton fabButton = null;
     public static LinearLayout corrente;
     public static Intent intent;
+    private HashMap<String, List<String>> listDataChild;
+    private List<String> listDataHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,14 +98,56 @@ public class MainActivity extends ActionBarActivity implements LavorazioniMenuFr
         prv.setCf("7378", false);
         ApplicationData.clienti.add(prv);
 
+
     }
 
     private void initView() {
-        leftDrawerList = (ListView) findViewById(R.id.left_drawer);
+        prepareListData();
+        leftDrawerList = (ExpandableListView) findViewById(R.id.left_drawer);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         navigationDrawerAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, leftSliderData);
-        leftDrawerList.setAdapter(navigationDrawerAdapter);
+        exp = new ExpandableListAdapter(MainActivity.this, listDataHeader, listDataChild);
+        leftDrawerList.setAdapter(exp);
+    }
+
+    private void prepareListData() {
+
+        listDataHeader = new ArrayList<String>();
+        listDataChild = new HashMap<String, List<String>>();
+
+        listDataHeader.add("Clienti");
+        listDataHeader.add("Veicoli");
+        listDataHeader.add("Lavorazioni");
+        listDataHeader.add("Pagamenti");
+        listDataHeader.add("Gestione");
+
+        List<String> clientiSubItems = new ArrayList<String>();
+        clientiSubItems.add("Privato");
+        clientiSubItems.add("Azienda");
+
+        List<String> veicoliSubItems = new ArrayList<String>();
+
+        List<String> lavorazioniSubItems = new ArrayList<String>();
+        lavorazioniSubItems.add("Descirzioni");
+        lavorazioniSubItems.add("In corso");
+        lavorazioniSubItems.add("Finiti");
+
+        List<String> pagamentiSubItems = new ArrayList<String>();
+        pagamentiSubItems.add("Pagate");
+        pagamentiSubItems.add("Non pagate");
+
+        List<String> gestioneSubItems = new ArrayList<String>();
+        gestioneSubItems.add("Magazzino");
+        gestioneSubItems.add("Fornitori");
+        gestioneSubItems.add("Ordini in corso");
+        gestioneSubItems.add("Personale");
+
+        listDataChild.put(listDataHeader.get(0), clientiSubItems);
+        listDataChild.put(listDataHeader.get(1), veicoliSubItems);
+        listDataChild.put(listDataHeader.get(2), lavorazioniSubItems);
+        listDataChild.put(listDataHeader.get(3), pagamentiSubItems);
+        listDataChild.put(listDataHeader.get(4), gestioneSubItems);
     }
 
     private void initDrawer() {
@@ -119,7 +167,80 @@ public class MainActivity extends ActionBarActivity implements LavorazioniMenuFr
             }
         };
         drawerLayout.setDrawerListener(drawerToggle);
-        leftDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        // Listview Group click listener
+        leftDrawerList.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v,
+                                        int position, long id) {
+                if (position == 0) {
+                    container.removeAllViewsInLayout();
+                    container.addView(clienti);
+                    corrente = clienti;
+                } else if (position == 1) {
+                    container.removeAllViewsInLayout();
+                    container.addView(veicoliLayout);
+                    corrente = veicoliLayout;
+                    drawerLayout.closeDrawer(Gravity.LEFT);
+                } else if (position == 2) {
+                    container.removeAllViewsInLayout();
+                    container.addView(lavorazioni);
+                } else if (position == 3) {
+                    container.removeAllViewsInLayout();
+                    container.addView(pagamenti);
+                    corrente = pagamenti;
+                } else if (position == 4) {
+                    container.removeAllViewsInLayout();
+                    container.addView(gestione);
+                    corrente = gestione;
+                }
+                leftDrawerList.setItemChecked(position, true);
+                toolbar.setTitle(leftSliderData[position]);
+                return false;
+            }
+        });
+
+        // Listview Group expanded listener
+        leftDrawerList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                Toast.makeText(getApplicationContext(),
+                        listDataHeader.get(groupPosition) + " Expanded",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Listview Group collasped listener
+        leftDrawerList.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+
+            @Override
+            public void onGroupCollapse(int groupPosition) {
+                Toast.makeText(getApplicationContext(),
+                        listDataHeader.get(groupPosition) + " Collapsed",
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        // Listview on child click listener
+        leftDrawerList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                // TODO Auto-generated method stub
+                Toast.makeText(
+                        getApplicationContext(),
+                        listDataHeader.get(groupPosition)
+                                + " : "
+                                + listDataChild.get(
+                                listDataHeader.get(groupPosition)).get(
+                                childPosition), Toast.LENGTH_SHORT)
+                        .show();
+                return false;
+            }
+        });
     }
 
     @Override
@@ -127,7 +248,7 @@ public class MainActivity extends ActionBarActivity implements LavorazioniMenuFr
 
     }
 
-    private void selectItem(int position) {
+    /*private void selectItem(int position) {
         if (position == 0) {
             container.removeAllViewsInLayout();
             container.addView(clienti);
@@ -151,7 +272,7 @@ public class MainActivity extends ActionBarActivity implements LavorazioniMenuFr
         leftDrawerList.setItemChecked(position, true);
         toolbar.setTitle(leftSliderData[position]);
         drawerLayout.closeDrawer(Gravity.LEFT);
-    }
+    }*/
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -190,10 +311,10 @@ public class MainActivity extends ActionBarActivity implements LavorazioniMenuFr
         return super.onOptionsItemSelected(item);
     }
 
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+    /*private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             selectItem(position);
         }
-    }
+    }*/
 }

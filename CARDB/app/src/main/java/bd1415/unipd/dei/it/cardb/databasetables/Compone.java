@@ -20,8 +20,8 @@ public class Compone {
     private String modello_marca; //PRIMARY-KEY //FOREIGN KEY
     private int pezzo; //PRIMARY-KEY //FOREIGN KEY
 
-    public Compone(String modello_cod_prod, String modello_marca, int pezzo, boolean insert){
-        if(insert) {
+    public Compone(String modello_cod_prod, String modello_marca, int pezzo, boolean insert) {
+        if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_COMPONE;
             params[1] = "(" + COMPONE_PK_MODELLO_COD_PROD + ", " + COMPONE_PK_MODELLO_MARCA + ", " + COMPONE_PK_PEZZO + ")";
@@ -34,7 +34,7 @@ public class Compone {
         this.modello_marca = modello_marca;
         this.pezzo = pezzo;
 
-        if(insert) {
+        if (insert) {
             while (!Util.isSet()) ;
             Util.setToNull();
         }
@@ -44,8 +44,8 @@ public class Compone {
         String[] params = new String[5];
         params[0] = TABLE_COMPONE;
         params[1] = nome_attributo;
-        params[2] = "'"+nuovo_valore+"'";
-        params[3] = "(" + COMPONE_PK_MODELLO_COD_PROD + ", " + COMPONE_PK_MODELLO_MARCA + ", " +  COMPONE_PK_PEZZO + ")";
+        params[2] = "'" + nuovo_valore + "'";
+        params[3] = "(" + COMPONE_PK_MODELLO_COD_PROD + ", " + COMPONE_PK_MODELLO_MARCA + ", " + COMPONE_PK_PEZZO + ")";
         params[4] = "('" + this.modello_cod_prod + "', '" + this.modello_marca + "', " + this.pezzo + ")";
         new UpdateValueInDataBase().execute(params);
     }
@@ -54,8 +54,8 @@ public class Compone {
         String[] params = new String[5];
         params[0] = TABLE_COMPONE;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
-        params[3] = "(" + COMPONE_PK_MODELLO_COD_PROD + ", " + COMPONE_PK_MODELLO_MARCA + ", " +  COMPONE_PK_PEZZO + ")";
+        params[2] = "" + nuovo_valore;
+        params[3] = "(" + COMPONE_PK_MODELLO_COD_PROD + ", " + COMPONE_PK_MODELLO_MARCA + ", " + COMPONE_PK_PEZZO + ")";
         params[4] = "('" + this.modello_cod_prod + "', '" + this.modello_marca + "', " + this.pezzo + ")";
         new UpdateValueInDataBase().execute(params);
     }
@@ -74,21 +74,21 @@ public class Compone {
 
     public void setModello_cod_prod(String modello_cod_prod, boolean update) {
         this.modello_cod_prod = modello_cod_prod;
-        if(update) {
+        if (update) {
             updateValueInDatabase(modello_cod_prod, COMPONE_PK_MODELLO_COD_PROD);
         }
     }
 
     public void setModello_marca(String modello_marca, boolean update) {
         this.modello_marca = modello_marca;
-        if(update) {
+        if (update) {
             updateValueInDatabase(modello_marca, COMPONE_PK_MODELLO_MARCA);
         }
     }
 
     public void setPezzo(int pezzo, boolean update) {
         this.pezzo = pezzo;
-        if(update) {
+        if (update) {
             updateValueInDatabase(pezzo, COMPONE_PK_PEZZO);
         }
     }

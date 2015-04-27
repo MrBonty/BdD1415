@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.app.Activity;
+
 import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
@@ -22,7 +23,7 @@ public class VeicoliArrayAdapter extends ArrayAdapter<Veicolo> {
     }
 
 
-    private class ViewHolder{
+    private class ViewHolder {
         TextView titleText;
     }
 
@@ -35,7 +36,7 @@ public class VeicoliArrayAdapter extends ArrayAdapter<Veicolo> {
         if (convertView == null) {
             viewToUse = mInflater.inflate(R.layout.veicolo_item, null);
             holder = new ViewHolder();
-            holder.titleText = (TextView)viewToUse.findViewById(R.id.veicolo_name);
+            holder.titleText = (TextView) viewToUse.findViewById(R.id.veicolo_name);
             viewToUse.setTag(holder);
         } else {
             viewToUse = convertView;

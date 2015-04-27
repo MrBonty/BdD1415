@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-// extended from compatibility Fragment for pre-HC fragment support
 public class ClientiMenuFragment extends ListFragment {
 
     private boolean isLarge = true;

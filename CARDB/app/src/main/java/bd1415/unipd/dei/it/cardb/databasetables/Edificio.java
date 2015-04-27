@@ -15,15 +15,15 @@ public class Edificio {
     public static final String EDIFICIO_INDIRIZZO = "indirizzo";
 
     public static final String EDIFICIO_COLUMS = "(" + EDIFICIO_PK_ID + ", "
-                                                   + EDIFICIO_TIPOLOGIA + ", "
-                                                   + EDIFICIO_INDIRIZZO + ")";
+            + EDIFICIO_TIPOLOGIA + ", "
+            + EDIFICIO_INDIRIZZO + ")";
 
     private int id; //PRIMARY-KEY
     private String tipologia; //NOT NULL
     private AddressType indirizzo;
 
-    public Edificio(String tipologia, boolean insert){
-        if(insert) {
+    public Edificio(String tipologia, boolean insert) {
+        if (insert) {
             String[] params = new String[5];
             params[0] = TABLE_EDIFICIO;
             params[1] = "(" + EDIFICIO_TIPOLOGIA + ")";
@@ -35,7 +35,7 @@ public class Edificio {
 
         this.tipologia = tipologia;
 
-        if(insert) {
+        if (insert) {
             while (!Util.isSet()) ;
             String[] tmp = Util.getOutput();
             id = Integer.parseInt(tmp[0]);
@@ -48,9 +48,9 @@ public class Edificio {
         String[] params = new String[5];
         params[0] = TABLE_EDIFICIO;
         params[1] = nome_attributo;
-        params[2] = "'"+nuovo_valore+"'";
+        params[2] = "'" + nuovo_valore + "'";
         params[3] = EDIFICIO_PK_ID;
-        params[4] = ""+this.id;
+        params[4] = "" + this.id;
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -58,20 +58,20 @@ public class Edificio {
         String[] params = new String[5];
         params[0] = TABLE_EDIFICIO;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = EDIFICIO_PK_ID;
-        params[4] = ""+this.id;
+        params[4] = "" + this.id;
         new UpdateValueInDataBase().execute(params);
     }
 
-    public void updateValueInDatabase(AddressType nuovo_valore, String nome_attributo){
+    public void updateValueInDatabase(AddressType nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
         params[0] = TABLE_EDIFICIO;
         params[1] = nome_attributo;
         params[2] = "ROW('" + nuovo_valore.indirizzo + "', '" + nuovo_valore.numero_civico
                 + "', '" + nuovo_valore.città + "', '" + nuovo_valore.provincia + "')";
         params[3] = EDIFICIO_PK_ID;
-        params[4] = ""+this.id;
+        params[4] = "" + this.id;
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -89,21 +89,21 @@ public class Edificio {
 
     public void setId(int id, boolean upgrade) {
         this.id = id;
-        if(upgrade) {
+        if (upgrade) {
             updateValueInDatabase(id, EDIFICIO_PK_ID);
         }
     }
 
     public void setTipologia(String tipologia, boolean update) {
         this.tipologia = tipologia;
-        if(update) {
+        if (update) {
             updateValueInDatabase(tipologia, EDIFICIO_TIPOLOGIA);
         }
     }
 
     public void setInditizzo(AddressType indirizzo, boolean update) {
         this.indirizzo = indirizzo;
-        if(update) {
+        if (update) {
             updateValueInDatabase(indirizzo, EDIFICIO_INDIRIZZO);
         }
     }

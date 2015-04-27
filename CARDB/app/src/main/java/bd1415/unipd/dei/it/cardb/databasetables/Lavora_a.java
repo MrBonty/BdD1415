@@ -23,8 +23,8 @@ public class Lavora_a {
     private int straordinari;
     private int ore_lavoro;
 
-    public Lavora_a(String personale, int lavoro, boolean insert){
-        if(insert) {
+    public Lavora_a(String personale, int lavoro, boolean insert) {
+        if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_LAVORA_A;
             params[1] = "(" + LAVORA_A_PK_PERSONALE + ", " + LAVORA_A_PK_LAVORO + ")";
@@ -36,7 +36,7 @@ public class Lavora_a {
         this.lavoro = lavoro;
         this.personale = personale;
 
-        if(insert) {
+        if (insert) {
             while (!Util.isSet()) ;
             Util.setToNull();
         }
@@ -46,7 +46,7 @@ public class Lavora_a {
         String[] params = new String[5];
         params[0] = TABLE_LAVORA_A;
         params[1] = nome_attributo;
-        params[2] = "'"+nuovo_valore+"'";
+        params[2] = "'" + nuovo_valore + "'";
         params[3] = "(" + LAVORA_A_PK_PERSONALE + ", " + LAVORA_A_PK_LAVORO + ")";
         params[4] = "(" + this.personale + ", '" + this.lavoro + "')";
         new UpdateValueInDataBase().execute(params);
@@ -56,7 +56,7 @@ public class Lavora_a {
         String[] params = new String[5];
         params[0] = TABLE_LAVORA_A;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = "(" + LAVORA_A_PK_PERSONALE + ", " + LAVORA_A_PK_LAVORO + ")";
         params[4] = "(" + this.personale + ", '" + this.lavoro + "')";
         new UpdateValueInDataBase().execute(params);
@@ -80,21 +80,21 @@ public class Lavora_a {
 
     public void setPersonale(String personale, boolean update) {
         this.personale = personale;
-        if(update) {
+        if (update) {
             updateValueInDatabase(personale, LAVORA_A_PK_PERSONALE);
         }
     }
 
     public void setLavoro(int lavoro, boolean update) {
         this.lavoro = lavoro;
-        if(update) {
+        if (update) {
             updateValueInDatabase(lavoro, LAVORA_A_PK_LAVORO);
         }
     }
 
     public void setOre_lavoro(int ore_lavoro, boolean update) {
         this.ore_lavoro = ore_lavoro;
-        if(update) {
+        if (update) {
             updateValueInDatabase(ore_lavoro, LAVORA_A_ORE_LAVORO);
         }
     }

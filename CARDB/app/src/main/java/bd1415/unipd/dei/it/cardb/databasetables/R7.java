@@ -16,8 +16,8 @@ public class R7 {
     private int lavoro; //PRIMARY-KEY
     private int guasto; //PRIMARY-KEY
 
-    public R7(int lavoro, int guasto, boolean insert){
-        if(insert){
+    public R7(int lavoro, int guasto, boolean insert) {
+        if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_R7;
             params[1] = "(" + R7_PK_LAVORO + ", " + R7_PK_GUASTO + ")";
@@ -29,7 +29,7 @@ public class R7 {
         this.lavoro = lavoro;
         this.guasto = guasto;
 
-        if (insert){
+        if (insert) {
             while (!Util.isSet()) ;
             Util.setToNull();
         }
@@ -39,22 +39,22 @@ public class R7 {
         String[] params = new String[5];
         params[0] = TABLE_R7;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = "(" + R7_PK_LAVORO + ", " + R7_PK_GUASTO + ")";
-        params[4] = "("+this.lavoro + ", " + this.guasto + ")";
+        params[4] = "(" + this.lavoro + ", " + this.guasto + ")";
         new UpdateValueInDataBase().execute(params);
     }
 
     public void setGuasto(int guasto, boolean update) {
         this.guasto = guasto;
-        if (update){
+        if (update) {
             updateValueInDatabase(guasto, R7_PK_GUASTO);
         }
     }
 
     public void setLavoro(int lavoro, boolean update) {
         this.lavoro = lavoro;
-        if (update){
+        if (update) {
             updateValueInDatabase(lavoro, R7_PK_LAVORO);
         }
     }

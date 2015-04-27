@@ -17,8 +17,8 @@ public class Manutenzione {
     private int id; //PRIMARY-KEY
     private String descrizione;
 
-    public Manutenzione(boolean insert){
-        if(insert) {
+    public Manutenzione(boolean insert) {
+        if (insert) {
             String[] params = new String[5];
             params[0] = TABLE_MANUTENZIONE;
             params[1] = " DEFAULT ";
@@ -38,9 +38,9 @@ public class Manutenzione {
         String[] params = new String[5];
         params[0] = TABLE_MANUTENZIONE;
         params[1] = nome_attributo;
-        params[2] = "'"+nuovo_valore+"'";
-        params[3]= MANUTENZIONE_PK_ID;
-        params[4] = "'"+this.id+"'";
+        params[2] = "'" + nuovo_valore + "'";
+        params[3] = MANUTENZIONE_PK_ID;
+        params[4] = "'" + this.id + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -48,9 +48,9 @@ public class Manutenzione {
         String[] params = new String[5];
         params[0] = TABLE_MANUTENZIONE;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = MANUTENZIONE_PK_ID;
-        params[4] = "'"+this.id+"'";
+        params[4] = "'" + this.id + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -64,14 +64,14 @@ public class Manutenzione {
 
     public void setId(int id, boolean update) {
         this.id = id;
-        if(update) {
+        if (update) {
             updateValueInDatabase(id, MANUTENZIONE_PK_ID);
         }
     }
 
     public void setDescrizione(String descrizione, boolean update) {
         this.descrizione = descrizione;
-        if(update) {
+        if (update) {
             updateValueInDatabase(descrizione, MANUTENZIONE_DESCRIZIONE);
         }
     }

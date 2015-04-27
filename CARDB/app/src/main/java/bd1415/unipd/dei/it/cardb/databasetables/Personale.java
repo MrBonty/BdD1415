@@ -40,8 +40,8 @@ public class Personale {
     private int responsabile = 0;
     private int edificio; //FOREING KEY
 
-    public Personale(String cf, int edificio, boolean insert){
-        if(insert) {
+    public Personale(String cf, int edificio, boolean insert) {
+        if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_PERSONALE;
             params[1] = "(" + PERSONALE_PK_CF + PERSONALE_EDIFICIO + ")";
@@ -63,9 +63,9 @@ public class Personale {
         String[] params = new String[5];
         params[0] = TABLE_PERSONALE;
         params[1] = nome_attributo;
-        params[2] = "'"+nuovo_valore+"'";
+        params[2] = "'" + nuovo_valore + "'";
         params[3] = PERSONALE_PK_CF;
-        params[4] = "'"+this.cf+"'";
+        params[4] = "'" + this.cf + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -73,20 +73,20 @@ public class Personale {
         String[] params = new String[5];
         params[0] = TABLE_PERSONALE;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = PERSONALE_PK_CF;
-        params[4] = "'"+this.cf+"'";
+        params[4] = "'" + this.cf + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
-    public void updateValueInDatabase(AddressType nuovo_valore, String nome_attributo){
+    public void updateValueInDatabase(AddressType nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
         params[0] = TABLE_PERSONALE;
         params[1] = nome_attributo;
         params[2] = "ROW('" + nuovo_valore.indirizzo + "', '" + nuovo_valore.numero_civico
                 + "', '" + nuovo_valore.città + "', '" + nuovo_valore.provincia + "')";
         params[3] = PERSONALE_PK_CF;
-        params[4] = "'"+this.cf+"'";
+        params[4] = "'" + this.cf + "'";
         new UpdateValueInDataBase().execute(params);
     }
 

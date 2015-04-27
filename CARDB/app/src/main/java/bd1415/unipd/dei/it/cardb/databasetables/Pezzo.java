@@ -21,7 +21,7 @@ public class Pezzo {
     private int numero_totale_pezzi;
     private float prezzo_vendita;
 
-    public Pezzo(boolean insert){
+    public Pezzo(boolean insert) {
         if (insert) {
             String[] params = new String[5];
             params[0] = TABLE_PEZZO;
@@ -42,9 +42,9 @@ public class Pezzo {
         String[] params = new String[5];
         params[0] = TABLE_PEZZO;
         params[1] = nome_attributo;
-        params[2] = "'"+nuovo_valore+"'";
+        params[2] = "'" + nuovo_valore + "'";
         params[3] = PEZZO_PK_ID;
-        params[4] = ""+this.id;
+        params[4] = "" + this.id;
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -52,9 +52,9 @@ public class Pezzo {
         String[] params = new String[5];
         params[0] = TABLE_PEZZO;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = PEZZO_PK_ID;
-        params[4] = ""+this.id;
+        params[4] = "" + this.id;
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -62,9 +62,9 @@ public class Pezzo {
         String[] params = new String[5];
         params[0] = TABLE_PEZZO;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = PEZZO_PK_ID;
-        params[4] = ""+this.id;
+        params[4] = "" + this.id;
         new UpdateValueInDataBase().execute(params);
     }
 

@@ -24,12 +24,13 @@ public class VeicoliMenuFragment extends ListFragment {
     public void onListItemClick(ListView list, View v, int pos, long id) {
         super.onListItemClick(list, v, pos, id);
         if (isLarge) {
-            resizeFragment(this, 250);
+            resizeFragment(this, (int) getResources().getDimension(R.dimen.small));
+            isLarge = false;
             //Qui va il codice che avvia le modifiche sul secondo fragment.
         } else {
-            resizeFragment(this, 400);
+            resizeFragment(this, (int) getResources().getDimension(R.dimen.large));
+            isLarge = true;
         }
-
         Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
     }
 

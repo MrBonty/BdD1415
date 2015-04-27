@@ -17,8 +17,8 @@ public class Guasto {
     private int id; //PRIMARY-KEY
     private String descrizione;
 
-    public Guasto(boolean insert){
-        if(insert) {
+    public Guasto(boolean insert) {
+        if (insert) {
             String[] params = new String[5];
             params[0] = TABLE_GUASTO;
             params[1] = " DEFAULT ";
@@ -38,9 +38,9 @@ public class Guasto {
         String[] params = new String[5];
         params[0] = TABLE_GUASTO;
         params[1] = nome_attributo;
-        params[2] = "'"+nuovo_valore+"'";
+        params[2] = "'" + nuovo_valore + "'";
         params[3] = GUASTO_PK_ID;
-        params[4] = ""+this.id;
+        params[4] = "" + this.id;
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -48,9 +48,9 @@ public class Guasto {
         String[] params = new String[5];
         params[0] = TABLE_GUASTO;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = GUASTO_PK_ID;
-        params[4] = ""+this.id;
+        params[4] = "" + this.id;
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -64,14 +64,14 @@ public class Guasto {
 
     public void setId(int id, boolean update) {
         this.id = id;
-        if(update) {
+        if (update) {
             updateValueInDatabase(id, GUASTO_PK_ID);
         }
     }
 
     public void setDescrizione(String descrizione, boolean update) {
         this.descrizione = descrizione;
-        if(update) {
+        if (update) {
             updateValueInDatabase(descrizione, GUASTO_DESCRIZIONE);
         }
     }

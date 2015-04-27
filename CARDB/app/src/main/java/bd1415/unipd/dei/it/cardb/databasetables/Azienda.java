@@ -14,17 +14,17 @@ public class Azienda {
     public static final String AZIENDA_INDIRIZZO = "indirizzo";
 
     public static final String AZIENDA_COLUMS = "(" + AZIENDA_PK_PIVA + ", "
-                                                + AZIENDA_NOME + ", "
-                                                + AZIENDA_TELEFONO + ", "
-                                                + AZIENDA_INDIRIZZO + ")";
+            + AZIENDA_NOME + ", "
+            + AZIENDA_TELEFONO + ", "
+            + AZIENDA_INDIRIZZO + ")";
 
     private String piva; //PRIMARY-KEY
     private String nome;
     private String telefono;
     private AddressType indirizzo;
 
-    public Azienda(String piva, boolean insert){
-        if(insert) {
+    public Azienda(String piva, boolean insert) {
+        if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_AZIENDA;
             params[1] = "(" + AZIENDA_PK_PIVA + ")";
@@ -35,7 +35,7 @@ public class Azienda {
 
         this.piva = piva;
 
-        if(insert) {
+        if (insert) {
             while (!Util.isSet()) ;
             Util.setToNull();
         }
@@ -45,9 +45,9 @@ public class Azienda {
         String[] params = new String[5];
         params[0] = TABLE_AZIENDA;
         params[1] = nome_attributo;
-        params[2] = "'"+nuovo_valore+"'";
+        params[2] = "'" + nuovo_valore + "'";
         params[3] = AZIENDA_PK_PIVA;
-        params[4] = "'"+this.piva+"'";
+        params[4] = "'" + this.piva + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -55,20 +55,20 @@ public class Azienda {
         String[] params = new String[5];
         params[0] = TABLE_AZIENDA;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = AZIENDA_PK_PIVA;
         params[4] = "'" + this.piva + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
-    public void updateValueInDatabase(AddressType nuovo_valore, String nome_attributo){
+    public void updateValueInDatabase(AddressType nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
         params[0] = TABLE_AZIENDA;
         params[1] = nome_attributo;
         params[2] = "ROW('" + nuovo_valore.indirizzo + "', '" + nuovo_valore.numero_civico
                 + "', '" + nuovo_valore.città + "', '" + nuovo_valore.provincia + "')";
         params[3] = AZIENDA_PK_PIVA;
-        params[4] = "'"+this.piva+"'";
+        params[4] = "'" + this.piva + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -90,28 +90,28 @@ public class Azienda {
 
     public void setPiva(String piva, boolean update) {
         this.piva = piva;
-        if(update) {
+        if (update) {
             updateValueInDatabase(piva, AZIENDA_PK_PIVA);
         }
     }
 
     public void setNome(String nome, boolean update) {
         this.nome = nome;
-        if(update) {
+        if (update) {
             updateValueInDatabase(nome, AZIENDA_NOME);
         }
     }
 
     public void setTelefono(String telefono, boolean update) {
         this.telefono = telefono;
-        if(update) {
+        if (update) {
             updateValueInDatabase(telefono, AZIENDA_TELEFONO);
         }
     }
 
     public void setIndirizzo(AddressType indirizzo, boolean update) {
         this.indirizzo = indirizzo;
-        if(update) {
+        if (update) {
             updateValueInDatabase(indirizzo, AZIENDA_INDIRIZZO);
         }
     }

@@ -25,7 +25,7 @@ public class ClientiArrayAdapter extends ArrayAdapter<Privato> {
     }
 
 
-    private class ViewHolder{
+    private class ViewHolder {
         TextView titleText;
     }
 
@@ -38,7 +38,7 @@ public class ClientiArrayAdapter extends ArrayAdapter<Privato> {
         if (convertView == null) {
             viewToUse = mInflater.inflate(R.layout.cliente_item, null);
             holder = new ViewHolder();
-            holder.titleText = (TextView)viewToUse.findViewById(R.id.cliente_name);
+            holder.titleText = (TextView) viewToUse.findViewById(R.id.cliente_name);
             viewToUse.setTag(holder);
         } else {
             viewToUse = convertView;

@@ -39,11 +39,11 @@ public class Ordine {
         }
     }
 
-        public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
+    public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
         params[0] = TABLE_ORDINE;
         params[1] = nome_attributo;
-        params[2] = "'"+nuovo_valore+"'";
+        params[2] = "'" + nuovo_valore + "'";
         params[3] = "(" + ORDINE_PK_DATA_OR + ", " + ORDINE_PK_FORNITORE + ")";
         params[4] = "('" + this.data_or + "', '" + this.fornitore + "')";
         new UpdateValueInDataBase().execute(params);
@@ -53,7 +53,7 @@ public class Ordine {
         String[] params = new String[5];
         params[0] = TABLE_ORDINE;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = "(" + ORDINE_PK_DATA_OR + ", " + ORDINE_PK_FORNITORE + ")";
         params[4] = "('" + this.data_or + "', '" + this.fornitore + "')";
         new UpdateValueInDataBase().execute(params);

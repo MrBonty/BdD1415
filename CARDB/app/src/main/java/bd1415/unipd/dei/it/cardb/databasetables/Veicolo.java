@@ -29,10 +29,11 @@ public class Veicolo {
     private String modello_cod_prod; //FOREING KEY
     private String modello_marca; //FOREING KEY
 
-    public Veicolo() {}
+    public Veicolo() {
+    }
 
-    public Veicolo(String numero_telaio, String modello_cod_prod, String modello_marca, boolean insert){
-        if (insert){
+    public Veicolo(String numero_telaio, String modello_cod_prod, String modello_marca, boolean insert) {
+        if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_VEICOLO;
             params[1] = "(" + VEICOLO_PK_NUMERO_TELAIO + ", " + VEICOLO_MODELLO_COD_PROD + ", " + VEICOLO_MODELLO_MARCA + ")";
@@ -45,7 +46,7 @@ public class Veicolo {
         this.modello_cod_prod = modello_cod_prod;
         this.modello_marca = modello_marca;
 
-        if (insert){
+        if (insert) {
             while (!Util.isSet()) ;
             Util.setToNull();
         }
@@ -55,9 +56,9 @@ public class Veicolo {
         String[] params = new String[5];
         params[0] = TABLE_VEICOLO;
         params[1] = nome_attributo;
-        params[2] = "'"+nuovo_valore+"'";
+        params[2] = "'" + nuovo_valore + "'";
         params[3] = VEICOLO_PK_NUMERO_TELAIO;
-        params[4] = "'"+this.numero_telaio+"'";
+        params[4] = "'" + this.numero_telaio + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -67,7 +68,7 @@ public class Veicolo {
 
     public void setNumero_telaio(String numero_telaio, boolean update) {
         this.numero_telaio = numero_telaio;
-        if(update){
+        if (update) {
             updateValueInDataBase(numero_telaio, VEICOLO_PK_NUMERO_TELAIO);
         }
     }
@@ -78,7 +79,7 @@ public class Veicolo {
 
     public void setTarga(String targa, boolean update) {
         this.targa = targa;
-        if (update){
+        if (update) {
             updateValueInDataBase(targa, VEICOLO_TARGA);
         }
     }
@@ -89,7 +90,7 @@ public class Veicolo {
 
     public void setAzienda(String azienda, boolean update) {
         this.azienda = azienda;
-        if (update){
+        if (update) {
             updateValueInDataBase(azienda, VEICOLO_AZIENDA);
         }
     }
@@ -100,7 +101,7 @@ public class Veicolo {
 
     public void setPrivato(String privato, boolean update) {
         this.privato = privato;
-        if (update){
+        if (update) {
             updateValueInDataBase(privato, VEICOLO_PRIVATO);
         }
     }
@@ -111,7 +112,7 @@ public class Veicolo {
 
     public void setModello_cod_prod(String modello_cod_prod, boolean update) {
         this.modello_cod_prod = modello_cod_prod;
-        if (update){
+        if (update) {
             updateValueInDataBase(modello_cod_prod, VEICOLO_MODELLO_COD_PROD);
         }
     }
@@ -122,7 +123,7 @@ public class Veicolo {
 
     public void setModello_marca(String modello_marca, boolean update) {
         this.modello_marca = modello_marca;
-        if (update){
+        if (update) {
             updateValueInDataBase(modello_marca, VEICOLO_MODELLO_MARCA);
         }
     }

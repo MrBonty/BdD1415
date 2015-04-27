@@ -16,7 +16,6 @@ public class InsertAziendaInDataBase extends AsyncTask<String, Void, String> {
     private Toast toast;
 
 
-
     private String piva = null; //PRIMARY-KEY
     private String nome = null;
     private String telefono = null;

@@ -16,11 +16,11 @@ public class Privato {
     public static final String PRIVATO_TELEFONO = "telefono";
     public static final String PRIVATO_INDIRIZZO = "indirizzo";
 
-    public static final String PRIVATO_COLUMS = "(" + PRIVATO_PK_CF  + ", "
+    public static final String PRIVATO_COLUMS = "(" + PRIVATO_PK_CF + ", "
             + PRIVATO_NOME + ", "
             + PRIVATO_COGNOME + ", "
             + PRIVATO_TELEFONO + ", "
-            + PRIVATO_INDIRIZZO  + ")";
+            + PRIVATO_INDIRIZZO + ")";
 
     private String cf; //PRIMARY-KEY
     private String nome;
@@ -28,9 +28,10 @@ public class Privato {
     private String telefono;
     private AddressType indirizzo;
 
-    public Privato() {}
+    public Privato() {
+    }
 
-    public Privato(String cf, boolean insert){
+    public Privato(String cf, boolean insert) {
         if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_PRIVATO;
@@ -52,9 +53,9 @@ public class Privato {
         String[] params = new String[5];
         params[0] = TABLE_PRIVATO;
         params[1] = nome_attributo;
-        params[2] = "'"+nuovo_valore+"'";
+        params[2] = "'" + nuovo_valore + "'";
         params[3] = PRIVATO_PK_CF;
-        params[4] = "'"+this.cf+"'";
+        params[4] = "'" + this.cf + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -62,20 +63,20 @@ public class Privato {
         String[] params = new String[5];
         params[0] = TABLE_PRIVATO;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = PRIVATO_PK_CF;
-        params[4] = "'"+this.cf+"'";
+        params[4] = "'" + this.cf + "'";
         new UpdateValueInDataBase().execute(params);
     }
 
-    public void updateValueInDatabase(AddressType nuovo_valore, String nome_attributo){
+    public void updateValueInDatabase(AddressType nuovo_valore, String nome_attributo) {
         String[] params = new String[5];
         params[0] = TABLE_PRIVATO;
         params[1] = nome_attributo;
         params[2] = "ROW('" + nuovo_valore.indirizzo + "', '" + nuovo_valore.numero_civico
                 + "', '" + nuovo_valore.città + "', '" + nuovo_valore.provincia + "')";
         params[3] = PRIVATO_PK_CF;
-        params[4] = "'"+this.cf+"'";
+        params[4] = "'" + this.cf + "'";
         new UpdateValueInDataBase().execute(params);
     }
 

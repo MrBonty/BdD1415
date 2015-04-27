@@ -27,9 +27,9 @@ public class InsertInDataBase extends AsyncTask<String, Void, String> {
                 ResultSet rs = st.executeQuery("INSERT INTO main." + params[0] + params[1] + " VALUES "
                         + params[2] + params[3]);
                 int parLen = params.length;
-                while (rs.next() && parLen> MIN_PARAM_LENGTH && params[MIN_PARAM_LENGTH] != null) {
-                    for(int i = MIN_PARAM_LENGTH; i< parLen; i++) {
-                        s = s + rs.getString(params[i])+ Util.DIVISOR;
+                while (rs.next() && parLen > MIN_PARAM_LENGTH && params[MIN_PARAM_LENGTH] != null) {
+                    for (int i = MIN_PARAM_LENGTH; i < parLen; i++) {
+                        s = s + rs.getString(params[i]) + Util.DIVISOR;
                     }
                 }
                 if (rs != null) {

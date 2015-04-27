@@ -20,8 +20,8 @@ public class Usato {
     private int pezzo; //PRIMARY-KEY
     private int numero_pezzi;
 
-    public Usato(int lavoro, int pezzo, boolean insert){
-        if (insert){
+    public Usato(int lavoro, int pezzo, boolean insert) {
+        if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_USATO;
             params[1] = "(" + USATO_PK_LAVORO + ", " + USATO_PK_PEZZO + ")";
@@ -33,7 +33,7 @@ public class Usato {
         this.lavoro = lavoro;
         this.pezzo = pezzo;
 
-        if (insert){
+        if (insert) {
             while (!Util.isSet()) ;
             Util.setToNull();
         }
@@ -43,9 +43,9 @@ public class Usato {
         String[] params = new String[5];
         params[0] = TABLE_USATO;
         params[1] = nome_attributo;
-        params[2] = ""+nuovo_valore;
+        params[2] = "" + nuovo_valore;
         params[3] = "(" + USATO_PK_LAVORO + ", " + USATO_PK_PEZZO + ")";
-        params[4] = "("+this.lavoro + ", " + this.pezzo + ")";
+        params[4] = "(" + this.lavoro + ", " + this.pezzo + ")";
         new UpdateValueInDataBase().execute(params);
     }
 
@@ -63,25 +63,24 @@ public class Usato {
 
     public void setNumero_pezzi(int numero_pezzi, boolean upgrade) {
         this.numero_pezzi = numero_pezzi;
-        if (upgrade){
+        if (upgrade) {
             updateValueInDatabase(numero_pezzi, USATO_NUMERO_PEZZI);
         }
     }
 
     public void setPezzo(int pezzo, boolean update) {
         this.pezzo = pezzo;
-        if (update){
+        if (update) {
             updateValueInDatabase(pezzo, USATO_PK_PEZZO);
         }
     }
 
     public void setLavoro(int lavoro, boolean update) {
         this.lavoro = lavoro;
-        if (update){
+        if (update) {
             updateValueInDatabase(lavoro, USATO_PK_LAVORO);
         }
     }
-
 
 
 }
