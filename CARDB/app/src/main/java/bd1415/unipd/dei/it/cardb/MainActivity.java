@@ -26,7 +26,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
-import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 public class MainActivity extends ActionBarActivity implements LavorazioniMenuFragment.OnMenufragListener,
         PagamentiMenuFragment.OnMenufragListener, GestioneMenuFragment.OnMenufragListener {
@@ -205,6 +204,9 @@ public class MainActivity extends ActionBarActivity implements LavorazioniMenuFr
 
             @Override
             public void onGroupExpand(int groupPosition) {
+                if (groupPosition == 1) {
+                    leftDrawerList.collapseGroup(1);
+                }
                 Toast.makeText(getApplicationContext(),
                         listDataHeader.get(groupPosition) + " Expanded",
                         Toast.LENGTH_SHORT).show();

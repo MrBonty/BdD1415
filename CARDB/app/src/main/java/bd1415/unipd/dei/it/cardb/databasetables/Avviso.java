@@ -19,9 +19,9 @@ public class Avviso {
 
     private int manutenzione; //PRIMARY-KEY //FOREING KEY
     private String veicolo; //PRIMARY-KEY //FOREING KEY
-    private String data_possima;
+    private String data_prossima;
 
-    public Avviso(int manutenzione, String veicolo, boolean insert) {
+    public Avviso(String veicolo, boolean insert) {
         if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_AVVISO;
@@ -30,7 +30,6 @@ public class Avviso {
             params[3] = ";";
             new InsertInDataBase().execute(params);
         }
-        this.manutenzione = manutenzione;
         this.veicolo = veicolo;
         if (insert) {
             while (!Util.isSet()) ;
@@ -80,12 +79,12 @@ public class Avviso {
         }
     }
 
-    public String getData_possima() {
-        return data_possima;
+    public String getData_prossima() {
+        return data_prossima;
     }
 
-    public void setData_possima(String data_possima, boolean update) {
-        this.data_possima = data_possima;
+    public void setData_prossima(String data_possima, boolean update) {
+        this.data_prossima = data_possima;
         if (update) {
             updateValueInDatabase(data_possima, AVVISO_DATA_PROSSIMA);
         }
