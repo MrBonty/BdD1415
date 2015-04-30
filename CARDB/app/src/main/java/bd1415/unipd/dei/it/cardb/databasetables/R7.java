@@ -13,8 +13,8 @@ public class R7 {
 
     public static final String R7_COLUMS = "(" + R7_PK_LAVORO + ", " + R7_PK_GUASTO + ")";
 
-    private int lavoro; //PRIMARY-KEY
-    private int guasto; //PRIMARY-KEY
+    private int lavoro; //PRIMARY-KEY //FOREIGN-KEY
+    private int guasto; //PRIMARY-KEY //FOREIGN-KEY
 
     public R7(int lavoro, int guasto, boolean insert) {
         if (insert) {

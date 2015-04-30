@@ -13,8 +13,8 @@ public class R8 {
 
     public static final String R8_COLUMS = "(" + R8_PK_LAVORO + ", " + R8_PK_MANUTENZIONE + ")";
 
-    private int lavoro; //PRIMARY-KEY
-    private int manutenzione; //PRIMARY-KEY
+    private int lavoro; //PRIMARY-KEY  //FOREIGN-KEY
+    private int manutenzione; //PRIMARY-KEY  /FOREIGN-KEY
 
     public R8(int lavoro, int manutenzione, boolean insert) {
         if (insert) {

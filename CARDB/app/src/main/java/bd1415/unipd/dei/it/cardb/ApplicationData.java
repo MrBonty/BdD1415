@@ -47,10 +47,6 @@ public class ApplicationData {
     public static ArrayList<Usato> usato = new ArrayList<>();
     public static ArrayList<Fattura> fatture = new ArrayList<>();
 
-
-
-
-
     public static int posizioneCorrente;
 
 }

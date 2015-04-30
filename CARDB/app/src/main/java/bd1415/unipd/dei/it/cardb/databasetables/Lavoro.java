@@ -26,6 +26,7 @@ public class Lavoro {
     private String veicolo; //FOREING KEY
     private int fattura;
 
+    //TODO -- CHECK IT
     public Lavoro(String veicolo, boolean insert) {
         if (insert) {
             String[] params = new String[5];

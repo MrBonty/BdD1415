@@ -16,8 +16,8 @@ public class Usato {
             + USATO_PK_PEZZO + ", "
             + USATO_NUMERO_PEZZI + ")";
 
-    private int lavoro; //PRIMARY-KEY
-    private int pezzo; //PRIMARY-KEY
+    private int lavoro; //PRIMARY-KEY  //FOREIGN-KEY
+    private int pezzo; //PRIMARY-KEY  //FOREIGN-KEY
     private int numero_pezzi;
 
     public Usato(int lavoro, int pezzo, boolean insert) {

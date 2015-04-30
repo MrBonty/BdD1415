@@ -40,6 +40,7 @@ public class Personale {
     private int responsabile = 0;
     private int edificio; //FOREING KEY
 
+    //TODO -- CHECK IT
     public Personale(String cf, int edificio, boolean insert) {
         if (insert) {
             String[] params = new String[4];

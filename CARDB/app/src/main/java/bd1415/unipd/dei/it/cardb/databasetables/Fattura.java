@@ -20,6 +20,7 @@ public class Fattura {
 
     private int id; //PRIMARY-KEY
     private int pagato = 0;
+    //TODO -- CHECK IT
     private String azienda; //FORING KEY but not null
     private String privato; //FORING KEY but not null
 
