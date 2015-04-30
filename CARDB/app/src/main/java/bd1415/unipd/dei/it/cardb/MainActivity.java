@@ -94,8 +94,8 @@ public class MainActivity extends ActionBarActivity implements LavorazioniMenuFr
                 .withMargins(0, 0, 16, 16).create();
         intent = getIntent();
         Privato prv = new Privato();
-        prv.setCf("7378", false);
-        ApplicationData.clienti.add(prv);
+        prv.setNome("7378", false);
+        ApplicationData.privati.add(prv);
 
 
     }

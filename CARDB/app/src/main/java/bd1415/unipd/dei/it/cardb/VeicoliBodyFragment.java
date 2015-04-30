@@ -8,9 +8,20 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
+import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
+import bd1415.unipd.dei.it.cardb.databasetables.Modello;
+import bd1415.unipd.dei.it.cardb.databasetables.Privato;
+import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
+
 public class VeicoliBodyFragment extends Fragment {
 
     private ViewHolder viewHolder;
+
+    private int mPos = -1;
+    private boolean mIsVis = false;
 
     //onCreate
     @Override
@@ -27,6 +38,12 @@ public class VeicoliBodyFragment extends Fragment {
     //onCreateView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        if (savedInstanceState != null) {
+            mPos = savedInstanceState.getInt(ClientiMenuFragment.POS);
+            mIsVis = savedInstanceState.getBoolean(ClientiMenuFragment.ISVIS);
+        }
+
         View view = inflater.inflate(R.layout.veicoli_body_fragment, container, false);
 
         viewHolder = null;
@@ -44,6 +61,53 @@ public class VeicoliBodyFragment extends Fragment {
         }
 
 
+        if (mIsVis) {
+
+            Veicolo cl = ApplicationData.veicoli.get(mPos);
+
+            viewHolder.targa.setText(cl.getTarga());
+            viewHolder.numero_telaio.setText(cl.getNumero_telaio());
+
+            if (cl.getAzienda() != null && !cl.getAzienda().equals("")) {
+                for (int i = 0; i < ApplicationData.aziende.size(); i++) {
+                    Azienda tmp = ApplicationData.aziende.get(i);
+                    if (tmp.getPiva().equals(cl.getAzienda())) {
+                        viewHolder.proprietario.setText(tmp.getNome());
+                        break;
+                    }
+                }
+            } else {
+                for (int i = 0; i < ApplicationData.privati.size(); i++) {
+                    Privato tmp = ApplicationData.privati.get(i);
+                    if (tmp.getCf().equals(cl.getPrivato())) {
+                        viewHolder.proprietario.setText(tmp.getNome() + " " + tmp.getCognome());
+                        break;
+                    }
+                }
+            }
+            Modello tmp = null;
+            for (int i = 0; i < ApplicationData.modelli.size(); i++) {
+                tmp = ApplicationData.modelli.get(i);
+                if (tmp.getCodice_produzione().equals(cl.getModello_cod_prod()) &&
+                        tmp.getMarca().equals(cl.getModello_marca())) {
+                    break;
+                }
+            }
+            viewHolder.marca.setText(tmp.getMarca());
+            viewHolder.anno_modello.setText(tmp.getAnno());
+            viewHolder.modello.setText(tmp.getNome());
+
+
+            ArrayList<Lavoro> tmp1 = new ArrayList<>();
+            for (int i = 0; i < ApplicationData.lavori.size(); i++) {
+                Lavoro lv = ApplicationData.lavori.get(i);
+                if (lv.getVeicolo().equals(cl.getNumero_telaio())) {
+                    tmp1.add(lv);
+                }
+            }
+
+            viewHolder.lavorazioni.setAdapter(new LavoriArrayAdapter(MainActivity.ctx, tmp1));
+        }
         return view;
     }
 
@@ -56,4 +120,5 @@ public class VeicoliBodyFragment extends Fragment {
         public TextView anno_modello;
         public ListView lavorazioni;
     }
+
 }
