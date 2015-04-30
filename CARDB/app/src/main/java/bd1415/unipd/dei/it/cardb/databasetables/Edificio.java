@@ -32,15 +32,7 @@ public class Edificio {
             params[4] = EDIFICIO_PK_ID;
             new InsertInDataBase().execute(params);
         }
-
         this.tipologia = tipologia;
-
-        if (insert) {
-            while (!Util.isSet()) ;
-            String[] tmp = Util.getOutput();
-            id = Integer.parseInt(tmp[0]);
-            Util.setToNull();
-        }
     }
 
 

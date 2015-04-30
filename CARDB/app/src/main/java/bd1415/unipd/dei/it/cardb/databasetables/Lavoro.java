@@ -1,5 +1,7 @@
 package bd1415.unipd.dei.it.cardb.databasetables;
 
+import java.util.concurrent.ExecutionException;
+
 import bd1415.unipd.dei.it.cardb.InsertInDataBase;
 import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
 import bd1415.unipd.dei.it.cardb.Util;
@@ -35,17 +37,15 @@ public class Lavoro {
             params[2] = "('" + veicolo + "')";
             params[3] = " RETURNING " + LAVORO_PK_ID + ";";
             params[4] = LAVORO_PK_ID;
-            new InsertInDataBase().execute(params);
+            try {
+                this.id = Integer.parseInt(Util.process(new InsertInDataBase().execute(params).get())[0]);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
         }
-
         this.veicolo = veicolo;
-
-        if (insert) {
-            while (!Util.isSet()) ;
-            String[] tmp = Util.getOutput();
-            id = Integer.parseInt(tmp[0]);
-            Util.setToNull();
-        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {

@@ -1,5 +1,7 @@
 package bd1415.unipd.dei.it.cardb.databasetables;
 
+import java.util.concurrent.ExecutionException;
+
 import bd1415.unipd.dei.it.cardb.InsertInDataBase;
 import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
 import bd1415.unipd.dei.it.cardb.Util;
@@ -32,13 +34,13 @@ public class Fattura {
             params[2] = "";
             params[3] = " RETURNING " + FATTURA_PK_ID + ";";
             params[4] = FATTURA_PK_ID;
-            new InsertInDataBase().execute(params);
-
-
-            while (!Util.isSet()) ;
-            String[] tmp = Util.getOutput();
-            id = Integer.parseInt(tmp[0]);
-            Util.setToNull();
+            try {
+                this.id = Integer.parseInt(Util.process(new InsertInDataBase().execute(params).get())[0]);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -35,15 +35,9 @@ public class Contiene {
             params[3] = ";";
             new InsertInDataBase().execute(params);
         }
-
         this.ordine_data = ordine_data;
         this.ordine_fornitore = ordine_fornitore;
         this.pezzo = pezzo;
-
-        if (insert) {
-            while (!Util.isSet()) ;
-            Util.setToNull();
-        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {

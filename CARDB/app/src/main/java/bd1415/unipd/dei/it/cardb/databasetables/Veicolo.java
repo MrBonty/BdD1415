@@ -39,15 +39,9 @@ public class Veicolo {
             params[3] = ";";
             new InsertInDataBase().execute(params);
         }
-
         this.numero_telaio = numero_telaio;
         this.modello_cod_prod = modello_cod_prod;
         this.modello_marca = modello_marca;
-
-        if (insert) {
-            while (!Util.isSet()) ;
-            Util.setToNull();
-        }
     }
 
     public void updateValueInDataBase(String nuovo_valore, String nome_attributo) {

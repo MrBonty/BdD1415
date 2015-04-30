@@ -2,7 +2,6 @@ package bd1415.unipd.dei.it.cardb.databasetables;
 
 import bd1415.unipd.dei.it.cardb.InsertInDataBase;
 import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
-import bd1415.unipd.dei.it.cardb.Util;
 
 public class Lavora_a {
 
@@ -32,14 +31,8 @@ public class Lavora_a {
             params[3] = ";";
             new InsertInDataBase().execute(params);
         }
-
         this.lavoro = lavoro;
         this.personale = personale;
-
-        if (insert) {
-            while (!Util.isSet()) ;
-            Util.setToNull();
-        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {

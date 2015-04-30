@@ -29,15 +29,9 @@ public class Compone {
             params[3] = ";";
             new InsertInDataBase().execute(params);
         }
-
         this.modello_cod_prod = modello_cod_prod;
         this.modello_marca = modello_marca;
         this.pezzo = pezzo;
-
-        if (insert) {
-            while (!Util.isSet()) ;
-            Util.setToNull();
-        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {

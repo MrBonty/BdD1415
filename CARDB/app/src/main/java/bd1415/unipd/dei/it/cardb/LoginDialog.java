@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.concurrent.ExecutionException;
+
 public class LoginDialog {
 
     private Activity mAct;
@@ -51,7 +53,13 @@ public class LoginDialog {
                 if (!s.equals("") && !(s == null) && !ss.equals("") && !(ss == null)) {
                     MainActivity.params[0] = s;
                     MainActivity.params[1] = ss;
-                    new ConnectionWithDataBase().execute(MainActivity.params);
+                    try {
+                        Toast.makeText(context, "sono un pirla" + new ConnectionWithDataBase().execute(MainActivity.params).get(), Toast.LENGTH_LONG).show();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
                     dialog.dismiss();
                 } else
                     Toast.makeText(context, "Inserire username e password", Toast.LENGTH_SHORT)
