@@ -45,33 +45,34 @@ public class ClientiBodyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        /*
-        if (savedInstanceState != null) {
-            mPos = savedInstanceState.getInt(ClientiMenuFragment.POS);
-            mIsVis = savedInstanceState.getBoolean(ClientiMenuFragment.ISVIS);
-            mIsPrivate = savedInstanceState.getBoolean(ClientiMenuFragment.ISP);
-        }*/
+        Bundle args = this.getArguments();
+
+        if (args != null) {
+            mPos = args.getInt(ClientiMenuFragment.POS);
+            mIsVis = args.getBoolean(ClientiMenuFragment.ISVIS);
+            mIsPrivate = args.getBoolean(ClientiMenuFragment.ISP);
+        }
 
         View view = inflater.inflate(R.layout.clienti_body_fragment, container, false);
 
         viewHolder = new ViewHolder();
-            if (mIsVis) {
-                mImage = (ImageView) view.findViewById(R.id.image_clienti);
-                mImage.setVisibility(View.GONE);
-                mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
-                mBody.setVisibility(View.VISIBLE);
-            }
-            viewHolder.nome = (TextView) view.findViewById(R.id.cliente_nome_data);
-            viewHolder.cognomeLayout = (LinearLayout) view.findViewById(R.id.cliete_cognome_layout);
-            viewHolder.cognome = (TextView) view.findViewById(R.id.cliente_cognome_data);
-            viewHolder.pkTag = (TextView) view.findViewById(R.id.cliente_pk_tag);
-            viewHolder.pk = (TextView) view.findViewById(R.id.cliente_nome_tag);
-            viewHolder.telefono = (TextView) view.findViewById(R.id.cliente_telefono_data);
-            viewHolder.citta = (TextView) view.findViewById(R.id.cliente_citta_data);
-            viewHolder.provincia = (TextView) view.findViewById(R.id.cliente_provincia_data);
-            viewHolder.indirizzo = (TextView) view.findViewById(R.id.cliente_indirizzo_data);
-            viewHolder.veicoli = (ListView) view.findViewById(android.R.id.list);
-            view.setTag(viewHolder);
+
+        if (mIsVis) {
+            mImage = (ImageView) view.findViewById(R.id.image_clienti);
+            mImage.setVisibility(View.GONE);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            mBody.setVisibility(View.VISIBLE);
+        }
+        viewHolder.nome = (TextView) view.findViewById(R.id.cliente_nome_data);
+        viewHolder.cognomeLayout = (LinearLayout) view.findViewById(R.id.cliete_cognome_layout);
+        viewHolder.cognome = (TextView) view.findViewById(R.id.cliente_cognome_data);
+        viewHolder.pkTag = (TextView) view.findViewById(R.id.cliente_pk_tag);
+        viewHolder.pk = (TextView) view.findViewById(R.id.cliente_pk_data);
+        viewHolder.telefono = (TextView) view.findViewById(R.id.cliente_telefono_data);
+        viewHolder.citta = (TextView) view.findViewById(R.id.cliente_citta_data);
+        viewHolder.provincia = (TextView) view.findViewById(R.id.cliente_provincia_data);
+        viewHolder.indirizzo = (TextView) view.findViewById(R.id.cliente_indirizzo_data);
+        viewHolder.veicoli = (ListView) view.findViewById(android.R.id.list);
 
         if (mIsVis) {
             if (mIsPrivate) {
@@ -85,11 +86,13 @@ public class ClientiBodyFragment extends Fragment {
                 viewHolder.pk.setText(cl.getCf());
 
                 viewHolder.telefono.setText(cl.getTelefono());
+
                 if(cl.getIndirizzo() != null) {
                     viewHolder.indirizzo.setText(cl.getIndirizzo().indirizzo + " " + cl.getIndirizzo().numero_civico);
                     viewHolder.citta.setText(cl.getIndirizzo().città);
                     viewHolder.provincia.setText(cl.getIndirizzo().provincia);
                 }
+
                 ArrayList<Veicolo> tmp = new ArrayList<>();
                 for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
                     Veicolo vl = ApplicationData.veicoli.get(i);
@@ -127,15 +130,6 @@ public class ClientiBodyFragment extends Fragment {
             }
         }
         return view;
-    }
-
-    public static ClientiBodyFragment newIstance(boolean isPrivate, boolean isVis, int pos){
-        ClientiBodyFragment tmp = new ClientiBodyFragment();
-        tmp.mIsPrivate = isPrivate;
-        tmp.mIsVis = isVis;
-        tmp.mPos = pos;
-
-        return tmp;
     }
 
     private class ViewHolder {

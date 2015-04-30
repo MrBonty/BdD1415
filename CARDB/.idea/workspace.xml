@@ -55,49 +55,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LavoriArrayAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/LavoriArrayAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188">
-              <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="veicolo_item.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/veicolo_item.xml">
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="572">
-              <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientiMenuFragment.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ClientiMenuFragment.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ClientiMenuFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="528" max-vertical-offset="1518">
-              <caret line="44" column="40" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.44" vertical-offset="440" max-vertical-offset="1518">
+              <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
               <folding>
-                <element signature="e#1773#1815#0" expanded="true" />
-                <element signature="e#1979#2021#0" expanded="true" />
+                <element signature="e#1717#1759#0" expanded="true" />
+                <element signature="e#1923#1965#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientiArrayAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ClientiArrayAdapter.java">
+      <file leaf-file-name="ClientiBodyFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ClientiBodyFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1232">
-              <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1174" max-vertical-offset="3014">
+              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+              <folding>
+                <element signature="e#3123#3146#0" expanded="true" />
+                <element signature="e#4287#4312#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VeicoliMenuFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/VeicoliMenuFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="778" max-vertical-offset="1694">
+              <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -105,15 +93,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientiBodyFragment.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ClientiBodyFragment.java">
+      <file leaf-file-name="VeicoliBodyFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/VeicoliBodyFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33647057" vertical-offset="1364" max-vertical-offset="3146">
-              <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
-              <folding>
-                <element signature="e#3249#3272#0" expanded="true" />
-                <element signature="e#4411#4436#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="2684">
+              <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -124,26 +109,16 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.612904" vertical-offset="528" max-vertical-offset="4576">
-              <caret line="46" column="60" selection-start-line="46" selection-start-column="60" selection-end-line="46" selection-end-column="60" />
+            <state vertical-scroll-proportion="-7.096774" vertical-offset="0" max-vertical-offset="4598">
+              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
               <folding>
-                <element signature="e#1535#1561#0" expanded="true" />
-                <element signature="e#2456#2485#0" expanded="true" />
-                <element signature="e#4068#4098#0" expanded="true" />
-                <element signature="e#5177#5204#0" expanded="true" />
-                <element signature="e#6042#6073#0" expanded="true" />
-                <element signature="e#6919#6950#0" expanded="true" />
+                <element signature="e#1569#1595#0" expanded="true" />
+                <element signature="e#2490#2519#0" expanded="true" />
+                <element signature="e#4102#4132#0" expanded="true" />
+                <element signature="e#5211#5238#0" expanded="true" />
+                <element signature="e#6076#6107#0" expanded="true" />
+                <element signature="e#6953#6984#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GestioneBodyFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/GestioneBodyFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -151,8 +126,21 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="582" max-vertical-offset="6248">
-              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="6248">
+              <caret line="70" column="47" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_main.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.677419" vertical-offset="616" max-vertical-offset="3498">
+              <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -1058,15 +1046,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/LavoriArrayAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/veicolo_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/VeicoliArrayAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/VeicoliBodyFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/VeicoliMenuFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ApplicationData.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/MyListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ClientiArrayAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ClientiMenuFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/clienti_body_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ClientiBodyFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/VeicoliBodyFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/VeicoliMenuFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ClientiMenuFragment.java" />
       </list>
     </option>
   </component>
@@ -1357,7 +1345,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="c08088e1537d85f" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="kitkat" />
     <property name="FullScreen" value="false" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
@@ -1594,28 +1582,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ClientiBodyFragment.java</url>
-          <line>54</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/clienti_body_fragment.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="3648">
-          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ConnectionWithDataBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1786" max-vertical-offset="2793">
@@ -1831,17 +1801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4193548" vertical-offset="1144" max-vertical-offset="3498">
-          <caret line="54" column="55" selection-start-line="54" selection-start-column="55" selection-end-line="54" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/veicoli_body_fragment.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
@@ -1899,14 +1858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/VeicoliBodyFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2508">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/lavoro_item.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -1918,27 +1869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/veicolo_item.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="572">
-          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/LavoriArrayAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188">
-          <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/clienti_menu_fragment.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -1947,16 +1877,6 @@
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="374">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/VeicoliMenuFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.31058824" vertical-offset="726" max-vertical-offset="1804">
-          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1976,18 +1896,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/../../../Android/android-sdk/sources/android-22/android/app/Fragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="912" max-vertical-offset="6248">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/GestioneBodyFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state vertical-scroll-proportion="1.42" vertical-offset="13071" max-vertical-offset="46882">
+          <caret line="725" column="24" selection-start-line="725" selection-start-column="24" selection-end-line="725" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -2002,14 +1914,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ClientiMenuFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/GestioneBodyFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="1518">
-          <caret line="44" column="40" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.10352941" vertical-offset="0" max-vertical-offset="850">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/veicolo_item.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="572">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/LavoriArrayAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.80235296" vertical-offset="0" max-vertical-offset="1188">
+          <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
           <folding>
-            <element signature="e#1773#1815#0" expanded="true" />
-            <element signature="e#1979#2021#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="6248">
+          <caret line="70" column="47" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.677419" vertical-offset="616" max-vertical-offset="3498">
+          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2018,26 +1967,55 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.612904" vertical-offset="528" max-vertical-offset="4576">
-          <caret line="46" column="60" selection-start-line="46" selection-start-column="60" selection-end-line="46" selection-end-column="60" />
+        <state vertical-scroll-proportion="-7.096774" vertical-offset="0" max-vertical-offset="4598">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
           <folding>
-            <element signature="e#1535#1561#0" expanded="true" />
-            <element signature="e#2456#2485#0" expanded="true" />
-            <element signature="e#4068#4098#0" expanded="true" />
-            <element signature="e#5177#5204#0" expanded="true" />
-            <element signature="e#6042#6073#0" expanded="true" />
-            <element signature="e#6919#6950#0" expanded="true" />
+            <element signature="e#1569#1595#0" expanded="true" />
+            <element signature="e#2490#2519#0" expanded="true" />
+            <element signature="e#4102#4132#0" expanded="true" />
+            <element signature="e#5211#5238#0" expanded="true" />
+            <element signature="e#6076#6107#0" expanded="true" />
+            <element signature="e#6953#6984#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/VeicoliBodyFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1254" max-vertical-offset="2684">
+          <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/VeicoliMenuFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="778" max-vertical-offset="1694">
+          <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ClientiBodyFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33647057" vertical-offset="1364" max-vertical-offset="3146">
-          <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3014">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
-            <element signature="e#3249#3272#0" expanded="true" />
-            <element signature="e#4411#4436#0" expanded="true" />
+            <element signature="e#3123#3146#0" expanded="true" />
+            <element signature="e#4287#4312#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bd1415/unipd/dei/it/cardb/ClientiMenuFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44" vertical-offset="440" max-vertical-offset="1518">
+          <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+          <folding>
+            <element signature="e#1717#1759#0" expanded="true" />
+            <element signature="e#1923#1965#0" expanded="true" />
           </folding>
         </state>
       </provider>

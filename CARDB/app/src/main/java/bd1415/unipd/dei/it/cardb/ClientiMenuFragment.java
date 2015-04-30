@@ -35,18 +35,18 @@ public class ClientiMenuFragment extends ListFragment {
         super.onListItemClick(list, v, pos, id);
         if (isLarge) {
 
-            Fragment toView = ClientiBodyFragment.newIstance(true,true,pos);
-            /*
+            Fragment toView = new ClientiBodyFragment();
+
             Bundle args = new Bundle();
             args.putInt(POS, pos);
             args.putBoolean(ISVIS, true);
             args.putBoolean(ISP, true); //is private
 
-            toView.setArguments(args);*/
+            toView.setArguments(args);
 
-            mFM = MainActivity.act.getFragmentManager();
             FragmentTransaction ft = mFM.beginTransaction();
             ft.replace(R.id.clienti_body, toView);
+            ft.addToBackStack(null);
             ft.commit();
 
             resizeFragment(this, (int) getResources().getDimension(R.dimen.small));
