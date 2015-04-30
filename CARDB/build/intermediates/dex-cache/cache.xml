@@ -2,179 +2,179 @@
 <items version="2" >
 
     <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e3d791b42eaa90416cd0b2d2e608092794a3baa4">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-641a84a0847b3ac2ad99c88f13af47659c50aad9.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a08d65794b844d8e7540bf9a33859bf3b2482d7f">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-c23f09bd3f231fb378d218370a6a4fbbb729e5b5.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="4cd0b093824b3228fffc21ea369b98d0b1db6566">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-8fa0173bacb7dbafe5480925ad473a1abb4cc7ec.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-50119b5d8628868089b70105c80dadd2942b34d1.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-33756f6abd4102b347081a362edb292586cf783e.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/libs/jsch-0.1.44.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="563d2c4728da8351559154925b5903c259382c5b">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/jsch-0.1.44-2dfc2760ee08165fde4e29ef798518fcc8dde0ea.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-51e7d4b657d7c995ce545293e3c99df47bae89d3.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-c9d42b6fb0ccce32d7394a3650270daaaf8decc9.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="055783146ba9654a725442563be78cad303aad1f">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-6ac46e925a705d6d62f7c1faf047dcdc0b3133e8.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-c5876e0c51f1fccf74bd7feeebf4458f7ad68d98.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/libs/postgresql-9.4-1201.jdbc4.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="b46544ef0eaf0405504089dcc71f36e3f190ef09">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/postgresql-9.4-1201.jdbc4-55f2ca6f3ccfe80841311c4b767ae63e37f37d2b.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-a227fc8de739ecc04363ccf4429997b10ddaf1e6.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="fb04b12526b0073c7fb1ebb70c5842d82ee95596">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-23a8408cd0b619f3652831ee16e752c8e5fdf78e.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.0.0/classes.jar"
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.0.0\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="41b3870cbe5fa546d8095b5b89d42cb69f3dd175">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-c745f1c65433f806f7ff309b55329a688e6b731c.jar" />
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-a38b273b24f0b9cc91b28a89398518ae83d3b3d1.jar" />
     </item>
     <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.0.0/classes.jar"
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.0.0\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="1c5a76debf0c2857ccad422c4a80ed785982f8df">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-faab0f65a9f694e406668729ef2d4f8ed386a357.jar" />
+        sha1="e3d791b42eaa90416cd0b2d2e608092794a3baa4">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-6c3c8f0b58d9eb615c4ee3bcfaa059151a423c62.jar" />
     </item>
     <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-80739fc03d0d722ab626fb5da86510079c336ae2.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a96b762bde4139de855735f175ec4d17dca55a6d">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-5218ff7f9604ea709db72e15d55aa9bdfb45d22c.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-69d1c73b5fabd955d94bed7278c689b45b844155.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c976518693e89ad44fbfccfc654941eaec198d08">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-d94da20180871bc047d3f9444519af56e042973c.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-56302f1be9779ec42eeee8a673fb3be081025f07.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-7e167a8d5b5b167a6d8e39224b08207e5ba21279.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-7bea83fc2c2b060086f88395fdfb868023269d9b.jar" />
-    </item>
-    <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.0.0/classes.jar"
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.0.0\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="ef5f051e7308febe289dc93c67c5f32785b4260a">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-a5e329962468d64149e224b83e05ca98fb6149a1.jar" />
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-612a91c5395da709ec61a56cc5c45f04a5cd1c1a.jar" />
     </item>
     <item
-        jar="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-316b18c394fad7a377b839b9db1197ad246b1a42.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c976518693e89ad44fbfccfc654941eaec198d08">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-13162b21bbffb2631b70284af91b6a53af8977ea.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-15e84318730406a6c4022b5a35514a8f1082fc73.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-70aa3108449f8fc826e2255bc1eb0d5b854019f8.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="fb04b12526b0073c7fb1ebb70c5842d82ee95596">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-3c86c7a89a1e1a650149731e5e243abee8100f6c.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/classes-907fb318b617a3c60df118cbb8bc6268e0c0b9f2.jar" />
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-e8e37da1331bef2fb7f1a796bd1be9b7b9b159ca.jar" />
     </item>
     <item
-        jar="/home/enrico/android-sdks/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\libs\postgresql-9.4-1201.jdbc4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b46544ef0eaf0405504089dcc71f36e3f190ef09">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\postgresql-9.4-1201.jdbc4-c8737c147afc7e36f06366aa641978f6d5772ba2.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\libs\jsch-0.1.44.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="563d2c4728da8351559154925b5903c259382c5b">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\jsch-0.1.44-c15fd57b73f191b1420c1c2add364b94f5c028ab.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="055783146ba9654a725442563be78cad303aad1f">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-f05d10ce51e63d07d7d234bf45a8e0dac4b720ae.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-42671b8fc2319507e57cb03b35b4ef7ce785332c.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-ce044c6ba3530575d68740396dd50c3c6d243ad9.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1c5a76debf0c2857ccad422c4a80ed785982f8df">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-bcb1600ff57e9732907231f993c4dfe21cfbc1b2.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-14b1b143169deff32713d90c2841e10dda5bb9d0.jar" />
+    </item>
+    <item
+        jar="D:\Lav\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
-        <dex dex="/home/enrico/git/BdD1415/CARDB/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-6fb342d864754da5dd44b1cd7a6dc85e1dbf90e1.jar" />
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-94ff3695d91158e112538d7858f4197c66d22a30.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a96b762bde4139de855735f175ec4d17dca55a6d">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-9eeeda051bb180334b02b4427b0ac6aff020492b.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-f6af14c7592a98d2cdfbf07d43bfc39004597a31.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-87be99d5fdc1395dd7640d26dcfe5112ec5d8ced.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-efec3fb07bff88cec4b5154353090013d35a7a16.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-f3d91fa86b71c7d0e919f3b7cd1144c9750b8cc9.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a08d65794b844d8e7540bf9a33859bf3b2482d7f">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-38bb50fb0be3875913f9a93bc7e0ab28f452dba9.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-ac7d05cf943fa39f818d939e85fd751f8752ec72.jar" />
+    </item>
+    <item
+        jar="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4cd0b093824b3228fffc21ea369b98d0b1db6566">
+        <dex dex="D:\Lav\GitHub\BdD1415\CARDB\app\build\intermediates\pre-dexed\debug\classes-840b09b23c01411a686ae9aaecc4c7b685486ebb.jar" />
     </item>
 
 </items>

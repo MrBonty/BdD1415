@@ -26,7 +26,6 @@ import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 public class ApplicationData {
 
     public static ArrayList<Veicolo> veicoli = new ArrayList<>();
-    public static ArrayList<Privato> clienti = new ArrayList<>();
     public static ArrayList<Azienda> aziende = new ArrayList<>();
     public static ArrayList<Avviso> avvisi = new ArrayList<>();
     public static ArrayList<Compone> compone = new ArrayList<>();

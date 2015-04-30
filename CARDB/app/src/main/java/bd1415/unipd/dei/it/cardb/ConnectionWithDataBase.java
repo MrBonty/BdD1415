@@ -121,8 +121,8 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     veicolo.setModello_cod_prod(rs.getString("modello_cod_prod"), false);
                     veicolo.setModello_marca(rs.getString("modello_marca"), false);
                     ApplicationData.veicoli.add(veicolo);
-                }
-                /*rs = st.executeQuery("SELECT * FROM main.Azienda;");
+                }/*
+                rs = st.executeQuery("SELECT * FROM main.Azienda;");
                 while (rs.next()) {
                     s = s + rs.getString("piva");
                     s = s + rs.getString("nome");

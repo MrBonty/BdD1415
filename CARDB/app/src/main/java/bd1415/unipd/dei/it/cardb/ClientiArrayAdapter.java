@@ -44,7 +44,7 @@ public class ClientiArrayAdapter extends ArrayAdapter<Privato> {
             viewToUse = convertView;
             holder = (ViewHolder) viewToUse.getTag();
         }
-        holder.titleText.setText(item.getCf());
+        holder.titleText.setText(item.getNome());
         return viewToUse;
     }
 }
