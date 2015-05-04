@@ -8,11 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+
 // extended from compatibility Fragment for pre-HC fragment support
 public class LavorazioniMenuFragment extends Fragment {
-
-    // views
-    Button btn6;
 
     // activity listener
     private OnMenufragListener menufragListener;
