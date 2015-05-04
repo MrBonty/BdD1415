@@ -17,19 +17,30 @@ public class VeicoliMenuFragment extends ListFragment {
 
     private boolean isLarge = true;
     private FragmentManager mFM;
-    private ImageView mImage;
-    private LinearLayout mBody;
-    VeicoliBodyFragment mBodyFrag;
 
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+    }
+
+    //onActivityCreated
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setListAdapter(new VeicoliArrayAdapter(inflater.getContext(), ApplicationData.veicoli));
-
-        mImage = (ImageView) MainActivity.act.findViewById(R.id.image_veicoli);
-        mBody = (LinearLayout) MainActivity.act.findViewById(R.id.ll_veicoli);
 
         mFM = getFragmentManager();
         return super.onCreateView(inflater, container, savedInstanceState);
@@ -39,8 +50,6 @@ public class VeicoliMenuFragment extends ListFragment {
     public void onListItemClick(ListView list, View v, int pos, long id) {
         super.onListItemClick(list, v, pos, id);
         if (isLarge) {
-            mImage.setVisibility(View.GONE);
-            mBody.setVisibility(View.VISIBLE);
 
             Fragment toView = new VeicoliBodyFragment();
 
@@ -53,6 +62,7 @@ public class VeicoliMenuFragment extends ListFragment {
             mFM = MainActivity.act.getFragmentManager();
             FragmentTransaction ft = mFM.beginTransaction();
             ft.replace(R.id.veicoli_body, toView);
+            ft.addToBackStack(null);
             ft.commit();
 
             resizeFragment(this, (int) getResources().getDimension(R.dimen.small));

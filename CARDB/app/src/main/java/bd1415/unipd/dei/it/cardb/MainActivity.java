@@ -67,6 +67,7 @@ public class MainActivity extends ActionBarActivity implements LavorazioniMenuFr
         params[3] = "dbstud2.dei.unipd.it";
         params[4] = "3366";
         params[5] = "5432";
+        savedInstanceState = null;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
@@ -96,9 +97,9 @@ public class MainActivity extends ActionBarActivity implements LavorazioniMenuFr
         Privato prv = new Privato();
         prv.setNome("7378", false);
         ApplicationData.privati.add(prv);
-
-
     }
+
+    //mercoledì 6 ore 16:00 via san crispino 82 padova
 
     private void initView() {
         prepareListData();
