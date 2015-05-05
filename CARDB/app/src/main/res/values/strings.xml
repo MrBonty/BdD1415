@@ -23,6 +23,16 @@
     <string name="cliente_indirizzo_tag">Indirizzo:\u0020</string>
     <string name="cliente_citta_tag">Città:\u0020</string>
     <string name="cliente_provincia_tag">Provincia:\u0020</string>
+
+    <string name="lavoro_start_tag">Inizio:\u0020</string>
+    <string name="lavoro_end_tag">Fine:\u0020</string>
+    <string name="lavoro_fattura_tag">\u0020\u0020Fattura\u0020\u0020</string>
+
+    <string name="id_tag">Id:\u0020</string>
+    <string name="end_work">Lavoro finito, settare fattura:</string>
+    <string name="add_new">Crea Fattura</string>
+    <string name="add_to">Fattura esistente</string>
+    <string name="add">Aggiungi</string>
 </resources>
 
 
