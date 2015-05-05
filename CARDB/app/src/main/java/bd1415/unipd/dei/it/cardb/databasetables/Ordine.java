@@ -29,14 +29,8 @@ public class Ordine {
             params[3] = ";";
             new InsertInDataBase().execute(params);
         }
-
         this.data_or = data_or;
         this.fornitore = fornitore;
-
-        if (insert) {
-            while (!Util.isSet()) ;
-            Util.setToNull();
-        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {

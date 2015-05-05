@@ -22,6 +22,23 @@ public class VeicoliMenuFragment extends ListFragment {
     public static final String ISVIS = "isVisible";
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+    }
+
+    //onActivityCreated
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setListAdapter(new VeicoliArrayAdapter(inflater.getContext(), ApplicationData.veicoli));
 

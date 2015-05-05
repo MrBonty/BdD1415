@@ -32,13 +32,7 @@ public class Azienda {
             params[3] = ";";
             new InsertInDataBase().execute(params);
         }
-
         this.piva = piva;
-
-        if (insert) {
-            while (!Util.isSet()) ;
-            Util.setToNull();
-        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {

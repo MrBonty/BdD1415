@@ -31,10 +31,6 @@ public class Avviso {
             new InsertInDataBase().execute(params);
         }
         this.veicolo = veicolo;
-        if (insert) {
-            while (!Util.isSet()) ;
-            Util.setToNull();
-        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {

@@ -24,9 +24,25 @@ public class ClientiMenuFragment extends ListFragment {
     public static final String ISP = "isPrivate";
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+    }
+
+    //onActivityCreated
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setListAdapter(new ClientiArrayAdapter(inflater.getContext(), ApplicationData.privati));
-        mFM = getFragmentManager();
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -44,6 +60,7 @@ public class ClientiMenuFragment extends ListFragment {
 
             toView.setArguments(args);
 
+            mFM = MainActivity.act.getFragmentManager();
             FragmentTransaction ft = mFM.beginTransaction();
             ft.replace(R.id.clienti_body, toView);
             ft.addToBackStack(null);
@@ -55,6 +72,20 @@ public class ClientiMenuFragment extends ListFragment {
         } else {
             resizeFragment(this, (int) getResources().getDimension(R.dimen.large));
             isLarge = true;
+            Fragment toView = new ClientiBodyFragment();
+
+            Bundle args = new Bundle();
+            args.putInt(POS, pos);
+            args.putBoolean(ISVIS, true);
+            args.putBoolean(ISP, true); //is private
+
+            toView.setArguments(args);
+
+            mFM = MainActivity.act.getFragmentManager();
+            FragmentTransaction ft = mFM.beginTransaction();
+            ft.replace(R.id.clienti_body, toView);
+            ft.addToBackStack(null);
+            ft.commit();
         }
 
         Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();

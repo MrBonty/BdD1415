@@ -25,14 +25,8 @@ public class R8 {
             params[3] = ";";
             new InsertInDataBase().execute(params);
         }
-
         this.lavoro = lavoro;
         this.manutenzione = manutenzione;
-
-        if (insert) {
-            while (!Util.isSet()) ;
-            Util.setToNull();
-        }
     }
 
     public void updateValueInDatabase(int nuovo_valore, String nome_attributo) {

@@ -35,8 +35,8 @@
                 <View style="@style/Divider" />
 
                 <fragment
-                    android:id="@+id/clienti_body"
                     class="bd1415.unipd.dei.it.cardb.ClientiBodyFragment"
+                    android:id="@+id/clienti_body"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:drawable/dialog_holo_light_frame"
@@ -59,8 +59,8 @@
                 <View style="@style/Divider" />
 
                 <fragment
-                    android:id="@+id/veicoli_body"
                     class="bd1415.unipd.dei.it.cardb.VeicoliBodyFragment"
+                    android:id="@+id/veicoli_body"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:layout="@layout/veicoli_body_fragment" />

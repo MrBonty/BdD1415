@@ -32,14 +32,8 @@ public class Modello {
             params[3] = ";";
             new InsertInDataBase().execute(params);
         }
-
         this.codice_produzione = codice_produzione;
         this.marca = marca;
-
-        if (insert) {
-            while (!Util.isSet()) ;
-            Util.setToNull();
-        }
     }
 
     public void updateValueInDatabase(String nuovo_valore, String nome_attributo) {

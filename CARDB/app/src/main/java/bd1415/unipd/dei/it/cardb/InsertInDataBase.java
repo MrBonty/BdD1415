@@ -63,6 +63,5 @@ public class InsertInDataBase extends AsyncTask<String, Void, String> {
             toast.cancel();
             Toast.makeText(MainActivity.ctx, result, Toast.LENGTH_LONG).show();
         }
-        Util.setOutput(result);
     }
 }
