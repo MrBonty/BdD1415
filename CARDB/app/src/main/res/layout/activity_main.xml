@@ -21,12 +21,12 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/clienti"
+                android:id="@+id/privati"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <fragment
-                    class="bd1415.unipd.dei.it.cardb.ClientiMenuFragment"
+                    class="bd1415.unipd.dei.it.cardb.PrivatiMenuFragment"
                     android:layout_width="@dimen/large"
                     android:layout_height="match_parent"
                     android:background="@android:drawable/dialog_holo_light_frame"
@@ -35,8 +35,33 @@
                 <View style="@style/Divider" />
 
                 <fragment
-                    class="bd1415.unipd.dei.it.cardb.ClientiBodyFragment"
-                    android:id="@+id/clienti_body"
+                    class="bd1415.unipd.dei.it.cardb.PrivatiBodyFragment"
+                    android:id="@+id/privati_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    tools:layout="@layout/clienti_body_fragment" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/aziende"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    class="bd1415.unipd.dei.it.cardb.AziendeMenuFragment"
+                    android:layout_width="@dimen/large"
+                    android:layout_height="match_parent"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    tools:layout="@layout/clienti_menu_fragment" />
+
+                <View style="@style/Divider" />
+
+                <fragment
+                    class="bd1415.unipd.dei.it.cardb.AziendeBodyFragment"
+                    android:id="@+id/aziende_body"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:drawable/dialog_holo_light_frame"
@@ -67,7 +92,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:id="@+id/lavorazioni"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -128,7 +153,7 @@
                     android:layout_height="match_parent"
                     tools:layout="@layout/gestione_body_fragment"></fragment>
 
-            </LinearLayout>
+            </LinearLayout>-->
 
         </FrameLayout>
 

@@ -16,11 +16,8 @@ import java.util.concurrent.ExecutionException;
 
 public class LoginDialog {
 
-    private Activity mAct;
-
-    public LoginDialog(final Context context, Activity activity) {
+    public LoginDialog(final Context context) {
         final Dialog dialog = new Dialog(context);
-        mAct = activity;
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.login_dialog);
         LinearLayout dialogLayout = (LinearLayout) dialog.findViewById(R.id.dialog);

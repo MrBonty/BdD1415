@@ -55,7 +55,7 @@ public class InsertInDataBase extends AsyncTask<String, Void, String> {
             toast.cancel();
             Toast.makeText(
                     MainActivity.ctx, result, Toast.LENGTH_SHORT).show();
-            new LoginDialog(MainActivity.ctx, MainActivity.act);
+            new LoginDialog(MainActivity.ctx);
         } else if (MainActivity.errorRetrievingData) {
             toast.cancel();
             Toast.makeText(MainActivity.ctx, result, Toast.LENGTH_SHORT).show();

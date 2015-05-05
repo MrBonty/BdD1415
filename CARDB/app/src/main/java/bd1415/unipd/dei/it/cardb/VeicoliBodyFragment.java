@@ -11,12 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
-import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
-import bd1415.unipd.dei.it.cardb.databasetables.Modello;
-import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 public class VeicoliBodyFragment extends Fragment {
@@ -41,8 +35,8 @@ public class VeicoliBodyFragment extends Fragment {
         Bundle args = this.getArguments();
 
         if (args != null) {
-            mPos = args.getInt(ClientiMenuFragment.POS);
-            mIsVis = args.getBoolean(ClientiMenuFragment.ISVIS);
+            mPos = args.getInt(PrivatiMenuFragment.POS);
+            mIsVis = args.getBoolean(PrivatiMenuFragment.ISVIS);
         }
 
         Activity activity = getActivity();
@@ -119,8 +113,8 @@ public class VeicoliBodyFragment extends Fragment {
         Bundle args = this.getArguments();
 
         if (args != null) {
-            mPos = args.getInt(ClientiMenuFragment.POS);
-            mIsVis = args.getBoolean(ClientiMenuFragment.ISVIS);
+            mPos = args.getInt(PrivatiMenuFragment.POS);
+            mIsVis = args.getBoolean(PrivatiMenuFragment.ISVIS);
         }
 
         View view = inflater.inflate(R.layout.veicoli_body_fragment, container, false);

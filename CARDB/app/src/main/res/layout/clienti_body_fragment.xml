@@ -196,7 +196,7 @@
         android:id="@+id/image_clienti"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/clienti_body"
+        android:layout_below="@id/privati_body"
         android:visibility="visible" />
 
 </RelativeLayout>
