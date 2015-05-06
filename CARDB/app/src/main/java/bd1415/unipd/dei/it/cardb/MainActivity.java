@@ -75,7 +75,7 @@ public class MainActivity extends ActionBarActivity {
         privatiLayout = (LinearLayout) findViewById(R.id.privati);
         aziendeLayout = (LinearLayout) findViewById(R.id.aziende);
         veicoliLayout = (LinearLayout) findViewById(R.id.veicoli);
-        //lavorazioniLayout = (LinearLayout) findViewById(R.id.lavorazioni);
+        lavorazioniLayout = (LinearLayout) findViewById(R.id.lavorazioni);
         //pagamentiLayout = (LinearLayout) findViewById(R.id.pagamenti);
         //gestioneLayout = (LinearLayout) findViewById(R.id.gestione);
         corrente = privatiLayout;
@@ -247,9 +247,17 @@ public class MainActivity extends ActionBarActivity {
                     if (childPosition == 0) {
 
                     } else if (childPosition == 1) {
-
+                        ApplicationData.isFinished = false;
+                        container.removeAllViewsInLayout();
+                        container.addView(lavorazioniLayout);
+                        corrente = lavorazioniLayout;
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                     } else if (childPosition == 2) {
-
+                        ApplicationData.isFinished = true;
+                        container.removeAllViewsInLayout();
+                        container.addView(lavorazioniLayout);
+                        corrente = lavorazioniLayout;
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                     }
                 } else if (groupPosition == 3) {
                     if (childPosition == 0) {

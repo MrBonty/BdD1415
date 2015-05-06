@@ -13,7 +13,7 @@ import java.util.List;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
 
 public class LavoriArrayAdapter extends ArrayAdapter<Lavoro> {
-
+    private boolean mIsFinished;
     private Context context;
     private boolean useList = true;
 
