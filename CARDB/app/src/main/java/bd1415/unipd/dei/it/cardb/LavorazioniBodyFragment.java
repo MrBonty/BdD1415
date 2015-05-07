@@ -48,7 +48,7 @@ public class LavorazioniBodyFragment extends Fragment {
     private boolean mIsFinished; // set a true if show finished work
     private Veicolo mVeicolo = null;
     private Lavoro mLavoro = null;
-    private static Context mCtx  = MainActivity.ctx;
+    private static Context mCtx = MainActivity.ctx;
     private static Dialog mTmpDial;
     private static Fattura mFat;
 
@@ -228,6 +228,7 @@ public class LavorazioniBodyFragment extends Fragment {
 
                             List<String> forSpinner = new ArrayList<String>();
                             final ArrayList<Fattura> spinnerFat = new ArrayList<Fattura>();
+
                             for(int i = 0; i < ApplicationData.fattureNon.size(); i++) {
                                 String tmp = "";
                                 Fattura fatTmp = ApplicationData.fattureNon.get(i);
@@ -236,7 +237,6 @@ public class LavorazioniBodyFragment extends Fragment {
                                 token += fatTmp.getId();
                                 for (int j = token.length(); j < 5; j++) {
                                     token = " " + token;
-
                                 }
                                 tmp += token;
                                 tmp += " - ";
@@ -258,16 +258,16 @@ public class LavorazioniBodyFragment extends Fragment {
                             Button cancel = (Button) mTmpDialogPicker.findViewById(R.id.cancel);
                             final Button add = (Button) mTmpDialogPicker.findViewById(R.id.add);
                             spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                                 @Override
-                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                     add.setEnabled(true);
-                                     mFat = spinnerFat.get(position);
-                                 }
+                                @Override
+                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                    add.setEnabled(true);
+                                    mFat = spinnerFat.get(position);
+                                }
 
-                                 @Override
-                                 public void onNothingSelected(AdapterView<?> parent) {
-                                     add.setEnabled(false);
-                                 }
+                                @Override
+                                public void onNothingSelected(AdapterView<?> parent) {
+                                    add.setEnabled(false);
+                                }
                             });
 
                             add.setOnClickListener(new OnClickListener() {
@@ -296,20 +296,21 @@ public class LavorazioniBodyFragment extends Fragment {
                         public void onClick(View v) {
                             toShowFattura = true;
                             mFat = new Fattura(true);
+
                             mLavoro.setFattura(mFat.getId(),true);
                             mFat.setPagato(0, true);
 
                             if(mVeicolo == null){
+
                                 findVeicolo();
                             }
 
 
-
-                            if(mVeicolo.getAzienda() != null){
+                            if (mVeicolo.getAzienda() != null) {
                                 Azienda az = null;
-                                for(int i = 0; i < ApplicationData.aziende.size(); i++){
+                                for (int i = 0; i < ApplicationData.aziende.size(); i++) {
                                     az = ApplicationData.aziende.get(i);
-                                    if(mVeicolo.getNumero_telaio().equals(mVeicolo.getAzienda())){
+                                    if (mVeicolo.getNumero_telaio().equals(mVeicolo.getAzienda())) {
                                         break;
                                     }
                                 }
@@ -317,16 +318,19 @@ public class LavorazioniBodyFragment extends Fragment {
                                 ApplicationData.fattureNon.add(mFat);
                                 mFat.setAzienda(az.getPiva(),true);
                             }else{
+
                                 Privato pr = null;
-                                for(int i = 0; i < ApplicationData.privati.size(); i++){
+                                for (int i = 0; i < ApplicationData.privati.size(); i++) {
                                     pr = ApplicationData.privati.get(i);
-                                    if(mVeicolo.getNumero_telaio().equals(mVeicolo.getPrivato())){
+                                    if (mVeicolo.getNumero_telaio().equals(mVeicolo.getPrivato())) {
                                         break;
                                     }
                                 }
+
                                 ApplicationData.fatture.add(mFat);
                                 ApplicationData.fattureNon.add(mFat);
                                 mFat.setAzienda(pr.getCf(),true);
+
                             }
                             mTmpDial.dismiss();
                         }
@@ -334,19 +338,19 @@ public class LavorazioniBodyFragment extends Fragment {
 
                     mTmpDial.show();
 
-                } else{
-                    for(int i = 0; i < ApplicationData.fatture.size(); i++){
+                } else {
+                    for (int i = 0; i < ApplicationData.fatture.size(); i++) {
                         mFat = ApplicationData.fatture.get(i);
-                        if(mFat.getId() == idFattura){
+                        if (mFat.getId() == idFattura) {
                             toShowFattura = true;
                             break;
-                        }else{
+                        } else {
                             mFat = null;
                         }
                     }
                 }
 
-                if(toShowFattura) {
+                if (toShowFattura) {
                     FatturaDialog dialog = new FatturaDialog(mFat);
 
                     toShowFattura = false;
@@ -368,11 +372,11 @@ public class LavorazioniBodyFragment extends Fragment {
         };
     }
 
-    private void findVeicolo(){
+    private void findVeicolo() {
         mVeicolo = null;
-        for(int i = 0; i < ApplicationData.veicoli.size(); i++){
+        for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
             mVeicolo = ApplicationData.veicoli.get(i);
-            if(mVeicolo.getNumero_telaio().equals(mLavoro.getVeicolo())){
+            if (mVeicolo.getNumero_telaio().equals(mLavoro.getVeicolo())) {
                 break;
             }
         }

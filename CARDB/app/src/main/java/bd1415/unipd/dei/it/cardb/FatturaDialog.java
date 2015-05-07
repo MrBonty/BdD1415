@@ -12,7 +12,7 @@ import android.view.Window;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Fattura;
 
-public class FatturaDialog  {
+public class FatturaDialog {
 
     private static Dialog mDialog;
 
@@ -20,7 +20,7 @@ public class FatturaDialog  {
 
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
-    //TODO
+
     public FatturaDialog(Fattura fattura) {
         mDialog = new Dialog(MainActivity.ctx);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

@@ -2,6 +2,9 @@ package bd1415.unipd.dei.it.cardb;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +12,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 
@@ -32,7 +39,7 @@ public class PrivatiBodyFragment extends Fragment {
     }
 
     //onActivityCreated
-    @Override
+  /*  @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Bundle args = this.getArguments();
@@ -43,7 +50,7 @@ public class PrivatiBodyFragment extends Fragment {
             mIsPrivate = args.getBoolean(PrivatiMenuFragment.ISP);
         }
 
-        Activity activity = getActivity();
+        final Activity activity = getActivity();
         viewHolder = new ViewHolder();
         if (mIsVis) {
             mImage = (ImageView) activity.findViewById(R.id.image_clienti);
@@ -61,25 +68,27 @@ public class PrivatiBodyFragment extends Fragment {
         viewHolder.provincia = (TextView) activity.findViewById(R.id.cliente_provincia_data);
         viewHolder.indirizzo = (TextView) activity.findViewById(R.id.cliente_indirizzo_data);
         viewHolder.veicoli = (ListView) activity.findViewById(android.R.id.list);
+        viewHolder.numero_civico = (TextView) activity.findViewById(R.id.cliente_civico_data);
+
+
 
         if (mIsVis) {
-            if (mIsPrivate) {
-                Privato cl = ApplicationData.privati.get(mPos);
+            final Privato cl = ApplicationData.privati.get(mPos);
+            viewHolder.nome.setText(cl.getNome());
+            viewHolder.cognomeLayout.setVisibility(View.VISIBLE);
+            viewHolder.cognome.setText(cl.getCognome());
 
-                viewHolder.nome.setText(cl.getNome());
-                viewHolder.cognomeLayout.setVisibility(View.VISIBLE);
-                viewHolder.cognome.setText(cl.getCognome());
+            viewHolder.pkTag.setText(R.string.cliente_cf_tag);
+            viewHolder.pk.setText(cl.getCf());
 
-                viewHolder.pkTag.setText(R.string.cliente_cf_tag);
-                viewHolder.pk.setText(cl.getCf());
+            viewHolder.telefono.setText(cl.getTelefono());
 
-                viewHolder.telefono.setText(cl.getTelefono());
-
-                if (cl.getIndirizzo() != null) {
-                    viewHolder.indirizzo.setText(cl.getIndirizzo().indirizzo + " " + cl.getIndirizzo().numero_civico);
-                    viewHolder.citta.setText(cl.getIndirizzo().città);
-                    viewHolder.provincia.setText(cl.getIndirizzo().provincia);
-                }
+            if (cl.getIndirizzo() != null) {
+                viewHolder.indirizzo.setText(cl.getIndirizzo().indirizzo);
+                viewHolder.indirizzo.setText(cl.getIndirizzo().numero_civico);
+                viewHolder.citta.setText(cl.getIndirizzo().città);
+                viewHolder.provincia.setText(cl.getIndirizzo().provincia);
+            }
 /*
                 ArrayList<Veicolo> tmp = new ArrayList<>();
                 for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
@@ -91,40 +100,87 @@ public class PrivatiBodyFragment extends Fragment {
 
                 viewHolder.veicoli.setAdapter(new VeicoliArrayAdapter(MainActivity.ctx, tmp));
 */
-            } else {
-                Azienda az = ApplicationData.aziende.get(mPos);
-
-                viewHolder.nome.setText(az.getNome());
-                viewHolder.cognomeLayout.setVisibility(View.GONE);
-
-                viewHolder.pkTag.setText(R.string.cliente_piva_tag);
-                viewHolder.pk.setText(az.getPiva());
-
-                viewHolder.telefono.setText(az.getTelefono());
-
-                viewHolder.indirizzo.setText(az.getIndirizzo().indirizzo + " " + az.getIndirizzo().numero_civico);
-                viewHolder.citta.setText(az.getIndirizzo().città);
-                viewHolder.provincia.setText(az.getIndirizzo().provincia);
-
-                /*ArrayList<Veicolo> tmp = new ArrayList<>();
-                for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
-                    Veicolo vl = ApplicationData.veicoli.get(i);
-                    if (vl.getAzienda().equals(az.getPiva())) {
-                        tmp.add(vl);
-                    }
+   /*         viewHolder.nome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.nome.setText(new DialogEdit(viewHolder.nome.getText().toString(),
+                            false, MainActivity.ctx).get());
+                    cl.setNome(viewHolder.nome.getText().toString(), true);
                 }
-
-                viewHolder.veicoli.setAdapter(new VeicoliArrayAdapter(MainActivity.ctx, tmp));
-            */
-            }
+            });
+            viewHolder.cognome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.cognome.setText(new DialogEdit(viewHolder.cognome.getText().toString(),
+                            false, MainActivity.ctx).get());
+                    cl.setCognome(viewHolder.cognome.getText().toString(), true);
+                }
+            });
+            viewHolder.pk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.pk.setText(new DialogEdit(viewHolder.pk.getText().toString(),
+                            true, MainActivity.ctx).get());
+                    cl.setCf(viewHolder.pk.getText().toString(), true);
+                }
+            });
+            viewHolder.telefono.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.telefono.setText(new DialogEdit(viewHolder.telefono.getText().toString(),
+                            false, MainActivity.ctx).get());
+                    cl.setTelefono(viewHolder.telefono.getText().toString(), true);
+                }
+            });
+            viewHolder.citta.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.citta.setText(new DialogEdit(viewHolder.citta.getText().toString(),
+                            false, MainActivity.ctx).get());
+                    AddressType n = cl.getIndirizzo();
+                    n.città = viewHolder.citta.getText().toString();
+                    cl.setIndirizzo(n, true);
+                }
+            });
+            viewHolder.indirizzo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.indirizzo.setText(new DialogEdit(viewHolder.indirizzo.getText().toString(),
+                            false, MainActivity.ctx).get());
+                    AddressType n = cl.getIndirizzo();
+                    n.indirizzo = viewHolder.indirizzo.getText().toString();
+                    cl.setIndirizzo(n, true);
+                }
+            });
+            viewHolder.provincia.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.provincia.setText(new DialogEdit(viewHolder.provincia.getText().toString(),
+                            false, MainActivity.ctx).get());
+                    AddressType n = cl.getIndirizzo();
+                    n.provincia = viewHolder.provincia.getText().toString();
+                    cl.setIndirizzo(n, true);
+                }
+            });
+            viewHolder.numero_civico.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.numero_civico.setText(new DialogEdit(viewHolder.numero_civico.getText().toString(),
+                            false, MainActivity.ctx).get());
+                    AddressType n = cl.getIndirizzo();
+                    n.numero_civico = viewHolder.numero_civico.getText().toString();
+                    cl.setIndirizzo(n, true);
+                }
+            });
         }
     }
+    */
 
     //onCreateView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        Bundle args = this.getArguments();
+        final Bundle args = this.getArguments();
 
         if (args != null) {
             mPos = args.getInt(PrivatiMenuFragment.POS);
@@ -151,27 +207,28 @@ public class PrivatiBodyFragment extends Fragment {
         viewHolder.provincia = (TextView) view.findViewById(R.id.cliente_provincia_data);
         viewHolder.indirizzo = (TextView) view.findViewById(R.id.cliente_indirizzo_data);
         viewHolder.veicoli = (ListView) view.findViewById(android.R.id.list);
+        viewHolder.veicoli = (ListView) view.findViewById(android.R.id.list);
+        viewHolder.numero_civico = (TextView) view.findViewById(R.id.cliente_civico_data);
 
         if (mIsVis) {
-            if (mIsPrivate) {
-                Privato cl = ApplicationData.privati.get(mPos);
+            final Privato cl = ApplicationData.privati.get(mPos);
+            viewHolder.nome.setText(cl.getNome());
+            viewHolder.cognomeLayout.setVisibility(View.VISIBLE);
+            viewHolder.cognome.setText(cl.getCognome());
 
-                viewHolder.nome.setText(cl.getNome());
-                viewHolder.cognomeLayout.setVisibility(View.VISIBLE);
-                viewHolder.cognome.setText(cl.getCognome());
+            viewHolder.pkTag.setText(R.string.cliente_cf_tag);
+            viewHolder.pk.setText(cl.getCf());
 
-                viewHolder.pkTag.setText(R.string.cliente_cf_tag);
-                viewHolder.pk.setText(cl.getCf());
+            viewHolder.telefono.setText(cl.getTelefono());
 
-                viewHolder.telefono.setText(cl.getTelefono());
-
-                if (cl.getIndirizzo() != null) {
-                    viewHolder.indirizzo.setText(cl.getIndirizzo().indirizzo + " " + cl.getIndirizzo().numero_civico);
-                    viewHolder.citta.setText(cl.getIndirizzo().città);
-                    viewHolder.provincia.setText(cl.getIndirizzo().provincia);
-                }
-
-                /*ArrayList<Veicolo> tmp = new ArrayList<>();
+            if (cl.getIndirizzo() != null) {
+                viewHolder.indirizzo.setText(cl.getIndirizzo().indirizzo);
+                viewHolder.indirizzo.setText(cl.getIndirizzo().numero_civico);
+                viewHolder.citta.setText(cl.getIndirizzo().città);
+                viewHolder.provincia.setText(cl.getIndirizzo().provincia);
+            }
+/*
+                ArrayList<Veicolo> tmp = new ArrayList<>();
                 for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
                     Veicolo vl = ApplicationData.veicoli.get(i);
                     if (vl.getPrivato().equals(cl.getCf())) {
@@ -181,33 +238,88 @@ public class PrivatiBodyFragment extends Fragment {
 
                 viewHolder.veicoli.setAdapter(new VeicoliArrayAdapter(MainActivity.ctx, tmp));
 */
-            } else {
-                Azienda az = ApplicationData.aziende.get(mPos);
-
-                viewHolder.nome.setText(az.getNome());
-                viewHolder.cognomeLayout.setVisibility(View.GONE);
-
-                viewHolder.pkTag.setText(R.string.cliente_piva_tag);
-                viewHolder.pk.setText(az.getPiva());
-
-                viewHolder.telefono.setText(az.getTelefono());
-
-                viewHolder.indirizzo.setText(az.getIndirizzo().indirizzo + " " + az.getIndirizzo().numero_civico);
-                viewHolder.citta.setText(az.getIndirizzo().città);
-                viewHolder.provincia.setText(az.getIndirizzo().provincia);
-/*
-                ArrayList<Veicolo> tmp = new ArrayList<>();
-                for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
-                    Veicolo vl = ApplicationData.veicoli.get(i);
-                    if (vl.getAzienda().equals(az.getPiva())) {
-                        tmp.add(vl);
+            viewHolder.nome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.nome.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.nome).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface arg0) {
+                            cl.setNome(viewHolder.nome.getText().toString(), true);
+                            PrivatiMenuFragment.list.notifyDataSetChanged();
+                        }
                     }
+                    );
                 }
-
-                viewHolder.veicoli.setAdapter(new VeicoliArrayAdapter(MainActivity.ctx, tmp));
-
-*/            }
+            });
+           /* viewHolder.cognome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.cognome.setText(new DialogEdit(viewHolder.cognome.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.cognome).get());
+                }
+            });
+            cl.setCognome(viewHolder.cognome.getText().toString(), true);
+            viewHolder.pk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.pk.setText(new DialogEdit(viewHolder.pk.getText().toString(),
+                            true, MainActivity.ctx, viewHolder.pk).get());
+                    cl.setCf(viewHolder.pk.getText().toString(), true);
+                }
+            });
+            /*viewHolder.telefono.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.telefono.setText(new DialogEdit(viewHolder.telefono.getText().toString(),
+                            false, MainActivity.ctx).get());
+                    cl.setTelefono(viewHolder.telefono.getText().toString(), true);
+                }
+            });
+            viewHolder.citta.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.citta.setText(new DialogEdit(viewHolder.citta.getText().toString(),
+                            false, MainActivity.ctx).get());
+                    AddressType n = cl.getIndirizzo();
+                    n.città = viewHolder.citta.getText().toString();
+                    cl.setIndirizzo(n, true);
+                }
+            });
+            viewHolder.indirizzo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.indirizzo.setText(new DialogEdit(viewHolder.indirizzo.getText().toString(),
+                            false, MainActivity.ctx).get());
+                    AddressType n = cl.getIndirizzo();
+                    n.indirizzo = viewHolder.indirizzo.getText().toString();
+                    cl.setIndirizzo(n, true);
+                }
+            });
+            viewHolder.provincia.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.provincia.setText(new DialogEdit(viewHolder.provincia.getText().toString(),
+                            false, MainActivity.ctx).get());
+                    AddressType n = cl.getIndirizzo();
+                    n.provincia = viewHolder.provincia.getText().toString();
+                    cl.setIndirizzo(n, true);
+                }
+            });
+            viewHolder.numero_civico.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewHolder.numero_civico.setText(new DialogEdit(viewHolder.numero_civico.getText().toString(),
+                            false, MainActivity.ctx).get());
+                    AddressType n = cl.getIndirizzo();
+                    n.numero_civico = viewHolder.numero_civico.getText().toString();
+                    cl.setIndirizzo(n, true);
+                }
+            });*/
         }
+
         return view;
     }
 
@@ -222,5 +334,6 @@ public class PrivatiBodyFragment extends Fragment {
         public TextView provincia;
         public TextView indirizzo;
         public ListView veicoli;
+        public TextView numero_civico;
     }
 }

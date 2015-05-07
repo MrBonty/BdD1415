@@ -348,7 +348,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
             toast.cancel();
             Toast.makeText(MainActivity.ctx, result, Toast.LENGTH_LONG).show();
         }
-        ApplicationData.veicoli.get(1).updateValueInDataBase("jyfjrd", "targa");
+        //ApplicationData.veicoli.get(1).updateValueInDataBase("jyfjrd", "targa");
         MainActivity.act.finish();
         MainActivity.act.startActivity(MainActivity.intent);
 

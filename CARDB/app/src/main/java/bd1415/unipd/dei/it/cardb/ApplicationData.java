@@ -58,7 +58,6 @@ public class ApplicationData {
 
     public static boolean isPayed = false;
 
-
     public static void splitWork(){
         for (int i = 0; i< lavori.size(); i++){
             Lavoro tmp = lavori.get(i);
@@ -70,6 +69,7 @@ public class ApplicationData {
             }
         }
     }
+
     public static void splitFatture(){
         for (int i = 0; i< fatture.size(); i++){
             Fattura tmp = fatture.get(i);
@@ -81,4 +81,5 @@ public class ApplicationData {
             }
         }
     }
+
 }

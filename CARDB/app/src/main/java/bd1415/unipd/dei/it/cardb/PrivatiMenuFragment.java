@@ -39,11 +39,16 @@ public class PrivatiMenuFragment extends ListFragment {
         super.onResume();
     }
 
+    public static PrivatiArrayAdapter list = null;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        setListAdapter(new PrivatiArrayAdapter(inflater.getContext(), ApplicationData.privati));
+        PrivatiArrayAdapter prv = new PrivatiArrayAdapter(inflater.getContext(), ApplicationData.privati);
+        setListAdapter(prv);
+        list = prv;
         return super.onCreateView(inflater, container, savedInstanceState);
     }
+
 
     @Override
     public void onListItemClick(ListView list, View v, int pos, long id) {
