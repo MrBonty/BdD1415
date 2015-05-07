@@ -23,6 +23,8 @@ public class Azienda {
     private String telefono;
     private AddressType indirizzo;
 
+    public Azienda() {}
+
     public Azienda(String piva, boolean insert) {
         if (insert) {
             String[] params = new String[4];

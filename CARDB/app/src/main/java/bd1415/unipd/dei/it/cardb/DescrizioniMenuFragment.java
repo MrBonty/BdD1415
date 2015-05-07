@@ -51,7 +51,7 @@ public class DescrizioniMenuFragment extends ListFragment {
 
         ArrayList<String> guastiManutenzioni = new ArrayList<>();
         ArrayList<Integer> color = new ArrayList<>();
-        for(int i = 0; i < ApplicationData.guasti.size(); i++){
+        for (int i = 0; i < ApplicationData.guasti.size(); i++) {
             Guasto g = ApplicationData.guasti.get(i);
             String tmp = g.getId() + GUASTO;
 
@@ -59,7 +59,7 @@ public class DescrizioniMenuFragment extends ListFragment {
             color.add(Color.parseColor("#66FF0000")); //Semitrasparent red
         }
 
-        for(int i = 0; i < ApplicationData.manutenzioni.size(); i++){
+        for (int i = 0; i < ApplicationData.manutenzioni.size(); i++) {
             Manutenzione m = ApplicationData.manutenzioni.get(i);
             String tmp = m.getId() + MANUT;
 

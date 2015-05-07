@@ -28,17 +28,17 @@ public class FatturaDialog {
         mDialog.setCanceledOnTouchOutside(true);
 
         int pos;
-        if(fattura.getPagato() == 0){
+        if (fattura.getPagato() == 0) {
             ApplicationData.isPayed = false;
-            for (pos = 0; pos< ApplicationData.fattureNon.size(); pos++){
-                if(fattura.getId() == ApplicationData.fattureNon.get(pos).getId()){
+            for (pos = 0; pos < ApplicationData.fattureNon.size(); pos++) {
+                if (fattura.getId() == ApplicationData.fattureNon.get(pos).getId()) {
                     break;
                 }
             }
-        }else{
+        } else {
             ApplicationData.isPayed = true;
-            for (pos = 0; pos< ApplicationData.fatturePagate.size(); pos++){
-                if(fattura.getId() == ApplicationData.fatturePagate.get(pos).getId()){
+            for (pos = 0; pos < ApplicationData.fatturePagate.size(); pos++) {
+                if (fattura.getId() == ApplicationData.fatturePagate.get(pos).getId()) {
                     break;
                 }
             }
@@ -61,7 +61,7 @@ public class FatturaDialog {
         ft.commit();
     }
 
-    public void setOnDismissListener(DialogInterface.OnDismissListener listener){
+    public void setOnDismissListener(DialogInterface.OnDismissListener listener) {
         mDialog.setOnDismissListener(listener);
     }
 }

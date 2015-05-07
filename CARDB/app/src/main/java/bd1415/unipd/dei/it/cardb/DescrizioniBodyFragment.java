@@ -69,20 +69,20 @@ public class DescrizioniBodyFragment extends Fragment {
 
         if (mIsVis) {
 
-            String desc = mItem.substring(mItem.length()-1);
-            int id = Integer.parseInt(mItem.substring(0,mItem.length()-1));
+            String desc = mItem.substring(mItem.length() - 1);
+            int id = Integer.parseInt(mItem.substring(0, mItem.length() - 1));
             mIsG = desc.equals(DescrizioniMenuFragment.GUASTO);
-            if(mIsG){
-                for(int i= 0; i<ApplicationData.guasti.size(); i++){
+            if (mIsG) {
+                for (int i = 0; i < ApplicationData.guasti.size(); i++) {
                     mG = ApplicationData.guasti.get(i);
-                    if(mG.getId() == id){
+                    if (mG.getId() == id) {
                         break;
                     }
                 }
-            }else{
-                for(int i= 0; i<ApplicationData.manutenzioni.size(); i++){
+            } else {
+                for (int i = 0; i < ApplicationData.manutenzioni.size(); i++) {
                     mM = ApplicationData.manutenzioni.get(i);
-                    if(mM.getId() == id){
+                    if (mM.getId() == id) {
                         break;
                     }
                 }

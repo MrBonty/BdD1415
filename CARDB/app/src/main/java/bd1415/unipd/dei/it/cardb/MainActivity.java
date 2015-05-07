@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 
 public class MainActivity extends ActionBarActivity {
@@ -41,8 +42,8 @@ public class MainActivity extends ActionBarActivity {
     private ExpandableListView leftDrawerList;
     private ExpandableListAdapter exp;
     private String[] leftSliderData = {"Clienti", "Veicoli", "Lavorazioni", "Pagamenti", "Gestione"};
-    private LinearLayout privatiLayout;
-    private LinearLayout aziendeLayout;
+    public static LinearLayout privatiLayout;
+    public static LinearLayout aziendeLayout;
     private LinearLayout veicoliLayout;
     public static LinearLayout lavorazioniLayout;
     private LinearLayout descrizioniLayout;
@@ -68,7 +69,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         initView();
         if (toolbar != null) {
-            toolbar.setTitle("Clienti");
+            toolbar.setTitle("Privati");
             setSupportActionBar(toolbar);
         }
         initDrawer();
@@ -95,6 +96,10 @@ public class MainActivity extends ActionBarActivity {
         Privato prv = new Privato();
         prv.setNome("7378", false);
         ApplicationData.privati.add(prv);
+        Azienda azi = new Azienda();
+        azi.setNome("jkefkerj", false);
+        ApplicationData.aziende.add(azi);
+
     }
 
     private void initView() {
@@ -118,8 +123,8 @@ public class MainActivity extends ActionBarActivity {
         listDataHeader.add("Gestione");
 
         List<String> clientiSubItems = new ArrayList<String>();
-        clientiSubItems.add("Privato");
-        clientiSubItems.add("Azienda");
+        clientiSubItems.add("Privati");
+        clientiSubItems.add("Aziende");
 
         List<String> veicoliSubItems = new ArrayList<String>();
 
@@ -174,27 +179,9 @@ public class MainActivity extends ActionBarActivity {
                     container.addView(veicoliLayout);
                     corrente = veicoliLayout;
                     drawerLayout.closeDrawer(Gravity.LEFT);
+                    toolbar.setTitle(leftSliderData[position]);
                 }
-                /*if (position == 0) {
-                    container.removeAllViewsInLayout();
-                    container.addView(privatiLayout);
-                    corrente = privatiLayout;
-                } else if (position == 1) {
-
-                } else if (position == 2) {
-                    container.removeAllViewsInLayout();
-                    container.addView(lavorazioniLayout);
-                } else if (position == 3) {
-                    container.removeAllViewsInLayout();
-                    container.addView(pagamentiLayout);
-                    corrente = pagamentiLayout;
-                } else if (position == 4) {
-                    container.removeAllViewsInLayout();
-                    container.addView(gestioneLayout);
-                    corrente = gestioneLayout;
-                }*/
                 leftDrawerList.setItemChecked(position, true);
-                toolbar.setTitle(leftSliderData[position]);
                 return false;
             }
         });

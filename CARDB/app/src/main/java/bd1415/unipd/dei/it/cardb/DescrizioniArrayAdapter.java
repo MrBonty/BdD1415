@@ -18,7 +18,7 @@ public class DescrizioniArrayAdapter extends ArrayAdapter<String> {
     private ArrayList<Integer> color;
     private Context mCtx;
 
-    public DescrizioniArrayAdapter(Context context,List<String> objects, ArrayList<Integer> color){
+    public DescrizioniArrayAdapter(Context context, List<String> objects, ArrayList<Integer> color) {
         super(context, R.layout.descrizione_item, objects);
         this.color = color;
         mCtx = context;
@@ -32,14 +32,14 @@ public class DescrizioniArrayAdapter extends ArrayAdapter<String> {
 
         String tmp = getItem(position);
 
-        ViewHold vh= null;
+        ViewHold vh = null;
 
         View viewToUse = null;
 
         LayoutInflater mInflater = (LayoutInflater) mCtx
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
-        if(convertView == null){
+        if (convertView == null) {
             viewToUse = mInflater.inflate(R.layout.descrizione_item, null);
             vh = new ViewHold();
             vh.titleText = (TextView) convertView.findViewById(R.id.descrizione_name);

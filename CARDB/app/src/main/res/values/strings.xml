@@ -44,6 +44,8 @@
     <string name="pagamenti_Cliente_tag">Cliente:\u0020</string>
 
     <string name="data_tag">Data:\u0020</string>
+
+    <string name="spinner">Proprietario</string>
 </resources>
 
 

@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 public class VeicoliMenuFragment extends ListFragment {
 
@@ -38,9 +41,13 @@ public class VeicoliMenuFragment extends ListFragment {
         super.onResume();
     }
 
+    public static VeicoliArrayAdapter list;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        setListAdapter(new VeicoliArrayAdapter(inflater.getContext(), ApplicationData.veicoli));
+        VeicoliArrayAdapter veic = new VeicoliArrayAdapter(inflater.getContext(), ApplicationData.veicoli);
+        list = veic;
+        setListAdapter(veic);
 
         mFM = getFragmentManager();
         return super.onCreateView(inflater, container, savedInstanceState);

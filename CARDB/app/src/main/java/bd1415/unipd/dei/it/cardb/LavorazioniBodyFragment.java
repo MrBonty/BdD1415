@@ -229,7 +229,7 @@ public class LavorazioniBodyFragment extends Fragment {
                             List<String> forSpinner = new ArrayList<String>();
                             final ArrayList<Fattura> spinnerFat = new ArrayList<Fattura>();
 
-                            for(int i = 0; i < ApplicationData.fattureNon.size(); i++) {
+                            for (int i = 0; i < ApplicationData.fattureNon.size(); i++) {
                                 String tmp = "";
                                 Fattura fatTmp = ApplicationData.fattureNon.get(i);
 
@@ -274,7 +274,7 @@ public class LavorazioniBodyFragment extends Fragment {
                                 @Override
                                 public void onClick(View v) {
                                     toShowFattura = true;
-                                    mLavoro.setFattura(mFat.getId(),true);
+                                    mLavoro.setFattura(mFat.getId(), true);
                                     mTmpDialogPicker.dismiss();
                                 }
                             });
@@ -297,10 +297,10 @@ public class LavorazioniBodyFragment extends Fragment {
                             toShowFattura = true;
                             mFat = new Fattura(true);
 
-                            mLavoro.setFattura(mFat.getId(),true);
+                            mLavoro.setFattura(mFat.getId(), true);
                             mFat.setPagato(0, true);
 
-                            if(mVeicolo == null){
+                            if (mVeicolo == null) {
 
                                 findVeicolo();
                             }
@@ -316,8 +316,8 @@ public class LavorazioniBodyFragment extends Fragment {
                                 }
                                 ApplicationData.fatture.add(mFat);
                                 ApplicationData.fattureNon.add(mFat);
-                                mFat.setAzienda(az.getPiva(),true);
-                            }else{
+                                mFat.setAzienda(az.getPiva(), true);
+                            } else {
 
                                 Privato pr = null;
                                 for (int i = 0; i < ApplicationData.privati.size(); i++) {
@@ -329,7 +329,7 @@ public class LavorazioniBodyFragment extends Fragment {
 
                                 ApplicationData.fatture.add(mFat);
                                 ApplicationData.fattureNon.add(mFat);
-                                mFat.setAzienda(pr.getCf(),true);
+                                mFat.setAzienda(pr.getCf(), true);
 
                             }
                             mTmpDial.dismiss();
@@ -357,7 +357,7 @@ public class LavorazioniBodyFragment extends Fragment {
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                         @Override
                         public void onDismiss(DialogInterface dialog) {
-                            if(!mIsFinished) {
+                            if (!mIsFinished) {
                                 ApplicationData.lavoriFiniti.add(mLavoro);
                                 ApplicationData.lavoriInCorso.remove(mPos);
                                 MainActivity.container.removeAllViewsInLayout();
