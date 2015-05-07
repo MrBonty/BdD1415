@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,30 +66,6 @@ public class LavorazioniBodyFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Bundle args = this.getArguments();
-
-        if (args != null) {
-            mPos = args.getInt(LavorazioniMenuFragment.POS);
-            mIsVis = args.getBoolean(LavorazioniMenuFragment.ISVIS);
-            mIsFinished = ApplicationData.isFinished;
-        }
-
-        Activity activity = getActivity();
-        viewHolder = new ViewHolder();
-        if (mIsVis) {
-            mImage = (ImageView) activity.findViewById(R.id.image_lavorazioni);
-            mBody = (LinearLayout) MainActivity.act.findViewById(R.id.ll_lavorazioni);
-            mImage.setVisibility(View.GONE);
-            mBody.setVisibility(View.VISIBLE);
-        }
-
-        viewHolder.dataFine = (TextView) activity.findViewById(R.id.lavoro_end_data);
-        viewHolder.dataInizio = (TextView) activity.findViewById(R.id.lavoro_start_data);
-        viewHolder.fattura = (Button) activity.findViewById(R.id.lavorazioni_fattura);
-        viewHolder.id = (TextView) activity.findViewById(R.id.lavoro_id_data);
-        viewHolder.veicoloTarga = (TextView) activity.findViewById(R.id.lavoro_veicolo_targa_data);
-        viewHolder.veicoloTelaio = (TextView) activity.findViewById(R.id.lavoro_veicolo_telaio_data);
-        viewHolder.lavori = (ListView) activity.findViewById(android.R.id.list);
     }
 
     //onCreateView
@@ -151,7 +129,7 @@ public class LavorazioniBodyFragment extends Fragment {
                     for (int j = 0; j < ApplicationData.guasti.size(); j++) {
                         Guasto g = ApplicationData.guasti.get(j);
                         if (g.getId() == guasto) {
-                            tmp += " - " + g.getDescrizione();
+                            tmp += " - " + g.getDescrizione().split(":")[0];
                             break;
                         }
                     }
@@ -177,7 +155,7 @@ public class LavorazioniBodyFragment extends Fragment {
                     color.add(Color.parseColor("#66FFFF00")); //Semitrasparent yellow
                 }
             }
-            ArrayAdapter<String> adapter = new AdapterOfString(guastiManutenzioni, color);
+            ArrayAdapter<String> adapter = new DescrizioniArrayAdapter(mCtx, guastiManutenzioni, color);
             viewHolder.lavori.setAdapter(adapter);
 
         }
@@ -250,26 +228,25 @@ public class LavorazioniBodyFragment extends Fragment {
 
                             List<String> forSpinner = new ArrayList<String>();
                             final ArrayList<Fattura> spinnerFat = new ArrayList<Fattura>();
-                            for (int i = 0; i < ApplicationData.fatture.size(); i++) {
-                                String tmp = "";
-                                Fattura fatTmp = ApplicationData.fatture.get(i);
-                                if (fatTmp.getPagato() == 0) {
-                                    String token = "";
-                                    token += fatTmp.getId();
-                                    for (int j = token.length(); j < 5; j++) {
-                                        token = " " + token;
 
-                                    }
-                                    tmp += token;
-                                    tmp += " - ";
-                                    if (fatTmp.getAzienda() != null) {
-                                        tmp += fatTmp.getAzienda();
-                                    } else {
-                                        tmp += fatTmp.getPrivato();
-                                    }
-                                    forSpinner.add(tmp);
-                                    spinnerFat.add(fatTmp);
+                            for(int i = 0; i < ApplicationData.fattureNon.size(); i++) {
+                                String tmp = "";
+                                Fattura fatTmp = ApplicationData.fattureNon.get(i);
+
+                                String token = "";
+                                token += fatTmp.getId();
+                                for (int j = token.length(); j < 5; j++) {
+                                    token = " " + token;
                                 }
+                                tmp += token;
+                                tmp += " - ";
+                                if (fatTmp.getAzienda() != null) {
+                                    tmp += fatTmp.getAzienda();
+                                } else {
+                                    tmp += fatTmp.getPrivato();
+                                }
+                                forSpinner.add(tmp);
+                                spinnerFat.add(fatTmp);
                             }
 
                             Spinner spin = (Spinner) mTmpDialogPicker.findViewById(R.id.spinner_fatture);
@@ -297,6 +274,7 @@ public class LavorazioniBodyFragment extends Fragment {
                                 @Override
                                 public void onClick(View v) {
                                     toShowFattura = true;
+                                    mLavoro.setFattura(mFat.getId(),true);
                                     mTmpDialogPicker.dismiss();
                                 }
                             });
@@ -318,7 +296,12 @@ public class LavorazioniBodyFragment extends Fragment {
                         public void onClick(View v) {
                             toShowFattura = true;
                             mFat = new Fattura(true);
-                            if (mVeicolo == null) {
+
+                            mLavoro.setFattura(mFat.getId(),true);
+                            mFat.setPagato(0, true);
+
+                            if(mVeicolo == null){
+
                                 findVeicolo();
                             }
 
@@ -331,8 +314,11 @@ public class LavorazioniBodyFragment extends Fragment {
                                         break;
                                     }
                                 }
-                                mFat.setAzienda(az.getPiva(), true);
-                            } else {
+                                ApplicationData.fatture.add(mFat);
+                                ApplicationData.fattureNon.add(mFat);
+                                mFat.setAzienda(az.getPiva(),true);
+                            }else{
+
                                 Privato pr = null;
                                 for (int i = 0; i < ApplicationData.privati.size(); i++) {
                                     pr = ApplicationData.privati.get(i);
@@ -340,7 +326,11 @@ public class LavorazioniBodyFragment extends Fragment {
                                         break;
                                     }
                                 }
-                                mFat.setAzienda(pr.getCf(), true);
+
+                                ApplicationData.fatture.add(mFat);
+                                ApplicationData.fattureNon.add(mFat);
+                                mFat.setAzienda(pr.getCf(),true);
+
                             }
                             mTmpDial.dismiss();
                         }
@@ -362,7 +352,21 @@ public class LavorazioniBodyFragment extends Fragment {
 
                 if (toShowFattura) {
                     FatturaDialog dialog = new FatturaDialog(mFat);
+
                     toShowFattura = false;
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            if(!mIsFinished) {
+                                ApplicationData.lavoriFiniti.add(mLavoro);
+                                ApplicationData.lavoriInCorso.remove(mPos);
+                                MainActivity.container.removeAllViewsInLayout();
+                                ApplicationData.isPayed = false;
+                                MainActivity.container.addView(MainActivity.lavorazioniLayout);
+                                MainActivity.corrente = MainActivity.lavorazioniLayout;
+                            }
+                        }
+                    });
                 }
             }
         };
@@ -388,43 +392,4 @@ public class LavorazioniBodyFragment extends Fragment {
         public ListView lavori;
     }
 
-    private class AdapterOfString extends ArrayAdapter<String> {
-        ArrayList<Integer> color;
-
-        public AdapterOfString(List<String> objects, ArrayList<Integer> color) {
-            super(mCtx, R.layout.lavoro_item, objects);
-            this.color = color;
-        }
-
-        private class ViewHold {
-            TextView titleText;
-        }
-
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            String tmp = getItem(position);
-
-            ViewHold vh = null;
-
-            View viewToUse = null;
-
-            LayoutInflater mInflater = (LayoutInflater) mCtx
-                    .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-
-            if (convertView == null) {
-                viewToUse = mInflater.inflate(R.layout.lavoro_item, null);
-                vh = new ViewHold();
-                vh.titleText = (TextView) convertView.findViewById(R.id.lavoro_name);
-                viewToUse.setTag(vh);
-            } else {
-                viewToUse = convertView;
-                vh = (ViewHold) viewToUse.getTag();
-            }
-
-            viewToUse.setBackgroundColor(color.get(position));
-            vh.titleText.setText(tmp);
-
-            return viewToUse;
-        }
-    }
 }

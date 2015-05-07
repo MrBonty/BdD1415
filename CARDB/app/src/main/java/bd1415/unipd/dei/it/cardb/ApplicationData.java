@@ -47,19 +47,37 @@ public class ApplicationData {
     public static ArrayList<R8> r8 = new ArrayList<>();
     public static ArrayList<Usato> usato = new ArrayList<>();
     public static ArrayList<Fattura> fatture = new ArrayList<>();
+    public static ArrayList<Fattura> fatturePagate = new ArrayList<>();
+    public static ArrayList<Fattura> fattureNon = new ArrayList<>();
+
 
     public static boolean isFinished = false;
+    public static ArrayList<String> guastiManutenzioni;
 
     public static int posizioneCorrente;
 
-    public static void splitWork() {
-        for (int i = 0; i < lavori.size(); i++) {
+    public static boolean isPayed = false;
+
+    public static void splitWork(){
+        for (int i = 0; i< lavori.size(); i++){
             Lavoro tmp = lavori.get(i);
             String fine = tmp.getData_fine();
             if (fine != null | fine != "") {
                 lavoriFiniti.add(tmp);
             } else {
                 lavoriInCorso.add(tmp);
+            }
+        }
+    }
+
+    public static void splitFatture(){
+        for (int i = 0; i< fatture.size(); i++){
+            Fattura tmp = fatture.get(i);
+            int fine = tmp.getPagato();
+            if(fine == 0){
+                fattureNon.add(tmp);
+            }else{
+                fatturePagate.add(tmp);
             }
         }
     }

@@ -38,6 +38,12 @@
     <string name="add">Aggiungi</string>
     <string name="salva">Salva</string>
     <string name="not_finished">Lavoro non finito</string>
+    <string name="descrizioni_tipo_tag">Tipo:\u0020</string>
+    <string name="descrizioni_tag">Descrizione:\u0020</string>
+    <string name="pagamenti_pagato_tag">Pagato\u0020</string>
+    <string name="pagamenti_Cliente_tag">Cliente:\u0020</string>
+
+    <string name="data_tag">Data:\u0020</string>
 </resources>
 
 

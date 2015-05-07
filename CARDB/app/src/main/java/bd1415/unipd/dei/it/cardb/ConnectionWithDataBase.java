@@ -186,6 +186,8 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     fattura.setId(rs.getInt("id"), false);
                     ApplicationData.fatture.add(fattura);
                 }
+                ApplicationData.splitFatture();
+
                 rs = st.executeQuery("SELECT * FROM main.Fornitore;");
                 while (rs.next()) {
                     Fornitore fornitore = new Fornitore(rs.getString("piva"), false);

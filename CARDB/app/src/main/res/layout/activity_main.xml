@@ -93,28 +93,50 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lavorazioni"
+            android:id="@+id/lavorazioni"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <fragment
+                class="bd1415.unipd.dei.it.cardb.LavorazioniMenuFragment"
+                android:layout_width="@dimen/large"
+                android:layout_height="match_parent"
+                tools:layout="@layout/lavorazioni_menu_fragment"></fragment>
+
+            <View style="@style/Divider" />
+
+            <fragment
+                class="bd1415.unipd.dei.it.cardb.LavorazioniBodyFragment"
+                android:id="@+id/lavorazioni_body"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout="@layout/lavorazioni_body_fragment"></fragment>
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/descrizioni"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <fragment
-                    class="bd1415.unipd.dei.it.cardb.LavorazioniMenuFragment"
+                    class="bd1415.unipd.dei.it.cardb.DescrizioniMenuFragment"
                     android:layout_width="@dimen/large"
                     android:layout_height="match_parent"
-                    tools:layout="@layout/lavorazioni_menu_fragment"></fragment>
+                    tools:layout="@layout/descrizioni_menu_fragment"></fragment>
 
                 <View style="@style/Divider" />
 
                 <fragment
-                    class="bd1415.unipd.dei.it.cardb.LavorazioniBodyFragment"
-                    android:id="@+id/lavorazioni_body"
+                    class="bd1415.unipd.dei.it.cardb.DescrizioniBodyFragment"
+                    android:id="@+id/descrizioni_body"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:layout="@layout/lavorazioni_body_fragment"></fragment>
+                    tools:layout="@layout/descrizioni_body_fragment"></fragment>
 
             </LinearLayout>
 
-            <!--<LinearLayout
+            <LinearLayout
                 android:id="@+id/pagamenti"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -129,13 +151,14 @@
 
                 <fragment
                     class="bd1415.unipd.dei.it.cardb.PagamentiBodyFragment"
+                    android:id="@+id/pagamenti_body"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:layout="@layout/pagamenti_body_fragment"></fragment>
 
             </LinearLayout>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:id="@+id/gestione"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
