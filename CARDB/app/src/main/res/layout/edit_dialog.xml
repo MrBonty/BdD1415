@@ -58,21 +58,23 @@
             android:id="@+id/edit_ok"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:text="@string/salva"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/edit_view1"
-            android:layout_marginStart="39dp" />
+            android:layout_toRightOf="@+id/edit_view1"
+            android:background="@null"
+            android:text="@string/salva" />
 
         <Button
             android:id="@+id/edit_cancel"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:text="@string/cancel"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/edit_view1"
-            android:layout_marginEnd="41dp" />
+            android:layout_toLeftOf="@+id/edit_view1"
+            android:background="@null"
+            android:text="@string/cancel" />
 
     </RelativeLayout>
 

@@ -41,9 +41,9 @@ public class LavorazioniMenuFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mIsFinished = ApplicationData.isFinished;
-        if(mIsFinished) {
+        if (mIsFinished) {
             setListAdapter(new LavoriArrayAdapter(inflater.getContext(), ApplicationData.lavoriFiniti));
-        }else{
+        } else {
             setListAdapter(new LavoriArrayAdapter(inflater.getContext(), ApplicationData.lavoriInCorso));
         }
 

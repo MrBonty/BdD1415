@@ -184,7 +184,7 @@ public class LavorazioniBodyFragment extends Fragment {
         return view;
     }
 
-    private OnClickListener getFatturaView(){
+    private OnClickListener getFatturaView() {
         return new OnClickListener() {
 
             @Override
@@ -195,9 +195,9 @@ public class LavorazioniBodyFragment extends Fragment {
                 mFat = null;
                 int idFattura = lavoro.getId();
 
-                if(!mIsFinished){
+                if (!mIsFinished) {
                     String date = "";//TODO method for generate a date
-                    mLavoro.setData_fine(date,true);
+                    mLavoro.setData_fine(date, true);
 
                     mTmpDial = new Dialog(mCtx);
 
@@ -388,10 +388,10 @@ public class LavorazioniBodyFragment extends Fragment {
         public ListView lavori;
     }
 
-    private class AdapterOfString extends ArrayAdapter<String>{
+    private class AdapterOfString extends ArrayAdapter<String> {
         ArrayList<Integer> color;
 
-        public AdapterOfString(List<String> objects, ArrayList<Integer> color){
+        public AdapterOfString(List<String> objects, ArrayList<Integer> color) {
             super(mCtx, R.layout.lavoro_item, objects);
             this.color = color;
         }
@@ -404,14 +404,14 @@ public class LavorazioniBodyFragment extends Fragment {
 
             String tmp = getItem(position);
 
-            ViewHold vh= null;
+            ViewHold vh = null;
 
             View viewToUse = null;
 
             LayoutInflater mInflater = (LayoutInflater) mCtx
                     .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
-            if(convertView == null){
+            if (convertView == null) {
                 viewToUse = mInflater.inflate(R.layout.lavoro_item, null);
                 vh = new ViewHold();
                 vh.titleText = (TextView) convertView.findViewById(R.id.lavoro_name);

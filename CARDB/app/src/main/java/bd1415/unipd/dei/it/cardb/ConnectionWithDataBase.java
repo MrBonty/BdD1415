@@ -314,7 +314,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     usato.setNumero_pezzi(rs.getInt("numero_pezzi"), false);
                     ApplicationData.usato.add(usato);
                 }*/
-                
+
                 if (rs != null) {
                     rs.close();
                 }

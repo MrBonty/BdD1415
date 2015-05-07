@@ -42,7 +42,7 @@
 
                     <TextView
                         android:id="@+id/cliente_nome_data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
                 </LinearLayout>
@@ -63,7 +63,7 @@
 
                     <TextView
                         android:id="@+id/cliente_cognome_data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
                 </LinearLayout>
@@ -83,7 +83,7 @@
 
                 <TextView
                     android:id="@+id/cliente_pk_data"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="25sp" />
             </LinearLayout>
@@ -103,7 +103,7 @@
 
                 <TextView
                     android:id="@+id/cliente_telefono_data"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="25sp" />
             </LinearLayout>
@@ -130,7 +130,7 @@
 
                     <TextView
                         android:id="@+id/cliente_citta_data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
                 </LinearLayout>
@@ -150,7 +150,7 @@
 
                     <TextView
                         android:id="@+id/cliente_provincia_data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
                 </LinearLayout>
@@ -179,7 +179,7 @@
 
                     <TextView
                         android:id="@+id/cliente_indirizzo_data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
 
@@ -200,7 +200,7 @@
 
                     <TextView
                         android:id="@+id/cliente_civico_data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
 

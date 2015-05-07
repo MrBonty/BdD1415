@@ -52,13 +52,13 @@ public class ApplicationData {
 
     public static int posizioneCorrente;
 
-    public static void splitWork(){
-        for (int i = 0; i< lavori.size(); i++){
+    public static void splitWork() {
+        for (int i = 0; i < lavori.size(); i++) {
             Lavoro tmp = lavori.get(i);
             String fine = tmp.getData_fine();
-            if(fine != null | fine !=""){
+            if (fine != null | fine != "") {
                 lavoriFiniti.add(tmp);
-            }else{
+            } else {
                 lavoriInCorso.add(tmp);
             }
         }

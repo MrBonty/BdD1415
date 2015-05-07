@@ -150,6 +150,7 @@ public class AziendeBodyFragment extends Fragment {
         viewHolder.provincia = (TextView) view.findViewById(R.id.cliente_provincia_data);
         viewHolder.indirizzo = (TextView) view.findViewById(R.id.cliente_indirizzo_data);
         viewHolder.veicoli = (ListView) view.findViewById(android.R.id.list);
+        viewHolder.numero_civico = (TextView) view.findViewById(R.id.cliente_civico_data);
 
         if (mIsVis) {
             if (mIsPrivate) {
@@ -165,7 +166,8 @@ public class AziendeBodyFragment extends Fragment {
                 viewHolder.telefono.setText(cl.getTelefono());
 
                 if (cl.getIndirizzo() != null) {
-                    viewHolder.indirizzo.setText(cl.getIndirizzo().indirizzo + " " + cl.getIndirizzo().numero_civico);
+                    viewHolder.indirizzo.setText(cl.getIndirizzo().indirizzo);
+                    viewHolder.numero_civico.setText(cl.getIndirizzo().numero_civico);
                     viewHolder.citta.setText(cl.getIndirizzo().città);
                     viewHolder.provincia.setText(cl.getIndirizzo().provincia);
                 }
@@ -222,6 +224,7 @@ public class AziendeBodyFragment extends Fragment {
         public TextView provincia;
         public TextView indirizzo;
         public ListView veicoli;
+        public TextView numero_civico;
     }
 
 
