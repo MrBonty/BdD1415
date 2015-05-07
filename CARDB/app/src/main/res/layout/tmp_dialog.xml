@@ -30,7 +30,6 @@
         android:weightSum="1">
 
 
-
         <Button
             android:id="@+id/cancel"
             android:layout_width="0dp"
@@ -39,9 +38,9 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@id/view2"
+            android:layout_weight="0.33"
             android:background="@null"
-            android:text="@string/cancel"
-            android:layout_weight="0.33"/>
+            android:text="@string/cancel" />
 
         <View
             android:id="@+id/view2"
@@ -50,8 +49,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:background="@color/primaryColor"
-            android:layout="@+id/sep1"
-            />
+            android:layout="@+id/sep1" />
 
 
         <Button
@@ -62,9 +60,9 @@
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@id/view1"
             android:layout_toRightOf="@id/view2"
+            android:layout_weight="0.34"
             android:background="@null"
-            android:text="@string/add_to"
-            android:layout_weight="0.34"/>
+            android:text="@string/add_to" />
 
         <View
             android:id="@+id/view1"
@@ -73,8 +71,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:background="@color/primaryColor"
-            android:layout="@+id/sep1"
-            />
+            android:layout="@+id/sep1" />
 
         <Button
             android:id="@+id/add_new"
@@ -84,9 +81,9 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@id/view1"
+            android:layout_weight="0.33"
             android:background="@null"
-            android:text="@string/add_new"
-            android:layout_weight="0.33"/>
+            android:text="@string/add_new" />
 
     </LinearLayout>
 

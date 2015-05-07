@@ -43,8 +43,8 @@ public class VeicoliBodyFragment extends Fragment {
         Bundle args = this.getArguments();
 
         if (args != null) {
-            mPos = args.getInt(PrivatiMenuFragment.POS);
-            mIsVis = args.getBoolean(PrivatiMenuFragment.ISVIS);
+            mPos = args.getInt(VeicoliMenuFragment.POS);
+            mIsVis = args.getBoolean(VeicoliMenuFragment.ISVIS);
         }
 
         View view = inflater.inflate(R.layout.veicoli_body_fragment, container, false);
@@ -68,10 +68,15 @@ public class VeicoliBodyFragment extends Fragment {
 
             final Veicolo veicolo = ApplicationData.veicoli.get(mPos);
 
+
+            //TODO to fix, i set text non hanno alcun effetto
             viewHolder.targa.setText(veicolo.getTarga());
             viewHolder.numero_telaio.setText(veicolo.getNumero_telaio());
 
-            final boolean isPriv;
+            viewHolder.proprietario.setText("edi");
+
+            final boolean isPriv = true;
+            /*
             if (veicolo.getAzienda() != null && !veicolo.getAzienda().equals("")) {
                 isPriv = false;
                 for (int i = 0; i < ApplicationData.aziende.size(); i++) {
@@ -115,7 +120,7 @@ public class VeicoliBodyFragment extends Fragment {
 
             viewHolder.lavorazioni.setAdapter(new LavoriArrayAdapter(MainActivity.ctx, tmp1));
 
-
+*/
             viewHolder.numero_telaio.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -173,9 +178,13 @@ public class VeicoliBodyFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if (isPriv) {
-                        MainActivity.container.addView(MainActivity.privatiLayout);
+                        SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.targa.getText().toString(),
+                                false, MainActivity.ctx, viewHolder.targa, new PrivatiArrayAdapter(MainActivity.ctx, ApplicationData.privati)).build();
+                        dialog.show();
                     } else {
-                        MainActivity.container.addView(MainActivity.aziendeLayout);
+                        SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.targa.getText().toString(),
+                                false, MainActivity.ctx, viewHolder.targa, new AziendeArrayAdapter(MainActivity.ctx, ApplicationData.aziende)).build();
+                        dialog.show();
                     }
                 }
             });

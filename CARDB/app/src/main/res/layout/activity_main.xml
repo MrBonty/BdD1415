@@ -35,8 +35,8 @@
                 <View style="@style/Divider" />
 
                 <fragment
-                    class="bd1415.unipd.dei.it.cardb.PrivatiBodyFragment"
                     android:id="@+id/privati_body"
+                    class="bd1415.unipd.dei.it.cardb.PrivatiBodyFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:drawable/dialog_holo_light_frame"
@@ -60,8 +60,8 @@
                 <View style="@style/Divider" />
 
                 <fragment
-                    class="bd1415.unipd.dei.it.cardb.AziendeBodyFragment"
                     android:id="@+id/aziende_body"
+                    class="bd1415.unipd.dei.it.cardb.AziendeBodyFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:drawable/dialog_holo_light_frame"
@@ -84,8 +84,8 @@
                 <View style="@style/Divider" />
 
                 <fragment
-                    class="bd1415.unipd.dei.it.cardb.VeicoliBodyFragment"
                     android:id="@+id/veicoli_body"
+                    class="bd1415.unipd.dei.it.cardb.VeicoliBodyFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:layout="@layout/veicoli_body_fragment" />
@@ -93,26 +93,26 @@
             </LinearLayout>
 
             <LinearLayout
-            android:id="@+id/lavorazioni"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <fragment
-                class="bd1415.unipd.dei.it.cardb.LavorazioniMenuFragment"
-                android:layout_width="@dimen/large"
-                android:layout_height="match_parent"
-                tools:layout="@layout/lavorazioni_menu_fragment"></fragment>
-
-            <View style="@style/Divider" />
-
-            <fragment
-                class="bd1415.unipd.dei.it.cardb.LavorazioniBodyFragment"
-                android:id="@+id/lavorazioni_body"
+                android:id="@+id/lavorazioni"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:layout="@layout/lavorazioni_body_fragment"></fragment>
+                android:layout_height="match_parent">
 
-        </LinearLayout>
+                <fragment
+                    class="bd1415.unipd.dei.it.cardb.LavorazioniMenuFragment"
+                    android:layout_width="@dimen/large"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/lavorazioni_menu_fragment"></fragment>
+
+                <View style="@style/Divider" />
+
+                <fragment
+                    android:id="@+id/lavorazioni_body"
+                    class="bd1415.unipd.dei.it.cardb.LavorazioniBodyFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/lavorazioni_body_fragment"></fragment>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/descrizioni"
@@ -128,8 +128,8 @@
                 <View style="@style/Divider" />
 
                 <fragment
-                    class="bd1415.unipd.dei.it.cardb.DescrizioniBodyFragment"
                     android:id="@+id/descrizioni_body"
+                    class="bd1415.unipd.dei.it.cardb.DescrizioniBodyFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:layout="@layout/descrizioni_body_fragment"></fragment>
@@ -150,8 +150,8 @@
                 <View style="@style/Divider" />
 
                 <fragment
-                    class="bd1415.unipd.dei.it.cardb.PagamentiBodyFragment"
                     android:id="@+id/pagamenti_body"
+                    class="bd1415.unipd.dei.it.cardb.PagamentiBodyFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:layout="@layout/pagamenti_body_fragment"></fragment>

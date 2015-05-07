@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/ll_pagamenti"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -38,12 +38,13 @@ android:layout_height="match_parent">
                         android:layout_height="wrap_content"
                         android:text="@string/id_tag"
                         android:textSize="25sp" />
+
                     <TextView
                         android:id="@+id/pagamenti_id_data"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
-                    </LinearLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -56,6 +57,7 @@ android:layout_height="match_parent">
                         android:layout_height="wrap_content"
                         android:text="@string/data_tag"
                         android:textSize="25sp" />
+
                     <TextView
                         android:id="@+id/pagamenti_data_data"
                         android:layout_width="wrap_content"
@@ -72,7 +74,7 @@ android:layout_height="match_parent">
                         android:id="@+id/pagamenti_pagato_tag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text= "@string/pagamenti_pagato_tag"
+                        android:text="@string/pagamenti_pagato_tag"
                         android:textSize="25sp" />
 
                     <CheckBox
@@ -80,7 +82,7 @@ android:layout_height="match_parent">
                         android:layout_width="35dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
-                        android:checked="false"/>
+                        android:checked="false" />
 
                 </LinearLayout>
 
@@ -96,8 +98,9 @@ android:layout_height="match_parent">
                     android:id="@+id/pagamenti_cliente_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text= "@string/pagamenti_Cliente_tag"
+                    android:text="@string/pagamenti_Cliente_tag"
                     android:textSize="25sp" />
+
                 <TextView
                     android:id="@+id/pagamenti_cliente_data"
                     android:layout_width="wrap_content"

@@ -24,6 +24,7 @@ import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
+import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -99,6 +100,9 @@ public class MainActivity extends ActionBarActivity {
         Azienda azi = new Azienda();
         azi.setNome("jkefkerj", false);
         ApplicationData.aziende.add(azi);
+        Veicolo vc = new Veicolo();
+        vc.setPrivato("rfr",false);
+        ApplicationData.veicoli.add(vc);
 
     }
 

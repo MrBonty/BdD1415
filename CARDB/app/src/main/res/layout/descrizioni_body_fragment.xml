@@ -8,24 +8,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="5dp"
-        android:visibility="gone"
         android:layout_marginTop="5dp"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="10dp"
+            android:orientation="horizontal"
             android:weightSum="1">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="15dp"
+                android:layout_weight="0.5"
                 android:orientation="horizontal">
 
                 <TextView
@@ -33,21 +33,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/descrizioni_tipo_tag"
-                    android:textSize="25sp"/>
+                    android:textSize="25sp" />
 
                 <TextView
                     android:id="@+id/descrizioni_tipo_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25sp"/>
+                    android:textSize="25sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="15dp"
+                android:layout_weight="0.5"
                 android:orientation="horizontal">
 
                 <TextView
@@ -55,14 +55,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/id_tag"
-                    android:textSize="25sp"/>
+                    android:textSize="25sp" />
 
                 <TextView
                     android:id="@+id/descrizioni_id_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25sp"
-                    />
+                    android:textSize="25sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -70,7 +69,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/accent_material_dark"/>
+            android:background="@color/accent_material_dark" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -85,14 +84,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/descrizioni_tag"
-                android:textSize="25sp"/>
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/descrizioni_des_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
-                android:textSize="25sp"/>
+                android:textSize="25sp" />
         </LinearLayout>
 
     </LinearLayout>

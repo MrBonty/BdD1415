@@ -29,6 +29,9 @@ public class Veicolo {
     private String modello_cod_prod; //FOREING KEY
     private String modello_marca; //FOREING KEY
 
+
+    public Veicolo() {}
+
     //TODO -- CHECK IT
     public Veicolo(String numero_telaio, String modello_cod_prod, String modello_marca, boolean insert) {
         if (insert) {
