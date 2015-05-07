@@ -15,7 +15,7 @@ public class Fattura {
     public static final String FATTURA_AZIENDA = "azienda";
     public static final String FATTURA_PRIVATO = "privato";
 
-    public static final String FATTURA_COLUMS = "(" + FATTURA_PK_ID + ", "
+    public static final String FATTURA_COLUMNS = "(" + FATTURA_PK_ID + ", "
             + FATTURA_PAGATO + ", "
             + FATTURA_AZIENDA + ", "
             + FATTURA_PRIVATO + ")";
