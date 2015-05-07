@@ -205,7 +205,8 @@ public class AziendeBodyFragment extends Fragment {
 
                 viewHolder.veicoli.setAdapter(new VeicoliArrayAdapter(MainActivity.ctx, tmp));
 
-*/            }
+*/
+            }
         }
         return view;
     }
@@ -222,8 +223,6 @@ public class AziendeBodyFragment extends Fragment {
         public TextView indirizzo;
         public ListView veicoli;
     }
-
-
 
 
 }

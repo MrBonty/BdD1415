@@ -48,4 +48,5 @@ public class ApplicationData {
 
     public static int posizioneCorrente;
 
+
 }

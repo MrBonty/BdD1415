@@ -35,7 +35,7 @@ public class LavorazioniBodyFragment extends Fragment {
     private boolean mIsPrivate = false;
     private Veicolo mVeicolo = null;
     private Lavoro mLavoro = null;
-    private static Context mCtx  = MainActivity.ctx;
+    private static Context mCtx = MainActivity.ctx;
     private static Dialog mTmpDial;
     private static Fattura mFat;
 
@@ -62,7 +62,7 @@ public class LavorazioniBodyFragment extends Fragment {
         return view;
     }
 
-    private OnClickListener getFatturaView(final int position){
+    private OnClickListener getFatturaView(final int position) {
         return new OnClickListener() {
 
             @Override
@@ -71,7 +71,7 @@ public class LavorazioniBodyFragment extends Fragment {
                 mFat = null;
                 int idFattura = lavoro.getId();
 
-                if(lavoro.getData_fine() == null | lavoro.getData_fine() == ""){
+                if (lavoro.getData_fine() == null | lavoro.getData_fine() == "") {
 
                     mTmpDial = new Dialog(mCtx);
 
@@ -124,21 +124,21 @@ public class LavorazioniBodyFragment extends Fragment {
 
                             List<String> forSpinner = new ArrayList<String>();
                             final ArrayList<Fattura> spinnerFat = new ArrayList<Fattura>();
-                            for(int i = 0; i < ApplicationData.fatture.size(); i++){
+                            for (int i = 0; i < ApplicationData.fatture.size(); i++) {
                                 String tmp = "";
                                 Fattura fatTmp = ApplicationData.fatture.get(i);
-                                if(fatTmp.getPagato() == 0) {
+                                if (fatTmp.getPagato() == 0) {
                                     String token = "";
                                     token += fatTmp.getId();
-                                    for(int j= token.length(); j<5; j++){
+                                    for (int j = token.length(); j < 5; j++) {
                                         token = " " + token;
 
                                     }
                                     tmp += token;
                                     tmp += " - ";
-                                    if(fatTmp.getAzienda() != null){
+                                    if (fatTmp.getAzienda() != null) {
                                         tmp += fatTmp.getAzienda();
-                                    }else {
+                                    } else {
                                         tmp += fatTmp.getPrivato();
                                     }
                                     forSpinner.add(tmp);
@@ -155,16 +155,16 @@ public class LavorazioniBodyFragment extends Fragment {
                             Button cancel = (Button) mTmpDialogPicker.findViewById(R.id.cancel);
                             final Button add = (Button) mTmpDialogPicker.findViewById(R.id.add);
                             spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                                 @Override
-                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                     add.setEnabled(true);
-                                     mFat = spinnerFat.get(position);
-                                 }
+                                @Override
+                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                    add.setEnabled(true);
+                                    mFat = spinnerFat.get(position);
+                                }
 
-                                 @Override
-                                 public void onNothingSelected(AdapterView<?> parent) {
-                                     add.setEnabled(false);
-                                 }
+                                @Override
+                                public void onNothingSelected(AdapterView<?> parent) {
+                                    add.setEnabled(false);
+                                }
                             });
 
                             add.setOnClickListener(new OnClickListener() {
@@ -192,30 +192,29 @@ public class LavorazioniBodyFragment extends Fragment {
                         public void onClick(View v) {
                             toShowFattura = true;
                             mFat = new Fattura(true);
-                            if(mVeicolo == null){
+                            if (mVeicolo == null) {
                                 findVeicolo();
                             }
 
 
-
-                            if(mVeicolo.getAzienda() != null){
+                            if (mVeicolo.getAzienda() != null) {
                                 Azienda az = null;
-                                for(int i = 0; i < ApplicationData.aziende.size(); i++){
+                                for (int i = 0; i < ApplicationData.aziende.size(); i++) {
                                     az = ApplicationData.aziende.get(i);
-                                    if(mVeicolo.getNumero_telaio().equals(mVeicolo.getAzienda())){
+                                    if (mVeicolo.getNumero_telaio().equals(mVeicolo.getAzienda())) {
                                         break;
                                     }
                                 }
-                                mFat.setAzienda(az.getPiva(),true);
-                            }else{
+                                mFat.setAzienda(az.getPiva(), true);
+                            } else {
                                 Privato pr = null;
-                                for(int i = 0; i < ApplicationData.privati.size(); i++){
+                                for (int i = 0; i < ApplicationData.privati.size(); i++) {
                                     pr = ApplicationData.privati.get(i);
-                                    if(mVeicolo.getNumero_telaio().equals(mVeicolo.getPrivato())){
+                                    if (mVeicolo.getNumero_telaio().equals(mVeicolo.getPrivato())) {
                                         break;
                                     }
                                 }
-                                mFat.setAzienda(pr.getCf(),true);
+                                mFat.setAzienda(pr.getCf(), true);
                             }
                             mTmpDial.dismiss();
                         }
@@ -223,19 +222,19 @@ public class LavorazioniBodyFragment extends Fragment {
 
                     mTmpDial.show();
 
-                } else{
-                    for(int i = 0; i < ApplicationData.fatture.size(); i++){
+                } else {
+                    for (int i = 0; i < ApplicationData.fatture.size(); i++) {
                         mFat = ApplicationData.fatture.get(i);
-                        if(mFat.getId() == idFattura){
+                        if (mFat.getId() == idFattura) {
                             toShowFattura = true;
                             break;
-                        }else{
+                        } else {
                             mFat = null;
                         }
                     }
                 }
 
-                if(toShowFattura) {
+                if (toShowFattura) {
                     FatturaDialog dialog = new FatturaDialog(mFat);
                     toShowFattura = false;
                 }
@@ -243,11 +242,11 @@ public class LavorazioniBodyFragment extends Fragment {
         };
     }
 
-    private void findVeicolo(){
+    private void findVeicolo() {
         mVeicolo = null;
-        for(int i = 0; i < ApplicationData.veicoli.size(); i++){
+        for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
             mVeicolo = ApplicationData.veicoli.get(i);
-            if(mVeicolo.getNumero_telaio().equals(mLavoro.getVeicolo())){
+            if (mVeicolo.getNumero_telaio().equals(mLavoro.getVeicolo())) {
                 break;
             }
         }
