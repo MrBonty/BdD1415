@@ -29,6 +29,7 @@
     <string name="lavoro_start_tag">Inizio:\u0020</string>
     <string name="lavoro_end_tag">Fine:\u0020</string>
     <string name="lavoro_fattura_tag">\u0020\u0020Fattura\u0020\u0020</string>
+    <string name="lavoro_not_ended_tag">\u0020\u0020Fine\u0020\u0020</string>
 
     <string name="id_tag">Id:\u0020</string>
     <string name="end_work">Lavoro finito, settare fattura:</string>
@@ -36,6 +37,7 @@
     <string name="add_to">Fattura esistente</string>
     <string name="add">Aggiungi</string>
     <string name="salva">Salva</string>
+    <string name="not_finished">Lavoro non finito</string>
 </resources>
 
 

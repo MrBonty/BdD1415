@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-
+        android:visibility="gone"
         >
 
         <LinearLayout
@@ -113,14 +113,14 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/veicolo_targa_tag"
+                        android:id="@+id/lavoro_veicolo_targa_tag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/veicolo_targa_tag"
                         android:textSize="25sp" />
 
                     <TextView
-                        android:id="@+id/veicolo_targa_data"
+                        android:id="@+id/lavoro_veicolo_targa_data"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
@@ -133,14 +133,14 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/veicolo_telaio_tag"
+                        android:id="@+id/lavoro_veicolo_telaio_tag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/veicolo_telaio_tag"
                         android:textSize="25sp" />
 
                     <TextView
-                        android:id="@+id/veicolo_telaio_data"
+                        android:id="@+id/lavoro_veicolo_telaio_data"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
@@ -156,6 +156,7 @@
                 android:weightSum="1">
 
                 <Button
+                    android:id="@+id/lavorazioni_fattura"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/lavoro_fattura_tag"

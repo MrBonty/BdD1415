@@ -1,8 +1,10 @@
 package bd1415.unipd.dei.it.cardb;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -22,8 +25,12 @@ import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
 import bd1415.unipd.dei.it.cardb.databasetables.Fattura;
+import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
+import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
+import bd1415.unipd.dei.it.cardb.databasetables.R7;
+import bd1415.unipd.dei.it.cardb.databasetables.R8;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 import static android.view.View.OnClickListener;
@@ -32,7 +39,11 @@ public class LavorazioniBodyFragment extends Fragment {
 
     private int mPos = -1;
     private boolean mIsVis = false;
-    private boolean mIsPrivate = false;
+    private ViewHolder viewHolder;
+    private ImageView mImage;
+    private LinearLayout mBody;
+
+    private boolean mIsFinished; // set a true if show finished work
     private Veicolo mVeicolo = null;
     private Lavoro mLavoro = null;
     private static Context mCtx = MainActivity.ctx;
@@ -53,25 +64,140 @@ public class LavorazioniBodyFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Bundle args = this.getArguments();
+
+        if (args != null) {
+            mPos = args.getInt(LavorazioniMenuFragment.POS);
+            mIsVis = args.getBoolean(LavorazioniMenuFragment.ISVIS);
+            mIsFinished = ApplicationData.isFinished;
+        }
+
+        Activity activity = getActivity();
+        viewHolder = new ViewHolder();
+        if (mIsVis) {
+            mImage = (ImageView) activity.findViewById(R.id.image_lavorazioni);
+            mBody = (LinearLayout) MainActivity.act.findViewById(R.id.ll_lavorazioni);
+            mImage.setVisibility(View.GONE);
+            mBody.setVisibility(View.VISIBLE);
+        }
+
+        viewHolder.dataFine = (TextView) activity.findViewById(R.id.lavoro_end_data);
+        viewHolder.dataInizio = (TextView) activity.findViewById(R.id.lavoro_start_data);
+        viewHolder.fattura = (Button) activity.findViewById(R.id.lavorazioni_fattura);
+        viewHolder.id = (TextView) activity.findViewById(R.id.lavoro_id_data);
+        viewHolder.veicoloTarga = (TextView) activity.findViewById(R.id.lavoro_veicolo_targa_data);
+        viewHolder.veicoloTelaio = (TextView) activity.findViewById(R.id.lavoro_veicolo_telaio_data);
+        viewHolder.lavori = (ListView) activity.findViewById(android.R.id.list);
     }
 
     //onCreateView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.lavorazioni_body_fragment, container, false);
+
+        Bundle args = this.getArguments();
+
+        if (args != null) {
+            mPos = args.getInt(PrivatiMenuFragment.POS);
+            mIsVis = args.getBoolean(PrivatiMenuFragment.ISVIS);
+            mIsFinished = ApplicationData.isFinished;
+        }
+
+        viewHolder = new ViewHolder();
+        if (mIsVis) {
+            mImage = (ImageView) view.findViewById(R.id.image_lavorazioni);
+            mBody = (LinearLayout) MainActivity.act.findViewById(R.id.ll_lavorazioni);
+            mImage.setVisibility(View.GONE);
+            mBody.setVisibility(View.VISIBLE);
+        }
+
+        viewHolder.dataFine = (TextView) view.findViewById(R.id.lavoro_end_data);
+        viewHolder.dataInizio = (TextView) view.findViewById(R.id.lavoro_start_data);
+        viewHolder.fattura = (Button) view.findViewById(R.id.lavorazioni_fattura);
+        viewHolder.id = (TextView) view.findViewById(R.id.lavoro_id_data);
+        viewHolder.veicoloTarga = (TextView) view.findViewById(R.id.lavoro_veicolo_targa_data);
+        viewHolder.veicoloTelaio = (TextView) view.findViewById(R.id.lavoro_veicolo_telaio_data);
+        viewHolder.lavori = (ListView) view.findViewById(android.R.id.list);
+
+        if (mIsVis) {
+            if (mIsFinished) {
+                viewHolder.fattura.setText(R.string.lavoro_fattura_tag);
+                mLavoro = ApplicationData.lavoriFiniti.get(mPos);
+            } else {
+                viewHolder.fattura.setText(R.string.lavoro_fattura_tag);
+                mLavoro = ApplicationData.lavoriInCorso.get(mPos);
+            }
+            findVeicolo();
+
+            viewHolder.dataInizio.setText(mLavoro.getData_inizio());
+            if (mIsFinished) {
+                viewHolder.dataFine.setText(mLavoro.getData_fine());
+            } else {
+                viewHolder.dataFine.setText(R.string.not_finished);
+            }
+
+            viewHolder.veicoloTelaio.setText(mVeicolo.getNumero_telaio());
+            viewHolder.veicoloTarga.setText(mVeicolo.getTarga());
+
+            viewHolder.fattura.setOnClickListener(getFatturaView());
+
+            List<String> guastiManutenzioni = new ArrayList<>();
+            ArrayList<Integer> color = new ArrayList<>();
+            for (int i = 0; i < ApplicationData.r7.size(); i++) {
+                R7 r = ApplicationData.r7.get(i);
+                if (mLavoro.getId() == r.getLavoro()) {
+                    int guasto = r.getGuasto();
+                    String tmp = "" + guasto;
+                    for (int j = 0; j < ApplicationData.guasti.size(); j++) {
+                        Guasto g = ApplicationData.guasti.get(j);
+                        if (g.getId() == guasto) {
+                            tmp += " - " + g.getDescrizione();
+                            break;
+                        }
+                    }
+
+                    guastiManutenzioni.add(tmp);
+                    color.add(Color.parseColor("#66FF0000")); //Semitrasparent red
+                }
+            }
+            for (int i = 0; i < ApplicationData.r8.size(); i++) {
+                R8 r = ApplicationData.r8.get(i);
+                if (mLavoro.getId() == r.getLavoro()) {
+                    int manutenzione = r.getManutenzione();
+                    String tmp = "" + manutenzione;
+                    for (int j = 0; j < ApplicationData.manutenzioni.size(); j++) {
+                        Manutenzione m = ApplicationData.manutenzioni.get(j);
+                        if (m.getId() == manutenzione) {
+                            tmp += " - " + m.getDescrizione();
+                            break;
+                        }
+                    }
+
+                    guastiManutenzioni.add(tmp);
+                    color.add(Color.parseColor("#66FFFF00")); //Semitrasparent yellow
+                }
+            }
+            ArrayAdapter<String> adapter = new AdapterOfString(guastiManutenzioni, color);
+            viewHolder.lavori.setAdapter(adapter);
+
+        }
         return view;
     }
 
-    private OnClickListener getFatturaView(final int position) {
+    private OnClickListener getFatturaView(){
         return new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Lavoro lavoro = ApplicationData.lavori.get(position);
+
+                Lavoro lavoro = mLavoro;
+
                 mFat = null;
                 int idFattura = lavoro.getId();
 
-                if (lavoro.getData_fine() == null | lavoro.getData_fine() == "") {
+                if(!mIsFinished){
+                    String date = "";//TODO method for generate a date
+                    mLavoro.setData_fine(date,true);
 
                     mTmpDial = new Dialog(mCtx);
 
@@ -260,5 +386,45 @@ public class LavorazioniBodyFragment extends Fragment {
         public TextView veicoloTelaio;
         public Button fattura;
         public ListView lavori;
+    }
+
+    private class AdapterOfString extends ArrayAdapter<String>{
+        ArrayList<Integer> color;
+
+        public AdapterOfString(List<String> objects, ArrayList<Integer> color){
+            super(mCtx, R.layout.lavoro_item, objects);
+            this.color = color;
+        }
+
+        private class ViewHold {
+            TextView titleText;
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            String tmp = getItem(position);
+
+            ViewHold vh= null;
+
+            View viewToUse = null;
+
+            LayoutInflater mInflater = (LayoutInflater) mCtx
+                    .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+
+            if(convertView == null){
+                viewToUse = mInflater.inflate(R.layout.lavoro_item, null);
+                vh = new ViewHold();
+                vh.titleText = (TextView) convertView.findViewById(R.id.lavoro_name);
+                viewToUse.setTag(vh);
+            } else {
+                viewToUse = convertView;
+                vh = (ViewHold) viewToUse.getTag();
+            }
+
+            viewToUse.setBackgroundColor(color.get(position));
+            vh.titleText.setText(tmp);
+
+            return viewToUse;
+        }
     }
 }

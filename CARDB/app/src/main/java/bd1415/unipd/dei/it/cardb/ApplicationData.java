@@ -36,6 +36,8 @@ public class ApplicationData {
     public static ArrayList<Manutenzione> manutenzioni = new ArrayList<>();
     public static ArrayList<Guasto> guasti = new ArrayList<>();
     public static ArrayList<Lavoro> lavori = new ArrayList<>();
+    public static ArrayList<Lavoro> lavoriFiniti = new ArrayList<>();
+    public static ArrayList<Lavoro> lavoriInCorso = new ArrayList<>();
     public static ArrayList<Modello> modelli = new ArrayList<>();
     public static ArrayList<Ordine> ordini = new ArrayList<>();
     public static ArrayList<Personale> personale = new ArrayList<>();
@@ -46,7 +48,20 @@ public class ApplicationData {
     public static ArrayList<Usato> usato = new ArrayList<>();
     public static ArrayList<Fattura> fatture = new ArrayList<>();
 
+    public static boolean isFinished = false;
+
     public static int posizioneCorrente;
 
+    public static void splitWork(){
+        for (int i = 0; i< lavori.size(); i++){
+            Lavoro tmp = lavori.get(i);
+            String fine = tmp.getData_fine();
+            if(fine != null | fine !=""){
+                lavoriFiniti.add(tmp);
+            }else{
+                lavoriInCorso.add(tmp);
+            }
+        }
+    }
 
 }

@@ -122,6 +122,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     veicolo.setModello_marca(rs.getString("modello_marca"), false);
                     ApplicationData.veicoli.add(veicolo);
                 }/*
+
                 rs = st.executeQuery("SELECT * FROM main.Azienda;");
                 while (rs.next()) {
                     s = s + rs.getString("piva");
@@ -134,6 +135,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     azienda.setNome(rs.getString("nome"), false);
                     ApplicationData.aziende.add(azienda);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Avviso;");
                 while (rs.next()) {
                     Avviso avviso = new Avviso(rs.getInt("manutenzione"), rs.getString("veicolo"),
@@ -143,6 +145,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     avviso.setVeicolo(rs.getString("veicolo"), false);
                     ApplicationData.avvisi.add(avviso);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Compone;");
                 while (rs.next()) {
                     Compone compone = new Compone(rs.getString("modello_cod_prod"),
@@ -152,6 +155,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     compone.setPezzo(rs.getInt("pezzo"), false);
                     ApplicationData.compone.add(compone);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Contiene;");
                 while (rs.next()) {
                     Contiene contiene = new Contiene(rs.getString("ordine_data"), rs.getString("ordine_fornitore"),
@@ -163,6 +167,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     contiene.setPrezzo_pezzo(rs.getFloat("prezzo_pezzo"), false);
                     ApplicationData.contiene.add(contiene);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Edificio;");
                 while (rs.next()) {
                     Edificio edificio = new Edificio(rs.getString("tipologia"), false);
@@ -171,6 +176,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     //edificio.setInditizzo(rs.getString("indirizzo"), false);
                     ApplicationData.edifici.add(edificio);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Fattura;");
                 while (rs.next()) {
                     Fattura fattura = new Fattura(false);
@@ -190,6 +196,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     fornitore.setTelefono(rs.getString("telefono"), false);
                     ApplicationData.fornitori.add(fornitore);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Guasto;");
                 while (rs.next()) {
                     Guasto guasto = new Guasto(false);
@@ -197,6 +204,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     guasto.setDescrizione(rs.getString("descrizione"), false);
                     ApplicationData.guasti.add(guasto);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Lavora_a;");
                 while (rs.next()) {
                     Lavora_a lavora_a = new Lavora_a(rs.getString("personale"), rs.getInt("id"), false);
@@ -206,6 +214,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     lavora_a.setStraordinari(rs.getInt("straordinari"), false);
                     ApplicationData.lavora_a.add(lavora_a);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Lavoro;");
                 while (rs.next()) {
                     Lavoro lavoro = new Lavoro(rs.getString("veicolo"), false);
@@ -216,6 +225,8 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     lavoro.setVeicolo(rs.getString("veicolo"), false);
                     ApplicationData.lavori.add(lavoro);
                 }
+                ApplicationData.splitWork();
+
                 rs = st.executeQuery("SELECT * FROM main.Manutenzione;");
                 while (rs.next()) {
                     Manutenzione manutenzione = new Manutenzione(false);
@@ -223,6 +234,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     manutenzione.setDescrizione(rs.getString("descrizione"), false);
                     ApplicationData.manutenzioni.add(manutenzione);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Modello;");
                 while (rs.next()) {
                     Modello modello = new Modello(rs.getString("codice_produzione"), rs.getString("marca"), false);
@@ -232,6 +244,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     modello.setAnno(rs.getString("anno"), false);
                     ApplicationData.modelli.add(modello);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Ordine;");
                 while (rs.next()) {
                     Ordine ordine = new Ordine(rs.getString("data_or"), rs.getString("fornitore"), false);
@@ -240,6 +253,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ordine.setQuantita_fornita(rs.getInt("quantita_fornita"), false);
                     ApplicationData.ordini.add(ordine);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Personale;");
                 while (rs.next()) {
                     Personale personale = new Personale(rs.getString("cf"), rs.getInt("edificio"), false);
@@ -254,6 +268,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     personale.setResponsabile(rs.getInt("responsabile"), false);
                     ApplicationData.personale.add(personale);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Pezzo;");
                 while (rs.next()) {
                     Pezzo pezzo = new Pezzo(false);
@@ -263,6 +278,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     pezzo.setPrezzo_vendita(rs.getFloat("prezzo_vendita"), false);
                     ApplicationData.pezzi.add(pezzo);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Privato;");
                 while (rs.next()) {
                     Privato privato = new Privato(rs.getString("cf"), false);
@@ -273,6 +289,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     privato.setNome(rs.getString("nome"), false);
                     ApplicationData.privati.add(privato);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.R7;");
                 while (rs.next()) {
                     R7 r7 = new R7(rs.getInt("lavoro"), rs.getInt("guasto"), false);
@@ -280,6 +297,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     r7.setLavoro(rs.getInt("lavoro"), false);
                     ApplicationData.r7.add(r7);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.R8;");
                 while (rs.next()) {
                     R8 r8 = new R8(rs.getInt("lavoro"), rs.getInt("manutenzione"), false);
@@ -287,6 +305,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     r8.setLavoro(rs.getInt("lavoro"), false);
                     ApplicationData.r8.add(r8);
                 }
+
                 rs = st.executeQuery("SELECT * FROM main.Usato8;");
                 while (rs.next()) {
                     Usato usato = new Usato(rs.getInt("lavoro"), rs.getInt("pezzo"), false);
@@ -295,6 +314,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     usato.setNumero_pezzi(rs.getInt("numero_pezzi"), false);
                     ApplicationData.usato.add(usato);
                 }*/
+                
                 if (rs != null) {
                     rs.close();
                 }
@@ -326,7 +346,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
             toast.cancel();
             Toast.makeText(MainActivity.ctx, result, Toast.LENGTH_LONG).show();
         }
-        ApplicationData.veicoli.get(1).updateValueInDataBase("jyfjrd", "targa");
+        //ApplicationData.veicoli.get(1).updateValueInDataBase("jyfjrd", "targa");
         MainActivity.act.finish();
         MainActivity.act.startActivity(MainActivity.intent);
 
