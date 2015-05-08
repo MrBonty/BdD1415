@@ -253,7 +253,6 @@ public class MainActivity extends ActionBarActivity {
                     } else if (childPosition == 1) {
                         ApplicationData.isFinished = false;
                         container.removeAllViewsInLayout();
-                        lavorazioniLayout.invalidate();
                         container.addView(lavorazioniLayout);
                         corrente = lavorazioniLayout;
                         drawerLayout.closeDrawer(Gravity.LEFT);
@@ -261,7 +260,6 @@ public class MainActivity extends ActionBarActivity {
                     } else if (childPosition == 2) {
                         ApplicationData.isFinished = true;
                         container.removeAllViewsInLayout();
-                        lavorazioniLayout.invalidate();
                         container.addView(lavorazioniFinitiLayout);
                         corrente = lavorazioniFinitiLayout;
                         drawerLayout.closeDrawer(Gravity.LEFT);
@@ -272,7 +270,6 @@ public class MainActivity extends ActionBarActivity {
                     if (childPosition == 0) {
                         ApplicationData.isPayed = true;
                         container.removeAllViewsInLayout();
-                        pagamentiLayout.invalidate();
                         container.addView(pagamentiFattiLayout);
                         corrente = pagamentiFattiLayout;
                         drawerLayout.closeDrawer(Gravity.LEFT);
@@ -280,7 +277,6 @@ public class MainActivity extends ActionBarActivity {
                     } else if (childPosition == 1) {
                         ApplicationData.isPayed = false;
                         container.removeAllViewsInLayout();
-                        pagamentiLayout.invalidate();
                         container.addView(pagamentiLayout);
                         corrente = pagamentiLayout;
                         drawerLayout.closeDrawer(Gravity.LEFT);

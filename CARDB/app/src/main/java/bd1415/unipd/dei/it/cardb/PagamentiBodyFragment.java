@@ -94,6 +94,7 @@ public class PagamentiBodyFragment extends Fragment {
                     }
                 }
             });
+
         }
         return view;
     }
