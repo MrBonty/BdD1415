@@ -84,7 +84,7 @@ public class LavorazioniBodyFragment extends Fragment {
         viewHolder = new ViewHolder();
         if (mIsVis) {
             mImage = (ImageView) view.findViewById(R.id.image_lavorazioni);
-            mBody = (LinearLayout) MainActivity.act.findViewById(R.id.ll_lavorazioni);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_lavorazioni);
             mImage.setVisibility(View.GONE);
             mBody.setVisibility(View.VISIBLE);
         }
