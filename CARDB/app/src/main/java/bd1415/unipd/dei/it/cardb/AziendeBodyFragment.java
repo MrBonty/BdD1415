@@ -26,7 +26,6 @@ public class AziendeBodyFragment extends Fragment {
     //onCreate
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
     }
 

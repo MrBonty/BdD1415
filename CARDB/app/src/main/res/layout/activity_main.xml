@@ -79,6 +79,7 @@
                     class="bd1415.unipd.dei.it.cardb.VeicoliMenuFragment"
                     android:layout_width="@dimen/large"
                     android:layout_height="match_parent"
+                    android:background="@android:drawable/dialog_holo_light_frame"
                     tools:layout="@layout/veicoli_menu_fragment" />
 
                 <View style="@style/Divider" />
@@ -88,6 +89,7 @@
                     class="bd1415.unipd.dei.it.cardb.VeicoliBodyFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@android:drawable/dialog_holo_light_frame"
                     tools:layout="@layout/veicoli_body_fragment" />
 
             </LinearLayout>

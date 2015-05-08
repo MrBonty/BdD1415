@@ -43,8 +43,8 @@ public class MainActivity extends ActionBarActivity {
     private ExpandableListView leftDrawerList;
     private ExpandableListAdapter exp;
     private String[] leftSliderData = {"Clienti", "Veicoli", "Lavorazioni", "Pagamenti", "Gestione"};
-    public static LinearLayout privatiLayout;
-    public static LinearLayout aziendeLayout;
+    public LinearLayout privatiLayout;
+    public LinearLayout aziendeLayout;
     private LinearLayout veicoliLayout;
     public static LinearLayout lavorazioniLayout;
     private LinearLayout descrizioniLayout;
@@ -101,6 +101,8 @@ public class MainActivity extends ActionBarActivity {
         azi.setNome("jkefkerj", false);
         ApplicationData.aziende.add(azi);
         Veicolo vc = new Veicolo();
+        vc.setTarga("wjkefewj", false);
+        vc.setNumero_telaio("ewkfew", false);
         vc.setPrivato("rfr",false);
         ApplicationData.veicoli.add(vc);
 

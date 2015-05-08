@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -21,12 +22,14 @@ public class SpinnerDialog<E> extends AlertDialog {
     String oldValue = Builder.oldValue;
     final boolean isPrimary = Builder.isPrimary;
     final TextView textview = Builder.view;
+    View view;
     ArrayAdapter<E> adapter;
 
     public SpinnerDialog(final Context context) {
         super(context);
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.spinner_dialog, null);
+        this.view = view;
         setView(view);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         LinearLayout dialogLayout = (LinearLayout) view.findViewById(R.id.spinner_dialog);
@@ -41,21 +44,35 @@ public class SpinnerDialog<E> extends AlertDialog {
         setCanceledOnTouchOutside(false);
         TextView dialogName = (TextView) view.findViewById(R.id.spinner_title);
         dialogName.setText(R.string.spinner);
-        Button cancel = (Button) findViewById(R.id.cancel);
+        Button cancel = (Button) view.findViewById(R.id.spinner_cancel);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
             }
         });
+
+    }
+
+    public void prepareList() {
         final ListView list = (ListView) view.findViewById(R.id.spinner_list);
         list.setAdapter(adapter);
-        //TODO list managment
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                textview.setText(position + "");
+                dismiss();
+            }
+        });
     }
 
 
     public void setAdapter(ArrayAdapter<E> adapter) {
         this.adapter = adapter;
+    }
+
+    public void setModify() {
+
     }
 
     public static class Builder<E> {
@@ -77,6 +94,15 @@ public class SpinnerDialog<E> extends AlertDialog {
         public SpinnerDialog build() {
             SpinnerDialog tm = new SpinnerDialog(context);
             tm.setAdapter(adapter);
+            tm.prepareList();
+            return tm;
+        }
+
+        public SpinnerDialog buildAdd() {
+            SpinnerDialog tm = new SpinnerDialog(context);
+            tm.setAdapter(adapter);
+            tm.prepareList();
+            tm.setModify();
             return tm;
         }
     }

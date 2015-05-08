@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 public class VeicoliBodyFragment extends Fragment {
 
-    private ViewHolder viewHolder;
+    private ViewHolder viewHolder = null;
 
     private int mPos = -1;
     private boolean mIsVis = false;
@@ -35,7 +36,6 @@ public class VeicoliBodyFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-
     //onCreateView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,13 +47,13 @@ public class VeicoliBodyFragment extends Fragment {
             mIsVis = args.getBoolean(VeicoliMenuFragment.ISVIS);
         }
 
-        View view = inflater.inflate(R.layout.veicoli_body_fragment, container, false);
+        final View view = inflater.inflate(R.layout.veicoli_body_fragment, container, false);
 
         viewHolder = new ViewHolder();
         if (mIsVis) {
             mImage = (ImageView) view.findViewById(R.id.image_veicoli);
-            mBody = (LinearLayout) MainActivity.act.findViewById(R.id.ll_veicoli);
             mImage.setVisibility(View.GONE);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_veicoli);
             mBody.setVisibility(View.VISIBLE);
         }
         viewHolder.targa = (TextView) view.findViewById(R.id.veicolo_targa_data);
@@ -65,17 +65,13 @@ public class VeicoliBodyFragment extends Fragment {
         viewHolder.lavorazioni = (ListView) view.findViewById(android.R.id.list);
 
         if (mIsVis) {
-
             final Veicolo veicolo = ApplicationData.veicoli.get(mPos);
-
-
-            //TODO to fix, i set text non hanno alcun effetto
             viewHolder.targa.setText(veicolo.getTarga());
             viewHolder.numero_telaio.setText(veicolo.getNumero_telaio());
-
-            viewHolder.proprietario.setText("edi");
+            viewHolder.proprietario.setText(veicolo.getPrivato());
 
             final boolean isPriv = true;
+
             /*
             if (veicolo.getAzienda() != null && !veicolo.getAzienda().equals("")) {
                 isPriv = false;
@@ -159,6 +155,7 @@ public class VeicoliBodyFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
 
+
                 }
             });
 
@@ -178,13 +175,33 @@ public class VeicoliBodyFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if (isPriv) {
-                        SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.targa.getText().toString(),
-                                false, MainActivity.ctx, viewHolder.targa, new PrivatiArrayAdapter(MainActivity.ctx, ApplicationData.privati)).build();
+                        SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.proprietario.getText().toString(),
+                                false, MainActivity.ctx, viewHolder.proprietario, new PrivatiArrayAdapter(MainActivity.ctx, ApplicationData.privati)).build();
                         dialog.show();
+                        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                        @Override
+                                                        public void onDismiss(DialogInterface arg0) {
+                                                            Privato pr = ApplicationData.privati.get(Integer.parseInt(viewHolder.proprietario.getText().toString()));
+                                                            viewHolder.proprietario.setText("CF: " +  pr.getCf()  + "-- Cognome: " + pr.getCognome() + " Nome: " + pr.getNome());
+                                                            veicolo.setPrivato(viewHolder.proprietario.getText().toString(), true);
+                                                            PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                        }
+                                                    }
+                        );
                     } else {
-                        SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.targa.getText().toString(),
-                                false, MainActivity.ctx, viewHolder.targa, new AziendeArrayAdapter(MainActivity.ctx, ApplicationData.aziende)).build();
+                        SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.proprietario.getText().toString(),
+                                false, MainActivity.ctx, viewHolder.proprietario, new AziendeArrayAdapter(MainActivity.ctx, ApplicationData.aziende)).build();
                         dialog.show();
+                        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                        @Override
+                                                        public void onDismiss(DialogInterface arg0) {
+                                                            Azienda az = ApplicationData.aziende.get(Integer.parseInt(viewHolder.proprietario.getText().toString()));
+                                                            viewHolder.proprietario.setText("PIVA: " +  az.getPiva()  + "-- Nome: " + az.getNome());
+                                                            veicolo.setAzienda(viewHolder.proprietario.getText().toString(), true);
+                                                            PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                        }
+                                                    }
+                        );
                     }
                 }
             });
