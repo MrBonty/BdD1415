@@ -46,6 +46,8 @@
     <string name="data_tag">Data:\u0020</string>
 
     <string name="spinner">Proprietario</string>
+    <string name="magazzino_num_tag">Quantità:\u0020</string>
+    <string name="magazzino_vendita_tag">Prezzo:\u0020</string>
 </resources>
 
 

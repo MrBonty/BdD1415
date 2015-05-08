@@ -55,6 +55,13 @@ public class VeicoliBodyFragment extends Fragment {
             mImage.setVisibility(View.GONE);
             mBody = (LinearLayout) view.findViewById(R.id.ll_veicoli);
             mBody.setVisibility(View.VISIBLE);
+        }else {
+            mImage = (ImageView) view.findViewById(R.id.image_clienti);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            if(mImage != null && mBody != null) {
+                mImage.setVisibility(View.VISIBLE);
+                mBody.setVisibility(View.GONE);
+            }
         }
         viewHolder.targa = (TextView) view.findViewById(R.id.veicolo_targa_data);
         viewHolder.numero_telaio = (TextView) view.findViewById(R.id.veicolo_telaio_data);

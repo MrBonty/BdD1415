@@ -64,6 +64,13 @@ public class PagamentiFattiBodyFragment extends Fragment {
             mImage.setVisibility(View.GONE);
             mBody = (LinearLayout) view.findViewById(R.id.ll_pagamenti);
             mBody.setVisibility(View.VISIBLE);
+        }else {
+            mImage = (ImageView) view.findViewById(R.id.image_clienti);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            if(mImage != null && mBody != null) {
+                mImage.setVisibility(View.VISIBLE);
+                mBody.setVisibility(View.GONE);
+            }
         }
 
         viewHolder.id = (TextView) view.findViewById(R.id.pagamenti_id_data);

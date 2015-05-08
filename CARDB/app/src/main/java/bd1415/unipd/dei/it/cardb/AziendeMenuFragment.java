@@ -75,8 +75,8 @@ public class AziendeMenuFragment extends ListFragment {
 
             Bundle args = new Bundle();
             args.putInt(POS, pos);
-            args.putBoolean(ISVIS, true);
-            args.putBoolean(ISP, true); //is private
+            args.putBoolean(ISVIS, false);
+            args.putBoolean(ISP, false); //is private
 
             toView.setArguments(args);
 

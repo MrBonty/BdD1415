@@ -203,27 +203,50 @@
                     tools:layout="@layout/pagamenti_body_fragment"></fragment>
 
             </LinearLayout>
-            <!--<LinearLayout
-                android:id="@+id/gestione"
+
+            <LinearLayout
+                android:id="@+id/magazzino"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <fragment
-                    class="bd1415.unipd.dei.it.cardb.GestioneMenuFragment"
+                    class="bd1415.unipd.dei.it.cardb.MagazzinoMenuFragment"
                     android:layout_width="@dimen/large"
                     android:layout_height="match_parent"
-                    tools:layout="@layout/gestione_menu_fragment"></fragment>
+                    tools:layout="@layout/magazzino_menu_fragment"></fragment>
 
                 <View style="@style/Divider" />
 
                 <fragment
-                    class="bd1415.unipd.dei.it.cardb.GestioneBodyFragment"
+                    android:id="@+id/magazzino_body"
+                    class="bd1415.unipd.dei.it.cardb.MagazzinoBodyFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:layout="@layout/gestione_body_fragment"></fragment>
+                    tools:layout="@layout/magazzino_body_fragment"></fragment>
 
-            </LinearLayout>-->
+            </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/fornitori"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    class="bd1415.unipd.dei.it.cardb.FornitoriMenuFragment"
+                    android:layout_width="@dimen/large"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/fornitori_menu_fragment"></fragment>
+
+                <View style="@style/Divider" />
+
+                <fragment
+                    android:id="@+id/fornitori_body"
+                    class="bd1415.unipd.dei.it.cardb.FornitoriBodyFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/fornitori_body_fragment"></fragment>
+
+            </LinearLayout>
         </FrameLayout>
 
         <!-- navigation drawer -->

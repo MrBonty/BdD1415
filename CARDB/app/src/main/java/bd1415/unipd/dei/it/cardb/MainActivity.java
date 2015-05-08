@@ -152,6 +152,7 @@ public class MainActivity extends ActionBarActivity {
         gestioneSubItems.add("Fornitori");
         gestioneSubItems.add("Ordini in corso");
         gestioneSubItems.add("Personale");
+        gestioneSubItems.add("Edifici");
 
         listDataChild.put(listDataHeader.get(0), clientiSubItems);
         listDataChild.put(listDataHeader.get(1), veicoliSubItems);
@@ -290,6 +291,8 @@ public class MainActivity extends ActionBarActivity {
                     } else if (childPosition == 2) {
 
                     } else if (childPosition == 3) {
+
+                    } else if (childPosition == 4) {
 
                     }
                 }

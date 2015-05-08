@@ -79,6 +79,19 @@ public class VeicoliMenuFragment extends ListFragment {
         } else {
             resizeFragment(this, (int) getResources().getDimension(R.dimen.large));
             isLarge = true;
+            Fragment toView = new VeicoliBodyFragment();
+
+            Bundle args = new Bundle();
+            args.putInt(POS, pos);
+            args.putBoolean(ISVIS, false);
+
+            toView.setArguments(args);
+
+            mFM = MainActivity.act.getFragmentManager();
+            FragmentTransaction ft = mFM.beginTransaction();
+            ft.replace(R.id.veicoli_body, toView);
+            ft.addToBackStack(null);
+            ft.commit();
         }
         Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
     }

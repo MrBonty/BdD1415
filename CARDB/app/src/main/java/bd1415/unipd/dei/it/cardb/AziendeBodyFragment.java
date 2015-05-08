@@ -48,6 +48,13 @@ public class AziendeBodyFragment extends Fragment {
             mImage.setVisibility(View.GONE);
             mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
             mBody.setVisibility(View.VISIBLE);
+        }else {
+            mImage = (ImageView) view.findViewById(R.id.image_clienti);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            if(mImage != null && mBody != null) {
+                mImage.setVisibility(View.VISIBLE);
+                mBody.setVisibility(View.GONE);
+            }
         }
         viewHolder.nome = (TextView) view.findViewById(R.id.cliente_nome_data);
         viewHolder.cognomeLayout = (LinearLayout) view.findViewById(R.id.cliete_cognome_layout);

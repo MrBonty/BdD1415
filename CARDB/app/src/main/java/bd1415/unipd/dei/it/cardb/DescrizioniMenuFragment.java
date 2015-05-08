@@ -85,7 +85,7 @@ public class DescrizioniMenuFragment extends ListFragment {
 
             Bundle args = new Bundle();
             args.putInt(POS, pos);
-            args.putBoolean(ISVIS, true);
+            args.putBoolean(ISVIS, false);
 
             toView.setArguments(args);
 

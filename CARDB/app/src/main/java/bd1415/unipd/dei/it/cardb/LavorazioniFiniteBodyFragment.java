@@ -85,6 +85,13 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
             mBody = (LinearLayout) view.findViewById(R.id.ll_lavorazioni);
             mImage.setVisibility(View.GONE);
             mBody.setVisibility(View.VISIBLE);
+        }else {
+            mImage = (ImageView) view.findViewById(R.id.image_clienti);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            if(mImage != null && mBody != null) {
+                mImage.setVisibility(View.VISIBLE);
+                mBody.setVisibility(View.GONE);
+            }
         }
 
         viewHolder.dataFine = (TextView) view.findViewById(R.id.lavoro_end_data);
