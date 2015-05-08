@@ -47,8 +47,10 @@ public class MainActivity extends ActionBarActivity {
     public LinearLayout aziendeLayout;
     private LinearLayout veicoliLayout;
     public static LinearLayout lavorazioniLayout;
+    public static LinearLayout lavorazioniFinitiLayout;
     private LinearLayout descrizioniLayout;
-    private LinearLayout pagamentiLayout;
+    private static LinearLayout pagamentiLayout;
+    private static LinearLayout pagamentiFattiLayout;
     private LinearLayout gestioneLayout;
     private FloatingActionButton fabButton = null;
     private HashMap<String, List<String>> listDataChild;
@@ -79,8 +81,10 @@ public class MainActivity extends ActionBarActivity {
         aziendeLayout = (LinearLayout) findViewById(R.id.aziende);
         veicoliLayout = (LinearLayout) findViewById(R.id.veicoli);
         lavorazioniLayout = (LinearLayout) findViewById(R.id.lavorazioni);
+        lavorazioniFinitiLayout = (LinearLayout) findViewById(R.id.lavorazioni_finiti);
         descrizioniLayout = (LinearLayout) findViewById(R.id.descrizioni);
         pagamentiLayout = (LinearLayout) findViewById(R.id.pagamenti);
+        pagamentiFattiLayout = (LinearLayout) findViewById(R.id.pagamenti_fatti);
         //gestioneLayout = (LinearLayout) findViewById(R.id.gestione);
         corrente = privatiLayout;
         ApplicationData.posizioneCorrente = 0;
@@ -249,6 +253,7 @@ public class MainActivity extends ActionBarActivity {
                     } else if (childPosition == 1) {
                         ApplicationData.isFinished = false;
                         container.removeAllViewsInLayout();
+                        lavorazioniLayout.invalidate();
                         container.addView(lavorazioniLayout);
                         corrente = lavorazioniLayout;
                         drawerLayout.closeDrawer(Gravity.LEFT);
@@ -256,8 +261,9 @@ public class MainActivity extends ActionBarActivity {
                     } else if (childPosition == 2) {
                         ApplicationData.isFinished = true;
                         container.removeAllViewsInLayout();
-                        container.addView(lavorazioniLayout);
-                        corrente = lavorazioniLayout;
+                        lavorazioniLayout.invalidate();
+                        container.addView(lavorazioniFinitiLayout);
+                        corrente = lavorazioniFinitiLayout;
                         drawerLayout.closeDrawer(Gravity.LEFT);
 
                     }
@@ -266,15 +272,17 @@ public class MainActivity extends ActionBarActivity {
                     if (childPosition == 0) {
                         ApplicationData.isPayed = true;
                         container.removeAllViewsInLayout();
-                        container.addView(lavorazioniLayout);
-                        corrente = lavorazioniLayout;
+                        pagamentiLayout.invalidate();
+                        container.addView(pagamentiFattiLayout);
+                        corrente = pagamentiFattiLayout;
                         drawerLayout.closeDrawer(Gravity.LEFT);
 
                     } else if (childPosition == 1) {
                         ApplicationData.isPayed = false;
                         container.removeAllViewsInLayout();
-                        container.addView(lavorazioniLayout);
-                        corrente = lavorazioniLayout;
+                        pagamentiLayout.invalidate();
+                        container.addView(pagamentiLayout);
+                        corrente = pagamentiLayout;
                         drawerLayout.closeDrawer(Gravity.LEFT);
 
                     }

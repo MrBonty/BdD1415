@@ -117,6 +117,28 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/lavorazioni_finiti"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    class="bd1415.unipd.dei.it.cardb.LavorazioniFiniteMenuFragment"
+                    android:layout_width="@dimen/large"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/lavorazioni_menu_fragment"></fragment>
+
+                <View style="@style/Divider" />
+
+                <fragment
+                    android:id="@+id/lavorazioni_finiti_body"
+                    class="bd1415.unipd.dei.it.cardb.LavorazioniFiniteBodyFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/lavorazioni_body_fragment"></fragment>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/descrizioni"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -160,6 +182,27 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/pagamenti_fatti"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    class="bd1415.unipd.dei.it.cardb.PagamentiFattiMenuFragment"
+                    android:layout_width="@dimen/large"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/pagamenti_menu_fragment"></fragment>
+
+                <View style="@style/Divider" />
+
+                <fragment
+                    android:id="@+id/pagamenti_fatti_body"
+                    class="bd1415.unipd.dei.it.cardb.PagamentiFattiBodyFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/pagamenti_body_fragment"></fragment>
+
+            </LinearLayout>
             <!--<LinearLayout
                 android:id="@+id/gestione"
                 android:layout_width="match_parent"
