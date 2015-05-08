@@ -46,8 +46,6 @@ public class VeicoliMenuFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        Veicolo tmp = new Veicolo("vvv", "csad", "fas", false);
-        ApplicationData.veicoli.add(tmp);
         VeicoliArrayAdapter veic = new VeicoliArrayAdapter(inflater.getContext(), ApplicationData.veicoli);
         list = veic;
         setListAdapter(veic);
