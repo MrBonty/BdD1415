@@ -12,7 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
 import bd1415.unipd.dei.it.cardb.databasetables.Fattura;
+import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
+import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 
 public class PagamentiFattiBodyFragment extends Fragment {
 
@@ -68,10 +73,53 @@ public class PagamentiFattiBodyFragment extends Fragment {
         viewHolder.lavori = (ListView) view.findViewById(android.R.id.list);
 
         if(mIsVis) {
-             mFattura = ApplicationData.fatturePagate.get(mPos);
-             viewHolder.pagato.setChecked(true);
-             viewHolder.pagato.setEnabled(false);
+            mFattura = ApplicationData.fatturePagate.get(mPos);
+            viewHolder.id.setText(mFattura.getId()+"");
 
+            viewHolder.pagato.setChecked(true);
+            viewHolder.pagato.setEnabled(false);
+
+
+            Azienda az= null;
+            Privato pr= null;
+            if(mFattura.getAzienda() != null || !mFattura.getAzienda().equals("")){
+                for(int i = 0; i<ApplicationData.aziende.size(); i++){
+                    az = ApplicationData.aziende.get(i);
+                    if(az.getPiva().equals(mFattura.getAzienda())){
+                        break;
+                    }
+                }
+                if(az != null) {
+                    viewHolder.cliente.setText(az.getNome());
+                }
+            }else{
+                for(int i = 0; i<ApplicationData.privati.size(); i++){
+                    pr = ApplicationData.privati.get(i);
+                    if(pr.getCf().equals(mFattura.getPrivato())){
+                        break;
+                    }
+                }
+                if(pr != null) {
+                    viewHolder.cliente.setText(pr.getNome() + " " + pr.getCognome());
+                }
+            }
+
+            ArrayList<Lavoro> item = new ArrayList<>();
+            String data = "";
+            for(int i= 0; i< ApplicationData.lavoriFiniti.size(); i++){
+                Lavoro tmp = ApplicationData.lavoriFiniti.get(i);
+                if(tmp.getFattura() != mFattura.getId()){
+                    item.add(tmp);
+                }
+
+                if(Util.compareDate(data,tmp.getData_fine())){
+                    data = tmp.getData_fine();
+                }
+            }
+            viewHolder.data.setText(data);
+
+            LavoriArrayAdapter adapter = new LavoriArrayAdapter(getActivity().getBaseContext(), item);
+            viewHolder.lavori.setAdapter(adapter);
         }
         return view;
     }

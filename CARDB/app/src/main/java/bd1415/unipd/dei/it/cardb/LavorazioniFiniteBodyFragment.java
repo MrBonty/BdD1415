@@ -172,7 +172,7 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
                 int idFattura = lavoro.getId();
 
                 if (!mIsFinished) {
-                    String date = "";//TODO method for generate a date
+                    String date = Util.getDate();//TODO method for generate a date
                     mLavoro.setData_fine(date, true);
 
                     mTmpDial = new Dialog(mCtx);
