@@ -92,7 +92,7 @@ public class MainActivity extends ActionBarActivity {
         magazzinoLayout = (LinearLayout) findViewById(R.id.magazzino);
         fornitoriLayout = (LinearLayout) findViewById(R.id.fornitori);
         ordiniLayout = (LinearLayout) findViewById(R.id.ordini);
-        //TODO personaleLayout = (LinearLayout) findViewById(R.id.personale);
+        personaleLayout = (LinearLayout) findViewById(R.id.personale);
         edificiLayout = (LinearLayout) findViewById(R.id.edifici);
         corrente = privatiLayout;
         ApplicationData.posizioneCorrente = 0;

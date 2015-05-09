@@ -20,7 +20,7 @@ public class FatturaDialog {
 
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
-
+//TODO SISTEMARE
     public FatturaDialog(Fattura fattura) {
         mDialog = new Dialog(MainActivity.ctx);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

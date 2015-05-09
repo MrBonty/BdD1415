@@ -52,6 +52,10 @@
     <string name="edificio_tip_tag">Tipologia:\u0020</string>
     <string name="edificio_resp_id_tag">Resp.:\u0020</string>
     <string name="edificio_resp_tag">Nome:\u0020</string>
+    <string name="personale_contratto_tag">Contratto:\u0020</string>
+    <string name="iban_tag">Iban:\u0020</string>
+    <string name="responsabile_edificio_tag">Edificio:\u0020</string>
+    <string name="personale_resp_tag">Responsabile\u0020</string>
 </resources>
 
 

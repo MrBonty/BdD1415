@@ -269,7 +269,7 @@
                     tools:layout="@layout/ordini_body_fragment"></fragment>
             </LinearLayout>
 
-            <!--LinearLayout
+            <LinearLayout
                 android:id="@+id/personale"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -283,12 +283,12 @@
                 <View style="@style/Divider" />
 
                 <fragment
-                    android:id="@+id/edifici_body"
+                    android:id="@+id/personale_body"
                     class="bd1415.unipd.dei.it.cardb.PersonaleBodyFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:layout="@layout/personale_body_fragment"></fragment>
-            </LinearLayout-->
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ordini"
