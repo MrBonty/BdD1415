@@ -18,6 +18,7 @@ public class Util {
     private static boolean isSet = false;
 
     private static final String DATE_DIVISOR = "/";
+    private static final String TIME_DIVISOR = ":";
 
     public static String[] process(String result) {
         String[] tmp = result.split(DIVISOR);
@@ -70,6 +71,18 @@ public class Util {
         tmp[0] = Integer.parseInt(tp[0]);
         tmp[1] = (Integer.parseInt(tp[1]))-1;
         tmp[2] = Integer.parseInt(tp[2]);
+        return tmp;
+    }
+
+    public static String getTimeDate(){
+        Calendar cal = Calendar.getInstance();
+        String tmp= cal.get(Calendar.DAY_OF_MONTH) + DATE_DIVISOR
+                + (cal.get(Calendar.MONTH)+1) + DATE_DIVISOR
+                + cal.get(Calendar.YEAR)+ " "
+                + cal.get(Calendar.HOUR_OF_DAY) + TIME_DIVISOR
+                + cal.get(Calendar.MINUTE) + TIME_DIVISOR
+                + cal.get(Calendar.SECOND);
+
         return tmp;
     }
 }

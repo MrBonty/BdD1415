@@ -51,7 +51,11 @@ public class MainActivity extends ActionBarActivity {
     private LinearLayout descrizioniLayout;
     private static LinearLayout pagamentiLayout;
     private static LinearLayout pagamentiFattiLayout;
-    private LinearLayout gestioneLayout;
+    private LinearLayout magazzinoLayout;
+    private LinearLayout fornitoriLayout;
+    private LinearLayout ordiniLayout;
+    private LinearLayout personaleLayout;
+    private LinearLayout edificiLayout;
     private FloatingActionButton fabButton = null;
     private HashMap<String, List<String>> listDataChild;
     private List<String> listDataHeader;
@@ -85,7 +89,11 @@ public class MainActivity extends ActionBarActivity {
         descrizioniLayout = (LinearLayout) findViewById(R.id.descrizioni);
         pagamentiLayout = (LinearLayout) findViewById(R.id.pagamenti);
         pagamentiFattiLayout = (LinearLayout) findViewById(R.id.pagamenti_fatti);
-        //gestioneLayout = (LinearLayout) findViewById(R.id.gestione);
+        magazzinoLayout = (LinearLayout) findViewById(R.id.magazzino);
+        fornitoriLayout = (LinearLayout) findViewById(R.id.fornitori);
+        ordiniLayout = (LinearLayout) findViewById(R.id.ordini);
+        //TODO personaleLayout = (LinearLayout) findViewById(R.id.personale);
+        edificiLayout = (LinearLayout) findViewById(R.id.edifici);
         corrente = privatiLayout;
         ApplicationData.posizioneCorrente = 0;
         container.removeAllViewsInLayout();
@@ -285,14 +293,34 @@ public class MainActivity extends ActionBarActivity {
                     }
                 } else if (groupPosition == 4) {
                     if (childPosition == 0) {
+                        container.removeAllViewsInLayout();
+                        container.addView(magazzinoLayout);
+                        corrente = magazzinoLayout;
+                        drawerLayout.closeDrawer(Gravity.LEFT);
 
                     } else if (childPosition == 1) {
+                        container.removeAllViewsInLayout();
+                        container.addView(fornitoriLayout);
+                        corrente = fornitoriLayout;
+                        drawerLayout.closeDrawer(Gravity.LEFT);
 
                     } else if (childPosition == 2) {
+                        container.removeAllViewsInLayout();
+                        container.addView(ordiniLayout);
+                        corrente = ordiniLayout;
+                        drawerLayout.closeDrawer(Gravity.LEFT);
 
                     } else if (childPosition == 3) {
+                        container.removeAllViewsInLayout();
+                        container.addView(personaleLayout);
+                        corrente = personaleLayout;
+                        drawerLayout.closeDrawer(Gravity.LEFT);
 
                     } else if (childPosition == 4) {
+                        container.removeAllViewsInLayout();
+                        container.addView(edificiLayout);
+                        corrente = edificiLayout;
+                        drawerLayout.closeDrawer(Gravity.LEFT);
 
                     }
                 }

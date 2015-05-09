@@ -81,7 +81,7 @@ public class AziendeBodyFragment extends Fragment {
 
             if (az.getIndirizzo() != null) {
                 viewHolder.indirizzo.setText(az.getIndirizzo().indirizzo);
-                viewHolder.indirizzo.setText(az.getIndirizzo().numero_civico);
+                viewHolder.indirizzo.setText(az.getIndirizzo().numero_civico + "");
                 viewHolder.citta.setText(az.getIndirizzo().città);
                 viewHolder.provincia.setText(az.getIndirizzo().provincia);
             }

@@ -30,9 +30,11 @@ import bd1415.unipd.dei.it.cardb.databasetables.Fattura;
 import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
 import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
+import bd1415.unipd.dei.it.cardb.databasetables.Pezzo;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 import bd1415.unipd.dei.it.cardb.databasetables.R7;
 import bd1415.unipd.dei.it.cardb.databasetables.R8;
+import bd1415.unipd.dei.it.cardb.databasetables.Usato;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 import static android.view.View.OnClickListener;
@@ -76,8 +78,8 @@ public class LavorazioniBodyFragment extends Fragment {
         Bundle args = this.getArguments();
 
         if (args != null) {
-            mPos = args.getInt(PrivatiMenuFragment.POS);
-            mIsVis = args.getBoolean(PrivatiMenuFragment.ISVIS);
+            mPos = args.getInt(LavorazioniMenuFragment.POS);
+            mIsVis = args.getBoolean(LavorazioniMenuFragment.ISVIS);
             mIsFinished = ApplicationData.isFinished;
         }
 
@@ -88,8 +90,8 @@ public class LavorazioniBodyFragment extends Fragment {
             mImage.setVisibility(View.GONE);
             mBody.setVisibility(View.VISIBLE);
         }else {
-            mImage = (ImageView) view.findViewById(R.id.image_clienti);
-            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            mImage = (ImageView) view.findViewById(R.id.image_lavorazioni);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_lavorazioni);
             if(mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);
@@ -114,6 +116,8 @@ public class LavorazioniBodyFragment extends Fragment {
             }
             findVeicolo();
 
+            viewHolder.id.setText(mLavoro.getId() + "");
+
             viewHolder.dataInizio.setText(mLavoro.getData_inizio());
             if (mIsFinished) {
                 viewHolder.dataFine.setText(mLavoro.getData_fine());
@@ -126,8 +130,26 @@ public class LavorazioniBodyFragment extends Fragment {
 
             viewHolder.fattura.setOnClickListener(getFatturaView());
 
-            List<String> guastiManutenzioni = new ArrayList<>();
+            List<String> pezziGuastiManutenzioni = new ArrayList<>();
             ArrayList<Integer> color = new ArrayList<>();
+            for (int i = 0; i<ApplicationData.usato.size(); i++) {
+                Usato u = ApplicationData.usato.get(i);
+                if(mLavoro.getId() == u.getLavoro()){
+                    String tmp = "" + u.getPezzo();
+                    for (int j = 0; j < ApplicationData.pezzi.size(); j++) {
+                        Pezzo p = ApplicationData.pezzi.get(j);
+                        if (p.getId() == u.getPezzo()) {
+                            tmp += "P - " + p.getDescrizione().split(":")[0];
+                            break;
+                        }
+                    }
+
+                    pezziGuastiManutenzioni.add(tmp);
+                    color.add(Color.parseColor("#6600FF00")); //Semitrasparent green
+                }
+            }
+
+
             for (int i = 0; i < ApplicationData.r7.size(); i++) {
                 R7 r = ApplicationData.r7.get(i);
                 if (mLavoro.getId() == r.getLavoro()) {
@@ -136,12 +158,12 @@ public class LavorazioniBodyFragment extends Fragment {
                     for (int j = 0; j < ApplicationData.guasti.size(); j++) {
                         Guasto g = ApplicationData.guasti.get(j);
                         if (g.getId() == guasto) {
-                            tmp += " - " + g.getDescrizione().split(":")[0];
+                            tmp += "G - " + g.getDescrizione().split(":")[0];
                             break;
                         }
                     }
 
-                    guastiManutenzioni.add(tmp);
+                    pezziGuastiManutenzioni.add(tmp);
                     color.add(Color.parseColor("#66FF0000")); //Semitrasparent red
                 }
             }
@@ -153,16 +175,16 @@ public class LavorazioniBodyFragment extends Fragment {
                     for (int j = 0; j < ApplicationData.manutenzioni.size(); j++) {
                         Manutenzione m = ApplicationData.manutenzioni.get(j);
                         if (m.getId() == manutenzione) {
-                            tmp += " - " + m.getDescrizione();
+                            tmp += "M - " + m.getDescrizione();
                             break;
                         }
                     }
 
-                    guastiManutenzioni.add(tmp);
+                    pezziGuastiManutenzioni.add(tmp);
                     color.add(Color.parseColor("#66FFFF00")); //Semitrasparent yellow
                 }
             }
-            ArrayAdapter<String> adapter = new DescrizioniArrayAdapter(mCtx, guastiManutenzioni, color);
+            ArrayAdapter<String> adapter = new DescrizioniArrayAdapter(mCtx, pezziGuastiManutenzioni, color);
             viewHolder.lavori.setAdapter(adapter);
 
         }

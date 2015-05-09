@@ -83,7 +83,7 @@ public class PrivatiBodyFragment extends Fragment {
 
             if (cl.getIndirizzo() != null) {
                 viewHolder.indirizzo.setText(cl.getIndirizzo().indirizzo);
-                viewHolder.indirizzo.setText(cl.getIndirizzo().numero_civico);
+                viewHolder.indirizzo.setText(cl.getIndirizzo().numero_civico + "");
                 viewHolder.citta.setText(cl.getIndirizzo().città);
                 viewHolder.provincia.setText(cl.getIndirizzo().provincia);
             }

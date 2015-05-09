@@ -1,6 +1,5 @@
 package bd1415.unipd.dei.it.cardb;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,16 +10,16 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import bd1415.unipd.dei.it.cardb.databasetables.Personale;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
-import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
-public class PrivatiArrayAdapter extends ArrayAdapter<Privato> {
+
+public class PersonaleArrayAdapter extends ArrayAdapter<Personale> {
 
     private Context context;
-    private boolean useList = true;
 
-    public PrivatiArrayAdapter(Context context, List items) {
-        super(context, android.R.layout.simple_list_item_1, items);
+    public PersonaleArrayAdapter(Context context, List items) {
+        super(context, R.layout.cliente_item, items);
         this.context = context;
     }
 
@@ -31,7 +30,7 @@ public class PrivatiArrayAdapter extends ArrayAdapter<Privato> {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        Privato item = (Privato) getItem(position);
+        Personale item = (Personale) getItem(position);
         View viewToUse = null;
         LayoutInflater mInflater = (LayoutInflater) context
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -44,7 +43,7 @@ public class PrivatiArrayAdapter extends ArrayAdapter<Privato> {
             viewToUse = convertView;
             holder = (ViewHolder) viewToUse.getTag();
         }
-        holder.titleText.setText(item.getNome()+ " " + item.getCognome());
+        holder.titleText.setText(item.getCf()+ " " + item.getNome() + " " + item.getCognome() );
         return viewToUse;
     }
 }

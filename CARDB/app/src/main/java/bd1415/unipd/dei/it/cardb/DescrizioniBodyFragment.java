@@ -49,21 +49,21 @@ public class DescrizioniBodyFragment extends Fragment {
         Bundle args = this.getArguments();
 
         if (args != null) {
-            mPos = args.getInt(PrivatiMenuFragment.POS);
-            mIsVis = args.getBoolean(PrivatiMenuFragment.ISVIS);
+            mPos = args.getInt(DescrizioniMenuFragment.POS);
+            mIsVis = args.getBoolean(DescrizioniMenuFragment.ISVIS);
             mItem = ApplicationData.guastiManutenzioni.get(mPos);
         }
 
         viewHolder = new ViewHolder();
 
         if (mIsVis) {
-            mImage = (ImageView) view.findViewById(R.id.image_lavorazioni);
-            mBody = (LinearLayout) view.findViewById(R.id.ll_lavorazioni);
+            mImage = (ImageView) view.findViewById(R.id.image_descrizioni);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_descrizioni);
             mImage.setVisibility(View.GONE);
             mBody.setVisibility(View.VISIBLE);
         }else {
-            mImage = (ImageView) view.findViewById(R.id.image_clienti);
-            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            mImage = (ImageView) view.findViewById(R.id.image_descrizioni);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_descrizioni);
             if(mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);

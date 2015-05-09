@@ -74,8 +74,8 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
         Bundle args = this.getArguments();
 
         if (args != null) {
-            mPos = args.getInt(PrivatiMenuFragment.POS);
-            mIsVis = args.getBoolean(PrivatiMenuFragment.ISVIS);
+            mPos = args.getInt(LavorazioniFiniteMenuFragment.POS);
+            mIsVis = args.getBoolean(LavorazioniFiniteMenuFragment.ISVIS);
             mIsFinished = ApplicationData.isFinished;
         }
 
@@ -86,8 +86,8 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
             mImage.setVisibility(View.GONE);
             mBody.setVisibility(View.VISIBLE);
         }else {
-            mImage = (ImageView) view.findViewById(R.id.image_clienti);
-            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            mImage = (ImageView) view.findViewById(R.id.image_lavorazioni);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_lavorazioni);
             if(mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);
@@ -111,6 +111,8 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
                 mLavoro = ApplicationData.lavoriInCorso.get(mPos);
             }
             findVeicolo();
+
+            viewHolder.id.setText(mLavoro.getId() + "");
 
             viewHolder.dataInizio.setText(mLavoro.getData_inizio());
             if (mIsFinished) {

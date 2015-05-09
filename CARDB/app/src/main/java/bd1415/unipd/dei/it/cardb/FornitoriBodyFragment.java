@@ -37,8 +37,8 @@ public class FornitoriBodyFragment extends Fragment {
         Bundle args = this.getArguments();
 
         if (args != null) {
-            mPos = args.getInt(AziendeMenuFragment.POS);
-            mIsVis = args.getBoolean(AziendeMenuFragment.ISVIS);
+            mPos = args.getInt(FornitoriMenuFragment.POS);
+            mIsVis = args.getBoolean(FornitoriMenuFragment.ISVIS);
         }
 
         final View view = inflater.inflate(R.layout.clienti_body_fragment, container, false);
@@ -83,7 +83,7 @@ public class FornitoriBodyFragment extends Fragment {
 
             if (az.getIndirizzo() != null) {
                 viewHolder.indirizzo.setText(az.getIndirizzo().indirizzo);
-                viewHolder.indirizzo.setText(az.getIndirizzo().numero_civico);
+                viewHolder.indirizzo.setText(az.getIndirizzo().numero_civico+ "");
                 viewHolder.citta.setText(az.getIndirizzo().città);
                 viewHolder.provincia.setText(az.getIndirizzo().provincia);
             }

@@ -52,8 +52,8 @@ public class PagamentiBodyFragment extends Fragment {
         Bundle args = this.getArguments();
 
         if (args != null) {
-            mPos = args.getInt(VeicoliMenuFragment.POS);
-            mIsVis = args.getBoolean(VeicoliMenuFragment.ISVIS);
+            mPos = args.getInt(PagamentiMenuFragment.POS);
+            mIsVis = args.getBoolean(PagamentiMenuFragment.ISVIS);
             mIsPayed = ApplicationData.isPayed;
         }
 
@@ -66,8 +66,8 @@ public class PagamentiBodyFragment extends Fragment {
             mBody = (LinearLayout) view.findViewById(R.id.ll_pagamenti);
             mBody.setVisibility(View.VISIBLE);
         }else {
-            mImage = (ImageView) view.findViewById(R.id.image_clienti);
-            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            mImage = (ImageView) view.findViewById(R.id.image_pagamenti);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_pagamenti);
             if(mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);

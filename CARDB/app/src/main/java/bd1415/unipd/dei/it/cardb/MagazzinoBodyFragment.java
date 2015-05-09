@@ -41,20 +41,20 @@ public class MagazzinoBodyFragment extends Fragment {
         Bundle args = this.getArguments();
 
         if (args != null) {
-            mPos = args.getInt(AziendeMenuFragment.POS);
-            mIsVis = args.getBoolean(AziendeMenuFragment.ISVIS);
+            mPos = args.getInt(MagazzinoMenuFragment.POS);
+            mIsVis = args.getBoolean(MagazzinoMenuFragment.ISVIS);
         }
 
 
         viewHolder = new ViewHolder();
         if (mIsVis) {
-            mImage = (ImageView) view.findViewById(R.id.image_clienti);
+            mImage = (ImageView) view.findViewById(R.id.image_magazzino);
             mImage.setVisibility(View.GONE);
-            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_magazzino);
             mBody.setVisibility(View.VISIBLE);
         }else {
-            mImage = (ImageView) view.findViewById(R.id.image_clienti);
-            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            mImage = (ImageView) view.findViewById(R.id.image_magazzino);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_magazzino);
             if(mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);
@@ -70,7 +70,7 @@ public class MagazzinoBodyFragment extends Fragment {
             Pezzo pezzo = ApplicationData.pezzi.get(mPos);
 
             viewHolder.id.setText(pezzo.getId()+"");
-            viewHolder.quantità.setText(pezzo.getNumero_totale_pezzi());
+            viewHolder.quantità.setText(pezzo.getNumero_totale_pezzi()+ "");
             viewHolder.prezzo_vendita.setText(pezzo.getPrezzo_vendita()+ "");
             viewHolder.descrizione.setText(pezzo.getDescrizione());
         }

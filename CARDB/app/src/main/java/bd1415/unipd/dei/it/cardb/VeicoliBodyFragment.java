@@ -56,8 +56,8 @@ public class VeicoliBodyFragment extends Fragment {
             mBody = (LinearLayout) view.findViewById(R.id.ll_veicoli);
             mBody.setVisibility(View.VISIBLE);
         }else {
-            mImage = (ImageView) view.findViewById(R.id.image_clienti);
-            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            mImage = (ImageView) view.findViewById(R.id.image_veicoli);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_veicoli);
             if(mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);
