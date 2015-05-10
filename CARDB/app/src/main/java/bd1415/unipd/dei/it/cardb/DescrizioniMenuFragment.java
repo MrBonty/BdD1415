@@ -28,6 +28,8 @@ public class DescrizioniMenuFragment extends ListFragment {
     public static final String GUASTO = "G";
     public static final String MANUT = "M";
 
+    public static DescrizioniArrayAdapter list;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -67,7 +69,9 @@ public class DescrizioniMenuFragment extends ListFragment {
             color.add(Color.parseColor("#66FFFF00")); //Semitrasparent yellow
         }
 
-        setListAdapter(new LavoriArrayAdapter(inflater.getContext(), ApplicationData.lavoriFiniti));
+        DescrizioniArrayAdapter tmp = new DescrizioniArrayAdapter(inflater.getContext(), ApplicationData.guastiManutenzioni,color);
+        list = tmp;
+        setListAdapter(tmp);
 
         ApplicationData.guastiManutenzioni = guastiManutenzioni;
 

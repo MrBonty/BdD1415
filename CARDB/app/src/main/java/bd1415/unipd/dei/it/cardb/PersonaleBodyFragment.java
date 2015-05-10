@@ -19,12 +19,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavora_a;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
 import bd1415.unipd.dei.it.cardb.databasetables.Personale;
-import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 
 public class PersonaleBodyFragment extends Fragment{
 

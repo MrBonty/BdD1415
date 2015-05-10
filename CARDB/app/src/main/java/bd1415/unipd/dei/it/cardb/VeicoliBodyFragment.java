@@ -187,7 +187,7 @@ public class VeicoliBodyFragment extends Fragment {
                         dialog.show();
                         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                         @Override
-                                                        public void onDismiss(DialogInterface arg0) {
+                                                        public void onDismiss(DialogInterface arg0) { //TODO SISTEMERE FOREING KEY E NOTIFYDATASETCHANGE OVUNQUE
                                                             Privato pr = ApplicationData.privati.get(Integer.parseInt(viewHolder.proprietario.getText().toString()));
                                                             viewHolder.proprietario.setText("CF: " +  pr.getCf()  + "-- Cognome: " + pr.getCognome() + " Nome: " + pr.getNome());
                                                             veicolo.setPrivato(viewHolder.proprietario.getText().toString(), true);

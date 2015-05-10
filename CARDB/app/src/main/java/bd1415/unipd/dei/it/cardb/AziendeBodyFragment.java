@@ -96,7 +96,10 @@ public class AziendeBodyFragment extends Fragment {
 
                 viewHolder.veicoli.setAdapter(new VeicoliArrayAdapter(MainActivity.ctx, tmp));
 
-*/          viewHolder.nome.setOnClickListener(new View.OnClickListener() {
+ */
+
+            //TODO SISTEMARE
+          viewHolder.nome.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     DialogEdit dialog = new DialogEdit.Builder(viewHolder.nome.getText().toString(),
