@@ -78,7 +78,7 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
         if (args != null) {
             mPos = args.getInt(LavorazioniFiniteMenuFragment.POS);
             mIsVis = args.getBoolean(LavorazioniFiniteMenuFragment.ISVIS);
-            mIsFinished = ApplicationData.isFinished;
+            mIsFinished = true;
         }
 
         viewHolder = new ViewHolder();
@@ -109,7 +109,7 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
                 viewHolder.fattura.setText(R.string.lavoro_fattura_tag);
                 mLavoro = ApplicationData.lavoriFiniti.get(mPos);
             } else {
-                viewHolder.fattura.setText(R.string.lavoro_fattura_tag);
+                viewHolder.fattura.setText(R.string.lavoro_not_ended_tag);
                 mLavoro = ApplicationData.lavoriInCorso.get(mPos);
             }
             findVeicolo();
@@ -199,7 +199,7 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
                 Lavoro lavoro = mLavoro;
 
                 mFat = null;
-                int idFattura = lavoro.getId();
+                int idFattura = lavoro.getFattura();
 
                 if (!mIsFinished) {
                     String date = Util.getDate();//TODO method for generate a date
@@ -380,7 +380,7 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
 
                 if (toShowFattura) {
                     FatturaDialog dialog = new FatturaDialog(mFat);
-
+                    System.out.println("OK!");
                     toShowFattura = false;
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                         @Override

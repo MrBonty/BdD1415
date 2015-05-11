@@ -76,6 +76,7 @@ public class MainActivity extends ActionBarActivity {
         ApplicationData.aziende.add(az);
         Fattura fatt = new Fattura(false);
         fatt.setPagato(0, false);
+        fatt.setId(0, false);
         ApplicationData.fatture.add(fatt);
         ApplicationData.splitFatture();
         Personale per = new Personale("figo", 5, false);
@@ -111,6 +112,8 @@ public class MainActivity extends ActionBarActivity {
         ApplicationData.manutenzioni.add(m);
         ApplicationData.guasti.add(g);
         Lavoro l = new Lavoro("id", false);
+        l.setFattura(fatt.getId(),false);
+        l.setData_fine("13/02/",false);
         ApplicationData.lavori.add(l);
         ApplicationData.splitWork();
         Pezzo pp = new Pezzo(false);
