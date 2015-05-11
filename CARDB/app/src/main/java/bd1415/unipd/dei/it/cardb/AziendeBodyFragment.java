@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
@@ -86,7 +88,7 @@ public class AziendeBodyFragment extends Fragment {
                 viewHolder.citta.setText(az.getIndirizzo().città);
                 viewHolder.provincia.setText(az.getIndirizzo().provincia);
             }
-/*
+
                 ArrayList<Veicolo> tmp = new ArrayList<>();
                 for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
                     Veicolo vl = ApplicationData.veicoli.get(i);
@@ -97,7 +99,7 @@ public class AziendeBodyFragment extends Fragment {
 
                 viewHolder.veicoli.setAdapter(new VeicoliArrayAdapter(MainActivity.ctx, tmp));
 
- */
+
 
           //TODO SISTEMARE
           viewHolder.nome.setOnClickListener(new View.OnClickListener() {
@@ -125,14 +127,15 @@ public class AziendeBodyFragment extends Fragment {
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                     @Override
                                                     public void onDismiss(DialogInterface arg0) {
-                                                        az.setPiva(viewHolder.pk.getText().toString(), true);
-                                                        AziendeMenuFragment.list.notifyDataSetChanged();
+                                                        String newpiva = viewHolder.pk.getText().toString();
                                                         for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
                                                             Veicolo tmp = ApplicationData.veicoli.get(i);
-                                                            if (tmp.getAzienda().equals(az.getPiva())) {
-                                                                ApplicationData.veicoli.get(i).setAzienda(az.getPiva(), true);
+                                                            if (az.getPiva().equals(tmp.getAzienda())) {
+                                                                ApplicationData.veicoli.get(i).setAzienda(newpiva, false);
                                                             }
                                                         }
+
+                                                        az.setPiva(newpiva, true);
                                                         VeicoliMenuFragment.list.notifyDataSetChanged();
 
                                                     }

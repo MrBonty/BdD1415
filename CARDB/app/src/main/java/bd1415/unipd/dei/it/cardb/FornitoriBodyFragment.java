@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
+import bd1415.unipd.dei.it.cardb.databasetables.Contiene;
 import bd1415.unipd.dei.it.cardb.databasetables.Fornitore;
+import bd1415.unipd.dei.it.cardb.databasetables.Ordine;
 
 public class FornitoriBodyFragment extends Fragment {
 
@@ -113,7 +115,21 @@ public class FornitoriBodyFragment extends Fragment {
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                     @Override
                                                     public void onDismiss(DialogInterface arg0) {
-                                                        az.setPiva(viewHolder.pk.getText().toString(), true);
+                                                        String newpiva = viewHolder.pk.getText().toString();
+                                                        for(int i = 0; i< ApplicationData.ordini.size(); i++){
+                                                            Ordine tmp = ApplicationData.ordini.get(i);
+                                                            if (tmp.getFornitore().equals(az.getPiva())) {
+                                                                ApplicationData.ordini.get(i).setFornitore(newpiva, false);
+                                                            }
+                                                        }
+                                                        for(int i = 0; i< ApplicationData.contiene.size(); i++){
+                                                            Contiene tmp = ApplicationData.contiene.get(i);
+                                                            if (tmp.getOrdine_fornitore().equals(az.getPiva())) {
+                                                                ApplicationData.contiene.get(i).setOrdine_fornitore(newpiva, false);
+                                                            }
+
+                                                        }
+                                                        az.setPiva(newpiva, true);
                                                         FornitoriMenuFragment.list.notifyDataSetChanged();
                                                     }
                                                 }

@@ -93,7 +93,7 @@ public class Edificio {
         }
     }
 
-    public void setInditizzo(AddressType indirizzo, boolean update) {
+    public void setIndirizzo(AddressType indirizzo, boolean update) {
         this.indirizzo = indirizzo;
         if (update) {
             updateValueInDatabase(indirizzo, EDIFICIO_INDIRIZZO);
