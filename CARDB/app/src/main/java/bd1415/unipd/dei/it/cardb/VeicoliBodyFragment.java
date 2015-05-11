@@ -1,6 +1,5 @@
 package bd1415.unipd.dei.it.cardb;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -11,12 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
-import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
 import bd1415.unipd.dei.it.cardb.databasetables.Modello;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
@@ -167,12 +162,16 @@ public class VeicoliBodyFragment extends Fragment {
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                     @Override
                                                     public void onDismiss(DialogInterface arg0) {
-                                                        Modello az = ApplicationData.modelli.get(Integer.parseInt(viewHolder.modello.getText().toString()));
+                                                        try {
+                                                        Modello az = ApplicationData.modelli.get(Integer.parseInt(viewHolder.marca.getText().toString()));
                                                         viewHolder.marca.setText(az.getMarca());
                                                         viewHolder.modello.setText(az.getNome());
                                                         viewHolder.anno_modello.setText(az.getAnno());
                                                         veicolo.setModello_cod_prod(az.getCodice_produzione(), true);
                                                         veicolo.setModello_marca(az.getMarca(), true);
+                                                        } catch (java.lang.NumberFormatException ex) {
+
+                                                        }
                                                     }
                                                 }
                     );
@@ -182,13 +181,49 @@ public class VeicoliBodyFragment extends Fragment {
             viewHolder.modello.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.modello.getText().toString(),
+                            true, MainActivity.ctx, viewHolder.modello, new ModelloArrayAdapter(MainActivity.ctx, ApplicationData.modelli), true).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        try {
+                                                            Modello az = ApplicationData.modelli.get(Integer.parseInt(viewHolder.modello.getText().toString()));
+                                                            viewHolder.marca.setText(az.getMarca());
+                                                            viewHolder.modello.setText(az.getNome());
+                                                            viewHolder.anno_modello.setText(az.getAnno());
+                                                            veicolo.setModello_cod_prod(az.getCodice_produzione(), true);
+                                                            veicolo.setModello_marca(az.getMarca(), true);
+                                                        } catch (java.lang.NumberFormatException ex) {
 
+                                                        }
+                                                    }
+                                                }
+                    );
                 }
             });
             viewHolder.anno_modello.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.anno_modello.getText().toString(),
+                            true, MainActivity.ctx, viewHolder.anno_modello, new ModelloArrayAdapter(MainActivity.ctx, ApplicationData.modelli), true).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        try {
+                                                            Modello az = ApplicationData.modelli.get(Integer.parseInt(viewHolder.anno_modello.getText().toString()));
+                                                            viewHolder.marca.setText(az.getMarca());
+                                                            viewHolder.modello.setText(az.getNome());
+                                                            viewHolder.anno_modello.setText(az.getAnno());
+                                                            veicolo.setModello_cod_prod(az.getCodice_produzione(), true);
+                                                            veicolo.setModello_marca(az.getMarca(), true);
+                                                        } catch (java.lang.NumberFormatException ex) {
 
+                                                        }
+                                                    }
+                                                }
+                    );
                 }
             });
             viewHolder.proprietario.setOnClickListener(new View.OnClickListener() {
@@ -200,7 +235,7 @@ public class VeicoliBodyFragment extends Fragment {
                         dialog.show();
                         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                         @Override
-                                                        public void onDismiss(DialogInterface arg0) { //TODO SISTEMERE FOREING KEY E NOTIFYDATASETCHANGE OVUNQUE
+                                                        public void onDismiss(DialogInterface arg0) {
                                                             try {
                                                                 String c = viewHolder.proprietario.getText().toString();
                                                                 if (!c.equals(null)) {
@@ -222,10 +257,17 @@ public class VeicoliBodyFragment extends Fragment {
                         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                         @Override
                                                         public void onDismiss(DialogInterface arg0) {
-                                                            Azienda az = ApplicationData.aziende.get(Integer.parseInt(viewHolder.proprietario.getText().toString()));
-                                                            viewHolder.proprietario.setText("PIVA: " +  az.getPiva()  + "-- Nome: " + az.getNome());
-                                                            veicolo.setAzienda(viewHolder.proprietario.getText().toString(), true);
-                                                            AziendeMenuFragment.list.notifyDataSetChanged();
+                                                            try {
+                                                                String c = viewHolder.proprietario.getText().toString();
+                                                                if (!c.equals(null)) {
+                                                                    Azienda az = ApplicationData.aziende.get(Integer.parseInt(c));
+                                                                    viewHolder.proprietario.setText("PIVA: " +  az.getPiva()  + "-- Nome: " + az.getNome());
+                                                                    veicolo.setAzienda(viewHolder.proprietario.getText().toString(), true);
+                                                                    AziendeMenuFragment.list.notifyDataSetChanged();
+                                                                }
+                                                            } catch (java.lang.NumberFormatException ex) {
+
+                                                            }
                                                         }
                                                     }
                         );

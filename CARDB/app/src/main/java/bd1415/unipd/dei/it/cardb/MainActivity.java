@@ -1,6 +1,7 @@
 package bd1415.unipd.dei.it.cardb;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -27,6 +28,8 @@ import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
 import bd1415.unipd.dei.it.cardb.databasetables.Fornitore;
 import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
 import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
+import bd1415.unipd.dei.it.cardb.databasetables.Modello;
+import bd1415.unipd.dei.it.cardb.databasetables.Personale;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
@@ -66,6 +69,10 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Personale per = new Personale("figo", 5, false);
+        ApplicationData.personale.add(per);
+        Modello mm = new Modello("sf", "efsdfd", false);
+        ApplicationData.modelli.add(mm);
         Edificio c = new Edificio("pippo", false);
         ApplicationData.edifici.add(c);
         Fornitore f = new Fornitore("lillo", false);

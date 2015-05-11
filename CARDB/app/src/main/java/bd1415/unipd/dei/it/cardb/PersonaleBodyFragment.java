@@ -19,10 +19,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavora_a;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
 import bd1415.unipd.dei.it.cardb.databasetables.Personale;
+import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 public class PersonaleBodyFragment extends Fragment{
 
@@ -69,7 +71,7 @@ public class PersonaleBodyFragment extends Fragment{
         }
         viewHolder.nome = (TextView) view.findViewById(R.id.personale_nome_data);
         viewHolder.cognome = (TextView) view.findViewById(R.id.personale_cognome_data);
-        viewHolder.cf = (TextView) view.findViewById(R.id.personale_cf_tag);
+        viewHolder.cf = (TextView) view.findViewById(R.id.personale_cf_data);
         viewHolder.iban = (TextView) view.findViewById(R.id.personale_iban_data);
         viewHolder.contratto = (TextView) view.findViewById(R.id.personale_contratto_data);
         viewHolder.telefono = (TextView) view.findViewById(R.id.personale_telefono_data);
@@ -149,7 +151,7 @@ public class PersonaleBodyFragment extends Fragment{
 
                                 tx.setText("Vuoi cambiare responsabile:");
                                 oldW.setText("Vecchio Resp = " + tmp.getCognome() + " " + tmp.getNome() + " " + tmp.getCf());
-                                oldW.setText("Nuovo Resp = " + per.getCognome() + " " + per.getNome() + " " + per.getCf());
+                                newW.setText("Nuovo Resp = " + per.getCognome() + " " + per.getNome() + " " + per.getCf());
 
                                 cancel.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -185,6 +187,200 @@ public class PersonaleBodyFragment extends Fragment{
             }
 
             viewHolder.lavori.setAdapter(new LavoraAArrayAdapter(MainActivity.ctx, item));
+
+
+            viewHolder.cf.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.cf.getText().toString(),
+                            true, MainActivity.ctx, viewHolder.cf).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        per.setCf(viewHolder.cf.getText().toString(), true);
+                                                        PersonaleMenuFragment.list.notifyDataSetChanged();
+                                                    }
+                                                }
+                    );
+                }
+            });
+
+            viewHolder.nome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.nome.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.nome).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        per.setNome(viewHolder.nome.getText().toString(), true);
+                                                        PersonaleMenuFragment.list.notifyDataSetChanged();
+                                                    }
+                                                }
+                    );
+                }
+            });
+
+            viewHolder.cognome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.cognome.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.cognome).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        per.setCognome(viewHolder.cognome.getText().toString(), true);
+                                                        PersonaleMenuFragment.list.notifyDataSetChanged();
+                                                    }
+                                                }
+                    );
+                }
+            });
+
+            viewHolder.iban.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.iban.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.iban).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        per.setIban(viewHolder.iban.getText().toString(), true);
+                                                        PersonaleMenuFragment.list.notifyDataSetChanged();
+                                                    }
+                                                }
+                    );
+
+                }
+            });
+
+            viewHolder.contratto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.contratto.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.contratto).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        per.setContratto(viewHolder.contratto.getText().toString(), true);
+                                                        PersonaleMenuFragment.list.notifyDataSetChanged();
+                                                    }
+                                                }
+                    );
+                }
+            });
+
+            viewHolder.telefono.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.telefono.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.telefono).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        per.setTelefono(viewHolder.telefono.getText().toString(), true);
+                                                        PersonaleMenuFragment.list.notifyDataSetChanged();
+                                                    }
+                                                }
+                    );
+                }
+            });
+
+            viewHolder.citta.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.citta.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.citta).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        AddressType n = per.getIndirizzo();
+                                                        if (n == null) {
+                                                            n = new AddressType();
+                                                        }
+                                                        n.città = viewHolder.citta.getText().toString();
+                                                        per.setIndirizzo(n, true);
+                                                        PersonaleMenuFragment.list.notifyDataSetChanged();
+                                                    }
+                                                }
+                    );
+                }
+            });
+
+            viewHolder.indirizzo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.indirizzo.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.indirizzo).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        AddressType n = per.getIndirizzo();
+                                                        if (n == null) {
+                                                            n = new AddressType();
+                                                        }
+                                                        n.indirizzo = viewHolder.indirizzo.getText().toString();
+                                                        per.setIndirizzo(n, true);
+                                                        PersonaleMenuFragment.list.notifyDataSetChanged();
+                                                    }
+                                                }
+                    );
+                }
+            });
+
+            viewHolder.provincia.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.provincia.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.provincia).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        AddressType n = per.getIndirizzo();
+                                                        if (n == null) {
+                                                            n = new AddressType();
+                                                        }
+                                                        n.provincia = viewHolder.provincia.getText().toString();
+                                                        per.setIndirizzo(n, true);
+                                                        PersonaleMenuFragment.list.notifyDataSetChanged();
+                                                    }
+                                                }
+                    );
+                }
+            });
+
+            viewHolder.numero_civico.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.numero_civico.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.numero_civico).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        AddressType n = per.getIndirizzo();
+                                                        if (n == null) {
+                                                            n = new AddressType();
+                                                        }
+                                                        n.numero_civico = viewHolder.numero_civico.getText().toString();
+                                                        per.setIndirizzo(n, true);
+                                                        PersonaleMenuFragment.list.notifyDataSetChanged();
+                                                    }
+                                                }
+                    );
+                }
+            });
+
+
         }
         return view;
     }
