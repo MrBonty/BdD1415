@@ -80,7 +80,7 @@ public class PrivatiMenuFragment extends ListFragment {
 
             Bundle args = new Bundle();
             args.putInt(POS, pos);
-            args.putBoolean(ISVIS, true);
+            args.putBoolean(ISVIS, false);
             args.putBoolean(ISP, true); //is private
 
             toView.setArguments(args);

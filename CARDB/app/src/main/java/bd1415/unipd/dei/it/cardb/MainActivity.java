@@ -23,6 +23,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
+import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
+import bd1415.unipd.dei.it.cardb.databasetables.Fornitore;
+import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
+import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
@@ -47,15 +51,42 @@ public class MainActivity extends ActionBarActivity {
     public LinearLayout aziendeLayout;
     private LinearLayout veicoliLayout;
     public static LinearLayout lavorazioniLayout;
+    public static LinearLayout lavorazioniFinitiLayout;
     private LinearLayout descrizioniLayout;
-    private LinearLayout pagamentiLayout;
-    private LinearLayout gestioneLayout;
+    private static LinearLayout pagamentiLayout;
+    private static LinearLayout pagamentiFattiLayout;
+    private LinearLayout magazzinoLayout;
+    private LinearLayout fornitoriLayout;
+    private LinearLayout ordiniLayout;
+    private LinearLayout personaleLayout;
+    private LinearLayout edificiLayout;
     private FloatingActionButton fabButton = null;
     private HashMap<String, List<String>> listDataChild;
     private List<String> listDataHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Edificio c = new Edificio("pippo", false);
+        ApplicationData.edifici.add(c);
+        Fornitore f = new Fornitore("lillo", false);
+        ApplicationData.fornitori.add(f);
+        Privato prv = new Privato();
+        prv.setNome("7378", false);
+        ApplicationData.privati.add(prv);
+        Azienda azi = new Azienda();
+        azi.setNome("jkefkerj", false);
+        ApplicationData.aziende.add(azi);
+        Veicolo vc = new Veicolo();
+        vc.setTarga("wjkefewj", false);
+        vc.setNumero_telaio("ewkfew", false);
+        vc.setPrivato("rfr",false);
+        ApplicationData.veicoli.add(vc);
+        Guasto g = new Guasto(false);
+        g.setId(1, false);
+        Manutenzione m = new Manutenzione(false);
+        m.setId(23, false);
+        ApplicationData.manutenzioni.add(m);
+        ApplicationData.guasti.add(g);
         params = new String[6];
         ctx = this;
         act = this;
@@ -79,9 +110,15 @@ public class MainActivity extends ActionBarActivity {
         aziendeLayout = (LinearLayout) findViewById(R.id.aziende);
         veicoliLayout = (LinearLayout) findViewById(R.id.veicoli);
         lavorazioniLayout = (LinearLayout) findViewById(R.id.lavorazioni);
+        lavorazioniFinitiLayout = (LinearLayout) findViewById(R.id.lavorazioni_finiti);
         descrizioniLayout = (LinearLayout) findViewById(R.id.descrizioni);
         pagamentiLayout = (LinearLayout) findViewById(R.id.pagamenti);
-        //gestioneLayout = (LinearLayout) findViewById(R.id.gestione);
+        pagamentiFattiLayout = (LinearLayout) findViewById(R.id.pagamenti_fatti);
+        magazzinoLayout = (LinearLayout) findViewById(R.id.magazzino);
+        fornitoriLayout = (LinearLayout) findViewById(R.id.fornitori);
+        ordiniLayout = (LinearLayout) findViewById(R.id.ordini);
+        personaleLayout = (LinearLayout) findViewById(R.id.personale);
+        edificiLayout = (LinearLayout) findViewById(R.id.edifici);
         corrente = privatiLayout;
         ApplicationData.posizioneCorrente = 0;
         container.removeAllViewsInLayout();
@@ -94,17 +131,6 @@ public class MainActivity extends ActionBarActivity {
                 .withGravity(Gravity.BOTTOM | Gravity.END)
                 .withMargins(0, 0, 16, 16).create();
         intent = getIntent();
-        Privato prv = new Privato();
-        prv.setNome("7378", false);
-        ApplicationData.privati.add(prv);
-        Azienda azi = new Azienda();
-        azi.setNome("jkefkerj", false);
-        ApplicationData.aziende.add(azi);
-        Veicolo vc = new Veicolo();
-        vc.setTarga("wjkefewj", false);
-        vc.setNumero_telaio("ewkfew", false);
-        vc.setPrivato("rfr",false);
-        ApplicationData.veicoli.add(vc);
 
     }
 
@@ -148,6 +174,7 @@ public class MainActivity extends ActionBarActivity {
         gestioneSubItems.add("Fornitori");
         gestioneSubItems.add("Ordini in corso");
         gestioneSubItems.add("Personale");
+        gestioneSubItems.add("Edifici");
 
         listDataChild.put(listDataHeader.get(0), clientiSubItems);
         listDataChild.put(listDataHeader.get(1), veicoliSubItems);
@@ -256,8 +283,8 @@ public class MainActivity extends ActionBarActivity {
                     } else if (childPosition == 2) {
                         ApplicationData.isFinished = true;
                         container.removeAllViewsInLayout();
-                        container.addView(lavorazioniLayout);
-                        corrente = lavorazioniLayout;
+                        container.addView(lavorazioniFinitiLayout);
+                        corrente = lavorazioniFinitiLayout;
                         drawerLayout.closeDrawer(Gravity.LEFT);
 
                     }
@@ -266,26 +293,48 @@ public class MainActivity extends ActionBarActivity {
                     if (childPosition == 0) {
                         ApplicationData.isPayed = true;
                         container.removeAllViewsInLayout();
-                        container.addView(lavorazioniLayout);
-                        corrente = lavorazioniLayout;
+                        container.addView(pagamentiFattiLayout);
+                        corrente = pagamentiFattiLayout;
                         drawerLayout.closeDrawer(Gravity.LEFT);
 
                     } else if (childPosition == 1) {
                         ApplicationData.isPayed = false;
                         container.removeAllViewsInLayout();
-                        container.addView(lavorazioniLayout);
-                        corrente = lavorazioniLayout;
+                        container.addView(pagamentiLayout);
+                        corrente = pagamentiLayout;
                         drawerLayout.closeDrawer(Gravity.LEFT);
 
                     }
                 } else if (groupPosition == 4) {
                     if (childPosition == 0) {
+                        container.removeAllViewsInLayout();
+                        container.addView(magazzinoLayout);
+                        corrente = magazzinoLayout;
+                        drawerLayout.closeDrawer(Gravity.LEFT);
 
                     } else if (childPosition == 1) {
+                        container.removeAllViewsInLayout();
+                        container.addView(fornitoriLayout);
+                        corrente = fornitoriLayout;
+                        drawerLayout.closeDrawer(Gravity.LEFT);
 
                     } else if (childPosition == 2) {
+                        container.removeAllViewsInLayout();
+                        container.addView(ordiniLayout);
+                        corrente = ordiniLayout;
+                        drawerLayout.closeDrawer(Gravity.LEFT);
 
                     } else if (childPosition == 3) {
+                        container.removeAllViewsInLayout();
+                        container.addView(personaleLayout);
+                        corrente = personaleLayout;
+                        drawerLayout.closeDrawer(Gravity.LEFT);
+
+                    } else if (childPosition == 4) {
+                        container.removeAllViewsInLayout();
+                        container.addView(edificiLayout);
+                        corrente = edificiLayout;
+                        drawerLayout.closeDrawer(Gravity.LEFT);
 
                     }
                 }

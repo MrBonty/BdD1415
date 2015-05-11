@@ -117,6 +117,28 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/lavorazioni_finiti"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    class="bd1415.unipd.dei.it.cardb.LavorazioniFiniteMenuFragment"
+                    android:layout_width="@dimen/large"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/lavorazioni_menu_fragment"></fragment>
+
+                <View style="@style/Divider" />
+
+                <fragment
+                    android:id="@+id/lavorazioni_finiti_body"
+                    class="bd1415.unipd.dei.it.cardb.LavorazioniFiniteBodyFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/lavorazioni_body_fragment"></fragment>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/descrizioni"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -160,27 +182,134 @@
 
             </LinearLayout>
 
-            <!--<LinearLayout
-                android:id="@+id/gestione"
+            <LinearLayout
+                android:id="@+id/pagamenti_fatti"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <fragment
-                    class="bd1415.unipd.dei.it.cardb.GestioneMenuFragment"
+                    class="bd1415.unipd.dei.it.cardb.PagamentiFattiMenuFragment"
                     android:layout_width="@dimen/large"
                     android:layout_height="match_parent"
-                    tools:layout="@layout/gestione_menu_fragment"></fragment>
+                    tools:layout="@layout/pagamenti_menu_fragment"></fragment>
 
                 <View style="@style/Divider" />
 
                 <fragment
-                    class="bd1415.unipd.dei.it.cardb.GestioneBodyFragment"
+                    android:id="@+id/pagamenti_fatti_body"
+                    class="bd1415.unipd.dei.it.cardb.PagamentiFattiBodyFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:layout="@layout/gestione_body_fragment"></fragment>
+                    tools:layout="@layout/pagamenti_body_fragment"></fragment>
 
-            </LinearLayout>-->
+            </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/magazzino"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    class="bd1415.unipd.dei.it.cardb.MagazzinoMenuFragment"
+                    android:layout_width="@dimen/large"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/magazzino_menu_fragment"></fragment>
+
+                <View style="@style/Divider" />
+
+                <fragment
+                    android:id="@+id/magazzino_body"
+                    class="bd1415.unipd.dei.it.cardb.MagazzinoBodyFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/magazzino_body_fragment"></fragment>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fornitori"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    class="bd1415.unipd.dei.it.cardb.FornitoriMenuFragment"
+                    android:layout_width="@dimen/large"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/clienti_menu_fragment"></fragment>
+
+                <View style="@style/Divider" />
+
+                <fragment
+                    android:id="@+id/fornitori_body"
+                    class="bd1415.unipd.dei.it.cardb.FornitoriBodyFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/clienti_body_fragment"></fragment>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/personale"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    class="bd1415.unipd.dei.it.cardb.PersonaleMenuFragment"
+                    android:layout_width="@dimen/large"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/personale_menu_fragment"></fragment>
+
+                <View style="@style/Divider" />
+
+                <fragment
+                    android:id="@+id/personale_body"
+                    class="bd1415.unipd.dei.it.cardb.PersonaleBodyFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/personale_body_fragment"></fragment>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ordini"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <fragment
+                class="bd1415.unipd.dei.it.cardb.OrdiniMenuFragment"
+                android:layout_width="@dimen/large"
+                android:layout_height="match_parent"
+                tools:layout="@layout/ordini_menu_fragment"></fragment>
+
+            <View style="@style/Divider" />
+
+            <fragment
+                android:id="@+id/ordini_body"
+                class="bd1415.unipd.dei.it.cardb.OrdiniBodyFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout="@layout/ordini_body_fragment"></fragment>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/edifici"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    class="bd1415.unipd.dei.it.cardb.EdificiMenuFragment"
+                    android:layout_width="@dimen/large"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/edifici_menu_fragment"></fragment>
+
+                <View style="@style/Divider" />
+
+                <fragment
+                    android:id="@+id/edifici_body"
+                    class="bd1415.unipd.dei.it.cardb.EdificiBodyFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/edifici_body_fragment"></fragment>
+            </LinearLayout>
         </FrameLayout>
 
         <!-- navigation drawer -->

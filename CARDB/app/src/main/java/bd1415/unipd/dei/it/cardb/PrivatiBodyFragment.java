@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
+import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 public class PrivatiBodyFragment extends Fragment {
 
@@ -49,6 +50,13 @@ public class PrivatiBodyFragment extends Fragment {
             mImage.setVisibility(View.GONE);
             mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
             mBody.setVisibility(View.VISIBLE);
+        }else {
+            mImage = (ImageView) view.findViewById(R.id.image_clienti);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            if(mImage != null && mBody != null) {
+                mImage.setVisibility(View.VISIBLE);
+                mBody.setVisibility(View.GONE);
+            }
         }
         viewHolder.nome = (TextView) view.findViewById(R.id.cliente_nome_data);
         viewHolder.cognomeLayout = (LinearLayout) view.findViewById(R.id.cliete_cognome_layout);
@@ -76,7 +84,7 @@ public class PrivatiBodyFragment extends Fragment {
 
             if (cl.getIndirizzo() != null) {
                 viewHolder.indirizzo.setText(cl.getIndirizzo().indirizzo);
-                viewHolder.indirizzo.setText(cl.getIndirizzo().numero_civico);
+                viewHolder.indirizzo.setText(cl.getIndirizzo().numero_civico + "");
                 viewHolder.citta.setText(cl.getIndirizzo().città);
                 viewHolder.provincia.setText(cl.getIndirizzo().provincia);
             }
@@ -134,6 +142,13 @@ public class PrivatiBodyFragment extends Fragment {
                                                     public void onDismiss(DialogInterface arg0) {
                                                         cl.setCf(viewHolder.pk.getText().toString(), true);
                                                         PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                        for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
+                                                            Veicolo tmp = ApplicationData.veicoli.get(i);
+                                                            if (tmp.getPrivato().equals(cl.getCf())) {
+                                                                ApplicationData.veicoli.get(i).setAzienda(cl.getCf(), true);
+                                                            }
+                                                        }
+                                                        VeicoliMenuFragment.list.notifyDataSetChanged();
                                                     }
                                                 }
                     );

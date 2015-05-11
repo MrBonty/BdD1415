@@ -14,7 +14,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
 import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
@@ -28,16 +27,12 @@ public class DescrizioniMenuFragment extends ListFragment {
     public static final String GUASTO = "G";
     public static final String MANUT = "M";
 
+    public static DescrizioniArrayAdapter list;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-    }
-
-    //onActivityCreated
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -67,11 +62,11 @@ public class DescrizioniMenuFragment extends ListFragment {
             color.add(Color.parseColor("#66FFFF00")); //Semitrasparent yellow
         }
 
-        setListAdapter(new LavoriArrayAdapter(inflater.getContext(), ApplicationData.lavoriFiniti));
-
         ApplicationData.guastiManutenzioni = guastiManutenzioni;
+        DescrizioniArrayAdapter tmp = new DescrizioniArrayAdapter(inflater.getContext(), ApplicationData.guastiManutenzioni, color);
+        list = tmp;
+        setListAdapter(tmp);
 
-        mFM = getFragmentManager();
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -101,6 +96,20 @@ public class DescrizioniMenuFragment extends ListFragment {
         } else {
             resizeFragment(this, (int) getResources().getDimension(R.dimen.large));
             isLarge = true;
+            Fragment toView = new DescrizioniBodyFragment();
+
+            Bundle args = new Bundle();
+            args.putInt(POS, pos);
+            args.putBoolean(ISVIS, false);
+
+            toView.setArguments(args);
+
+            mFM = MainActivity.act.getFragmentManager();
+            FragmentTransaction ft = mFM.beginTransaction();
+            ft.replace(R.id.descrizioni_body, toView);
+            ft.addToBackStack(null);
+            ft.commit();
+
         }
         Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
     }

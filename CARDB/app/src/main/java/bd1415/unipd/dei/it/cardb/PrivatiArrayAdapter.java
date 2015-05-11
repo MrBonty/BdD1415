@@ -44,7 +44,7 @@ public class PrivatiArrayAdapter extends ArrayAdapter<Privato> {
             viewToUse = convertView;
             holder = (ViewHolder) viewToUse.getTag();
         }
-        holder.titleText.setText(item.getNome());
+        holder.titleText.setText(item.getNome()+ " " + item.getCognome());
         return viewToUse;
     }
 }

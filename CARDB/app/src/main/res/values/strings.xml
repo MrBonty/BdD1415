@@ -46,6 +46,16 @@
     <string name="data_tag">Data:\u0020</string>
 
     <string name="spinner">Proprietario</string>
+    <string name="magazzino_num_tag">Quantità:\u0020</string>
+    <string name="magazzino_vendita_tag">Prezzo:\u0020</string>
+    <string name="ordine_fornitore_tag">Fornitore:\u0020</string>
+    <string name="edificio_tip_tag">Tipologia:\u0020</string>
+    <string name="edificio_resp_id_tag">Resp.:\u0020</string>
+    <string name="edificio_resp_tag">Nome:\u0020</string>
+    <string name="personale_contratto_tag">Contratto:\u0020</string>
+    <string name="iban_tag">Iban:\u0020</string>
+    <string name="responsabile_edificio_tag">Edificio:\u0020</string>
+    <string name="personale_resp_tag">Responsabile\u0020</string>
 </resources>
 
 

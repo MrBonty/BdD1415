@@ -55,6 +55,13 @@ public class VeicoliBodyFragment extends Fragment {
             mImage.setVisibility(View.GONE);
             mBody = (LinearLayout) view.findViewById(R.id.ll_veicoli);
             mBody.setVisibility(View.VISIBLE);
+        }else {
+            mImage = (ImageView) view.findViewById(R.id.image_veicoli);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_veicoli);
+            if(mImage != null && mBody != null) {
+                mImage.setVisibility(View.VISIBLE);
+                mBody.setVisibility(View.GONE);
+            }
         }
         viewHolder.targa = (TextView) view.findViewById(R.id.veicolo_targa_data);
         viewHolder.numero_telaio = (TextView) view.findViewById(R.id.veicolo_telaio_data);
@@ -154,8 +161,21 @@ public class VeicoliBodyFragment extends Fragment {
             viewHolder.marca.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-
+                    SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.marca.getText().toString(),
+                            true, MainActivity.ctx, viewHolder.marca, new ModelloArrayAdapter(MainActivity.ctx, ApplicationData.modelli), true).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        Modello az = ApplicationData.modelli.get(Integer.parseInt(viewHolder.modello.getText().toString()));
+                                                        viewHolder.marca.setText(az.getMarca());
+                                                        viewHolder.modello.setText(az.getNome());
+                                                        viewHolder.anno_modello.setText(az.getAnno());
+                                                        veicolo.setModello_cod_prod(az.getCodice_produzione(), true);
+                                                        veicolo.setModello_marca(az.getMarca(), true);
+                                                    }
+                                                }
+                    );
                 }
             });
 
@@ -180,7 +200,7 @@ public class VeicoliBodyFragment extends Fragment {
                         dialog.show();
                         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                         @Override
-                                                        public void onDismiss(DialogInterface arg0) {
+                                                        public void onDismiss(DialogInterface arg0) { //TODO SISTEMERE FOREING KEY E NOTIFYDATASETCHANGE OVUNQUE
                                                             try {
                                                                 String c = viewHolder.proprietario.getText().toString();
                                                                 if (!c.equals(null)) {
@@ -192,7 +212,6 @@ public class VeicoliBodyFragment extends Fragment {
                                                             } catch (java.lang.NumberFormatException ex) {
 
                                                             }
-
                                                         }
                                                     }
                         );
@@ -206,7 +225,7 @@ public class VeicoliBodyFragment extends Fragment {
                                                             Azienda az = ApplicationData.aziende.get(Integer.parseInt(viewHolder.proprietario.getText().toString()));
                                                             viewHolder.proprietario.setText("PIVA: " +  az.getPiva()  + "-- Nome: " + az.getNome());
                                                             veicolo.setAzienda(viewHolder.proprietario.getText().toString(), true);
-                                                            PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                            AziendeMenuFragment.list.notifyDataSetChanged();
                                                         }
                                                     }
                         );

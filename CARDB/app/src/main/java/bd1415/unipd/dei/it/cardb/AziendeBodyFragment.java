@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
+import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 public class AziendeBodyFragment extends Fragment {
 
@@ -48,6 +49,13 @@ public class AziendeBodyFragment extends Fragment {
             mImage.setVisibility(View.GONE);
             mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
             mBody.setVisibility(View.VISIBLE);
+        }else {
+            mImage = (ImageView) view.findViewById(R.id.image_clienti);
+            mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
+            if(mImage != null && mBody != null) {
+                mImage.setVisibility(View.VISIBLE);
+                mBody.setVisibility(View.GONE);
+            }
         }
         viewHolder.nome = (TextView) view.findViewById(R.id.cliente_nome_data);
         viewHolder.cognomeLayout = (LinearLayout) view.findViewById(R.id.cliete_cognome_layout);
@@ -74,7 +82,7 @@ public class AziendeBodyFragment extends Fragment {
 
             if (az.getIndirizzo() != null) {
                 viewHolder.indirizzo.setText(az.getIndirizzo().indirizzo);
-                viewHolder.indirizzo.setText(az.getIndirizzo().numero_civico);
+                viewHolder.indirizzo.setText(az.getIndirizzo().numero_civico + "");
                 viewHolder.citta.setText(az.getIndirizzo().città);
                 viewHolder.provincia.setText(az.getIndirizzo().provincia);
             }
@@ -89,7 +97,10 @@ public class AziendeBodyFragment extends Fragment {
 
                 viewHolder.veicoli.setAdapter(new VeicoliArrayAdapter(MainActivity.ctx, tmp));
 
-*/          viewHolder.nome.setOnClickListener(new View.OnClickListener() {
+ */
+
+          //TODO SISTEMARE
+          viewHolder.nome.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     DialogEdit dialog = new DialogEdit.Builder(viewHolder.nome.getText().toString(),
@@ -115,7 +126,15 @@ public class AziendeBodyFragment extends Fragment {
                                                     @Override
                                                     public void onDismiss(DialogInterface arg0) {
                                                         az.setPiva(viewHolder.pk.getText().toString(), true);
-                                                        PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                        AziendeMenuFragment.list.notifyDataSetChanged();
+                                                        for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
+                                                            Veicolo tmp = ApplicationData.veicoli.get(i);
+                                                            if (tmp.getAzienda().equals(az.getPiva())) {
+                                                                ApplicationData.veicoli.get(i).setAzienda(az.getPiva(), true);
+                                                            }
+                                                        }
+                                                        VeicoliMenuFragment.list.notifyDataSetChanged();
+
                                                     }
                                                 }
                     );
@@ -131,7 +150,7 @@ public class AziendeBodyFragment extends Fragment {
                                                     @Override
                                                     public void onDismiss(DialogInterface arg0) {
                                                         az.setTelefono(viewHolder.telefono.getText().toString(), true);
-                                                        PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                        AziendeMenuFragment.list.notifyDataSetChanged();
                                                     }
                                                 }
                     );
@@ -152,7 +171,7 @@ public class AziendeBodyFragment extends Fragment {
                                                         }
                                                         n.città = viewHolder.citta.getText().toString();
                                                         az.setIndirizzo(n, true);
-                                                        PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                        AziendeMenuFragment.list.notifyDataSetChanged();
                                                     }
                                                 }
                     );
@@ -173,7 +192,7 @@ public class AziendeBodyFragment extends Fragment {
                                                         }
                                                         n.indirizzo = viewHolder.indirizzo.getText().toString();
                                                         az.setIndirizzo(n, true);
-                                                        PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                        AziendeMenuFragment.list.notifyDataSetChanged();
                                                     }
                                                 }
                     );
@@ -194,7 +213,7 @@ public class AziendeBodyFragment extends Fragment {
                                                         }
                                                         n.provincia = viewHolder.provincia.getText().toString();
                                                         az.setIndirizzo(n, true);
-                                                        PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                        AziendeMenuFragment.list.notifyDataSetChanged();
                                                     }
                                                 }
                     );
@@ -215,7 +234,7 @@ public class AziendeBodyFragment extends Fragment {
                                                         }
                                                         n.numero_civico = viewHolder.numero_civico.getText().toString();
                                                         az.setIndirizzo(n, true);
-                                                        PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                        AziendeMenuFragment.list.notifyDataSetChanged();
                                                     }
                                                 }
                     );
