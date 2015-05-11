@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/veicolo_name"
+        android:id="@+id/modello_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -14,7 +14,7 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/veicolo_info"
+        android:id="@+id/modello_codice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
+import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 public class PrivatiBodyFragment extends Fragment {
 
@@ -134,13 +135,20 @@ public class PrivatiBodyFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     DialogEdit dialog = new DialogEdit.Builder(viewHolder.pk.getText().toString(),
-                            false, MainActivity.ctx, viewHolder.pk).build();
+                            true, MainActivity.ctx, viewHolder.pk).build();
                     dialog.show();
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                     @Override
                                                     public void onDismiss(DialogInterface arg0) {
                                                         cl.setCf(viewHolder.pk.getText().toString(), true);
                                                         PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                        for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
+                                                            Veicolo tmp = ApplicationData.veicoli.get(i);
+                                                            if (tmp.getPrivato().equals(cl.getCf())) {
+                                                                ApplicationData.veicoli.get(i).setAzienda(cl.getCf(), true);
+                                                            }
+                                                        }
+                                                        VeicoliMenuFragment.list.notifyDataSetChanged();
                                                     }
                                                 }
                     );

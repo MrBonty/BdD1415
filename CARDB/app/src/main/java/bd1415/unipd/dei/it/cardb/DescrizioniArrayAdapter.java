@@ -18,20 +18,23 @@ public class DescrizioniArrayAdapter extends ArrayAdapter<String> {
     private ArrayList<Integer> color;
     private Context mCtx;
 
-    public DescrizioniArrayAdapter(Context context, List<String> objects, ArrayList<Integer> color) {
-        super(context, R.layout.descrizione_item, objects);
+    public DescrizioniArrayAdapter(Context context, List<String> items, ArrayList<Integer> color) {
+        super(context, android.R.layout.simple_list_item_1, items);
         this.color = color;
         mCtx = context;
     }
 
-    private class ViewHold {
+    private class ViewHolder {
         TextView titleText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
         String tmp = (String) getItem(position);
-        ViewHold vh = null;
+
+
+        ViewHolder vh = null;
+
         View viewToUse = null;
 
         LayoutInflater mInflater = (LayoutInflater) mCtx
@@ -39,12 +42,13 @@ public class DescrizioniArrayAdapter extends ArrayAdapter<String> {
 
         if (convertView == null) {
             viewToUse = mInflater.inflate(R.layout.descrizione_item, null);
-            vh = new ViewHold();
+
+            vh = new ViewHolder();
             vh.titleText = (TextView) viewToUse.findViewById(R.id.descrizione_name);
             viewToUse.setTag(vh);
         } else {
             viewToUse = convertView;
-            vh = (ViewHold) viewToUse.getTag();
+            vh = (ViewHolder) viewToUse.getTag();
         }
 
         viewToUse.setBackgroundColor(color.get(position));

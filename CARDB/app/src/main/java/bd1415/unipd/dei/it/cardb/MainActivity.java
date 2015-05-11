@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
+import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
+import bd1415.unipd.dei.it.cardb.databasetables.Fornitore;
 import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
 import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
@@ -64,6 +66,27 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Edificio c = new Edificio("pippo", false);
+        ApplicationData.edifici.add(c);
+        Fornitore f = new Fornitore("lillo", false);
+        ApplicationData.fornitori.add(f);
+        Privato prv = new Privato();
+        prv.setNome("7378", false);
+        ApplicationData.privati.add(prv);
+        Azienda azi = new Azienda();
+        azi.setNome("jkefkerj", false);
+        ApplicationData.aziende.add(azi);
+        Veicolo vc = new Veicolo();
+        vc.setTarga("wjkefewj", false);
+        vc.setNumero_telaio("ewkfew", false);
+        vc.setPrivato("rfr",false);
+        ApplicationData.veicoli.add(vc);
+        Guasto g = new Guasto(false);
+        g.setId(1, false);
+        Manutenzione m = new Manutenzione(false);
+        m.setId(23, false);
+        ApplicationData.manutenzioni.add(m);
+        ApplicationData.guasti.add(g);
         params = new String[6];
         ctx = this;
         act = this;
@@ -75,18 +98,6 @@ public class MainActivity extends ActionBarActivity {
         params[5] = "5432";
         //savedInstanceState = null;
         super.onCreate(savedInstanceState);
-        Guasto g = new Guasto(false);
-        g.setId(1,false);
-        Manutenzione m = new Manutenzione(false);
-        m.setId(1,false);
-        Guasto g1 = new Guasto(false);
-        g1.setId(2,false);
-        Manutenzione m1 = new Manutenzione(false);
-        m1.setId(2,false);
-        ApplicationData.guasti.add(g);
-        ApplicationData.manutenzioni.add(m);
-        ApplicationData.guasti.add(g1);
-        ApplicationData.manutenzioni.add(m1);
 
         setContentView(R.layout.activity_main);
         initView();
@@ -121,17 +132,6 @@ public class MainActivity extends ActionBarActivity {
                 .withGravity(Gravity.BOTTOM | Gravity.END)
                 .withMargins(0, 0, 16, 16).create();
         intent = getIntent();
-        Privato prv = new Privato();
-        prv.setNome("7378", false);
-        ApplicationData.privati.add(prv);
-        Azienda azi = new Azienda();
-        azi.setNome("jkefkerj", false);
-        ApplicationData.aziende.add(azi);
-        Veicolo vc = new Veicolo();
-        vc.setTarga("wjkefewj", false);
-        vc.setNumero_telaio("ewkfew", false);
-        vc.setPrivato("rfr",false);
-        ApplicationData.veicoli.add(vc);
 
 
     }

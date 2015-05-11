@@ -16,7 +16,6 @@ public class AziendeMenuFragment extends ListFragment {
 
     private boolean isLarge = true;
     private FragmentManager mFM;
-    VeicoliBodyFragment mBodyFrag;
 
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
@@ -43,9 +42,13 @@ public class AziendeMenuFragment extends ListFragment {
         super.onResume();
     }
 
+    public static AziendeArrayAdapter list;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        setListAdapter(new AziendeArrayAdapter(inflater.getContext(), ApplicationData.aziende));
+        AziendeArrayAdapter azien = new AziendeArrayAdapter(inflater.getContext(), ApplicationData.aziende);
+        list = azien;
+        setListAdapter(list);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 

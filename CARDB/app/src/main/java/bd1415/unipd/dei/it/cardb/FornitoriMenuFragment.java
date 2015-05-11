@@ -52,7 +52,7 @@ public class FornitoriMenuFragment extends ListFragment {
         super.onListItemClick(list, v, pos, id);
         if (isLarge) {
 
-            Fragment toView = new AziendeBodyFragment();
+            Fragment toView = new FornitoriBodyFragment();
 
             Bundle args = new Bundle();
             args.putInt(POS, pos);

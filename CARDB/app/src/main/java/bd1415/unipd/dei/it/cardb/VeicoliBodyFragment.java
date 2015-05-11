@@ -161,8 +161,21 @@ public class VeicoliBodyFragment extends Fragment {
             viewHolder.marca.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-
+                    SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.marca.getText().toString(),
+                            true, MainActivity.ctx, viewHolder.marca, new ModelloArrayAdapter(MainActivity.ctx, ApplicationData.modelli), true).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        Modello az = ApplicationData.modelli.get(Integer.parseInt(viewHolder.modello.getText().toString()));
+                                                        viewHolder.marca.setText(az.getMarca());
+                                                        viewHolder.modello.setText(az.getNome());
+                                                        viewHolder.anno_modello.setText(az.getAnno());
+                                                        veicolo.setModello_cod_prod(az.getCodice_produzione(), true);
+                                                        veicolo.setModello_marca(az.getMarca(), true);
+                                                    }
+                                                }
+                    );
                 }
             });
 
@@ -183,21 +196,28 @@ public class VeicoliBodyFragment extends Fragment {
                 public void onClick(View v) {
                     if (isPriv) {
                         SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.proprietario.getText().toString(),
-                                false, MainActivity.ctx, viewHolder.proprietario, new PrivatiArrayAdapter(MainActivity.ctx, ApplicationData.privati)).build();
+                                false, MainActivity.ctx, viewHolder.proprietario, new PrivatiArrayAdapter(MainActivity.ctx, ApplicationData.privati), true).build();
                         dialog.show();
                         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                         @Override
                                                         public void onDismiss(DialogInterface arg0) { //TODO SISTEMERE FOREING KEY E NOTIFYDATASETCHANGE OVUNQUE
-                                                            Privato pr = ApplicationData.privati.get(Integer.parseInt(viewHolder.proprietario.getText().toString()));
-                                                            viewHolder.proprietario.setText("CF: " +  pr.getCf()  + "-- Cognome: " + pr.getCognome() + " Nome: " + pr.getNome());
-                                                            veicolo.setPrivato(viewHolder.proprietario.getText().toString(), true);
-                                                            PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                            try {
+                                                                String c = viewHolder.proprietario.getText().toString();
+                                                                if (!c.equals(null)) {
+                                                                    Privato pr = ApplicationData.privati.get(Integer.parseInt(c));
+                                                                    viewHolder.proprietario.setText("CF: " + pr.getCf() + " -- Cognome: " + pr.getCognome() + " Nome: " + pr.getNome());
+                                                                    veicolo.setPrivato(viewHolder.proprietario.getText().toString(), true);
+                                                                    PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                                }
+                                                            } catch (java.lang.NumberFormatException ex) {
+
+                                                            }
                                                         }
                                                     }
                         );
                     } else {
                         SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.proprietario.getText().toString(),
-                                false, MainActivity.ctx, viewHolder.proprietario, new AziendeArrayAdapter(MainActivity.ctx, ApplicationData.aziende)).build();
+                                false, MainActivity.ctx, viewHolder.proprietario, new AziendeArrayAdapter(MainActivity.ctx, ApplicationData.aziende), true).build();
                         dialog.show();
                         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                         @Override
@@ -205,7 +225,7 @@ public class VeicoliBodyFragment extends Fragment {
                                                             Azienda az = ApplicationData.aziende.get(Integer.parseInt(viewHolder.proprietario.getText().toString()));
                                                             viewHolder.proprietario.setText("PIVA: " +  az.getPiva()  + "-- Nome: " + az.getNome());
                                                             veicolo.setAzienda(viewHolder.proprietario.getText().toString(), true);
-                                                            PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                            AziendeMenuFragment.list.notifyDataSetChanged();
                                                         }
                                                     }
                         );

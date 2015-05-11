@@ -14,7 +14,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
 import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
@@ -34,12 +33,6 @@ public class DescrizioniMenuFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-    }
-
-    //onActivityCreated
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -68,16 +61,11 @@ public class DescrizioniMenuFragment extends ListFragment {
             color.add(Color.parseColor("#66FFFF00")); //Semitrasparent yellow
         }
 
-
         ApplicationData.guastiManutenzioni = guastiManutenzioni;
-        for(int i =0 ; i< ApplicationData.guastiManutenzioni.size(); i++){
-            System.out.println( ApplicationData.guastiManutenzioni.get(i));
-        }
-        mFM = getFragmentManager();
-
-        DescrizioniArrayAdapter tmp = new DescrizioniArrayAdapter(inflater.getContext(), ApplicationData.guastiManutenzioni,color);
+        DescrizioniArrayAdapter tmp = new DescrizioniArrayAdapter(inflater.getContext(), ApplicationData.guastiManutenzioni, color);
         list = tmp;
         setListAdapter(tmp);
+
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -105,6 +93,8 @@ public class DescrizioniMenuFragment extends ListFragment {
             isLarge = false;
             //Qui va il codice che avvia le modifiche sul secondo fragment.
         } else {
+            resizeFragment(this, (int) getResources().getDimension(R.dimen.large));
+            isLarge = true;
             Fragment toView = new DescrizioniBodyFragment();
 
             Bundle args = new Bundle();
@@ -119,8 +109,6 @@ public class DescrizioniMenuFragment extends ListFragment {
             ft.addToBackStack(null);
             ft.commit();
 
-            resizeFragment(this, (int) getResources().getDimension(R.dimen.large));
-            isLarge = true;
         }
         Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
     }
