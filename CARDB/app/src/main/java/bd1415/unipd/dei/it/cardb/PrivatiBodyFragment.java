@@ -127,7 +127,7 @@ public class PrivatiBodyFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     DialogEdit dialog = new DialogEdit.Builder(viewHolder.pk.getText().toString(),
-                            false, MainActivity.ctx, viewHolder.pk).build();
+                            true, MainActivity.ctx, viewHolder.pk).build();
                     dialog.show();
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                     @Override

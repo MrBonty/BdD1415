@@ -24,11 +24,17 @@ public class SpinnerDialog<E> extends AlertDialog {
     final TextView textview = Builder.view;
     View view;
     ArrayAdapter<E> adapter;
+    boolean isPresent = Builder.isPresent;
 
     public SpinnerDialog(final Context context) {
         super(context);
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.spinner_dialog, null);
+        View view;
+        if (isPresent) {
+            view = layoutInflater.inflate(R.layout.spinner_dialog, null);
+        } else {
+            view = layoutInflater.inflate(R.layout.spinner_add_dialog, null);
+        }
         this.view = view;
         setView(view);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -71,8 +77,13 @@ public class SpinnerDialog<E> extends AlertDialog {
         this.adapter = adapter;
     }
 
-    public void setModify() {
+    public void setMarca() {
+        //final EditText spinnervalue = (EditText) view.findViewById(R.id.spinner_field1);
+        //final EditText editvalue = (EditText) view.findViewById(R.id.spinner_field2);
+        //final EditText editvalue = (EditText) view.findViewById(R.id.spinner_field3);
 
+
+        //editvalue.setText(oldValue);
     }
 
     public static class Builder<E> {
@@ -82,13 +93,15 @@ public class SpinnerDialog<E> extends AlertDialog {
         ArrayAdapter<E> adapter;
         static Context context;
         static TextView view;
+        static boolean isPresent;
 
-        public Builder(String oldValue, final boolean isPrimary, final Context context, final TextView view, ArrayAdapter<E> adapter) {
+        public Builder(String oldValue, final boolean isPrimary, final Context context, final TextView view, ArrayAdapter<E> adapter,boolean isPresent) {
             this.oldValue = oldValue;
             this.isPrimary = isPrimary;
             this.context = context;
             this.view = view;
             this.adapter = adapter;
+            this.isPresent = isPresent;
         }
 
         public SpinnerDialog build() {
@@ -98,11 +111,11 @@ public class SpinnerDialog<E> extends AlertDialog {
             return tm;
         }
 
-        public SpinnerDialog buildAdd() {
+        public SpinnerDialog buildMarca() {
             SpinnerDialog tm = new SpinnerDialog(context);
             tm.setAdapter(adapter);
             tm.prepareList();
-            tm.setModify();
+            tm.setMarca();
             return tm;
         }
     }

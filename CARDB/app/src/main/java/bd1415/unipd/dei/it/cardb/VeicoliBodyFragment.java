@@ -176,21 +176,29 @@ public class VeicoliBodyFragment extends Fragment {
                 public void onClick(View v) {
                     if (isPriv) {
                         SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.proprietario.getText().toString(),
-                                false, MainActivity.ctx, viewHolder.proprietario, new PrivatiArrayAdapter(MainActivity.ctx, ApplicationData.privati)).build();
+                                false, MainActivity.ctx, viewHolder.proprietario, new PrivatiArrayAdapter(MainActivity.ctx, ApplicationData.privati), true).build();
                         dialog.show();
                         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                         @Override
                                                         public void onDismiss(DialogInterface arg0) {
-                                                            Privato pr = ApplicationData.privati.get(Integer.parseInt(viewHolder.proprietario.getText().toString()));
-                                                            viewHolder.proprietario.setText("CF: " +  pr.getCf()  + "-- Cognome: " + pr.getCognome() + " Nome: " + pr.getNome());
-                                                            veicolo.setPrivato(viewHolder.proprietario.getText().toString(), true);
-                                                            PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                            try {
+                                                                String c = viewHolder.proprietario.getText().toString();
+                                                                if (!c.equals(null)) {
+                                                                    Privato pr = ApplicationData.privati.get(Integer.parseInt(c));
+                                                                    viewHolder.proprietario.setText("CF: " + pr.getCf() + " -- Cognome: " + pr.getCognome() + " Nome: " + pr.getNome());
+                                                                    veicolo.setPrivato(viewHolder.proprietario.getText().toString(), true);
+                                                                    PrivatiMenuFragment.list.notifyDataSetChanged();
+                                                                }
+                                                            } catch (java.lang.NumberFormatException ex) {
+
+                                                            }
+
                                                         }
                                                     }
                         );
                     } else {
                         SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.proprietario.getText().toString(),
-                                false, MainActivity.ctx, viewHolder.proprietario, new AziendeArrayAdapter(MainActivity.ctx, ApplicationData.aziende)).build();
+                                false, MainActivity.ctx, viewHolder.proprietario, new AziendeArrayAdapter(MainActivity.ctx, ApplicationData.aziende), true).build();
                         dialog.show();
                         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                         @Override
