@@ -50,7 +50,6 @@ public class DescrizioniMenuFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-
         ArrayList<String> guastiManutenzioni = new ArrayList<>();
         ArrayList<Integer> color = new ArrayList<>();
         for (int i = 0; i < ApplicationData.guasti.size(); i++) {
@@ -69,13 +68,16 @@ public class DescrizioniMenuFragment extends ListFragment {
             color.add(Color.parseColor("#66FFFF00")); //Semitrasparent yellow
         }
 
+
+        ApplicationData.guastiManutenzioni = guastiManutenzioni;
+        for(int i =0 ; i< ApplicationData.guastiManutenzioni.size(); i++){
+            System.out.println( ApplicationData.guastiManutenzioni.get(i));
+        }
+        mFM = getFragmentManager();
+
         DescrizioniArrayAdapter tmp = new DescrizioniArrayAdapter(inflater.getContext(), ApplicationData.guastiManutenzioni,color);
         list = tmp;
         setListAdapter(tmp);
-
-        ApplicationData.guastiManutenzioni = guastiManutenzioni;
-
-        mFM = getFragmentManager();
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -85,6 +87,24 @@ public class DescrizioniMenuFragment extends ListFragment {
 
         if (isLarge) {
 
+            Fragment toView = new DescrizioniBodyFragment();
+
+            Bundle args = new Bundle();
+            args.putInt(POS, pos);
+            args.putBoolean(ISVIS, true);
+
+            toView.setArguments(args);
+
+            mFM = MainActivity.act.getFragmentManager();
+            FragmentTransaction ft = mFM.beginTransaction();
+            ft.replace(R.id.descrizioni_body, toView);
+            ft.addToBackStack(null);
+            ft.commit();
+
+            resizeFragment(this, (int) getResources().getDimension(R.dimen.small));
+            isLarge = false;
+            //Qui va il codice che avvia le modifiche sul secondo fragment.
+        } else {
             Fragment toView = new DescrizioniBodyFragment();
 
             Bundle args = new Bundle();
@@ -99,10 +119,6 @@ public class DescrizioniMenuFragment extends ListFragment {
             ft.addToBackStack(null);
             ft.commit();
 
-            resizeFragment(this, (int) getResources().getDimension(R.dimen.small));
-            isLarge = false;
-            //Qui va il codice che avvia le modifiche sul secondo fragment.
-        } else {
             resizeFragment(this, (int) getResources().getDimension(R.dimen.large));
             isLarge = true;
         }

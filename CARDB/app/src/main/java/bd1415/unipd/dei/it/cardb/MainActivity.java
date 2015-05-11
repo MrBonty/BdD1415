@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
+import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
+import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
@@ -73,6 +75,19 @@ public class MainActivity extends ActionBarActivity {
         params[5] = "5432";
         //savedInstanceState = null;
         super.onCreate(savedInstanceState);
+        Guasto g = new Guasto(false);
+        g.setId(1,false);
+        Manutenzione m = new Manutenzione(false);
+        m.setId(1,false);
+        Guasto g1 = new Guasto(false);
+        g1.setId(2,false);
+        Manutenzione m1 = new Manutenzione(false);
+        m1.setId(2,false);
+        ApplicationData.guasti.add(g);
+        ApplicationData.manutenzioni.add(m);
+        ApplicationData.guasti.add(g1);
+        ApplicationData.manutenzioni.add(m1);
+
         setContentView(R.layout.activity_main);
         initView();
         if (toolbar != null) {
@@ -117,6 +132,7 @@ public class MainActivity extends ActionBarActivity {
         vc.setNumero_telaio("ewkfew", false);
         vc.setPrivato("rfr",false);
         ApplicationData.veicoli.add(vc);
+
 
     }
 

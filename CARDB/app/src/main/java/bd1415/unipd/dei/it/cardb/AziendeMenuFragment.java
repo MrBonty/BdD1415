@@ -36,6 +36,10 @@ public class AziendeMenuFragment extends ListFragment {
 
     @Override
     public void onResume() {
+        /*
+        int[] tmp = {DataFromDatabase.AZIENDA, DataFromDatabase.VEICOLO};
+        new DataFromDatabase().execute();
+        */
         super.onResume();
     }
 

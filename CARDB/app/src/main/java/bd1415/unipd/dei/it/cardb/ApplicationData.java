@@ -52,7 +52,7 @@ public class ApplicationData {
 
 
     public static boolean isFinished = false;
-    public static ArrayList<String> guastiManutenzioni;
+    public static ArrayList<String> guastiManutenzioni = new ArrayList<>();
 
     public static int posizioneCorrente;
 

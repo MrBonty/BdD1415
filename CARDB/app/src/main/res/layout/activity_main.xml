@@ -291,27 +291,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ordini"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            <fragment
-                class="bd1415.unipd.dei.it.cardb.OrdiniMenuFragment"
-                android:layout_width="@dimen/large"
-                android:layout_height="match_parent"
-                tools:layout="@layout/ordini_menu_fragment"></fragment>
-
-            <View style="@style/Divider" />
-
-            <fragment
-                android:id="@+id/ordini_body"
-                class="bd1415.unipd.dei.it.cardb.OrdiniBodyFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:layout="@layout/ordini_body_fragment"></fragment>
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/edifici"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">

@@ -30,10 +30,8 @@ public class DescrizioniArrayAdapter extends ArrayAdapter<String> {
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        String tmp = getItem(position);
-
+        String tmp = (String) getItem(position);
         ViewHold vh = null;
-
         View viewToUse = null;
 
         LayoutInflater mInflater = (LayoutInflater) mCtx
@@ -42,7 +40,7 @@ public class DescrizioniArrayAdapter extends ArrayAdapter<String> {
         if (convertView == null) {
             viewToUse = mInflater.inflate(R.layout.descrizione_item, null);
             vh = new ViewHold();
-            vh.titleText = (TextView) convertView.findViewById(R.id.descrizione_name);
+            vh.titleText = (TextView) viewToUse.findViewById(R.id.descrizione_name);
             viewToUse.setTag(vh);
         } else {
             viewToUse = convertView;
