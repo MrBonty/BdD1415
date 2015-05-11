@@ -1,6 +1,7 @@
 package bd1415.unipd.dei.it.cardb;
 
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,13 +67,60 @@ public class MagazzinoBodyFragment extends Fragment {
         viewHolder.prezzo_vendita = (TextView) view.findViewById(R.id.magazzino_prezzo_data);
         viewHolder.descrizione = (TextView) view.findViewById(R.id.magazzino_desc_data);
 
-        if(mIsVis){
-            Pezzo pezzo = ApplicationData.pezzi.get(mPos);
+        if(mIsVis) {
+            final Pezzo pezzo = ApplicationData.pezzi.get(mPos);
 
-            viewHolder.id.setText(pezzo.getId()+"");
-            viewHolder.quantità.setText(pezzo.getNumero_totale_pezzi()+ "");
-            viewHolder.prezzo_vendita.setText(pezzo.getPrezzo_vendita()+ "");
+            viewHolder.id.setText(pezzo.getId() + "");
+            viewHolder.quantità.setText(pezzo.getNumero_totale_pezzi() + "");
+            viewHolder.prezzo_vendita.setText(pezzo.getPrezzo_vendita() + "");
             viewHolder.descrizione.setText(pezzo.getDescrizione());
+
+            viewHolder.descrizione.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.descrizione.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.descrizione).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            pezzo.setDescrizione(viewHolder.descrizione.getText().toString(), true);
+                        }
+                    });
+                }
+            });
+
+            viewHolder.quantità.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.quantità.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.quantità).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            pezzo.setNumero_totale_pezzi(Integer.parseInt(viewHolder.quantità.getText().toString()), true);
+                        }
+                    });
+                }
+            });
+
+            viewHolder.prezzo_vendita.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.prezzo_vendita.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.prezzo_vendita).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            pezzo.setPrezzo_vendita(Float.parseFloat(viewHolder.prezzo_vendita.getText().toString()), true);
+                            viewHolder.prezzo_vendita.setText(pezzo.getPrezzo_vendita() + "");
+                        }
+                    });
+                }
+            });
+
         }
         return view;
     }

@@ -44,7 +44,11 @@ public class MagazzinoArrayAdapter extends ArrayAdapter<Pezzo> {
             holder = (ViewHolder) viewToUse.getTag();
         }
 
-        holder.titleText.setText(item.getId() + " " + item.getDescrizione().split(":")[0]);
+        String s = "";
+        if (!item.getDescrizione().equals(null) && item != null) {
+            s = item.getDescrizione().split(":")[0];
+        }
+        holder.titleText.setText(item.getId() + " " + s);
 
         return viewToUse;
     }

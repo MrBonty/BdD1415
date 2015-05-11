@@ -109,11 +109,11 @@ public class DescrizioniBodyFragment extends Fragment {
             }
 
             if (mIsG) {
-                viewHolder.id.setText(mG.getId());
+                viewHolder.id.setText(mG.getId() + "");
                 viewHolder.tipo.setText(TYPE[0]);
                 viewHolder.descrizione.setText(mG.getDescrizione());
             } else {
-                viewHolder.id.setText(mM.getId());
+                viewHolder.id.setText(mM.getId() + "");
                 viewHolder.tipo.setText(TYPE[1]);
                 viewHolder.descrizione.setText(mM.getDescrizione());
             }

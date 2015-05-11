@@ -20,6 +20,8 @@ public class EdificiMenuFragment extends ListFragment {
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
 
+    public static EdificiArrayAdapter list;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -39,7 +41,9 @@ public class EdificiMenuFragment extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        setListAdapter(new EdificiArrayAdapter(inflater.getContext(), ApplicationData.edifici));
+        EdificiArrayAdapter tmp = new EdificiArrayAdapter(inflater.getContext(), ApplicationData.edifici);
+        list = tmp;
+        setListAdapter(tmp);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 

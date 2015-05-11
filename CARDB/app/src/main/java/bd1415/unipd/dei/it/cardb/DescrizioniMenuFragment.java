@@ -43,7 +43,6 @@ public class DescrizioniMenuFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-
         ArrayList<String> guastiManutenzioni = new ArrayList<>();
         ArrayList<Integer> color = new ArrayList<>();
         for (int i = 0; i < ApplicationData.guasti.size(); i++) {

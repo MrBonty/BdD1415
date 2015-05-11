@@ -25,11 +25,14 @@ import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
 import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
+import bd1415.unipd.dei.it.cardb.databasetables.Fattura;
 import bd1415.unipd.dei.it.cardb.databasetables.Fornitore;
 import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
+import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
 import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
 import bd1415.unipd.dei.it.cardb.databasetables.Modello;
 import bd1415.unipd.dei.it.cardb.databasetables.Personale;
+import bd1415.unipd.dei.it.cardb.databasetables.Pezzo;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
@@ -69,31 +72,51 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Azienda az = new Azienda("poi", false);
+        ApplicationData.aziende.add(az);
+        Fattura fatt = new Fattura(false);
+        fatt.setPagato(0, false);
+        ApplicationData.fatture.add(fatt);
+        ApplicationData.splitFatture();
         Personale per = new Personale("figo", 5, false);
         ApplicationData.personale.add(per);
         Modello mm = new Modello("sf", "efsdfd", false);
         ApplicationData.modelli.add(mm);
         Edificio c = new Edificio("pippo", false);
+        c.setId(5, false);
         ApplicationData.edifici.add(c);
         Fornitore f = new Fornitore("lillo", false);
         ApplicationData.fornitori.add(f);
         Privato prv = new Privato();
+        prv.setCf("wsdhfds", false);
         prv.setNome("7378", false);
         ApplicationData.privati.add(prv);
-        Azienda azi = new Azienda();
-        azi.setNome("jkefkerj", false);
-        ApplicationData.aziende.add(azi);
         Veicolo vc = new Veicolo();
+        vc.setPrivato("wsdhfds", false);
         vc.setTarga("wjkefewj", false);
         vc.setNumero_telaio("ewkfew", false);
-        vc.setPrivato("rfr",false);
+        vc.setPrivato("rfr", false);
         ApplicationData.veicoli.add(vc);
+        Veicolo vc1 = new Veicolo();
+        vc1.setTarga("vc1", false);
+        vc1.setNumero_telaio("vc1", false);
+        vc1.setAzienda("poi", false);
+        ApplicationData.veicoli.add(vc1);
         Guasto g = new Guasto(false);
         g.setId(1, false);
+        g.setDescrizione("ciao come stai", false);
         Manutenzione m = new Manutenzione(false);
         m.setId(23, false);
+        m.setDescrizione("ciao come va", false);
         ApplicationData.manutenzioni.add(m);
         ApplicationData.guasti.add(g);
+        Lavoro l = new Lavoro("id", false);
+        ApplicationData.lavori.add(l);
+        ApplicationData.splitWork();
+        Pezzo pp = new Pezzo(false);
+        pp.setId(1, false);
+        pp.setDescrizione("rrrr", false);
+        ApplicationData.pezzi.add(pp);
         params = new String[6];
         ctx = this;
         act = this;
@@ -105,6 +128,7 @@ public class MainActivity extends ActionBarActivity {
         params[5] = "5432";
         //savedInstanceState = null;
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         initView();
         if (toolbar != null) {
@@ -138,6 +162,7 @@ public class MainActivity extends ActionBarActivity {
                 .withGravity(Gravity.BOTTOM | Gravity.END)
                 .withMargins(0, 0, 16, 16).create();
         intent = getIntent();
+
 
     }
 

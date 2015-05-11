@@ -240,9 +240,10 @@ public class VeicoliBodyFragment extends Fragment {
                                                                 String c = viewHolder.proprietario.getText().toString();
                                                                 if (!c.equals(null)) {
                                                                     Privato pr = ApplicationData.privati.get(Integer.parseInt(c));
+                                                                    veicolo.setPrivato(pr.getCf(), true);
                                                                     viewHolder.proprietario.setText("CF: " + pr.getCf() + " -- Cognome: " + pr.getCognome() + " Nome: " + pr.getNome());
-                                                                    veicolo.setPrivato(viewHolder.proprietario.getText().toString(), true);
                                                                     PrivatiMenuFragment.list.notifyDataSetChanged();
+
                                                                 }
                                                             } catch (java.lang.NumberFormatException ex) {
 
@@ -261,8 +262,8 @@ public class VeicoliBodyFragment extends Fragment {
                                                                 String c = viewHolder.proprietario.getText().toString();
                                                                 if (!c.equals(null)) {
                                                                     Azienda az = ApplicationData.aziende.get(Integer.parseInt(c));
+                                                                    veicolo.setAzienda(az.getPiva(), true);
                                                                     viewHolder.proprietario.setText("PIVA: " +  az.getPiva()  + "-- Nome: " + az.getNome());
-                                                                    veicolo.setAzienda(viewHolder.proprietario.getText().toString(), true);
                                                                     AziendeMenuFragment.list.notifyDataSetChanged();
                                                                 }
                                                             } catch (java.lang.NumberFormatException ex) {

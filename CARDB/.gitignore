@@ -1,8 +1,10 @@
 app/build
 .idea/workspace.xml
 build
+.gradle/
 
 /app/build
 /.idea/workspace.xml
 /build
+/gradle
 

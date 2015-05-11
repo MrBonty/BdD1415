@@ -12,9 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.zip.Inflater;
-
-import bd1415.unipd.dei.it.cardb.databasetables.Fattura;
 
 public class PagamentiFattiMenuFragment extends ListFragment {
     private boolean isLarge = true;

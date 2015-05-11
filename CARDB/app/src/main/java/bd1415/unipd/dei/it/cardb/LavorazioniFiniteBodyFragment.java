@@ -28,9 +28,11 @@ import bd1415.unipd.dei.it.cardb.databasetables.Fattura;
 import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
 import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
+import bd1415.unipd.dei.it.cardb.databasetables.Pezzo;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 import bd1415.unipd.dei.it.cardb.databasetables.R7;
 import bd1415.unipd.dei.it.cardb.databasetables.R8;
+import bd1415.unipd.dei.it.cardb.databasetables.Usato;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 import static android.view.View.OnClickListener;
@@ -128,6 +130,25 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
 
             List<String> guastiManutenzioni = new ArrayList<>();
             ArrayList<Integer> color = new ArrayList<>();
+
+            for (int i = 0; i<ApplicationData.usato.size(); i++) {
+                Usato u = ApplicationData.usato.get(i);
+                if(mLavoro.getId() == u.getLavoro()){
+                    String tmp = "" + u.getPezzo();
+                    for (int j = 0; j < ApplicationData.pezzi.size(); j++) {
+                        Pezzo p = ApplicationData.pezzi.get(j);
+                        if (p.getId() == u.getPezzo()) {
+                            tmp += "P - " + p.getDescrizione().split(":")[0];
+                            break;
+                        }
+                    }
+
+                    guastiManutenzioni.add(tmp);
+                    color.add(Color.parseColor("#6600FF00")); //Semitrasparent green
+                }
+            }
+
+
             for (int i = 0; i < ApplicationData.r7.size(); i++) {
                 R7 r = ApplicationData.r7.get(i);
                 if (mLavoro.getId() == r.getLavoro()) {

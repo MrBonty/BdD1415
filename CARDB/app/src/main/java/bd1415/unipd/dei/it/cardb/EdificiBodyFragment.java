@@ -1,6 +1,7 @@
 package bd1415.unipd.dei.it.cardb;
 
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
 import bd1415.unipd.dei.it.cardb.databasetables.Personale;
 
@@ -95,6 +97,103 @@ public class EdificiBodyFragment extends Fragment{
             }
 
             viewHolder.personale.setAdapter(new PersonaleArrayAdapter(getActivity().getBaseContext(), item));
+
+            viewHolder.tipologia.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.tipologia.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.tipologia).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface arg0) {
+                            ed.setTipologia(viewHolder.tipologia.getText().toString(), true);
+                            EdificiMenuFragment.list.notifyDataSetChanged();
+                        }
+                    });
+                }
+            });
+
+            viewHolder.citta.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.citta.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.citta).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        AddressType n = ed.getIndirizzo();
+                                                        if (n == null) {
+                                                            n = new AddressType();
+                                                        }
+                                                        n.città = viewHolder.citta.getText().toString();
+                                                        ed.setIndirizzo(n, true);
+                                                    }
+                                                }
+                    );
+                }
+            });
+            viewHolder.indirizzo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.indirizzo.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.indirizzo).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        AddressType n = ed.getIndirizzo();
+                                                        if (n == null) {
+                                                            n = new AddressType();
+                                                        }
+                                                        n.indirizzo = viewHolder.indirizzo.getText().toString();
+                                                        ed.setIndirizzo(n, true);
+                                                    }
+                                                }
+                    );
+                }
+            });
+            viewHolder.provincia.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.provincia.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.provincia).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        AddressType n = ed.getIndirizzo();
+                                                        if (n == null) {
+                                                            n = new AddressType();
+                                                        }
+                                                        n.provincia = viewHolder.provincia.getText().toString();
+                                                        ed.setIndirizzo(n, true);
+                                                    }
+                                                }
+                    );
+                }
+            });
+            viewHolder.numero_civico.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogEdit dialog = new DialogEdit.Builder(viewHolder.numero_civico.getText().toString(),
+                            false, MainActivity.ctx, viewHolder.numero_civico).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        AddressType n = ed.getIndirizzo();
+                                                        if (n == null) {
+                                                            n = new AddressType();
+                                                        }
+                                                        n.numero_civico = viewHolder.numero_civico.getText().toString();
+                                                        ed.setIndirizzo(n, true);
+                                                    }
+                                                }
+                    );
+                }
+            });
         }
         return view;
     }

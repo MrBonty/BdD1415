@@ -72,7 +72,7 @@
 
                     <TextView
                         android:id="@+id/lavoro_start_data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
                 </LinearLayout>
@@ -92,7 +92,7 @@
 
                     <TextView
                         android:id="@+id/lavoro_end_data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
                 </LinearLayout>
@@ -120,7 +120,7 @@
 
                     <TextView
                         android:id="@+id/lavoro_veicolo_targa_data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
                 </LinearLayout>
@@ -140,7 +140,7 @@
 
                     <TextView
                         android:id="@+id/lavoro_veicolo_telaio_data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
                 </LinearLayout>

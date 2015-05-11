@@ -104,13 +104,14 @@ public class PagamentiBodyFragment extends Fragment {
                         if(PagamentiFattiMenuFragment.list != null){
                             PagamentiFattiMenuFragment.list.notifyDataSetChanged();
                         }
+                        view.setVisibility(View.GONE);
                     }
                 }
             });
 
             Azienda az= null;
             Privato pr= null;
-            if(mFattura.getAzienda() != null || !mFattura.getAzienda().equals("")){
+            if(mFattura.getAzienda() != null || !("").equals(mFattura.getAzienda())){
                 for(int i = 0; i<ApplicationData.aziende.size(); i++){
                     az = ApplicationData.aziende.get(i);
                     if(az.getPiva().equals(mFattura.getAzienda())){
@@ -148,6 +149,8 @@ public class PagamentiBodyFragment extends Fragment {
 
             LavoriArrayAdapter adapter = new LavoriArrayAdapter(getActivity().getBaseContext(), item);
             viewHolder.lavori.setAdapter(adapter);
+
+
         }
         return view;
     }

@@ -48,7 +48,7 @@ public class MagazzinoMenuFragment extends ListFragment {
         super.onListItemClick(list, v, pos, id);
         if (isLarge) {
 
-            Fragment toView = new AziendeBodyFragment();
+            Fragment toView = new MagazzinoBodyFragment();
 
             Bundle args = new Bundle();
             args.putInt(POS, pos);

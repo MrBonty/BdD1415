@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
@@ -68,7 +71,6 @@ public class PrivatiBodyFragment extends Fragment {
         viewHolder.provincia = (TextView) view.findViewById(R.id.cliente_provincia_data);
         viewHolder.indirizzo = (TextView) view.findViewById(R.id.cliente_indirizzo_data);
         viewHolder.veicoli = (ListView) view.findViewById(android.R.id.list);
-        viewHolder.veicoli = (ListView) view.findViewById(android.R.id.list);
         viewHolder.numero_civico = (TextView) view.findViewById(R.id.cliente_civico_data);
 
         if (mIsVis) {
@@ -88,17 +90,17 @@ public class PrivatiBodyFragment extends Fragment {
                 viewHolder.citta.setText(cl.getIndirizzo().città);
                 viewHolder.provincia.setText(cl.getIndirizzo().provincia);
             }
-/*
+
                 ArrayList<Veicolo> tmp = new ArrayList<>();
                 for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
                     Veicolo vl = ApplicationData.veicoli.get(i);
-                    if (vl.getPrivato().equals(cl.getCf())) {
+                    if (cl.getCf().equals(vl.getPrivato())) {
                         tmp.add(vl);
                     }
                 }
 
                 viewHolder.veicoli.setAdapter(new VeicoliArrayAdapter(MainActivity.ctx, tmp));
-*/
+
             viewHolder.nome.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -140,14 +142,16 @@ public class PrivatiBodyFragment extends Fragment {
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                     @Override
                                                     public void onDismiss(DialogInterface arg0) {
-                                                        cl.setCf(viewHolder.pk.getText().toString(), true);
-                                                        PrivatiMenuFragment.list.notifyDataSetChanged();
+
+                                                        String newcf = viewHolder.pk.getText().toString();
                                                         for (int i = 0; i < ApplicationData.veicoli.size(); i++) {
                                                             Veicolo tmp = ApplicationData.veicoli.get(i);
-                                                            if (tmp.getPrivato().equals(cl.getCf())) {
-                                                                ApplicationData.veicoli.get(i).setAzienda(cl.getCf(), true);
+                                                            if (cl.getCf().equals(tmp.getPrivato())) {
+                                                                ApplicationData.veicoli.get(i).setPrivato(newcf, true);
                                                             }
                                                         }
+
+                                                        cl.setCf(newcf, true);
                                                         VeicoliMenuFragment.list.notifyDataSetChanged();
                                                     }
                                                 }

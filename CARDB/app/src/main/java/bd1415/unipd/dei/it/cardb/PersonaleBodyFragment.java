@@ -23,6 +23,7 @@ import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavora_a;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
+import bd1415.unipd.dei.it.cardb.databasetables.Modello;
 import bd1415.unipd.dei.it.cardb.databasetables.Personale;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
@@ -374,6 +375,28 @@ public class PersonaleBodyFragment extends Fragment{
                                                         n.numero_civico = viewHolder.numero_civico.getText().toString();
                                                         per.setIndirizzo(n, true);
                                                         PersonaleMenuFragment.list.notifyDataSetChanged();
+                                                    }
+                                                }
+                    );
+                }
+            });
+
+            viewHolder.edificio.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SpinnerDialog dialog = new SpinnerDialog.Builder(viewHolder.edificio.getText().toString(),
+                            true, MainActivity.ctx, viewHolder.edificio, new EdificiArrayAdapter(MainActivity.ctx, ApplicationData.edifici), true).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        try {
+                                                            Edificio az = ApplicationData.edifici.get(Integer.parseInt(viewHolder.edificio.getText().toString()));
+                                                            viewHolder.edificio.setText(az.getId() + " " + az.getTipologia());
+                                                            per.setEdificio(az.getId(), true);
+                                                        } catch (java.lang.NumberFormatException ex) {
+
+                                                        }
                                                     }
                                                 }
                     );

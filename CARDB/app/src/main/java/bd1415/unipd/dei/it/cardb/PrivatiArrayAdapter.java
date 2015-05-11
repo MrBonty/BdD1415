@@ -27,6 +27,7 @@ public class PrivatiArrayAdapter extends ArrayAdapter<Privato> {
 
     private class ViewHolder {
         TextView titleText;
+        TextView infoText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -36,15 +37,17 @@ public class PrivatiArrayAdapter extends ArrayAdapter<Privato> {
         LayoutInflater mInflater = (LayoutInflater) context
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
-            viewToUse = mInflater.inflate(R.layout.cliente_item, null);
+            viewToUse = mInflater.inflate(R.layout.veicolo_item, null);
             holder = new ViewHolder();
-            holder.titleText = (TextView) viewToUse.findViewById(R.id.cliente_name);
+            holder.titleText = (TextView) viewToUse.findViewById(R.id.veicolo_name);
+            holder.infoText = (TextView) viewToUse.findViewById(R.id.veicolo_info);
             viewToUse.setTag(holder);
         } else {
             viewToUse = convertView;
             holder = (ViewHolder) viewToUse.getTag();
         }
         holder.titleText.setText(item.getNome()+ " " + item.getCognome());
+        holder.infoText.setText(item.getCf());
         return viewToUse;
     }
 }

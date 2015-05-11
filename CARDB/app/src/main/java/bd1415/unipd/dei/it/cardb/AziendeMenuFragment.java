@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -35,6 +36,10 @@ public class AziendeMenuFragment extends ListFragment {
 
     @Override
     public void onResume() {
+        /*
+        int[] tmp = {DataFromDatabase.AZIENDA, DataFromDatabase.VEICOLO};
+        new DataFromDatabase().execute();
+        */
         super.onResume();
     }
 
@@ -72,8 +77,6 @@ public class AziendeMenuFragment extends ListFragment {
             isLarge = false;
             //Qui va il codice che avvia le modifiche sul secondo fragment.
         } else {
-            resizeFragment(this, (int) getResources().getDimension(R.dimen.large));
-            isLarge = true;
             Fragment toView = new AziendeBodyFragment();
 
             Bundle args = new Bundle();
@@ -88,6 +91,9 @@ public class AziendeMenuFragment extends ListFragment {
             ft.replace(R.id.aziende_body, toView);
             ft.addToBackStack(null);
             ft.commit();
+
+            resizeFragment(this, (int) getResources().getDimension(R.dimen.large));
+            isLarge = true;
         }
 
         Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();

@@ -32,6 +32,7 @@ public class DescrizioniArrayAdapter extends ArrayAdapter<String> {
 
         String tmp = (String) getItem(position);
 
+
         ViewHolder vh = null;
 
         View viewToUse = null;
@@ -41,6 +42,7 @@ public class DescrizioniArrayAdapter extends ArrayAdapter<String> {
 
         if (convertView == null) {
             viewToUse = mInflater.inflate(R.layout.descrizione_item, null);
+
             vh = new ViewHolder();
             vh.titleText = (TextView) viewToUse.findViewById(R.id.descrizione_name);
             viewToUse.setTag(vh);

@@ -308,7 +308,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ApplicationData.r8.add(r8);
                 }
 
-                rs = st.executeQuery("SELECT * FROM main.Usato8;");
+                rs = st.executeQuery("SELECT * FROM main.Usato;");
                 while (rs.next()) {
                     Usato usato = new Usato(rs.getInt("lavoro"), rs.getInt("pezzo"), false);
                     usato.setPezzo(rs.getInt("pezzo"), false);
