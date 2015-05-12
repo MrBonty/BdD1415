@@ -20,6 +20,7 @@ public class LavorazioniMenuFragment extends ListFragment {
 
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
+    public static LavoriArrayAdapter list;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,8 +41,9 @@ public class LavorazioniMenuFragment extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        list = new LavoriArrayAdapter(inflater.getContext(), ApplicationData.lavoriInCorso);
 
-        setListAdapter(new LavoriArrayAdapter(inflater.getContext(), ApplicationData.lavoriInCorso));
+        setListAdapter(list);
 
         return super.onCreateView(inflater, container, savedInstanceState);
     }

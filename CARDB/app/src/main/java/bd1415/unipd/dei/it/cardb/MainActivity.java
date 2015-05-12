@@ -113,6 +113,8 @@ public class MainActivity extends ActionBarActivity {
         ApplicationData.guasti.add(g);
         Lavoro l = new Lavoro("id", false);
         l.setFattura(fatt.getId(),false);
+        //l.setFattura(fatt.getId(),false);
+        //l.setData_fine("13/02/",false);
         ApplicationData.lavori.add(l);
         Lavoro ll = new Lavoro("id", false);
         ll.setFattura(fatt.getId(),false);
