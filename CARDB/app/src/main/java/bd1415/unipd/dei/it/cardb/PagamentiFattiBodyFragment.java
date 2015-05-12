@@ -127,6 +127,8 @@ public class PagamentiFattiBodyFragment extends Fragment {
 
             LavoriArrayAdapter adapter = new LavoriArrayAdapter(getActivity().getBaseContext(), item);
             viewHolder.lavori.setAdapter(adapter);
+
+
         }
 
 

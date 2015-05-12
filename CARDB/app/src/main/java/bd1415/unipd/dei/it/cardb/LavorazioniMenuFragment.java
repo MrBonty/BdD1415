@@ -40,14 +40,9 @@ public class LavorazioniMenuFragment extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mIsFinished = ApplicationData.isFinished;
-        if (mIsFinished) {
-            setListAdapter(new LavoriArrayAdapter(inflater.getContext(), ApplicationData.lavoriFiniti));
-        } else {
-            setListAdapter(new LavoriArrayAdapter(inflater.getContext(), ApplicationData.lavoriInCorso));
-        }
 
-        mFM = getFragmentManager();
+        setListAdapter(new LavoriArrayAdapter(inflater.getContext(), ApplicationData.lavoriInCorso));
+
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -75,8 +70,6 @@ public class LavorazioniMenuFragment extends ListFragment {
             isLarge = false;
             //Qui va il codice che avvia le modifiche sul secondo fragment.
         } else {
-            resizeFragment(this, (int) getResources().getDimension(R.dimen.large));
-            isLarge = true;
             Fragment toView = new LavorazioniBodyFragment();
 
             Bundle args = new Bundle();
@@ -90,6 +83,9 @@ public class LavorazioniMenuFragment extends ListFragment {
             ft.replace(R.id.lavorazioni_body, toView);
             ft.addToBackStack(null);
             ft.commit();
+
+            resizeFragment(this, (int) getResources().getDimension(R.dimen.large));
+            isLarge = true;
         }
         Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
     }

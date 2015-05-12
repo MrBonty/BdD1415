@@ -41,7 +41,7 @@
 
                     <TextView
                         android:id="@+id/pagamenti_id_data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
                 </LinearLayout>
@@ -60,7 +60,7 @@
 
                     <TextView
                         android:id="@+id/pagamenti_data_data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25sp" />
                 </LinearLayout>
@@ -103,7 +103,7 @@
 
                 <TextView
                     android:id="@+id/pagamenti_cliente_data"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="25sp" />
 

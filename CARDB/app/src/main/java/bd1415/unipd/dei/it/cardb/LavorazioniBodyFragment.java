@@ -1,13 +1,11 @@
 package bd1415.unipd.dei.it.cardb;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +79,7 @@ public class LavorazioniBodyFragment extends Fragment {
         if (args != null) {
             mPos = args.getInt(LavorazioniMenuFragment.POS);
             mIsVis = args.getBoolean(LavorazioniMenuFragment.ISVIS);
-            mIsFinished = ApplicationData.isFinished;
+            mIsFinished = false;
         }
 
         viewHolder = new ViewHolder();
@@ -101,6 +100,9 @@ public class LavorazioniBodyFragment extends Fragment {
         viewHolder.dataFine = (TextView) view.findViewById(R.id.lavoro_end_data);
         viewHolder.dataInizio = (TextView) view.findViewById(R.id.lavoro_start_data);
         viewHolder.fattura = (Button) view.findViewById(R.id.lavorazioni_fattura);
+        viewHolder.guasto = (Button) view.findViewById(R.id.aggiungi_guasto);
+        viewHolder.manutenzione = (Button) view.findViewById(R.id.aggiungi_manutenzione);
+        viewHolder.pezzo = (Button) view.findViewById(R.id.aggiungi_pezzo);
         viewHolder.id = (TextView) view.findViewById(R.id.lavoro_id_data);
         viewHolder.veicoloTarga = (TextView) view.findViewById(R.id.lavoro_veicolo_targa_data);
         viewHolder.veicoloTelaio = (TextView) view.findViewById(R.id.lavoro_veicolo_telaio_data);
@@ -111,7 +113,7 @@ public class LavorazioniBodyFragment extends Fragment {
                 viewHolder.fattura.setText(R.string.lavoro_fattura_tag);
                 mLavoro = ApplicationData.lavoriFiniti.get(mPos);
             } else {
-                viewHolder.fattura.setText(R.string.lavoro_fattura_tag);
+                viewHolder.fattura.setText(R.string.lavoro_not_ended_tag);
                 mLavoro = ApplicationData.lavoriInCorso.get(mPos);
             }
             findVeicolo();
@@ -130,8 +132,20 @@ public class LavorazioniBodyFragment extends Fragment {
 
             viewHolder.fattura.setOnClickListener(getFatturaView());
 
+
+            viewHolder.manutenzione.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //SpinnerDialogV2 sp = new SpinnerDialogV2.Builder(MainActivity.ctx, new ManutenzioniArrayAdapter(MainActivity.ctx, ApplicationData.manutenzioni), true));
+                }
+            });
+
+
+
+
+
             List<String> pezziGuastiManutenzioni = new ArrayList<>();
-            ArrayList<Integer> color = new ArrayList<>();
+            final ArrayList<Integer> color = new ArrayList<>();
             for (int i = 0; i<ApplicationData.usato.size(); i++) {
                 Usato u = ApplicationData.usato.get(i);
                 if(mLavoro.getId() == u.getLavoro()){
@@ -184,8 +198,85 @@ public class LavorazioniBodyFragment extends Fragment {
                     color.add(Color.parseColor("#66FFFF00")); //Semitrasparent yellow
                 }
             }
-            ArrayAdapter<String> adapter = new DescrizioniArrayAdapter(mCtx, pezziGuastiManutenzioni, color);
+            final ArrayAdapter<String> adapter = new DescrizioniArrayAdapter(mCtx, pezziGuastiManutenzioni, color);
             viewHolder.lavori.setAdapter(adapter);
+
+            viewHolder.guasto.setOnClickListener(new OnClickListener() {
+                String s = "";
+                @Override
+                public void onClick(View v) {
+                    SpinnerDialogV2 dialog = new SpinnerDialogV2.Builder(s, MainActivity.ctx, new GuastiArrayAdapter(MainActivity.ctx, ApplicationData.guasti),true).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        try {
+                                                            int pos = Integer.parseInt(s);
+                                                            Guasto man = ApplicationData.guasti.get(pos);
+                                                            Toast.makeText(MainActivity.ctx, "" + pos + "  ", Toast.LENGTH_SHORT).show();
+                                                            R7 r7 = new R7(mLavoro.getId(), man.getId(), true);
+                                                            ApplicationData.r7.add(r7);
+                                                            color.add(Color.parseColor("#66FF0000"));  //red
+                                                            adapter.notifyDataSetChanged();
+                                                        } catch (Exception e) {
+
+                                                        }
+                                                    }
+                                                }
+                    );
+                }
+            });
+
+            viewHolder.manutenzione.setOnClickListener(new OnClickListener() {
+                String s = "";
+
+                @Override
+                public void onClick(View v) {
+                    SpinnerDialogV2 dialog = new SpinnerDialogV2.Builder(s, MainActivity.ctx, new ManutenzioniArrayAdapter(MainActivity.ctx, ApplicationData.manutenzioni), true).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        try {
+                                                            int pos = Integer.parseInt(s);
+                                                            Manutenzione man = ApplicationData.manutenzioni.get(pos);
+                                                            Toast.makeText(MainActivity.ctx, "" + pos + "  ", Toast.LENGTH_SHORT).show();
+                                                            R8 r8 = new R8(mLavoro.getId(), man.getId(), true);
+                                                            ApplicationData.r8.add(r8);
+                                                            color.add(Color.parseColor("#66FFFF00")); //yellow
+                                                            adapter.notifyDataSetChanged();
+                                                        } catch (Exception e) {
+
+                                                        }
+                                                    }
+                                                }
+                    );
+                }
+            });
+
+            viewHolder.pezzo.setOnClickListener(new OnClickListener() {
+                String s = "";
+                @Override
+                public void onClick(View v) {
+                    SpinnerDialogV2 dialog = new SpinnerDialogV2.Builder(s, MainActivity.ctx, new MagazzinoArrayAdapter(MainActivity.ctx, ApplicationData.pezzi), true).build();
+                    dialog.show();
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface arg0) {
+                                                        try {
+                                                            int pos = Integer.parseInt(s);
+                                                            Pezzo man = ApplicationData.pezzi.get(pos);
+                                                            Toast.makeText(MainActivity.ctx, "" + pos + "  ", Toast.LENGTH_SHORT).show();
+                                                            Usato usato = new Usato(mLavoro.getId(), man.getId(), true);
+                                                            ApplicationData.usato.add(usato);
+                                                        } catch (Exception e) {
+
+                                                        }
+                                                    }
+                                                }
+                    );
+                }
+            });
 
         }
         return view;
@@ -200,7 +291,7 @@ public class LavorazioniBodyFragment extends Fragment {
                 Lavoro lavoro = mLavoro;
 
                 mFat = null;
-                int idFattura = lavoro.getId();
+                int idFattura = lavoro.getFattura();
 
                 if (!mIsFinished) {
                     String date = Util.getDate();//TODO method for generate a date
@@ -418,6 +509,9 @@ public class LavorazioniBodyFragment extends Fragment {
         public TextView veicoloTarga;
         public TextView veicoloTelaio;
         public Button fattura;
+        public Button guasto;
+        public Button manutenzione;
+        public Button pezzo;
         public ListView lavori;
     }
 
