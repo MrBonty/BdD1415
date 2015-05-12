@@ -112,8 +112,8 @@ public class MainActivity extends ActionBarActivity {
         ApplicationData.manutenzioni.add(m);
         ApplicationData.guasti.add(g);
         Lavoro l = new Lavoro("id", false);
-        l.setFattura(fatt.getId(),false);
-        l.setData_fine("13/02/",false);
+        //l.setFattura(fatt.getId(),false);
+        //l.setData_fine("13/02/",false);
         ApplicationData.lavori.add(l);
         ApplicationData.splitWork();
         Pezzo pp = new Pezzo(false);

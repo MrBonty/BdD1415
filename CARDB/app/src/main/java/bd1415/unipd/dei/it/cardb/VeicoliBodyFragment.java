@@ -1,17 +1,28 @@
 package bd1415.unipd.dei.it.cardb;
 
+import android.app.Dialog;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
+import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
 import bd1415.unipd.dei.it.cardb.databasetables.Modello;
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
@@ -24,6 +35,9 @@ public class VeicoliBodyFragment extends Fragment {
     private boolean mIsVis = false;
     private ImageView mImage;
     private LinearLayout mBody;
+    private boolean isPriv;
+
+    private Veicolo mCurrentV;
 
     //onCreate
     @Override
@@ -65,16 +79,18 @@ public class VeicoliBodyFragment extends Fragment {
         viewHolder.modello = (TextView) view.findViewById(R.id.veicolo_modello_nome_data);
         viewHolder.anno_modello = (TextView) view.findViewById(R.id.veicolo_modello_anno_data);
         viewHolder.lavorazioni = (ListView) view.findViewById(android.R.id.list);
+        viewHolder.addWork = (Button) view.findViewById(R.id.veicolo_lavoro_button);
 
         if (mIsVis) {
             final Veicolo veicolo = ApplicationData.veicoli.get(mPos);
+            mCurrentV = veicolo;
             viewHolder.targa.setText(veicolo.getTarga());
             viewHolder.numero_telaio.setText(veicolo.getNumero_telaio());
             viewHolder.proprietario.setText(veicolo.getPrivato());
 
-            final boolean isPriv = true;
+            isPriv = true;
 
-            /*
+
             if (veicolo.getAzienda() != null && !veicolo.getAzienda().equals("")) {
                 isPriv = false;
                 for (int i = 0; i < ApplicationData.aziende.size(); i++) {
@@ -111,14 +127,14 @@ public class VeicoliBodyFragment extends Fragment {
             ArrayList<Lavoro> tmp1 = new ArrayList<>();
             for (int i = 0; i < ApplicationData.lavori.size(); i++) {
                 Lavoro lv = ApplicationData.lavori.get(i);
-                if (lv.getVeicolo().equals(veicolo.getNumero_telaio())) {
+                if (veicolo.getNumero_telaio().equals(lv.getVeicolo())) {
                     tmp1.add(lv);
                 }
             }
 
             viewHolder.lavorazioni.setAdapter(new LavoriArrayAdapter(MainActivity.ctx, tmp1));
 
-*/
+            viewHolder.addWork.setOnClickListener(openDialog());
             viewHolder.numero_telaio.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -293,6 +309,107 @@ public class VeicoliBodyFragment extends Fragment {
         return view;
     }
 
+    private View.OnClickListener openDialog() {
+        return new View.OnClickListener() {
+
+            private Dialog toShow;
+
+            @Override
+            public void onClick(View v) {
+                Context mCtx = MainActivity.ctx;
+
+                toShow = new Dialog(mCtx);
+                toShow.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                toShow.setContentView(R.layout.picker_dialog);
+
+                LinearLayout dialogLayout = (LinearLayout) toShow.findViewById(R.id.dialog);
+                dialogLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(
+                                Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    }
+                });
+
+                Spinner spin = (Spinner) toShow.findViewById(R.id.spinner_fatture);
+                spin.setVisibility(View.GONE);
+
+                TextView title = (TextView) toShow.findViewById(R.id.title);
+                title.setText("Vuoi aggiungere un nuovo lavoro?");
+
+                Button cancel = (Button) toShow.findViewById(R.id.cancel);
+                Button add = (Button) toShow.findViewById(R.id.add);
+
+
+                add.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        addNewWork();
+                        toShow.dismiss();
+                    }
+                });
+
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        toShow.dismiss();
+                    }
+                });
+                toShow.show();
+            }
+        };
+    }
+
+    private void addNewWork(){
+        String toShow = "Lavoro aggiunto con id: ";
+
+        Lavoro tmp = new Lavoro(mCurrentV.getNumero_telaio(), true);
+        tmp.setData_inizio(Util.getDate(), true);
+
+        while(!(tmp.getId() > 0)) {
+            toShow += tmp.getId();
+        }
+
+        ApplicationData.lavoriInCorso.add(tmp);
+        LavorazioniMenuFragment.list.notifyDataSetChanged();
+
+        final Dialog show = new Dialog(MainActivity.ctx);
+
+        show.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        show.setContentView(R.layout.picker_dialog);
+
+        Spinner spin = (Spinner) show.findViewById(R.id.spinner_fatture);
+        spin.setVisibility(View.GONE);
+
+        Button cancel = (Button) show.findViewById(R.id.cancel);
+        Button add = (Button) show.findViewById(R.id.add);
+        View v2 = (View)show.findViewById(R.id.view2);
+
+        TextView title = (TextView) show.findViewById(R.id.title);
+        title.setText(toShow);
+
+        cancel.setText("OK");
+
+        add.setVisibility(View.GONE);
+        v2.setVisibility(View.GONE);
+
+
+        android.widget.LinearLayout.LayoutParams params = new android.widget.LinearLayout.LayoutParams(0, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+        cancel.setLayoutParams(params);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                show.dismiss();
+            }
+        });
+        show.show();
+    }
+
     private class ViewHolder {
         public TextView targa;
         public TextView numero_telaio;
@@ -301,6 +418,7 @@ public class VeicoliBodyFragment extends Fragment {
         public TextView modello;
         public TextView anno_modello;
         public ListView lavorazioni;
+        public Button addWork;
     }
 
 }

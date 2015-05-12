@@ -2,12 +2,16 @@ package bd1415.unipd.dei.it.cardb;
 
 import android.app.Dialog;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -18,9 +22,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
+import bd1415.unipd.dei.it.cardb.databasetables.Fattura;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavora_a;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
 import bd1415.unipd.dei.it.cardb.databasetables.Modello;
@@ -35,6 +41,10 @@ public class PersonaleBodyFragment extends Fragment{
     private boolean mIsVis = false;
     private ImageView mImage;
     private LinearLayout mBody;
+
+    private LavoraAArrayAdapter mAdapter;
+
+    private Personale mCurrentPer;
 
     //onCreate
     @Override
@@ -83,9 +93,11 @@ public class PersonaleBodyFragment extends Fragment{
         viewHolder.edificio = (TextView) view.findViewById(R.id.personale_edificio_data);
         viewHolder.responsabile = (CheckBox) view.findViewById(R.id.personale_responsabile_ckb);
         viewHolder.lavori = (ListView) view.findViewById(android.R.id.list);
+        viewHolder.add_lav = (Button) view.findViewById(R.id.personale_lavoro_button);
 
         if (mIsVis) {
             final Personale per = ApplicationData.personale.get(mPos);
+            mCurrentPer = per;
 
             ArrayList<String> item = new ArrayList<>();
             for(int i = 0; i< ApplicationData.lavora_a.size(); i++) {
@@ -187,8 +199,10 @@ public class PersonaleBodyFragment extends Fragment{
                 viewHolder.numero_civico.setText(per.getIndirizzo().numero_civico);
             }
 
-            viewHolder.lavori.setAdapter(new LavoraAArrayAdapter(MainActivity.ctx, item));
+            mAdapter = new LavoraAArrayAdapter(MainActivity.ctx, item);
+            viewHolder.lavori.setAdapter(mAdapter);
 
+            viewHolder.add_lav.setOnClickListener(openDialog());
 
             viewHolder.cf.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -408,6 +422,121 @@ public class PersonaleBodyFragment extends Fragment{
         return view;
     }
 
+    private View.OnClickListener openDialog(){
+        return new View.OnClickListener() {
+
+            private Lavoro selWork;
+            private Dialog mTmpDialogPicker;
+
+            @Override
+            public void onClick(View v) {
+
+
+                Context mCtx = MainActivity.ctx;
+
+                mTmpDialogPicker = new Dialog(mCtx);
+                mTmpDialogPicker.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                mTmpDialogPicker.setContentView(R.layout.picker_dialog);
+
+                LinearLayout dialogLayout = (LinearLayout) mTmpDialogPicker.findViewById(R.id.dialog);
+                dialogLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(
+                                Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    }
+                });
+
+
+                List<String> forSpinner = new ArrayList<String>();
+                final ArrayList<Lavoro> spinnerFat = new ArrayList<Lavoro>();
+
+                for (int i = 0; i < ApplicationData.lavoriInCorso.size(); i++) {
+                    String tmp = "";
+                    Lavoro lavTmp = ApplicationData.lavoriInCorso.get(i);
+                    boolean toInsert = true;
+
+                    for(int j = 0; j < ApplicationData.lavora_a.size(); j++){
+                        Lavora_a lavA = ApplicationData.lavora_a.get(j);
+                        if(lavA.getLavoro() == lavTmp.getId() && mCurrentPer.getCf().equals(lavA.getPersonale())){
+                            toInsert = false;
+                            break;
+                        }
+                    }
+
+                    if(toInsert) {
+                        String token = "";
+                        token += lavTmp.getId();
+                        for (int j = token.length(); j < 5; j++) {
+                            token = " " + token;
+                        }
+                        tmp += token;
+                        tmp += " - ";
+                        tmp += lavTmp.getData_inizio();
+
+                        forSpinner.add(tmp);
+                        spinnerFat.add(lavTmp);
+                    }
+                }
+
+                Spinner spin = (Spinner) mTmpDialogPicker.findViewById(R.id.spinner_fatture);
+                TextView title = (TextView) mTmpDialogPicker.findViewById(R.id.title);
+
+                title.setText("Selezionare Lavoro:");
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(mCtx, android.R.layout.simple_spinner_item, forSpinner);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spin.setAdapter(adapter);
+
+                Button cancel = (Button) mTmpDialogPicker.findViewById(R.id.cancel);
+                final Button add = (Button) mTmpDialogPicker.findViewById(R.id.add);
+                spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        add.setEnabled(true);
+                        selWork = spinnerFat.get(position);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        add.setEnabled(false);
+                    }
+                });
+
+                add.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        addWorkToListView(selWork);
+
+                        mTmpDialogPicker.dismiss();
+                    }
+                });
+
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mTmpDialogPicker.dismiss();
+                    }
+                });
+                mTmpDialogPicker.show();
+            }
+        };
+    }
+
+    private void addWorkToListView(Lavoro lavToAdd){
+        String ins = "";
+
+        ins = lavToAdd.getId() + " " + lavToAdd.getData_inizio() + " ore lav: ";
+        ins += 0 + " straordinari: " + 0;
+
+        Lavora_a tmp = new Lavora_a(mCurrentPer.getCf(),lavToAdd.getId(),true);
+
+        mAdapter.add(ins);
+        mAdapter.notifyDataSetChanged();
+    }
+
     private class ViewHolder {
         public TextView nome;
         public TextView cognome;
@@ -422,6 +551,7 @@ public class PersonaleBodyFragment extends Fragment{
         public TextView edificio;
         public CheckBox responsabile;
         public ListView lavori;
+        public Button add_lav;
     }
 
 }
