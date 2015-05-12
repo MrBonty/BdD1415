@@ -31,24 +31,6 @@ public class FatturaDialog {
         mDialog.setContentView(R.layout.fattura_dialog);
         mDialog.setCanceledOnTouchOutside(true);
 
-        int pos;
-        if (fattura.getPagato() == 0) {
-            ApplicationData.isPayed = false;
-            for (pos = 0; pos < ApplicationData.fattureNon.size(); pos++) {
-                if (fattura.getId() == ApplicationData.fattureNon.get(pos).getId()) {
-                    break;
-                }
-            }
-        } else {
-            ApplicationData.isPayed = true;
-            for (pos = 0; pos < ApplicationData.fatturePagate.size(); pos++) {
-                if (fattura.getId() == ApplicationData.fatturePagate.get(pos).getId()) {
-                    break;
-                }
-            }
-        }
-
-
         ViewHolder viewHolder = new ViewHolder();
 
         ImageView mImage = (ImageView) mDialog.findViewById(R.id.image_pagamenti);
@@ -64,10 +46,13 @@ public class FatturaDialog {
         viewHolder.lavori = (ListView) mDialog.findViewById(android.R.id.list);
 
         viewHolder.id.setText(fattura.getId() + "");
-
-        viewHolder.pagato.setChecked(true);
-        viewHolder.pagato.setEnabled(false);
-
+        if(fattura.getPagato() == 0) {
+            viewHolder.pagato.setChecked(false);
+            viewHolder.pagato.setEnabled(false);
+        }else{
+            viewHolder.pagato.setChecked(true);
+            viewHolder.pagato.setEnabled(false);
+        }
 
         Azienda az = null;
         Privato pr = null;
