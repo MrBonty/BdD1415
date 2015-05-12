@@ -65,6 +65,7 @@ public class SpinnerDialogV2<E> extends AlertDialog {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 s = position + "";
+                ApplicationData.positionLavoriDialogInsert = position;
                 dismiss();
             }
         });

@@ -58,6 +58,8 @@ public class ApplicationData {
 
     public static boolean isPayed = false;
 
+    public static int positionLavoriDialogInsert = -1;
+
     public static void splitWork() {
         for (int i = 0; i < lavori.size(); i++) {
             Lavoro tmp = lavori.get(i);

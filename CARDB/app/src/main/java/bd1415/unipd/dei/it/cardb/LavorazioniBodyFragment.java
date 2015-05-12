@@ -56,6 +56,8 @@ public class LavorazioniBodyFragment extends Fragment {
     private static Dialog mTmpDialogPicker;
 
     private static boolean toShowFattura = false;
+    private ArrayList<String> pezziGuastiManutenzioni;
+    private ArrayAdapter<String> adapter;
 
     //onCreate
     @Override
@@ -144,7 +146,7 @@ public class LavorazioniBodyFragment extends Fragment {
 
 
 
-            List<String> pezziGuastiManutenzioni = new ArrayList<>();
+            pezziGuastiManutenzioni = new ArrayList<>();
             final ArrayList<Integer> color = new ArrayList<>();
             for (int i = 0; i<ApplicationData.usato.size(); i++) {
                 Usato u = ApplicationData.usato.get(i);
@@ -198,7 +200,8 @@ public class LavorazioniBodyFragment extends Fragment {
                     color.add(Color.parseColor("#66FFFF00")); //Semitrasparent yellow
                 }
             }
-            final ArrayAdapter<String> adapter = new DescrizioniArrayAdapter(mCtx, pezziGuastiManutenzioni, color);
+
+            adapter = new DescrizioniArrayAdapter(mCtx, pezziGuastiManutenzioni, color);
             viewHolder.lavori.setAdapter(adapter);
 
             viewHolder.guasto.setOnClickListener(new OnClickListener() {
@@ -210,13 +213,15 @@ public class LavorazioniBodyFragment extends Fragment {
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                     @Override
                                                     public void onDismiss(DialogInterface arg0) {
-                                                        try {
-                                                            int pos = Integer.parseInt(s);
+                                                        try {// s resta vuota
+                                                            int pos = ApplicationData.positionLavoriDialogInsert;
                                                             Guasto man = ApplicationData.guasti.get(pos);
                                                             Toast.makeText(MainActivity.ctx, "" + pos + "  ", Toast.LENGTH_SHORT).show();
                                                             R7 r7 = new R7(mLavoro.getId(), man.getId(), true);
                                                             ApplicationData.r7.add(r7);
+                                                            pezziGuastiManutenzioni.add(man.getId() + "G - " + man.getDescrizione());
                                                             color.add(Color.parseColor("#66FF0000"));  //red
+                                                            ApplicationData.positionLavoriDialogInsert = -1;
                                                             adapter.notifyDataSetChanged();
                                                         } catch (Exception e) {
 
@@ -237,14 +242,17 @@ public class LavorazioniBodyFragment extends Fragment {
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                     @Override
                                                     public void onDismiss(DialogInterface arg0) {
-                                                        try {
-                                                            int pos = Integer.parseInt(s);
+                                                        try { // s resta vuota
+                                                            int pos = ApplicationData.positionLavoriDialogInsert;
                                                             Manutenzione man = ApplicationData.manutenzioni.get(pos);
                                                             Toast.makeText(MainActivity.ctx, "" + pos + "  ", Toast.LENGTH_SHORT).show();
                                                             R8 r8 = new R8(mLavoro.getId(), man.getId(), true);
                                                             ApplicationData.r8.add(r8);
+                                                            pezziGuastiManutenzioni.add(man.getId() + "M - " + man.getDescrizione());
                                                             color.add(Color.parseColor("#66FFFF00")); //yellow
+                                                            ApplicationData.positionLavoriDialogInsert = -1;
                                                             adapter.notifyDataSetChanged();
+
                                                         } catch (Exception e) {
 
                                                         }
@@ -263,12 +271,18 @@ public class LavorazioniBodyFragment extends Fragment {
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                     @Override
                                                     public void onDismiss(DialogInterface arg0) {
-                                                        try {
-                                                            int pos = Integer.parseInt(s);
+                                                        try { //TODO SET NUMERO PEZZI USATI E UPDATE VALORE IN PEZZI
+                                                            int pos = ApplicationData.positionLavoriDialogInsert;
                                                             Pezzo man = ApplicationData.pezzi.get(pos);
                                                             Toast.makeText(MainActivity.ctx, "" + pos + "  ", Toast.LENGTH_SHORT).show();
                                                             Usato usato = new Usato(mLavoro.getId(), man.getId(), true);
+
                                                             ApplicationData.usato.add(usato);
+                                                            color.add(Color.parseColor("#6600FF00")); //Semitrasparent green
+                                                            pezziGuastiManutenzioni.add(man.getId() + "P - " + man.getDescrizione());
+                                                            ApplicationData.positionLavoriDialogInsert = -1;
+                                                            adapter.notifyDataSetChanged();
+
                                                         } catch (Exception e) {
 
                                                         }

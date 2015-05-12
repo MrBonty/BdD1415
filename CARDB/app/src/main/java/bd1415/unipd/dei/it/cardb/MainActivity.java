@@ -2,6 +2,7 @@ package bd1415.unipd.dei.it.cardb;
 
 import android.app.Activity;
 import android.app.Application;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -169,6 +170,7 @@ public class MainActivity extends ActionBarActivity {
                 .withButtonColor(getResources().getColor(R.color.primaryColor))
                 .withGravity(Gravity.BOTTOM | Gravity.END)
                 .withMargins(0, 0, 16, 16).create();
+        fabButton.setOnClickListener(getInsertDialog());
         intent = getIntent();
 
 
@@ -424,6 +426,26 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private View.OnClickListener getInsertDialog(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int idCorrente= corrente.getId();
+                if(idCorrente == privatiLayout.getId()){
+                    DialogInsertCliente tmp  = new DialogInsertCliente(ctx);
+
+                }else if(idCorrente == aziendeLayout.getId()){
+                    DialogInsertAzienda tmp  = new DialogInsertAzienda(ctx);
+
+                }else if(idCorrente == personaleLayout.getId()){
+
+                }else if(idCorrente == veicoliLayout.getId()){
+
+                }
+            }
+        };
     }
 
 }
