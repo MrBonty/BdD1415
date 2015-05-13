@@ -1,10 +1,13 @@
 package bd1415.unipd.dei.it.cardb;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -14,7 +17,7 @@ import android.widget.Toast;
 import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
 
-public class DialogInsertAzienda extends Dialog{
+public class DialogInsertAzienda extends Dialog {
 
     private Context ctx;
     private ViewHolder viewHolder;
@@ -28,7 +31,22 @@ public class DialogInsertAzienda extends Dialog{
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         view= layoutInflater.inflate(R.layout.insert_cliente, null);
 
-        viewHolder.title = (TextView) view.findViewById(R.id.title);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        LinearLayout dialogLayout = (LinearLayout) view.findViewById(R.id.ll_ins_cl);
+        dialogLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(
+                        Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        });
+        setCanceledOnTouchOutside(false);
+
+        viewHolder = new ViewHolder();
+
+        viewHolder.title = (TextView) view.findViewById(R.id.edit_title);
         viewHolder.nome = (EditText) view.findViewById(R.id.cliente_nome_data);
         viewHolder.cognomeLayout = (LinearLayout) view.findViewById(R.id.cliete_cognome_layout);
         viewHolder.cognome = (EditText) view.findViewById(R.id.cliente_cognome_data);
@@ -53,7 +71,8 @@ public class DialogInsertAzienda extends Dialog{
             }
         });
         viewHolder.save.setOnClickListener(saveListener());
-        show();
+
+        setContentView(view);
     }
 
     private View.OnClickListener saveListener(){

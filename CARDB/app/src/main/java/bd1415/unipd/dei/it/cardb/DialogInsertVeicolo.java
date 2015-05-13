@@ -1,4 +1,21 @@
 package bd1415.unipd.dei.it.cardb;
 
-public class DialogInsertVeicolo { //TODO
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+
+public class DialogInsertVeicolo extends Dialog {//TODO
+
+    private Context ctx;
+    private ViewHolder viewHolder;
+    private View view;
+
+    public DialogInsertVeicolo(Context context) {
+        super(context);
+        ctx = context;
+    }
+
+    private class ViewHolder{
+
+    }
 }

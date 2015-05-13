@@ -435,13 +435,23 @@ public class MainActivity extends ActionBarActivity {
                 int idCorrente= corrente.getId();
                 if(idCorrente == privatiLayout.getId()){
                     DialogInsertCliente tmp  = new DialogInsertCliente(ctx);
+                    tmp.show();
 
                 }else if(idCorrente == aziendeLayout.getId()){
                     DialogInsertAzienda tmp  = new DialogInsertAzienda(ctx);
+                    tmp.show();
 
                 }else if(idCorrente == personaleLayout.getId()){
+                    DialogInsertPersonale tmp = new DialogInsertPersonale(ctx);
+                    tmp.show();
 
                 }else if(idCorrente == veicoliLayout.getId()){
+                    DialogInsertVeicolo tmp = new DialogInsertVeicolo(ctx);
+                    tmp.show();
+
+                }else if(idCorrente == edificiLayout.getId()){
+                    DialogInsertEdificio tmp = new DialogInsertEdificio(ctx);
+                    tmp.show();
 
                 }
             }

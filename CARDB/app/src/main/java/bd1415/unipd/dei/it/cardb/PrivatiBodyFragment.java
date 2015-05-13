@@ -61,6 +61,7 @@ public class PrivatiBodyFragment extends Fragment {
                 mBody.setVisibility(View.GONE);
             }
         }
+
         viewHolder.nome = (TextView) view.findViewById(R.id.cliente_nome_data);
         viewHolder.cognomeLayout = (LinearLayout) view.findViewById(R.id.cliete_cognome_layout);
         viewHolder.cognome = (TextView) view.findViewById(R.id.cliente_cognome_data);
