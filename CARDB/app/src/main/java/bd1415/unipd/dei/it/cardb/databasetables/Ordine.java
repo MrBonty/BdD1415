@@ -10,7 +10,7 @@ public class Ordine {
     // Ordine Columns
     public static final String ORDINE_PK_DATA_OR = "dat_or";
     public static final String ORDINE_PK_FORNITORE = "fornitore";
-    public static final String ORDINE_QUANTITA_FORNITURA = "quantita_fornitura";
+    public static final String ORDINE_QUANTITA_FORNITURA = "arrivato";
 
     public static final String ORDINE_COLUMS = "(" + ORDINE_PK_DATA_OR + ", "
             + ORDINE_PK_FORNITORE + ", "
@@ -18,7 +18,7 @@ public class Ordine {
 
     private String data_or; //PRIMARY-KEY
     private String fornitore; //PRIMARY-KEY
-    private int quantita_fornita;
+    private int arrivato;
 
     public Ordine(String data_or, String fornitore, boolean insert) {
         if (insert) {
@@ -61,8 +61,8 @@ public class Ordine {
         return fornitore;
     }
 
-    public int getQuantita_fornita() {
-        return quantita_fornita;
+    public int getArrivato() {
+        return arrivato;
     }
 
     public void setData_or(String data_or, boolean update) {
@@ -79,10 +79,10 @@ public class Ordine {
         }
     }
 
-    public void setQuantita_fornita(int quantita_fornita, boolean update) {
-        this.quantita_fornita = quantita_fornita;
+    public void setArrivato(int arrivato, boolean update) {
+        this.arrivato = arrivato;
         if (update) {
-            updateValueInDatabase(quantita_fornita, ORDINE_QUANTITA_FORNITURA);
+            updateValueInDatabase(arrivato, ORDINE_QUANTITA_FORNITURA);
         }
     }
 

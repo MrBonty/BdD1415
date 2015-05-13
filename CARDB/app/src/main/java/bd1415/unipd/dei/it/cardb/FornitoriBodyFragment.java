@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
 import bd1415.unipd.dei.it.cardb.databasetables.Contiene;
@@ -70,6 +72,7 @@ public class FornitoriBodyFragment extends Fragment {
         viewHolder.provincia = (TextView) view.findViewById(R.id.cliente_provincia_data);
         viewHolder.indirizzo = (TextView) view.findViewById(R.id.cliente_indirizzo_data);
         viewHolder.numero_civico = (TextView) view.findViewById(R.id.cliente_civico_data);
+        viewHolder.ordini = (ListView) view.findViewById(android.R.id.list);
 
         if (mIsVis) {
             final Fornitore az = ApplicationData.fornitori.get(mPos);
@@ -89,6 +92,15 @@ public class FornitoriBodyFragment extends Fragment {
                 viewHolder.citta.setText(az.getIndirizzo().città);
                 viewHolder.provincia.setText(az.getIndirizzo().provincia);
             }
+
+            ArrayList<Ordine> ordini = new ArrayList<>();
+            for(int i = 0; i< ApplicationData.ordini.size(); i++){
+                Ordine tmpOr = ApplicationData.ordini.get(i);
+                if(tmpOr.getFornitore().equals(az.getPiva())){
+                    ordini.add(tmpOr);
+                }
+            }
+            viewHolder.ordini.setAdapter(new OrdiniArrayAdapter(MainActivity.ctx, ordini));
 
          viewHolder.nome.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -253,6 +265,8 @@ public class FornitoriBodyFragment extends Fragment {
                     );
                 }
             });
+
+
         }
         return view;
     }
@@ -268,7 +282,7 @@ public class FornitoriBodyFragment extends Fragment {
         public TextView citta;
         public TextView provincia;
         public TextView indirizzo;
-        public ListView veicoli;
+        public ListView ordini;
         public TextView numero_civico;
     }
 

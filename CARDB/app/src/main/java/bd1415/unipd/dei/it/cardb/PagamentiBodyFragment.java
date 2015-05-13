@@ -88,7 +88,7 @@ public class PagamentiBodyFragment extends Fragment {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(viewHolder.pagato.isChecked()){
-                        mFattura.setPagato(1, false);
+                        mFattura.setPagato(1, true);
                         ApplicationData.fattureNon.remove(mPos);
                         ApplicationData.fatturePagate.add(mFattura);
                         for(int i = ApplicationData.fatturePagate.size()-1; i>= 0; i--) {

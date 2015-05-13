@@ -124,6 +124,7 @@ public class MainActivity extends ActionBarActivity {
         ApplicationData.splitWork();
         Pezzo pp = new Pezzo(false);
         pp.setId(1, false);
+        pp.setNumero_totale_pezzi(10,false);
         pp.setDescrizione("rrrr", false);
         ApplicationData.pezzi.add(pp);
         params = new String[6];
@@ -443,10 +444,6 @@ public class MainActivity extends ActionBarActivity {
 
                 }else if(idCorrente == personaleLayout.getId()){
                     DialogInsertPersonale tmp = new DialogInsertPersonale(ctx);
-                    tmp.show();
-
-                }else if(idCorrente == veicoliLayout.getId()){
-                    DialogInsertVeicolo tmp = new DialogInsertVeicolo(ctx);
                     tmp.show();
 
                 }else if(idCorrente == edificiLayout.getId()){

@@ -266,7 +266,11 @@ public class LavorazioniBodyFragment extends Fragment {
                 String s = "";
                 @Override
                 public void onClick(View v) {
+                    /*
                     SpinnerDialogV2 dialog = new SpinnerDialogV2.Builder(s, MainActivity.ctx, new MagazzinoArrayAdapter(MainActivity.ctx, ApplicationData.pezzi), true).build();
+                    */
+                    PickPezzoDialog dialog = new PickPezzoDialog(MainActivity.ctx);
+
                     dialog.show();
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                                     @Override
@@ -276,7 +280,12 @@ public class LavorazioniBodyFragment extends Fragment {
                                                             Pezzo man = ApplicationData.pezzi.get(pos);
                                                             Toast.makeText(MainActivity.ctx, "" + pos + "  ", Toast.LENGTH_SHORT).show();
                                                             Usato usato = new Usato(mLavoro.getId(), man.getId(), true);
+                                                            if(ApplicationData.quantità!= -1){
+                                                                usato.setNumero_pezzi(ApplicationData.quantità,true);
+                                                                man.setNumero_totale_pezzi(man.getNumero_totale_pezzi()-ApplicationData.quantità,true);
 
+                                                                ApplicationData.quantità = -1;
+                                                            }
                                                             ApplicationData.usato.add(usato);
                                                             color.add(Color.parseColor("#6600FF00")); //Semitrasparent green
                                                             pezziGuastiManutenzioni.add(man.getId() + "P - " + man.getDescrizione());

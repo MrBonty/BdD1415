@@ -252,7 +252,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     Ordine ordine = new Ordine(rs.getString("data_or"), rs.getString("fornitore"), false);
                     ordine.setData_or(rs.getString("data_or"), false);
                     ordine.setFornitore(rs.getString("fornitore"), false);
-                    ordine.setQuantita_fornita(rs.getInt("quantita_fornita"), false);
+                    ordine.setArrivato(rs.getInt("arrivato"), false);
                     ApplicationData.ordini.add(ordine);
                 }
 
