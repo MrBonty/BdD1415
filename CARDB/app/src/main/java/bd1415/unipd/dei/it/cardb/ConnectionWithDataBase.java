@@ -255,6 +255,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ordine.setArrivato(rs.getInt("arrivato"), false);
                     ApplicationData.ordini.add(ordine);
                 }
+                ApplicationData.splitOrdini();
 
                 rs = st.executeQuery("SELECT * FROM main.Personale;");
                 while (rs.next()) {

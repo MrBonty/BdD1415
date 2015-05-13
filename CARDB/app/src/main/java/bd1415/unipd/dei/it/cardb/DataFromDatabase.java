@@ -216,6 +216,7 @@ public class DataFromDatabase extends AsyncTask<Integer, Void, String> {
                                 ordine.setFornitore(rs.getString("fornitore"), false);
                                 ordine.setArrivato(rs.getInt("arrivato"), false);
                                 ApplicationData.ordini.add(ordine);
+                                ApplicationData.splitOrdini();
                             }
                             break;
                         case PERSONALE:
