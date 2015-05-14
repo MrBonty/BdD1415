@@ -359,7 +359,7 @@ public class AziendeBodyFragment extends Fragment {
                             Toast.makeText(MainActivity.ctx, "Inserire modello", Toast.LENGTH_SHORT).show();
                         }else if(targ == null || targ.equals("")){
                             Toast.makeText(MainActivity.ctx, "Targa non valida", Toast.LENGTH_SHORT).show();
-                        }else if(num_telaio == null || num_telaio.equals("")) {
+                        }else if(num_telaio == null || num_telaio.equals("") || num_telaio.length() != 17) {
                             Toast.makeText(MainActivity.ctx, "numero telaio non valido", Toast.LENGTH_SHORT).show();
                         }else{
                             Veicolo ve = new Veicolo(num_telaio, mod.getCodice_produzione(), mod.getMarca(),true);
@@ -451,9 +451,9 @@ public class AziendeBodyFragment extends Fragment {
                                     anno = "";
                                 }
 
-                                if(marca != null || marca.equals("")){
+                                if(marca == null || marca.equals("")){
                                     Toast.makeText(MainActivity.ctx, "Inserire marca", Toast.LENGTH_SHORT).show();
-                                }else if(codice!= null || codice.equals("")){
+                                }else if(codice == null || codice.equals("")){
                                     Toast.makeText(MainActivity.ctx, "Inserire codice produzione", Toast.LENGTH_SHORT).show();
                                 }else{
                                     mod = new Modello(codice, marca,true);

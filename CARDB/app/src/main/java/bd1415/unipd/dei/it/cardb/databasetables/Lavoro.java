@@ -68,6 +68,18 @@ public class Lavoro {
         new UpdateValueInDataBase().execute(params);
     }
 
+    public void updateDateInDatabase(String nuovo_valore, String nome_attributo) {
+        String[] params = new String[5];
+        params[0] = TABLE_LAVORO;
+        params[1] = nome_attributo;
+        params[2] = "(to_date('" + nuovo_valore + "', 'YYYY-MM-DD'))";
+        params[3] = LAVORO_PK_ID;
+        params[4] = "" + this.id;
+        new UpdateValueInDataBase().execute(params);
+    }
+
+
+
     public int getId() {
         return id;
     }
@@ -98,14 +110,14 @@ public class Lavoro {
     public void setData_inizio(String data_inizio, boolean update) {
         this.data_inizio = data_inizio;
         if (update) {
-            updateValueInDatabase(data_inizio, LAVORO_DATA_INIZIO);
+            updateDateInDatabase(data_inizio, LAVORO_DATA_INIZIO);
         }
     }
 
     public void setData_fine(String data_fine, boolean update) {
         this.data_fine = data_fine;
         if (update) {
-            updateValueInDatabase(data_fine, LAVORO_DATA_FINE);
+            updateDateInDatabase(data_fine, LAVORO_DATA_FINE);
         }
     }
 

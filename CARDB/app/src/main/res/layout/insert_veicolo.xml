@@ -57,6 +57,7 @@
                     android:id="@+id/veicolo_targa_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLength="10"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -79,6 +80,7 @@
                 android:id="@+id/veicolo_telaio_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="17"
                 android:textSize="25sp" />
         </LinearLayout>
 

@@ -49,6 +49,7 @@
                 android:id="@+id/modello_codice_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="20"
                 android:textSize="25sp" />
         </LinearLayout>
 
@@ -70,6 +71,7 @@
                     android:id="@+id/modello_marca_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLength="20"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -90,6 +92,7 @@
                 android:id="@+id/modello_nome_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="20"
                 android:textSize="25sp" />
         </LinearLayout>
 
@@ -112,6 +115,7 @@
                 android:id="@+id/modello_anno_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="4"
                 android:textSize="25sp" />
         </LinearLayout>
 

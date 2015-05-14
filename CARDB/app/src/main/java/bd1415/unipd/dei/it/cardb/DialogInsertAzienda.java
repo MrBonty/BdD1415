@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -63,6 +64,7 @@ public class DialogInsertAzienda extends Dialog {
         viewHolder.title.setText("Nuovo cliente aziendale:");
         viewHolder.cognomeLayout.setVisibility(View.GONE);
         viewHolder.pkTag.setText(R.string.cliente_piva_tag);
+        viewHolder.pk.setFilters(new InputFilter[] {new InputFilter.LengthFilter(15)});
 
         viewHolder.cancel.setOnClickListener(new View.OnClickListener() {
             @Override

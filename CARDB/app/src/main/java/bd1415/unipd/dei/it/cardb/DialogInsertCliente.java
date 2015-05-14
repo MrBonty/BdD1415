@@ -3,6 +3,7 @@ package bd1415.unipd.dei.it.cardb;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -73,6 +74,7 @@ public class DialogInsertCliente extends Dialog{
         });
 
         viewHolder.save.setOnClickListener(saveListener());
+        viewHolder.pk.setFilters(new InputFilter[] {new InputFilter.LengthFilter(16)});
 
         setContentView(view);
     }

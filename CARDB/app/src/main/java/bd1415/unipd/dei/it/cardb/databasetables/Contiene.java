@@ -31,7 +31,7 @@ public class Contiene {
             String[] params = new String[4];
             params[0] = TABLE_CONTIENE;
             params[1] = "(" + CONTIENE_PK_ORDINE_DATA + ", " + CONTIENE_PK_ORDINE_FORNITORE + ", " + CONTIENE_PK_PEZZO + ")";
-            params[2] = "('" + ordine_data + "', '" + ordine_fornitore + "', " + pezzo + ")";
+            params[2] = "('" +"(to_date('" + ordine_data + "', 'YYYY-MM-DD'))"+ "', '" + ordine_fornitore + "', " + pezzo + ")";
             params[3] = ";";
             new InsertInDataBase().execute(params);
         }
@@ -70,6 +70,16 @@ public class Contiene {
         new UpdateValueInDataBase().execute(params);
     }
 
+    public void updateDateInDatabase(String nuovo_valore, String nome_attributo) {
+        String[] params = new String[5];
+        params[0] = TABLE_CONTIENE;
+        params[1] = nome_attributo;
+        params[2] = "(to_date('" + nuovo_valore + "', 'YYYY-MM-DD'))";
+        params[3] = "(" + CONTIENE_PK_ORDINE_DATA + ", " + CONTIENE_PK_ORDINE_FORNITORE + ", " + CONTIENE_PK_PEZZO + ")";
+        params[4] = "('" + this.ordine_data + "', '" + this.ordine_data + "', " + this.pezzo + ")";
+        new UpdateValueInDataBase().execute(params);
+    }
+
     public String getOrdine_data() {
         return ordine_data;
     }
@@ -100,7 +110,7 @@ public class Contiene {
     public void setOrdine_data(String ordine_data, boolean update) {
         this.ordine_data = ordine_data;
         if (update) {
-            updateValueInDatabase(ordine_data, CONTIENE_PK_ORDINE_DATA);
+            updateDateInDatabase(ordine_data, CONTIENE_PK_ORDINE_DATA);
         }
     }
 

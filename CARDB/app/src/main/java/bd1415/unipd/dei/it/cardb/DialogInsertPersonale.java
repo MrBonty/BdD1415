@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -75,6 +76,7 @@ public class DialogInsertPersonale extends Dialog {
             }
         });
         viewHolder.save.setOnClickListener(saveListener());
+
 
         setContentView(view);
     }

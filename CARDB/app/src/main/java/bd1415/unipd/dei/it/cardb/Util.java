@@ -17,7 +17,7 @@ public class Util {
     private static String[] output;
     private static boolean isSet = false;
 
-    private static final String DATE_DIVISOR = "/";
+    private static final String DATE_DIVISOR = "-";
     private static final String TIME_DIVISOR = ":";
 
     public static String[] process(String result) {
@@ -36,14 +36,14 @@ public class Util {
 
         //TODO set date
         int[] tmp = splitDate(date);
-        int day = tmp[0];
+        int day = tmp[2];
         int month = tmp[1];
-        int year = tmp[2];
+        int year = tmp[0];
 
         tmp = splitDate(lavoroDate);
-        int dayLavoro = tmp[0];
+        int dayLavoro = tmp[2];
         int monthLavoro = tmp[1];
-        int yearLavoro = tmp[2];
+        int yearLavoro = tmp[0];
 
         Date dt = new Date(year,month,day);
         Date dtLavoro =new Date(yearLavoro,monthLavoro,dayLavoro);
@@ -57,9 +57,9 @@ public class Util {
 
     public static String getDate(){
         Calendar cal = Calendar.getInstance();
-        String tmp= cal.get(Calendar.DAY_OF_MONTH) + DATE_DIVISOR
+        String tmp= cal.get(Calendar.YEAR) + DATE_DIVISOR
                 + (cal.get(Calendar.MONTH)+1) + DATE_DIVISOR
-                + cal.get(Calendar.YEAR);
+                + cal.get(Calendar.DAY_OF_MONTH);
 
         return tmp;
     }
@@ -76,12 +76,12 @@ public class Util {
 
     public static String getTimeDate(){
         Calendar cal = Calendar.getInstance();
-        String tmp= cal.get(Calendar.DAY_OF_MONTH) + DATE_DIVISOR
+        String tmp= cal.get(Calendar.YEAR) + DATE_DIVISOR
                 + (cal.get(Calendar.MONTH)+1) + DATE_DIVISOR
-                + cal.get(Calendar.YEAR)+ " "
+                + cal.get(Calendar.DAY_OF_MONTH)/*+ " "
                 + cal.get(Calendar.HOUR_OF_DAY) + TIME_DIVISOR
                 + cal.get(Calendar.MINUTE) + TIME_DIVISOR
-                + cal.get(Calendar.SECOND);
+                + cal.get(Calendar.SECOND)*/;
 
         return tmp;
     }

@@ -53,6 +53,16 @@ public class Avviso {
         new UpdateValueInDataBase().execute(params);
     }
 
+    public void updateDateInDatabase(String nuovo_valore, String nome_attributo) {
+        String[] params = new String[5];
+        params[0] = TABLE_AVVISO;
+        params[1] = nome_attributo;
+        params[2] = "(to_date('" + nuovo_valore + "', 'YYYY-MM-DD'))";
+        params[3] = "(" + AVVISO_PK_MANUTENZIONE + ", " + AVVISO_PK_VEICOLO + ")";
+        params[4] = "(" + this.manutenzione + ", '" + this.veicolo + "')";
+        new UpdateValueInDataBase().execute(params);
+    }
+
     public int getManutenzione() {
         return manutenzione;
     }
@@ -82,7 +92,7 @@ public class Avviso {
     public void setData_prossima(String data_possima, boolean update) {
         this.data_prossima = data_possima;
         if (update) {
-            updateValueInDatabase(data_possima, AVVISO_DATA_PROSSIMA);
+            updateDateInDatabase(data_possima, AVVISO_DATA_PROSSIMA);
         }
     }
 
