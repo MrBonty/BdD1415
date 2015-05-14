@@ -121,7 +121,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     veicolo.setModello_cod_prod(rs.getString("modello_cod_prod"), false);
                     veicolo.setModello_marca(rs.getString("modello_marca"), false);
                     ApplicationData.veicoli.add(veicolo);
-                }/*
+                }
 
                 rs = st.executeQuery("SELECT * FROM main.Azienda;");
                 while (rs.next()) {
@@ -316,7 +316,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     usato.setLavoro(rs.getInt("lavoro"), false);
                     usato.setNumero_pezzi(rs.getInt("numero_pezzi"), false);
                     ApplicationData.usato.add(usato);
-                }*/
+                }
 
                 if (rs != null) {
                     rs.close();
