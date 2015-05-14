@@ -6,7 +6,6 @@ import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -15,12 +14,12 @@ import android.widget.Toast;
 
 public class AziendeMenuFragment extends ListFragment {
 
-    private boolean isLarge = true;
-    private FragmentManager mFM;
-
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
     public static final String ISP = "isPrivate";
+    public static AziendeArrayAdapter list;
+    private boolean isLarge = true;
+    private FragmentManager mFM;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,8 +41,6 @@ public class AziendeMenuFragment extends ListFragment {
         */
         super.onResume();
     }
-
-    public static AziendeArrayAdapter list;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -95,8 +92,6 @@ public class AziendeMenuFragment extends ListFragment {
             resizeFragment(this, (int) getResources().getDimension(R.dimen.large));
             isLarge = true;
         }
-
-        Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
     }
 
 

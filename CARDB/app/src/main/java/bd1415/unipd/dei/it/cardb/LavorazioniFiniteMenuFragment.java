@@ -12,20 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import bd1415.unipd.dei.it.cardb.ApplicationData;
-import bd1415.unipd.dei.it.cardb.LavorazioniBodyFragment;
-import bd1415.unipd.dei.it.cardb.LavoriArrayAdapter;
-import bd1415.unipd.dei.it.cardb.MainActivity;
-import bd1415.unipd.dei.it.cardb.R;
-
 
 public class LavorazioniFiniteMenuFragment extends ListFragment {
+    public static final String POS = "position";
+    public static final String ISVIS = "isVisible";
     private boolean mIsFinished;
     private boolean isLarge = true;
     private FragmentManager mFM;
-
-    public static final String POS = "position";
-    public static final String ISVIS = "isVisible";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

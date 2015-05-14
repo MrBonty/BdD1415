@@ -2,7 +2,6 @@ package bd1415.unipd.dei.it.cardb.databasetables;
 
 import bd1415.unipd.dei.it.cardb.InsertInDataBase;
 import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
-import bd1415.unipd.dei.it.cardb.Util;
 
 public class Ordine {
 
@@ -10,7 +9,7 @@ public class Ordine {
     // Ordine Columns
     public static final String ORDINE_PK_DATA_OR = "dat_or";
     public static final String ORDINE_PK_FORNITORE = "fornitore";
-    public static final String ORDINE_QUANTITA_FORNITURA = "quantita_fornitura";
+    public static final String ORDINE_QUANTITA_FORNITURA = "arrivato";
 
     public static final String ORDINE_COLUMS = "(" + ORDINE_PK_DATA_OR + ", "
             + ORDINE_PK_FORNITORE + ", "
@@ -18,14 +17,14 @@ public class Ordine {
 
     private String data_or; //PRIMARY-KEY
     private String fornitore; //PRIMARY-KEY
-    private int quantita_fornita;
+    private int arrivato;
 
     public Ordine(String data_or, String fornitore, boolean insert) {
         if (insert) {
             String[] params = new String[4];
             params[0] = TABLE_ORDINE;
             params[1] = "(" + ORDINE_PK_DATA_OR + ", " + ORDINE_PK_FORNITORE + ")";
-            params[2] = "(" + data_or + ", '" + fornitore + "')";
+            params[2] = "('" + data_or + "', '" + fornitore + "')";
             params[3] = ";";
             new InsertInDataBase().execute(params);
         }
@@ -53,6 +52,16 @@ public class Ordine {
         new UpdateValueInDataBase().execute(params);
     }
 
+    /*public void updateDateInDatabase(String nuovo_valore, String nome_attributo) {
+        String[] params = new String[5];
+        params[0] = TABLE_ORDINE;
+        params[1] = nome_attributo;
+        params[2] = "(to_date('" + nuovo_valore + "', 'YYYY-MM-DD'))";
+        params[3] = "(" + ORDINE_PK_DATA_OR + ", " + ORDINE_PK_FORNITORE + ")";
+        params[4] = "('" + this.data_or + "', '" + this.fornitore + "')";
+        new UpdateValueInDataBase().execute(params);
+    }*/
+
     public String getData_or() {
         return data_or;
     }
@@ -61,8 +70,8 @@ public class Ordine {
         return fornitore;
     }
 
-    public int getQuantita_fornita() {
-        return quantita_fornita;
+    public int getArrivato() {
+        return arrivato;
     }
 
     public void setData_or(String data_or, boolean update) {
@@ -79,10 +88,10 @@ public class Ordine {
         }
     }
 
-    public void setQuantita_fornita(int quantita_fornita, boolean update) {
-        this.quantita_fornita = quantita_fornita;
+    public void setArrivato(int arrivato, boolean update) {
+        this.arrivato = arrivato;
         if (update) {
-            updateValueInDatabase(quantita_fornita, ORDINE_QUANTITA_FORNITURA);
+            updateValueInDatabase(arrivato, ORDINE_QUANTITA_FORNITURA);
         }
     }
 

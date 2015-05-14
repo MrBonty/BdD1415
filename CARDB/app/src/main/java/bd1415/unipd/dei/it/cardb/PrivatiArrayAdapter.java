@@ -12,7 +12,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Privato;
-import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
 public class PrivatiArrayAdapter extends ArrayAdapter<Privato> {
 
@@ -22,12 +21,6 @@ public class PrivatiArrayAdapter extends ArrayAdapter<Privato> {
     public PrivatiArrayAdapter(Context context, List items) {
         super(context, android.R.layout.simple_list_item_1, items);
         this.context = context;
-    }
-
-
-    private class ViewHolder {
-        TextView titleText;
-        TextView infoText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -46,8 +39,13 @@ public class PrivatiArrayAdapter extends ArrayAdapter<Privato> {
             viewToUse = convertView;
             holder = (ViewHolder) viewToUse.getTag();
         }
-        holder.titleText.setText(item.getNome()+ " " + item.getCognome());
+        holder.titleText.setText(item.getNome() + " " + item.getCognome());
         holder.infoText.setText(item.getCf());
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
+        TextView infoText;
     }
 }

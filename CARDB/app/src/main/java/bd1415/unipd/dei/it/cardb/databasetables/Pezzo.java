@@ -12,12 +12,10 @@ public class Pezzo {
     // Pezzo Columns
     public static final String PEZZO_PK_ID = "id";
     public static final String PEZZO_DESCRIZIONE = "descrizione";
-    public static final String PEZZO_NUMERO_TOTALE_PEZZI = "numero_totale_pezzi";
-    public static final String PEZZO_PREZZO_VENDITA = "prezzo_vedita";
-
     public static final String PEZZO_COLUMS = "(" + PEZZO_PK_ID + ", "
             + PEZZO_DESCRIZIONE + ")";
-
+    public static final String PEZZO_NUMERO_TOTALE_PEZZI = "numero_totale_pezzi";
+    public static final String PEZZO_PREZZO_VENDITA = "prezzo_vedita";
     private int id; //PRIMARY-KEY
     private String descrizione;
     private int numero_totale_pezzi;

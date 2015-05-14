@@ -12,15 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import bd1415.unipd.dei.it.cardb.databasetables.Personale;
-
 public class PersonaleMenuFragment extends ListFragment {
-
-    private boolean isLarge = true;
-    private FragmentManager mFM;
 
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
+    public static PersonaleArrayAdapter list = null;
+    private boolean isLarge = true;
+    private FragmentManager mFM;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,8 +36,6 @@ public class PersonaleMenuFragment extends ListFragment {
     public void onResume() {
         super.onResume();
     }
-
-    public static PersonaleArrayAdapter list = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

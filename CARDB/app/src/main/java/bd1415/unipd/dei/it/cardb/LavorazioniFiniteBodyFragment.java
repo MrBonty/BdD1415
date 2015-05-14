@@ -39,22 +39,19 @@ import static android.view.View.OnClickListener;
 
 public class LavorazioniFiniteBodyFragment extends Fragment {
 
+    private static Context mCtx = MainActivity.ctx;
+    private static Dialog mTmpDial;
+    private static Fattura mFat;
+    private static Dialog mTmpDialogPicker;
+    private static boolean toShowFattura = false;
     private int mPos = -1;
     private boolean mIsVis = false;
     private ViewHolder viewHolder;
     private ImageView mImage;
     private LinearLayout mBody;
-
     private boolean mIsFinished; // set a true if show finished work
     private Veicolo mVeicolo = null;
     private Lavoro mLavoro = null;
-    private static Context mCtx = MainActivity.ctx;
-    private static Dialog mTmpDial;
-    private static Fattura mFat;
-
-    private static Dialog mTmpDialogPicker;
-
-    private static boolean toShowFattura = false;
 
     //onCreate
     @Override
@@ -87,10 +84,10 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
             mBody = (LinearLayout) view.findViewById(R.id.ll_lavorazioni);
             mImage.setVisibility(View.GONE);
             mBody.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             mImage = (ImageView) view.findViewById(R.id.image_lavorazioni);
             mBody = (LinearLayout) view.findViewById(R.id.ll_lavorazioni);
-            if(mImage != null && mBody != null) {
+            if (mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);
             }
@@ -134,9 +131,9 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
             List<String> guastiManutenzioni = new ArrayList<>();
             ArrayList<Integer> color = new ArrayList<>();
 
-            for (int i = 0; i<ApplicationData.usato.size(); i++) {
+            for (int i = 0; i < ApplicationData.usato.size(); i++) {
                 Usato u = ApplicationData.usato.get(i);
-                if(mLavoro.getId() == u.getLavoro()){
+                if (mLavoro.getId() == u.getLavoro()) {
                     String tmp = "" + u.getPezzo();
                     for (int j = 0; j < ApplicationData.pezzi.size(); j++) {
                         Pezzo p = ApplicationData.pezzi.get(j);
@@ -160,7 +157,7 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
                     for (int j = 0; j < ApplicationData.guasti.size(); j++) {
                         Guasto g = ApplicationData.guasti.get(j);
                         if (g.getId() == guasto) {
-                            tmp += " - " + g.getDescrizione().split(":")[0];
+                            tmp += "G - " + g.getDescrizione().split(":")[0];
                             break;
                         }
                     }
@@ -177,7 +174,7 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
                     for (int j = 0; j < ApplicationData.manutenzioni.size(); j++) {
                         Manutenzione m = ApplicationData.manutenzioni.get(j);
                         if (m.getId() == manutenzione) {
-                            tmp += " - " + m.getDescrizione();
+                            tmp += "M - " + m.getDescrizione();
                             break;
                         }
                     }
@@ -205,8 +202,10 @@ public class LavorazioniFiniteBodyFragment extends Fragment {
                 int idFattura = lavoro.getFattura();
 
                 if (!mIsFinished) {
-                    String date = Util.getDate();//TODO method for generate a date
+                    String date = Util.getDate()[0];//TODO method for generate a date
                     mLavoro.setData_fine(date, true);
+                    date = Util.getDate()[1];
+                    mLavoro.setData_fine(date, false);
 
                     mTmpDial = new Dialog(mCtx);
 

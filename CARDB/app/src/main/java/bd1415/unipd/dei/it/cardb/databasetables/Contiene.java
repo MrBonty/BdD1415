@@ -2,7 +2,6 @@ package bd1415.unipd.dei.it.cardb.databasetables;
 
 import bd1415.unipd.dei.it.cardb.InsertInDataBase;
 import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
-import bd1415.unipd.dei.it.cardb.Util;
 
 public class Contiene {
 
@@ -69,6 +68,16 @@ public class Contiene {
         params[4] = "('" + this.ordine_data + "', '" + this.ordine_data + "', " + this.pezzo + ")";
         new UpdateValueInDataBase().execute(params);
     }
+
+    /*public void updateDateInDatabase(String nuovo_valore, String nome_attributo) {
+        String[] params = new String[5];
+        params[0] = TABLE_CONTIENE;
+        params[1] = nome_attributo;
+        params[2] = "(to_date('" + nuovo_valore + "', 'YYYY-MM-DD'))";
+        params[3] = "(" + CONTIENE_PK_ORDINE_DATA + ", " + CONTIENE_PK_ORDINE_FORNITORE + ", " + CONTIENE_PK_PEZZO + ")";
+        params[4] = "('" + this.ordine_data + "', '" + this.ordine_data + "', " + this.pezzo + ")";
+        new UpdateValueInDataBase().execute(params);
+    }*/
 
     public String getOrdine_data() {
         return ordine_data;

@@ -1,10 +1,7 @@
 package bd1415.unipd.dei.it.cardb.databasetables;
 
-import java.security.PrivateKey;
-
 import bd1415.unipd.dei.it.cardb.InsertInDataBase;
 import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
-import bd1415.unipd.dei.it.cardb.Util;
 
 public class Privato {
 

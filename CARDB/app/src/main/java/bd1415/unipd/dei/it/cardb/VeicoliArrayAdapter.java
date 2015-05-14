@@ -1,12 +1,12 @@
 package bd1415.unipd.dei.it.cardb;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.app.Activity;
 
 import java.util.List;
 
@@ -20,12 +20,6 @@ public class VeicoliArrayAdapter extends ArrayAdapter<Veicolo> {
     public VeicoliArrayAdapter(Context context, List items) {
         super(context, android.R.layout.simple_list_item_1, items);
         this.context = context;
-    }
-
-
-    private class ViewHolder {
-        TextView titleText;
-        TextView infoText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -47,5 +41,10 @@ public class VeicoliArrayAdapter extends ArrayAdapter<Veicolo> {
         holder.titleText.setText(item.getTarga());
         holder.infoText.setText(item.getNumero_telaio());
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
+        TextView infoText;
     }
 }

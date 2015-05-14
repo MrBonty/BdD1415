@@ -26,14 +26,11 @@ import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
-import bd1415.unipd.dei.it.cardb.databasetables.Fattura;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavora_a;
 import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
-import bd1415.unipd.dei.it.cardb.databasetables.Modello;
 import bd1415.unipd.dei.it.cardb.databasetables.Personale;
-import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
 
-public class PersonaleBodyFragment extends Fragment{
+public class PersonaleBodyFragment extends Fragment {
 
     private ViewHolder viewHolder = null;
 
@@ -72,10 +69,10 @@ public class PersonaleBodyFragment extends Fragment{
             mImage.setVisibility(View.GONE);
             mBody = (LinearLayout) view.findViewById(R.id.ll_personale);
             mBody.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             mImage = (ImageView) view.findViewById(R.id.image_clienti);
             mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
-            if(mImage != null && mBody != null) {
+            if (mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);
             }
@@ -100,21 +97,21 @@ public class PersonaleBodyFragment extends Fragment{
             mCurrentPer = per;
 
             ArrayList<String> item = new ArrayList<>();
-            for(int i = 0; i< ApplicationData.lavora_a.size(); i++) {
+            for (int i = 0; i < ApplicationData.lavora_a.size(); i++) {
                 String ins = "";
                 Lavora_a tmp = ApplicationData.lavora_a.get(i);
                 boolean doIt = true;
 
-                for(int j= 0; j< ApplicationData.lavoriInCorso.size(); j++){
+                for (int j = 0; j < ApplicationData.lavoriInCorso.size(); j++) {
                     Lavoro ll = ApplicationData.lavoriInCorso.get(j);
-                    if(tmp.getLavoro() == ll.getId()){
+                    if (tmp.getLavoro() == ll.getId()) {
                         ins = ll.getId() + " " + ll.getData_inizio() + " ore lav: ";
                         ins += tmp.getOre_lavoro() + " straordinari: " + tmp.getStraordinari();
                     }
                 }
-                for (int j = 0; j<ApplicationData.lavoriFiniti.size() && doIt; j++){
+                for (int j = 0; j < ApplicationData.lavoriFiniti.size() && doIt; j++) {
                     Lavoro ll = ApplicationData.lavoriFiniti.get(j);
-                    if(tmp.getLavoro() == ll.getId()){
+                    if (tmp.getLavoro() == ll.getId()) {
                         ins = ll.getId() + " " + ll.getData_inizio() + " ~ " + ll.getData_fine() + " ore lav: ";
                         ins += tmp.getOre_lavoro() + " straordinari " + tmp.getStraordinari();
                     }
@@ -130,27 +127,27 @@ public class PersonaleBodyFragment extends Fragment{
             viewHolder.contratto.setText(per.getContratto());
             viewHolder.telefono.setText(per.getTelefono());
 
-            for(int i= 0; i<ApplicationData.edifici.size(); i++) {
+            for (int i = 0; i < ApplicationData.edifici.size(); i++) {
                 Edificio tmp = ApplicationData.edifici.get(i);
                 if (tmp.getId() == per.getEdificio()) {
-                    String ss = tmp.getId()+ " " + tmp.getTipologia();
+                    String ss = tmp.getId() + " " + tmp.getTipologia();
                     viewHolder.edificio.setText(ss);
                     break;
                 }
             }
 
-            if(per.getResponsabile() == 0) {
+            if (per.getResponsabile() == 0) {
                 viewHolder.responsabile.setChecked(false);
-            }else {
+            } else {
                 viewHolder.responsabile.setChecked(true);
             }
             viewHolder.responsabile.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if(isChecked){
-                        for(int i = 0; i< ApplicationData.personale.size(); i++){
+                    if (isChecked) {
+                        for (int i = 0; i < ApplicationData.personale.size(); i++) {
                             final Personale tmp = ApplicationData.personale.get(i);
-                            if(tmp.getEdificio() == per.getEdificio() && tmp.getResponsabile() != 0){
+                            if (tmp.getEdificio() == per.getEdificio() && tmp.getResponsabile() != 0) {
                                 final Dialog dial = new Dialog(getActivity().getBaseContext());
                                 dial.requestWindowFeature(Window.FEATURE_NO_TITLE);
                                 dial.setContentView(R.layout.dialog_change);
@@ -186,13 +183,13 @@ public class PersonaleBodyFragment extends Fragment{
                             }
                         }
 
-                    }else{
+                    } else {
                         per.setResponsabile(0, true);
                     }
                 }
             });
 
-            if(per.getIndirizzo() != null){
+            if (per.getIndirizzo() != null) {
                 viewHolder.citta.setText(per.getIndirizzo().città);
                 viewHolder.provincia.setText(per.getIndirizzo().provincia);
                 viewHolder.indirizzo.setText(per.getIndirizzo().indirizzo);
@@ -422,7 +419,7 @@ public class PersonaleBodyFragment extends Fragment{
         return view;
     }
 
-    private View.OnClickListener openDialog(){
+    private View.OnClickListener openDialog() {
         return new View.OnClickListener() {
 
             private Lavoro selWork;
@@ -457,15 +454,15 @@ public class PersonaleBodyFragment extends Fragment{
                     Lavoro lavTmp = ApplicationData.lavoriInCorso.get(i);
                     boolean toInsert = true;
 
-                    for(int j = 0; j < ApplicationData.lavora_a.size(); j++){
+                    for (int j = 0; j < ApplicationData.lavora_a.size(); j++) {
                         Lavora_a lavA = ApplicationData.lavora_a.get(j);
-                        if(lavA.getLavoro() == lavTmp.getId() && mCurrentPer.getCf().equals(lavA.getPersonale())){
+                        if (lavA.getLavoro() == lavTmp.getId() && mCurrentPer.getCf().equals(lavA.getPersonale())) {
                             toInsert = false;
                             break;
                         }
                     }
 
-                    if(toInsert) {
+                    if (toInsert) {
                         String token = "";
                         token += lavTmp.getId();
                         for (int j = token.length(); j < 5; j++) {
@@ -525,13 +522,13 @@ public class PersonaleBodyFragment extends Fragment{
         };
     }
 
-    private void addWorkToListView(Lavoro lavToAdd){
+    private void addWorkToListView(Lavoro lavToAdd) {
         String ins = "";
 
         ins = lavToAdd.getId() + " " + lavToAdd.getData_inizio() + " ore lav: ";
         ins += 0 + " straordinari: " + 0;
 
-        Lavora_a tmp = new Lavora_a(mCurrentPer.getCf(),lavToAdd.getId(),true);
+        Lavora_a tmp = new Lavora_a(mCurrentPer.getCf(), lavToAdd.getId(), true);
 
         mAdapter.add(ins);
         mAdapter.notifyDataSetChanged();

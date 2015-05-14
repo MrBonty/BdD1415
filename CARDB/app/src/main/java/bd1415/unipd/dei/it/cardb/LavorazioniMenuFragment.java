@@ -14,13 +14,12 @@ import android.widget.Toast;
 
 
 public class LavorazioniMenuFragment extends ListFragment {
-    private boolean mIsFinished;
-    private boolean isLarge = true;
-    private FragmentManager mFM;
-
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
     public static LavoriArrayAdapter list;
+    private boolean mIsFinished;
+    private boolean isLarge = true;
+    private FragmentManager mFM;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

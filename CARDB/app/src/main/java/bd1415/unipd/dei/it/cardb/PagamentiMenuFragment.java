@@ -12,20 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.zip.Inflater;
-
-import bd1415.unipd.dei.it.cardb.databasetables.Fattura;
-
 public class PagamentiMenuFragment extends ListFragment {
-    private boolean isLarge = true;
-    private FragmentManager mFM;
-
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
-
     public static PagamentiArrayAdapter list;
     public static LayoutInflater infl;
-
+    private boolean isLarge = true;
+    private FragmentManager mFM;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

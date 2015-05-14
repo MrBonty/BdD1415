@@ -12,17 +12,12 @@ import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Ordine;
 
-public class OrdiniArrayAdapter extends ArrayAdapter<Ordine>{
+public class OrdiniArrayAdapter extends ArrayAdapter<Ordine> {
     private Context context;
 
     public OrdiniArrayAdapter(Context context, List items) {
         super(context, R.layout.ordini_item, items);
         this.context = context;
-    }
-
-
-    private class ViewHolder {
-        TextView titleText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -42,6 +37,10 @@ public class OrdiniArrayAdapter extends ArrayAdapter<Ordine>{
         }
         holder.titleText.setText("Data: " + item.getData_or() + " Fornitore: " + item.getFornitore());
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
     }
 }
 

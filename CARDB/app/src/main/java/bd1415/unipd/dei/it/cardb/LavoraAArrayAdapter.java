@@ -6,14 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
-import bd1415.unipd.dei.it.cardb.databasetables.Lavora_a;
 
 public class LavoraAArrayAdapter extends ArrayAdapter<String> {
 
@@ -22,11 +17,6 @@ public class LavoraAArrayAdapter extends ArrayAdapter<String> {
     public LavoraAArrayAdapter(Context context, List<String> items) {
         super(context, android.R.layout.simple_list_item_1, items);
         this.context = context;
-    }
-
-
-    private class ViewHolder {
-        TextView titleText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -47,5 +37,9 @@ public class LavoraAArrayAdapter extends ArrayAdapter<String> {
         }
         holder.titleText.setText(item);
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
     }
 }

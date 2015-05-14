@@ -8,21 +8,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
-
 public class VeicoliMenuFragment extends ListFragment {
-
-    private boolean isLarge = true;
-    private FragmentManager mFM;
 
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
+    public static VeicoliArrayAdapter list;
+    private boolean isLarge = true;
+    private FragmentManager mFM;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,8 +36,6 @@ public class VeicoliMenuFragment extends ListFragment {
     public void onResume() {
         super.onResume();
     }
-
-    public static VeicoliArrayAdapter list;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,7 +87,6 @@ public class VeicoliMenuFragment extends ListFragment {
             ft.addToBackStack(null);
             ft.commit();
         }
-        Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
     }
 
 

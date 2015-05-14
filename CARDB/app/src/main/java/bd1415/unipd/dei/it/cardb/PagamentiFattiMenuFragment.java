@@ -14,15 +14,12 @@ import android.widget.Toast;
 
 
 public class PagamentiFattiMenuFragment extends ListFragment {
-    private boolean isLarge = true;
-    private FragmentManager mFM;
-
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
-
     public static PagamentiArrayAdapter list;
     public static LayoutInflater infl;
-
+    private boolean isLarge = true;
+    private FragmentManager mFM;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

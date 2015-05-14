@@ -12,12 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class OrdiniMenuFragment extends ListFragment{
-    private boolean isLarge = true;
-    private FragmentManager mFM;
-
+public class OrdiniMenuFragment extends ListFragment {
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
+    public static OrdiniArrayAdapter list;
+    private boolean isLarge = true;
+    private FragmentManager mFM;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,9 +38,10 @@ public class OrdiniMenuFragment extends ListFragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        setListAdapter(new OrdiniArrayAdapter(inflater.getContext(), ApplicationData.ordini));
 
-        mFM = getFragmentManager();
+        list = new OrdiniArrayAdapter(inflater.getContext(), ApplicationData.ordiniInCorso);
+        setListAdapter(list);
+
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 

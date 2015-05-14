@@ -22,11 +22,6 @@ public class LavoriArrayAdapter extends ArrayAdapter<Lavoro> {
         this.context = context;
     }
 
-
-    private class ViewHolder {
-        TextView titleText;
-    }
-
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         Lavoro item = (Lavoro) getItem(position);
@@ -42,7 +37,11 @@ public class LavoriArrayAdapter extends ArrayAdapter<Lavoro> {
             viewToUse = convertView;
             holder = (ViewHolder) viewToUse.getTag();
         }
-        holder.titleText.setText(item.getId() + ", periodo: " + item.getData_inizio() + " ~ " + item.getData_fine());
+        holder.titleText.setText("ID LAV: " + item.getId() + "  Inizio: " + item.getData_inizio() + "   Fine: " + item.getData_fine());
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
     }
 }

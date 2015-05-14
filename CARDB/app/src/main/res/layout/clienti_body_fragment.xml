@@ -205,7 +205,23 @@
                         android:textSize="25sp" />
 
                 </LinearLayout>
+
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_button_clienti"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+                <Button
+                    android:id="@+id/add_veicolo_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aggiungi Veicolo"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
         </LinearLayout>
 
         <View

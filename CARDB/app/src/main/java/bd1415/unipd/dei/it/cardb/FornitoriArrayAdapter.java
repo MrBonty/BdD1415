@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
 import bd1415.unipd.dei.it.cardb.databasetables.Fornitore;
 
 public class FornitoriArrayAdapter extends ArrayAdapter<Fornitore> {
@@ -20,12 +19,6 @@ public class FornitoriArrayAdapter extends ArrayAdapter<Fornitore> {
     public FornitoriArrayAdapter(Context context, List items) {
         super(context, android.R.layout.simple_list_item_1, items);
         this.context = context;
-    }
-
-
-    private class ViewHolder {
-        TextView titleText;
-        TextView infoText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -47,5 +40,10 @@ public class FornitoriArrayAdapter extends ArrayAdapter<Fornitore> {
         holder.titleText.setText(item.getNome());
         holder.infoText.setText(item.getPiva());
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
+        TextView infoText;
     }
 }

@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
 import bd1415.unipd.dei.it.cardb.databasetables.Pezzo;
 
 public class MagazzinoArrayAdapter extends ArrayAdapter<Pezzo> {
@@ -21,11 +20,6 @@ public class MagazzinoArrayAdapter extends ArrayAdapter<Pezzo> {
     public MagazzinoArrayAdapter(Context context, List items) {
         super(context, android.R.layout.simple_list_item_1, items);
         this.context = context;
-    }
-
-
-    private class ViewHolder {
-        TextView titleText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -51,6 +45,10 @@ public class MagazzinoArrayAdapter extends ArrayAdapter<Pezzo> {
         holder.titleText.setText(item.getId() + " " + s);
 
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
     }
 
 }

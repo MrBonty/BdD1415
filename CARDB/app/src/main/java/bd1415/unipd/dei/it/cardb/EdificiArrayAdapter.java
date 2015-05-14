@@ -11,20 +11,14 @@ import android.widget.TextView;
 import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
-import bd1415.unipd.dei.it.cardb.databasetables.Fornitore;
 
-public class EdificiArrayAdapter extends ArrayAdapter<Edificio>{
+public class EdificiArrayAdapter extends ArrayAdapter<Edificio> {
 
     private Context context;
 
     public EdificiArrayAdapter(Context context, List items) {
         super(context, R.layout.edificio_item, items);
         this.context = context;
-    }
-
-
-    private class ViewHolder {
-        TextView titleText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -43,7 +37,11 @@ public class EdificiArrayAdapter extends ArrayAdapter<Edificio>{
             holder = (ViewHolder) viewToUse.getTag();
         }
 
-        holder.titleText.setText(item.getId()+ " "+ item.getTipologia());
+        holder.titleText.setText(item.getId() + " " + item.getTipologia());
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
     }
 }

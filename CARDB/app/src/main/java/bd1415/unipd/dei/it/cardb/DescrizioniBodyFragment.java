@@ -1,39 +1,29 @@
 package bd1415.unipd.dei.it.cardb;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
 import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
 import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
 
 public class DescrizioniBodyFragment extends Fragment {
 
+    private static final String[] TYPE = {"Guasto", "Manutenzione"};
+    private static final ArrayList<String> TY = new ArrayList<>();
     private int mPos = -1;
     private boolean mIsVis = false;
     private ViewHolder viewHolder;
     private ImageView mImage;
     private LinearLayout mBody;
-
-    private static final String[] TYPE = {"Guasto", "Manutenzione"};
-    private static final ArrayList<String> TY = new ArrayList<>();
-
     private String mItem = "";
     private boolean mIsG;
     private Guasto mG;
@@ -74,10 +64,10 @@ public class DescrizioniBodyFragment extends Fragment {
             mBody = (LinearLayout) view.findViewById(R.id.ll_descrizioni);
             mImage.setVisibility(View.GONE);
             mBody.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             mImage = (ImageView) view.findViewById(R.id.image_descrizioni);
             mBody = (LinearLayout) view.findViewById(R.id.ll_descrizioni);
-            if(mImage != null && mBody != null) {
+            if (mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);
             }
@@ -127,9 +117,9 @@ public class DescrizioniBodyFragment extends Fragment {
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                         @Override
                         public void onDismiss(DialogInterface dialog) {
-                            if(mIsG){
+                            if (mIsG) {
                                 mG.setDescrizione(viewHolder.descrizione.getText().toString(), true);
-                            }else {
+                            } else {
                                 mM.setDescrizione(viewHolder.descrizione.getText().toString(), true);
                             }
                         }

@@ -11,8 +11,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import bd1415.unipd.dei.it.cardb.databasetables.Contiene;
-
 public class DescrizioniArrayAdapter extends ArrayAdapter<String> {
 
     private ArrayList<Integer> color;
@@ -22,10 +20,6 @@ public class DescrizioniArrayAdapter extends ArrayAdapter<String> {
         super(context, android.R.layout.simple_list_item_1, items);
         this.color = color;
         mCtx = context;
-    }
-
-    private class ViewHolder {
-        TextView titleText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -45,6 +39,7 @@ public class DescrizioniArrayAdapter extends ArrayAdapter<String> {
 
             vh = new ViewHolder();
             vh.titleText = (TextView) viewToUse.findViewById(R.id.descrizione_name);
+            vh.titleInfo = (TextView) viewToUse.findViewById(R.id.descrizioni_info);
             viewToUse.setTag(vh);
         } else {
             viewToUse = convertView;
@@ -53,8 +48,14 @@ public class DescrizioniArrayAdapter extends ArrayAdapter<String> {
 
         viewToUse.setBackgroundColor(color.get(position));
         vh.titleText.setText(tmp);
+        vh.titleInfo.setText("");
 
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
+        TextView titleInfo;
     }
 }
 

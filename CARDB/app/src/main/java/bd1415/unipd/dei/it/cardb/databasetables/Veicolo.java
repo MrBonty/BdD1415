@@ -2,7 +2,6 @@ package bd1415.unipd.dei.it.cardb.databasetables;
 
 import bd1415.unipd.dei.it.cardb.InsertInDataBase;
 import bd1415.unipd.dei.it.cardb.UpdateValueInDataBase;
-import bd1415.unipd.dei.it.cardb.Util;
 
 public class Veicolo {
 
@@ -30,7 +29,8 @@ public class Veicolo {
     private String modello_marca; //FOREING KEY
 
 
-    public Veicolo() {}
+    public Veicolo() {
+    }
 
     //TODO -- CHECK IT
     public Veicolo(String numero_telaio, String modello_cod_prod, String modello_marca, boolean insert) {

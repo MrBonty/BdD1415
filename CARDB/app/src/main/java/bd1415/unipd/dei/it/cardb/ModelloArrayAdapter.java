@@ -23,12 +23,6 @@ public class ModelloArrayAdapter extends ArrayAdapter<Modello> {
         this.context = context;
     }
 
-
-    private class ViewHolder {
-        TextView titleText;
-        TextView codiceText;
-    }
-
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         Modello item = (Modello) getItem(position);
@@ -50,6 +44,11 @@ public class ModelloArrayAdapter extends ArrayAdapter<Modello> {
         holder.codiceText.setText(item.getCodice_produzione());
 
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
+        TextView codiceText;
     }
 
 }

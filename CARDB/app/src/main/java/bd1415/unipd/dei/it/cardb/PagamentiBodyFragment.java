@@ -22,16 +22,13 @@ import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 public class PagamentiBodyFragment extends Fragment {
 
 
+    private static boolean mIsPayed;
+    private static Fattura mFattura;
     private ViewHolder viewHolder = null;
-
     private int mPos = -1;
     private boolean mIsVis = false;
-    private static boolean mIsPayed;
-
     private ImageView mImage;
     private LinearLayout mBody;
-
-    private static Fattura mFattura;
 
     //onCreate
     @Override
@@ -65,10 +62,10 @@ public class PagamentiBodyFragment extends Fragment {
             mImage.setVisibility(View.GONE);
             mBody = (LinearLayout) view.findViewById(R.id.ll_pagamenti);
             mBody.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             mImage = (ImageView) view.findViewById(R.id.image_pagamenti);
             mBody = (LinearLayout) view.findViewById(R.id.ll_pagamenti);
-            if(mImage != null && mBody != null) {
+            if (mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);
             }
@@ -80,68 +77,73 @@ public class PagamentiBodyFragment extends Fragment {
         viewHolder.cliente = (TextView) view.findViewById(R.id.pagamenti_cliente_data);
         viewHolder.lavori = (ListView) view.findViewById(android.R.id.list);
 
-        if(mIsVis) {
+        if (mIsVis) {
             mFattura = ApplicationData.fattureNon.get(mPos);
-            viewHolder.id.setText(mFattura.getId()+"");
+            viewHolder.id.setText(mFattura.getId() + "");
             viewHolder.pagato.setEnabled(true);
             viewHolder.pagato.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if(viewHolder.pagato.isChecked()){
-                        mFattura.setPagato(1, false);
+                    if (viewHolder.pagato.isChecked()) {
+                        mFattura.setPagato(1, true);
+
                         ApplicationData.fattureNon.remove(mPos);
                         ApplicationData.fatturePagate.add(mFattura);
-                        for(int i = ApplicationData.fatturePagate.size()-1; i>= 0; i--) {
 
-                            if(ApplicationData.fatturePagate.get(i).getId() == mFattura.getId()) {
+                        for (int i = ApplicationData.fatturePagate.size() - 1; i >= 0; i--) {
+
+                            if (ApplicationData.fatturePagate.get(i).getId() == mFattura.getId()) {
                                 mPos = i;
                                 mIsPayed = true;
                                 break;
                             }
                         }
                         viewHolder.pagato.setEnabled(false);
+
                         PagamentiMenuFragment.list.notifyDataSetChanged();
-                        if(PagamentiFattiMenuFragment.list != null){
+                        if (PagamentiFattiMenuFragment.list != null) {
                             PagamentiFattiMenuFragment.list.notifyDataSetChanged();
+                        } else {
+                            PagamentiFattiMenuFragment.list = new PagamentiArrayAdapter(PagamentiFattiMenuFragment.infl.getContext(), ApplicationData.fatturePagate);
                         }
                         view.setVisibility(View.GONE);
                     }
                 }
             });
 
-            Azienda az= null;
-            Privato pr= null;
-            if(mFattura.getAzienda() != null || !("").equals(mFattura.getAzienda())){
-                for(int i = 0; i<ApplicationData.aziende.size(); i++){
+            Azienda az = null;
+            Privato pr = null;
+            if (mFattura.getAzienda() != null || !("").equals(mFattura.getAzienda())) {
+                for (int i = 0; i < ApplicationData.aziende.size(); i++) {
                     az = ApplicationData.aziende.get(i);
-                    if(az.getPiva().equals(mFattura.getAzienda())){
+                    if (az.getPiva().equals(mFattura.getAzienda())) {
                         break;
                     }
                 }
-                if(az != null) {
+                if (az != null) {
                     viewHolder.cliente.setText(az.getNome());
                 }
-            }else{
-                for(int i = 0; i<ApplicationData.privati.size(); i++){
+            } else {
+                for (int i = 0; i < ApplicationData.privati.size(); i++) {
                     pr = ApplicationData.privati.get(i);
-                    if(pr.getCf().equals(mFattura.getPrivato())){
+                    if (pr.getCf().equals(mFattura.getPrivato())) {
                         break;
                     }
                 }
-                if(pr != null) {
+                if (pr != null) {
                     viewHolder.cliente.setText(pr.getNome() + " " + pr.getCognome());
                 }
             }
 
             ArrayList<Lavoro> item = new ArrayList<>();
             String data = "";
-            for(int i= 0; i< ApplicationData.lavoriFiniti.size(); i++){
+            for (int i = 0; i < ApplicationData.lavoriFiniti.size(); i++) {
                 Lavoro tmp = ApplicationData.lavoriFiniti.get(i);
-                if(tmp.getFattura() != mFattura.getId()){
+                if (tmp.getFattura() != mFattura.getId()) {
                     item.add(tmp);
                 }
 
-                if(Util.compareDate(data, tmp.getData_fine())){
+                if (Util.compareDate(data, tmp.getData_fine())) {
                     data = tmp.getData_fine();
                 }
             }
@@ -155,7 +157,7 @@ public class PagamentiBodyFragment extends Fragment {
         return view;
     }
 
-    private class ViewHolder{
+    private class ViewHolder {
         public TextView id;
         public CheckBox pagato;
         public TextView data;

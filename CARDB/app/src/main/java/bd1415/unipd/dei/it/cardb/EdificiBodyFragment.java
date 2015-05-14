@@ -17,7 +17,7 @@ import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
 import bd1415.unipd.dei.it.cardb.databasetables.Personale;
 
-public class EdificiBodyFragment extends Fragment{
+public class EdificiBodyFragment extends Fragment {
 
     private ViewHolder viewHolder = null;
 
@@ -51,10 +51,10 @@ public class EdificiBodyFragment extends Fragment{
             mImage.setVisibility(View.GONE);
             mBody = (LinearLayout) view.findViewById(R.id.ll_edifici);
             mBody.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             mImage = (ImageView) view.findViewById(R.id.image_edifici);
             mBody = (LinearLayout) view.findViewById(R.id.ll_edifici);
-            if(mImage != null && mBody != null) {
+            if (mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);
             }
@@ -70,13 +70,13 @@ public class EdificiBodyFragment extends Fragment{
         viewHolder.numero_civico = (TextView) view.findViewById(R.id.edificio_civico_data);
         viewHolder.personale = (ListView) view.findViewById(android.R.id.list);
 
-        if(mIsVis){
+        if (mIsVis) {
             final Edificio ed = ApplicationData.edifici.get(mPos);
 
             viewHolder.id.setText(ed.getId() + "");
             viewHolder.tipologia.setText(ed.getTipologia());
 
-            if(ed.getIndirizzo() != null){
+            if (ed.getIndirizzo() != null) {
                 viewHolder.citta.setText(ed.getIndirizzo().città);
                 viewHolder.indirizzo.setText(ed.getIndirizzo().indirizzo);
                 viewHolder.provincia.setText(ed.getIndirizzo().provincia);
@@ -84,12 +84,12 @@ public class EdificiBodyFragment extends Fragment{
             }
 
             ArrayList<Personale> item = new ArrayList<>();
-            for(int i = 0; i< ApplicationData.personale.size(); i++){
+            for (int i = 0; i < ApplicationData.personale.size(); i++) {
                 Personale tmp = ApplicationData.personale.get(i);
-                if(tmp.getEdificio() == ed.getId()){
-                    if(tmp.getResponsabile() == 0){
+                if (tmp.getEdificio() == ed.getId()) {
+                    if (tmp.getResponsabile() == 0) {
                         item.add(tmp);
-                    }else{
+                    } else {
                         viewHolder.respId.setText(tmp.getCf());
                         viewHolder.respNom.setText(tmp.getNome() + " " + tmp.getCognome());
                     }

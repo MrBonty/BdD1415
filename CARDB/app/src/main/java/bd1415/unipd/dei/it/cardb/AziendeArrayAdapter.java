@@ -11,7 +11,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
-import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 
 public class AziendeArrayAdapter extends ArrayAdapter<Azienda> {
 
@@ -21,12 +20,6 @@ public class AziendeArrayAdapter extends ArrayAdapter<Azienda> {
     public AziendeArrayAdapter(Context context, List items) {
         super(context, android.R.layout.simple_list_item_1, items);
         this.context = context;
-    }
-
-
-    private class ViewHolder {
-        TextView titleText;
-        TextView infoText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -46,10 +39,15 @@ public class AziendeArrayAdapter extends ArrayAdapter<Azienda> {
             holder = (ViewHolder) viewToUse.getTag();
         }
 
-        holder.titleText.setText( item.getNome() );
+        holder.titleText.setText(item.getNome());
         holder.infoText.setText(item.getPiva());
 
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
+        TextView infoText;
     }
 
 }

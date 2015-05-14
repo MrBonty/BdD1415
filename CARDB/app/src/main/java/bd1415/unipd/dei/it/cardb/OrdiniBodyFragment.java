@@ -5,19 +5,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Contiene;
 import bd1415.unipd.dei.it.cardb.databasetables.Ordine;
+import bd1415.unipd.dei.it.cardb.databasetables.Pezzo;
 
-public class OrdiniBodyFragment extends Fragment{
+public class OrdiniBodyFragment extends Fragment {
     private ViewHolder viewHolder = null;
 
     private int mPos = -1;
@@ -62,20 +63,59 @@ public class OrdiniBodyFragment extends Fragment{
 
         viewHolder.data = (TextView) view.findViewById(R.id.ordine_data_data);
         viewHolder.fornitore = (TextView) view.findViewById(R.id.ordine_fornitore_data);
-        viewHolder.quantità = (TextView) view.findViewById(R.id.ordine_quantita_data);
+        viewHolder.arrivato = (CheckBox) view.findViewById(R.id.ordine_arrivato_data);
         viewHolder.contiene = (ListView) view.findViewById(android.R.id.list);
 
-        if(mIsVis){
+        if (mIsVis) {
             final Ordine or = ApplicationData.ordini.get(mPos);
 
-            viewHolder.data.setText(or.getData_or()+ "");
-            viewHolder.fornitore.setText(or.getFornitore()+ "");
-            viewHolder.quantità.setText(or.getQuantita_fornita()+ "");
+            viewHolder.data.setText(or.getData_or() + "");
+            viewHolder.fornitore.setText(or.getFornitore() + "");
+
+            if (or.getArrivato() == 0) {
+                viewHolder.arrivato.setChecked(false);
+                viewHolder.arrivato.setEnabled(true);
+                viewHolder.arrivato.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (viewHolder.arrivato.isChecked()) {
+                            or.setArrivato(1, true);
+                            ApplicationData.ordiniInCorso.remove(mPos);
+                            for (int i = 0; i < ApplicationData.contiene.size(); i++) {
+                                Contiene c = ApplicationData.contiene.get(i);
+                                if (c.getOrdine_data().equals(or.getData_or()) && c.getOrdine_fornitore().equals(or.getFornitore())) {
+
+                                    for (int j = 0; j < ApplicationData.pezzi.size(); j++) {
+                                        Pezzo p = ApplicationData.pezzi.get(j);
+
+                                        if (p.getId() == c.getPezzo()) {
+                                            int numPezz = p.getNumero_totale_pezzi() + c.getNumero_pezzi();
+                                            p.setNumero_totale_pezzi(numPezz, true);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            viewHolder.arrivato.setEnabled(false);
+                            OrdiniMenuFragment.list.notifyDataSetChanged();
+
+                            view.setVisibility(View.GONE);
+                        }
+                    }
+
+                });
+
+            } else {
+                viewHolder.arrivato.setChecked(true);
+                viewHolder.arrivato.setEnabled(false);
+            }
+
 
             ArrayList<Contiene> tmp = new ArrayList<Contiene>();
-            for(int i = 0; i< ApplicationData.contiene.size(); i++){
+            for (int i = 0; i < ApplicationData.contiene.size(); i++) {
                 Contiene c = ApplicationData.contiene.get(i);
-                if(c.getOrdine_data().equals(or.getData_or()) && c.getOrdine_fornitore().equals(or.getFornitore())){
+                if (c.getOrdine_data().equals(or.getData_or()) && c.getOrdine_fornitore().equals(or.getFornitore())) {
                     tmp.add(c);
                 }
             }
@@ -89,7 +129,7 @@ public class OrdiniBodyFragment extends Fragment{
     private class ViewHolder {
         public TextView data;
         public TextView fornitore;
-        public TextView quantità;
+        public CheckBox arrivato;
         public ListView contiene;
     }
 

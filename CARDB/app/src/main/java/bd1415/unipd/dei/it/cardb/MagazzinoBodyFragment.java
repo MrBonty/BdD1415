@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Pezzo;
@@ -53,10 +52,10 @@ public class MagazzinoBodyFragment extends Fragment {
             mImage.setVisibility(View.GONE);
             mBody = (LinearLayout) view.findViewById(R.id.ll_magazzino);
             mBody.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             mImage = (ImageView) view.findViewById(R.id.image_magazzino);
             mBody = (LinearLayout) view.findViewById(R.id.ll_magazzino);
-            if(mImage != null && mBody != null) {
+            if (mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);
             }
@@ -67,7 +66,7 @@ public class MagazzinoBodyFragment extends Fragment {
         viewHolder.prezzo_vendita = (TextView) view.findViewById(R.id.magazzino_prezzo_data);
         viewHolder.descrizione = (TextView) view.findViewById(R.id.magazzino_desc_data);
 
-        if(mIsVis) {
+        if (mIsVis) {
             final Pezzo pezzo = ApplicationData.pezzi.get(mPos);
 
             viewHolder.id.setText(pezzo.getId() + "");

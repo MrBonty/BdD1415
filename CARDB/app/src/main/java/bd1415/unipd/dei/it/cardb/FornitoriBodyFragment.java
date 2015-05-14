@@ -11,8 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
-import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
 import bd1415.unipd.dei.it.cardb.databasetables.Contiene;
 import bd1415.unipd.dei.it.cardb.databasetables.Fornitore;
 import bd1415.unipd.dei.it.cardb.databasetables.Ordine;
@@ -51,10 +52,10 @@ public class FornitoriBodyFragment extends Fragment {
             mImage.setVisibility(View.GONE);
             mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
             mBody.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             mImage = (ImageView) view.findViewById(R.id.image_clienti);
             mBody = (LinearLayout) view.findViewById(R.id.ll_clienti);
-            if(mImage != null && mBody != null) {
+            if (mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);
             }
@@ -70,6 +71,7 @@ public class FornitoriBodyFragment extends Fragment {
         viewHolder.provincia = (TextView) view.findViewById(R.id.cliente_provincia_data);
         viewHolder.indirizzo = (TextView) view.findViewById(R.id.cliente_indirizzo_data);
         viewHolder.numero_civico = (TextView) view.findViewById(R.id.cliente_civico_data);
+        viewHolder.ordini = (ListView) view.findViewById(android.R.id.list);
 
         if (mIsVis) {
             final Fornitore az = ApplicationData.fornitori.get(mPos);
@@ -85,12 +87,21 @@ public class FornitoriBodyFragment extends Fragment {
 
             if (az.getIndirizzo() != null) {
                 viewHolder.indirizzo.setText(az.getIndirizzo().indirizzo);
-                viewHolder.indirizzo.setText(az.getIndirizzo().numero_civico+ "");
+                viewHolder.numero_civico.setText(az.getIndirizzo().numero_civico + "");
                 viewHolder.citta.setText(az.getIndirizzo().città);
                 viewHolder.provincia.setText(az.getIndirizzo().provincia);
             }
 
-         viewHolder.nome.setOnClickListener(new View.OnClickListener() {
+            ArrayList<Ordine> ordini = new ArrayList<>();
+            for (int i = 0; i < ApplicationData.ordini.size(); i++) {
+                Ordine tmpOr = ApplicationData.ordini.get(i);
+                if (tmpOr.getFornitore().equals(az.getPiva())) {
+                    ordini.add(tmpOr);
+                }
+            }
+            viewHolder.ordini.setAdapter(new OrdiniArrayAdapter(MainActivity.ctx, ordini));
+
+            viewHolder.nome.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     DialogEdit dialog = new DialogEdit.Builder(viewHolder.nome.getText().toString(),
@@ -116,13 +127,13 @@ public class FornitoriBodyFragment extends Fragment {
                                                     @Override
                                                     public void onDismiss(DialogInterface arg0) {
                                                         String newpiva = viewHolder.pk.getText().toString();
-                                                        for(int i = 0; i< ApplicationData.ordini.size(); i++){
+                                                        for (int i = 0; i < ApplicationData.ordini.size(); i++) {
                                                             Ordine tmp = ApplicationData.ordini.get(i);
                                                             if (tmp.getFornitore().equals(az.getPiva())) {
                                                                 ApplicationData.ordini.get(i).setFornitore(newpiva, false);
                                                             }
                                                         }
-                                                        for(int i = 0; i< ApplicationData.contiene.size(); i++){
+                                                        for (int i = 0; i < ApplicationData.contiene.size(); i++) {
                                                             Contiene tmp = ApplicationData.contiene.get(i);
                                                             if (tmp.getOrdine_fornitore().equals(az.getPiva())) {
                                                                 ApplicationData.contiene.get(i).setOrdine_fornitore(newpiva, false);
@@ -253,6 +264,8 @@ public class FornitoriBodyFragment extends Fragment {
                     );
                 }
             });
+
+
         }
         return view;
     }
@@ -268,7 +281,7 @@ public class FornitoriBodyFragment extends Fragment {
         public TextView citta;
         public TextView provincia;
         public TextView indirizzo;
-        public ListView veicoli;
+        public ListView ordini;
         public TextView numero_civico;
     }
 

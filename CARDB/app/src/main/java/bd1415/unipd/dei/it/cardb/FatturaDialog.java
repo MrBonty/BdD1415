@@ -19,12 +19,11 @@ import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 
 public class FatturaDialog {
 
-    private static Dialog mDialog;
-
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
+    private static Dialog mDialog;
 
-//TODO SISTEMARE
+    //TODO SISTEMARE
     public FatturaDialog(Fattura fattura) {
         mDialog = new Dialog(MainActivity.ctx);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -46,10 +45,10 @@ public class FatturaDialog {
         viewHolder.lavori = (ListView) mDialog.findViewById(android.R.id.list);
 
         viewHolder.id.setText(fattura.getId() + "");
-        if(fattura.getPagato() == 0) {
+        if (fattura.getPagato() == 0) {
             viewHolder.pagato.setChecked(false);
             viewHolder.pagato.setEnabled(false);
-        }else{
+        } else {
             viewHolder.pagato.setChecked(true);
             viewHolder.pagato.setEnabled(false);
         }
@@ -99,13 +98,11 @@ public class FatturaDialog {
     }
 
 
-
-
     public void setOnDismissListener(DialogInterface.OnDismissListener listener) {
         mDialog.setOnDismissListener(listener);
     }
 
-    private class ViewHolder{
+    private class ViewHolder {
         public TextView id;
         public CheckBox pagato;
         public TextView data;

@@ -40,6 +40,7 @@ public class ApplicationData {
     public static ArrayList<Lavoro> lavoriInCorso = new ArrayList<>();
     public static ArrayList<Modello> modelli = new ArrayList<>();
     public static ArrayList<Ordine> ordini = new ArrayList<>();
+    public static ArrayList<Ordine> ordiniInCorso = new ArrayList<>();
     public static ArrayList<Personale> personale = new ArrayList<>();
     public static ArrayList<Pezzo> pezzi = new ArrayList<>();
     public static ArrayList<Privato> privati = new ArrayList<>();
@@ -57,6 +58,9 @@ public class ApplicationData {
     public static int posizioneCorrente;
 
     public static boolean isPayed = false;
+
+    public static int positionLavoriDialogInsert = -1;
+    public static int quantità = -1;
 
     public static void splitWork() {
         for (int i = 0; i < lavori.size(); i++) {
@@ -82,4 +86,13 @@ public class ApplicationData {
         }
     }
 
+    public static void splitOrdini() {
+        for (int i = 0; i < ordini.size(); i++) {
+            Ordine tmp = ordini.get(i);
+            int fine = tmp.getArrivato();
+            if (fine == 0) {
+                ordiniInCorso.add(tmp);
+            }
+        }
+    }
 }

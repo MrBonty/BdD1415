@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,15 +18,13 @@ import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
 import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
 
 public class DescrizioniMenuFragment extends ListFragment {
-    private boolean isLarge = true;
-    private FragmentManager mFM;
-
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
     public static final String GUASTO = "G";
     public static final String MANUT = "M";
-
     public static DescrizioniArrayAdapter list;
+    private boolean isLarge = true;
+    private FragmentManager mFM;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +44,7 @@ public class DescrizioniMenuFragment extends ListFragment {
         ArrayList<Integer> color = new ArrayList<>();
         for (int i = 0; i < ApplicationData.guasti.size(); i++) {
             Guasto g = ApplicationData.guasti.get(i);
-            String tmp = g.getId() + GUASTO;
+            String tmp = "ID: " + g.getId() + "TIPO: " + GUASTO;
 
             guastiManutenzioni.add(tmp);
             color.add(Color.parseColor("#66FF0000")); //Semitrasparent red
@@ -55,7 +52,7 @@ public class DescrizioniMenuFragment extends ListFragment {
 
         for (int i = 0; i < ApplicationData.manutenzioni.size(); i++) {
             Manutenzione m = ApplicationData.manutenzioni.get(i);
-            String tmp = m.getId() + MANUT;
+            String tmp = "ID: " + m.getId() + "TIPO: " + MANUT;
 
             guastiManutenzioni.add(tmp);
             color.add(Color.parseColor("#66FFFF00")); //Semitrasparent yellow
@@ -110,7 +107,6 @@ public class DescrizioniMenuFragment extends ListFragment {
             ft.commit();
 
         }
-        Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
     }
 
 

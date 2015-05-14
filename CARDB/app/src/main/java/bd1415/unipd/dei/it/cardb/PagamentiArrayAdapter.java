@@ -11,7 +11,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Fattura;
-import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
 
 public class PagamentiArrayAdapter extends ArrayAdapter<Fattura> {
 
@@ -20,10 +19,6 @@ public class PagamentiArrayAdapter extends ArrayAdapter<Fattura> {
     public PagamentiArrayAdapter(Context context, List items) {
         super(context, android.R.layout.simple_list_item_1, items);
         this.context = context;
-    }
-
-    private class ViewHolder {
-        TextView titleText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -45,5 +40,9 @@ public class PagamentiArrayAdapter extends ArrayAdapter<Fattura> {
         holder.titleText.setText("Fattura n°" + item.getId());
 
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
     }
 }

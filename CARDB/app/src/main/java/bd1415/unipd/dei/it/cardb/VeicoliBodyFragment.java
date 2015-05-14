@@ -10,9 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -39,6 +37,8 @@ public class VeicoliBodyFragment extends Fragment {
 
     private Veicolo mCurrentV;
 
+    private LavoriArrayAdapter lv;
+
     //onCreate
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,10 +64,10 @@ public class VeicoliBodyFragment extends Fragment {
             mImage.setVisibility(View.GONE);
             mBody = (LinearLayout) view.findViewById(R.id.ll_veicoli);
             mBody.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             mImage = (ImageView) view.findViewById(R.id.image_veicoli);
             mBody = (LinearLayout) view.findViewById(R.id.ll_veicoli);
-            if(mImage != null && mBody != null) {
+            if (mImage != null && mBody != null) {
                 mImage.setVisibility(View.VISIBLE);
                 mBody.setVisibility(View.GONE);
             }
@@ -132,7 +132,8 @@ public class VeicoliBodyFragment extends Fragment {
                 }
             }
 
-            viewHolder.lavorazioni.setAdapter(new LavoriArrayAdapter(MainActivity.ctx, tmp1));
+            lv = new LavoriArrayAdapter(MainActivity.ctx, tmp1);
+            viewHolder.lavorazioni.setAdapter(lv);
 
             viewHolder.addWork.setOnClickListener(openDialog());
             viewHolder.numero_telaio.setOnClickListener(new View.OnClickListener() {
@@ -179,12 +180,12 @@ public class VeicoliBodyFragment extends Fragment {
                                                     @Override
                                                     public void onDismiss(DialogInterface arg0) {
                                                         try {
-                                                        Modello az = ApplicationData.modelli.get(Integer.parseInt(viewHolder.marca.getText().toString()));
-                                                        viewHolder.marca.setText(az.getMarca());
-                                                        viewHolder.modello.setText(az.getNome());
-                                                        viewHolder.anno_modello.setText(az.getAnno());
-                                                        veicolo.setModello_cod_prod(az.getCodice_produzione(), true);
-                                                        veicolo.setModello_marca(az.getMarca(), true);
+                                                            Modello az = ApplicationData.modelli.get(Integer.parseInt(viewHolder.marca.getText().toString()));
+                                                            viewHolder.marca.setText(az.getMarca());
+                                                            viewHolder.modello.setText(az.getNome());
+                                                            viewHolder.anno_modello.setText(az.getAnno());
+                                                            veicolo.setModello_cod_prod(az.getCodice_produzione(), true);
+                                                            veicolo.setModello_marca(az.getMarca(), true);
                                                         } catch (java.lang.NumberFormatException ex) {
 
                                                         }
@@ -279,7 +280,7 @@ public class VeicoliBodyFragment extends Fragment {
                                                                 if (!c.equals(null)) {
                                                                     Azienda az = ApplicationData.aziende.get(Integer.parseInt(c));
                                                                     veicolo.setAzienda(az.getPiva(), true);
-                                                                    viewHolder.proprietario.setText("PIVA: " +  az.getPiva()  + "-- Nome: " + az.getNome());
+                                                                    viewHolder.proprietario.setText("PIVA: " + az.getPiva() + "-- Nome: " + az.getNome());
                                                                     AziendeMenuFragment.list.notifyDataSetChanged();
                                                                 }
                                                             } catch (java.lang.NumberFormatException ex) {
@@ -363,18 +364,21 @@ public class VeicoliBodyFragment extends Fragment {
         };
     }
 
-    private void addNewWork(){
+    private void addNewWork() {
         String toShow = "Lavoro aggiunto con id: ";
 
         Lavoro tmp = new Lavoro(mCurrentV.getNumero_telaio(), true);
-        tmp.setData_inizio(Util.getDate(), true);
+        String date = Util.getDate()[0];//TODO method for generate a date
+        tmp.setData_inizio(date, true);
+        date = Util.getDate()[1];
+        tmp.setData_inizio(date, false);
 
-        while(!(tmp.getId() > 0)) {
-            toShow += tmp.getId();
-        }
+        toShow += tmp.getId();
+
 
         ApplicationData.lavoriInCorso.add(tmp);
         LavorazioniMenuFragment.list.notifyDataSetChanged();
+        lv.add(tmp);
 
         final Dialog show = new Dialog(MainActivity.ctx);
 
@@ -386,7 +390,7 @@ public class VeicoliBodyFragment extends Fragment {
 
         Button cancel = (Button) show.findViewById(R.id.cancel);
         Button add = (Button) show.findViewById(R.id.add);
-        View v2 = (View)show.findViewById(R.id.view2);
+        View v2 = (View) show.findViewById(R.id.view2);
 
         TextView title = (TextView) show.findViewById(R.id.title);
         title.setText(toShow);

@@ -11,7 +11,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Personale;
-import bd1415.unipd.dei.it.cardb.databasetables.Privato;
 
 
 public class PersonaleArrayAdapter extends ArrayAdapter<Personale> {
@@ -21,12 +20,6 @@ public class PersonaleArrayAdapter extends ArrayAdapter<Personale> {
     public PersonaleArrayAdapter(Context context, List items) {
         super(context, R.layout.cliente_item, items);
         this.context = context;
-    }
-
-
-    private class ViewHolder {
-        TextView titleText;
-        TextView infoText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -46,9 +39,14 @@ public class PersonaleArrayAdapter extends ArrayAdapter<Personale> {
             holder = (ViewHolder) viewToUse.getTag();
         }
 
-        holder.titleText.setText( item.getNome() + " " + item.getCognome() );
+        holder.titleText.setText(item.getNome() + " " + item.getCognome());
         holder.infoText.setText(item.getCf());
 
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
+        TextView infoText;
     }
 }

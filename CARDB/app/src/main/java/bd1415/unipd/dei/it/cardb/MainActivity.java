@@ -1,7 +1,6 @@
 package bd1415.unipd.dei.it.cardb;
 
 import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -23,19 +22,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import bd1415.unipd.dei.it.cardb.databasetables.Azienda;
-import bd1415.unipd.dei.it.cardb.databasetables.Edificio;
-import bd1415.unipd.dei.it.cardb.databasetables.Fattura;
-import bd1415.unipd.dei.it.cardb.databasetables.Fornitore;
-import bd1415.unipd.dei.it.cardb.databasetables.Guasto;
-import bd1415.unipd.dei.it.cardb.databasetables.Lavoro;
-import bd1415.unipd.dei.it.cardb.databasetables.Manutenzione;
-import bd1415.unipd.dei.it.cardb.databasetables.Modello;
-import bd1415.unipd.dei.it.cardb.databasetables.Personale;
-import bd1415.unipd.dei.it.cardb.databasetables.Pezzo;
-import bd1415.unipd.dei.it.cardb.databasetables.Privato;
-import bd1415.unipd.dei.it.cardb.databasetables.Veicolo;
-
 public class MainActivity extends ActionBarActivity {
 
     public static String[] params;
@@ -47,20 +33,20 @@ public class MainActivity extends ActionBarActivity {
     public static FrameLayout container;
     public static LinearLayout corrente;
     public static Intent intent;
+    public static LinearLayout lavorazioniLayout;
+    public static LinearLayout lavorazioniFinitiLayout;
+    private static LinearLayout pagamentiLayout;
+    private static LinearLayout pagamentiFattiLayout;
+    public LinearLayout privatiLayout;
+    public LinearLayout aziendeLayout;
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private ExpandableListView leftDrawerList;
     private ExpandableListAdapter exp;
     private String[] leftSliderData = {"Clienti", "Veicoli", "Lavorazioni", "Pagamenti", "Gestione"};
-    public LinearLayout privatiLayout;
-    public LinearLayout aziendeLayout;
     private LinearLayout veicoliLayout;
-    public static LinearLayout lavorazioniLayout;
-    public static LinearLayout lavorazioniFinitiLayout;
     private LinearLayout descrizioniLayout;
-    private static LinearLayout pagamentiLayout;
-    private static LinearLayout pagamentiFattiLayout;
     private LinearLayout magazzinoLayout;
     private LinearLayout fornitoriLayout;
     private LinearLayout ordiniLayout;
@@ -72,59 +58,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Azienda az = new Azienda("poi", false);
-        ApplicationData.aziende.add(az);
-        Fattura fatt = new Fattura(false);
-        fatt.setPagato(0, false);
-        fatt.setId(0, false);
-        ApplicationData.fatture.add(fatt);
-        ApplicationData.splitFatture();
-        Personale per = new Personale("figo", 5, false);
-        ApplicationData.personale.add(per);
-        Modello mm = new Modello("sf", "efsdfd", false);
-        ApplicationData.modelli.add(mm);
-        Edificio c = new Edificio("pippo", false);
-        c.setId(5, false);
-        ApplicationData.edifici.add(c);
-        Fornitore f = new Fornitore("lillo", false);
-        ApplicationData.fornitori.add(f);
-        Privato prv = new Privato();
-        prv.setCf("wsdhfds", false);
-        prv.setNome("7378", false);
-        ApplicationData.privati.add(prv);
-        Veicolo vc = new Veicolo();
-        vc.setPrivato("wsdhfds", false);
-        vc.setTarga("wjkefewj", false);
-        vc.setNumero_telaio("ewkfew", false);
-        vc.setPrivato("rfr", false);
-        ApplicationData.veicoli.add(vc);
-        Veicolo vc1 = new Veicolo();
-        vc1.setTarga("vc1", false);
-        vc1.setNumero_telaio("vc1", false);
-        vc1.setAzienda("poi", false);
-        ApplicationData.veicoli.add(vc1);
-        Guasto g = new Guasto(false);
-        g.setId(1, false);
-        g.setDescrizione("ciao come stai", false);
-        Manutenzione m = new Manutenzione(false);
-        m.setId(23, false);
-        m.setDescrizione("ciao come va", false);
-        ApplicationData.manutenzioni.add(m);
-        ApplicationData.guasti.add(g);
-        Lavoro l = new Lavoro("id", false);
-        l.setFattura(fatt.getId(),false);
-        //l.setFattura(fatt.getId(),false);
-        //l.setData_fine("13/02/",false);
-        ApplicationData.lavori.add(l);
-        Lavoro ll = new Lavoro("id", false);
-        ll.setFattura(fatt.getId(),false);
-        ll.setData_fine("12/05/08", false);
-        ApplicationData.lavori.add(ll);
-        ApplicationData.splitWork();
-        Pezzo pp = new Pezzo(false);
-        pp.setId(1, false);
-        pp.setDescrizione("rrrr", false);
-        ApplicationData.pezzi.add(pp);
+
         params = new String[6];
         ctx = this;
         act = this;
@@ -169,6 +103,7 @@ public class MainActivity extends ActionBarActivity {
                 .withButtonColor(getResources().getColor(R.color.primaryColor))
                 .withGravity(Gravity.BOTTOM | Gravity.END)
                 .withMargins(0, 0, 16, 16).create();
+        fabButton.setOnClickListener(getInsertDialog());
         intent = getIntent();
 
 
@@ -267,9 +202,6 @@ public class MainActivity extends ActionBarActivity {
                 if (groupPosition == 1) {
                     leftDrawerList.collapseGroup(1);
                 }
-                //Toast.makeText(getApplicationContext(),
-                //        listDataHeader.get(groupPosition) + " Expanded",
-                //        Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -278,9 +210,6 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onGroupCollapse(int groupPosition) {
-                //Toast.makeText(getApplicationContext(),
-                //        listDataHeader.get(groupPosition) + " Collapsed",
-                //        Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -380,11 +309,6 @@ public class MainActivity extends ActionBarActivity {
                 }
                 leftDrawerList.setItemChecked(childPosition, true);
                 toolbar.setTitle(listDataChild.get(leftSliderData[groupPosition]).get(childPosition));
-                //Toast.makeText(getApplicationContext(),
-                //        listDataHeader.get(groupPosition)
-                //                + " : " + listDataChild.get(
-                //                listDataHeader.get(groupPosition)).get(
-                //                childPosition), Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
@@ -411,6 +335,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        int id2 = item.getItemId();
         if (id == R.id.action_settings) {
             if (isLogged) {
                 Toast.makeText(MainActivity.ctx, "Già correttamente loggato!", Toast.LENGTH_LONG).show();
@@ -424,6 +349,32 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private View.OnClickListener getInsertDialog() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int idCorrente = corrente.getId();
+                if (idCorrente == privatiLayout.getId()) {
+                    DialogInsertCliente tmp = new DialogInsertCliente(ctx);
+                    tmp.show();
+
+                } else if (idCorrente == aziendeLayout.getId()) {
+                    DialogInsertAzienda tmp = new DialogInsertAzienda(ctx);
+                    tmp.show();
+
+                } else if (idCorrente == personaleLayout.getId()) {
+                    DialogInsertPersonale tmp = new DialogInsertPersonale(ctx);
+                    tmp.show();
+
+                } else if (idCorrente == edificiLayout.getId()) {
+                    DialogInsertEdificio tmp = new DialogInsertEdificio(ctx);
+                    tmp.show();
+
+                }
+            }
+        };
     }
 
 }

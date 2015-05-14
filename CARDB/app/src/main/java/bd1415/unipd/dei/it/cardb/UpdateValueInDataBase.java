@@ -39,7 +39,7 @@ public class UpdateValueInDataBase extends AsyncTask<String, Void, String> {
             MainActivity.errorRetrievingData = false;
         } catch (Exception e) {
             MainActivity.errorRetrievingData = true;
-            s = "Errore di reperimento dei dati, contattare l'amministratore del servizio.";
+            s = "Errore di inserimento dei dati, contattare l'amministratore del servizio.";
             return s;
         }
         return s;

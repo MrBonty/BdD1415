@@ -14,10 +14,10 @@ import android.widget.Toast;
 
 public class DialogEdit extends AlertDialog {
 
-    String s;
-    String oldValue = Builder.oldValue;
     final boolean isPrimary = Builder.isPrimary;
     final TextView textview = Builder.view;
+    String s;
+    String oldValue = Builder.oldValue;
 
     public DialogEdit(final Context context) {
         super(context);

@@ -14,13 +14,13 @@ import android.widget.Toast;
 
 public class PrivatiMenuFragment extends ListFragment {
 
-    private boolean isLarge = true;
-    private FragmentManager mFM;
-    VeicoliBodyFragment mBodyFrag;
-
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
     public static final String ISP = "isPrivate";
+    public static PrivatiArrayAdapter list = null;
+    VeicoliBodyFragment mBodyFrag;
+    private boolean isLarge = true;
+    private FragmentManager mFM;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,8 +38,6 @@ public class PrivatiMenuFragment extends ListFragment {
     public void onResume() {
         super.onResume();
     }
-
-    public static PrivatiArrayAdapter list = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -91,8 +89,6 @@ public class PrivatiMenuFragment extends ListFragment {
             ft.addToBackStack(null);
             ft.commit();
         }
-
-        Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
     }
 
 

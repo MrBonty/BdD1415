@@ -11,7 +11,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import bd1415.unipd.dei.it.cardb.databasetables.Contiene;
-import bd1415.unipd.dei.it.cardb.databasetables.Ordine;
 import bd1415.unipd.dei.it.cardb.databasetables.Pezzo;
 
 public class OrdiniContieneArrayAdapter extends ArrayAdapter<Contiene> {
@@ -20,10 +19,6 @@ public class OrdiniContieneArrayAdapter extends ArrayAdapter<Contiene> {
     public OrdiniContieneArrayAdapter(Context context, List items) {
         super(context, R.layout.ordini_item, items);
         this.context = context;
-    }
-
-    private class ViewHolder {
-        TextView titleText;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -42,9 +37,9 @@ public class OrdiniContieneArrayAdapter extends ArrayAdapter<Contiene> {
             holder = (ViewHolder) viewToUse.getTag();
         }
         String tmp = "";
-        for(int i = 0; i<ApplicationData.pezzi.size(); i++){
+        for (int i = 0; i < ApplicationData.pezzi.size(); i++) {
             Pezzo p = ApplicationData.pezzi.get(i);
-            if(item.getPezzo() != p.getId()){
+            if (item.getPezzo() != p.getId()) {
                 tmp += p.getId() + "P " + (p.getDescrizione().split(":"))[0];
                 tmp += " N°" + item.getNumero_pezzi() + " Prezzo: " + item.getPrezzo_pezzo();
                 break;
@@ -53,5 +48,9 @@ public class OrdiniContieneArrayAdapter extends ArrayAdapter<Contiene> {
 
         holder.titleText.setText(tmp);
         return viewToUse;
+    }
+
+    private class ViewHolder {
+        TextView titleText;
     }
 }

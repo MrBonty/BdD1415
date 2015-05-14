@@ -14,13 +14,11 @@ import android.widget.Toast;
 
 public class EdificiMenuFragment extends ListFragment {
 
-    private boolean isLarge = true;
-    private FragmentManager mFM;
-
     public static final String POS = "position";
     public static final String ISVIS = "isVisible";
-
     public static EdificiArrayAdapter list;
+    private boolean isLarge = true;
+    private FragmentManager mFM;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

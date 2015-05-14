@@ -11,7 +11,7 @@ public class Lavoro {
     public static final String TABLE_LAVORO = "Lavoro";
     // Lavoro Columns
     public static final String LAVORO_PK_ID = "id";
-    public static final String LAVORO_DATA_INIZIO = "data_inzio";
+    public static final String LAVORO_DATA_INIZIO = "data_inizio";
     public static final String LAVORO_DATA_FINE = "data_fine";
     public static final String LAVORO_VEICOLO = "veicolo";
     public static final String LAVORO_FATTURA = "fattura";
@@ -67,6 +67,17 @@ public class Lavoro {
         params[4] = "" + this.id;
         new UpdateValueInDataBase().execute(params);
     }
+
+    /*public void updateDateInDatabase(String nuovo_valore, String nome_attributo) {
+        String[] params = new String[5];
+        params[0] = TABLE_LAVORO;
+        params[1] = nome_attributo;
+        params[2] = "(to_date('" + nuovo_valore + "', 'YYYY-MM-DD'))";
+        params[3] = LAVORO_PK_ID;
+        params[4] = "" + this.id;
+        new UpdateValueInDataBase().execute(params);
+    }*/
+
 
     public int getId() {
         return id;
