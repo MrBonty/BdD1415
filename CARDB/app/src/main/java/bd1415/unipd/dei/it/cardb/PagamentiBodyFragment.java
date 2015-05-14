@@ -89,8 +89,10 @@ public class PagamentiBodyFragment extends Fragment {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(viewHolder.pagato.isChecked()){
                         mFattura.setPagato(1, true);
+
                         ApplicationData.fattureNon.remove(mPos);
                         ApplicationData.fatturePagate.add(mFattura);
+
                         for(int i = ApplicationData.fatturePagate.size()-1; i>= 0; i--) {
 
                             if(ApplicationData.fatturePagate.get(i).getId() == mFattura.getId()) {
@@ -100,9 +102,12 @@ public class PagamentiBodyFragment extends Fragment {
                             }
                         }
                         viewHolder.pagato.setEnabled(false);
+
                         PagamentiMenuFragment.list.notifyDataSetChanged();
                         if(PagamentiFattiMenuFragment.list != null){
                             PagamentiFattiMenuFragment.list.notifyDataSetChanged();
+                        }else {
+                            PagamentiFattiMenuFragment.list =  new PagamentiArrayAdapter(PagamentiFattiMenuFragment.infl.getContext(), ApplicationData.fatturePagate);
                         }
                         view.setVisibility(View.GONE);
                     }

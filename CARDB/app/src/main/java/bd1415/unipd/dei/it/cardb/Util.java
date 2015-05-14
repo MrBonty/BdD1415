@@ -2,6 +2,7 @@ package bd1415.unipd.dei.it.cardb;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import bd1415.unipd.dei.it.cardb.databasetables.AddressType;
 
 public class Util {
 
@@ -84,5 +87,120 @@ public class Util {
                 + cal.get(Calendar.SECOND)*/;
 
         return tmp;
+    }
+
+    public static AddressType getAddress(String addSql){
+        Log.i("STRINGA", addSql);
+        int min = 0;
+        int max = addSql.length();
+        char c = '(';
+        char e = ')';
+        for (int i = 0; i<addSql.length(); i++){
+            if(c == addSql.charAt(i)){
+                min= i+1;
+            }
+            if(e == addSql.charAt(i)){
+                max = i;
+            }
+        }
+
+        addSql = addSql.substring(min,max);
+
+        String[] tmp = addSql.split(",");
+
+        String città = tmp[2];
+        String indirizzo = tmp[0];
+        String numero_civico = tmp[1];
+        String provincia = tmp[3];
+
+        char ap = '"';
+        char sp = ' ';
+
+        min = 0;
+        max = città.length();
+
+        for(int i = 0; i< città.length(); i++){
+            if(ap == città.charAt(i)){
+                int j = i;
+                for(j= i+1; j<città.length()&& sp==città.charAt(j);j++);
+                min = j;
+                break;
+            }
+        }
+        for(int i = città.length()-1; i>= min; i--){
+            if(ap == città.charAt(i)){
+
+                max = i;
+                break;
+            }
+        }
+        città = città.substring(min,max);
+
+        min = 0;
+        max = indirizzo.length();
+        for(int i = 0; i< indirizzo.length(); i++){
+            if(ap == indirizzo.charAt(i)){
+                int j = i;
+                for(j= i+1; j<indirizzo.length()&& sp==indirizzo.charAt(j);j++);
+                min = j;
+                break;
+            }
+        }
+        for(int i = indirizzo.length()-1; i>= min; i--){
+            if(ap == indirizzo.charAt(i)){
+                max = i;
+                break;
+            }
+        }
+        indirizzo = indirizzo.substring(min,max);
+
+        min = 0;
+        max = numero_civico.length();
+        for(int i = 0; i< numero_civico.length(); i++){
+            if(ap == numero_civico.charAt(i)){
+                int j = i;
+                for(j= i+1; j<numero_civico.length()&& sp==numero_civico.charAt(j);j++);
+                min = j;
+                break;
+            }
+        }
+        for(int i = numero_civico.length()-1; i>= min; i--){
+            if(ap == numero_civico.charAt(i)){
+                max = i;
+                break;
+            }
+        }
+        numero_civico = numero_civico.substring(min,max);
+
+        min = 0;
+        max = provincia.length();
+        for(int i = 0; i< provincia.length(); i++){
+            if(ap == provincia.charAt(i)){
+                int j = i;
+                for(j= i+1; j<provincia.length()&& sp==provincia.charAt(j);j++);
+                min = j;
+                break;
+            }
+        }
+        for(int i = provincia.length()-1; i>= min; i--){
+            if(ap == provincia.charAt(i)){
+                max = i;
+                break;
+            }
+        }
+        provincia = provincia.substring(min,max);
+
+        AddressType a = new AddressType();
+        a.città = città;
+        a.indirizzo = indirizzo;
+        a.numero_civico = numero_civico;
+        a.provincia = provincia;
+
+        Log.i("STRINGA2", a.città);
+        Log.i("STRINGA2", a.indirizzo);
+        Log.i("STRINGA2", a.numero_civico);
+        Log.i("STRINGA2", a.provincia);
+
+        return a;
     }
 }

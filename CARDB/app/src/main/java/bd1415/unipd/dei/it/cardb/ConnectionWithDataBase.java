@@ -105,13 +105,6 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
             if (st != null && con != null) {
                 ResultSet rs = st.executeQuery("SELECT * FROM main.Veicolo;");
                 while (rs.next()) {
-                    s = s + rs.getString("numero_telaio");
-                    s = s + rs.getString("targa");
-                    s = s + rs.getString("azienda");
-                    s = s + rs.getString("privato");
-                    s = s + rs.getString("modello_cod_prod");
-                    s = s + rs.getString("modello_marca");
-                    s = s + "\n\n";
                     Veicolo veicolo = new Veicolo(rs.getString("numero_telaio"),
                             rs.getString("modello_cod_prod"), rs.getString("modello_marca"), false);
                     veicolo.setNumero_telaio(rs.getString("numero_telaio"), false);
@@ -123,29 +116,28 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ApplicationData.veicoli.add(veicolo);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Azienda;");
                 while (rs.next()) {
-                    s = s + rs.getString("piva");
-                    s = s + rs.getString("nome");
-                    s = s + rs.getString("telefono");
-                    s = s + rs.getString("indirizzo");
                     Azienda azienda = new Azienda(rs.getString("piva"), false);
-                    //azienda.setIndirizzo(rs.getString("indirizzo"), false);
+                    azienda.setIndirizzo(Util.getAddress(rs.getString("indirizzo")), false);
                     azienda.setTelefono(rs.getString("telefono"), false);
                     azienda.setNome(rs.getString("nome"), false);
                     ApplicationData.aziende.add(azienda);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Avviso;");
                 while (rs.next()) {
                     Avviso avviso = new Avviso(rs.getInt("manutenzione"), rs.getString("veicolo"),
                             false);
                     avviso.setData_prossima(rs.getString("data_prossima"), false);
-                    avviso.setManutenzione(rs.getInt("manutezione"), false);
+                    avviso.setManutenzione(rs.getInt("manutenzione"), false);
                     avviso.setVeicolo(rs.getString("veicolo"), false);
                     ApplicationData.avvisi.add(avviso);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Compone;");
                 while (rs.next()) {
                     Compone compone = new Compone(rs.getString("modello_cod_prod"),
@@ -156,6 +148,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ApplicationData.compone.add(compone);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Contiene;");
                 while (rs.next()) {
                     Contiene contiene = new Contiene(rs.getString("ordine_data"), rs.getString("ordine_fornitore"),
@@ -168,15 +161,17 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ApplicationData.contiene.add(contiene);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Edificio;");
                 while (rs.next()) {
                     Edificio edificio = new Edificio(rs.getString("tipologia"), false);
                     edificio.setId(rs.getInt("id"), false);
                     edificio.setTipologia(rs.getString("tipologia"), false);
-                    //edificio.setInditizzo(rs.getString("indirizzo"), false);
+                    edificio.setIndirizzo(Util.getAddress(rs.getString("indirizzo")), false);
                     ApplicationData.edifici.add(edificio);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Fattura;");
                 while (rs.next()) {
                     Fattura fattura = new Fattura(false);
@@ -188,17 +183,19 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                 }
                 ApplicationData.splitFatture();
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Fornitore;");
                 while (rs.next()) {
                     Fornitore fornitore = new Fornitore(rs.getString("piva"), false);
                     fornitore.setPiva(rs.getString("piva"), false);
-                    //fornitore.setIndirizzo(rs.getString("indirizzo"), false);
+                    fornitore.setIndirizzo(Util.getAddress(rs.getString("indirizzo")), false);
                     fornitore.setIban(rs.getString("iban"), false);
                     fornitore.setNome(rs.getString("nome"), false);
                     fornitore.setTelefono(rs.getString("telefono"), false);
                     ApplicationData.fornitori.add(fornitore);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Guasto;");
                 while (rs.next()) {
                     Guasto guasto = new Guasto(false);
@@ -207,9 +204,10 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ApplicationData.guasti.add(guasto);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Lavora_a;");
                 while (rs.next()) {
-                    Lavora_a lavora_a = new Lavora_a(rs.getString("personale"), rs.getInt("id"), false);
+                    Lavora_a lavora_a = new Lavora_a(rs.getString("personale"), rs.getInt("lavoro"), false);
                     lavora_a.setLavoro(rs.getInt("lavoro"), false);
                     lavora_a.setOre_lavoro(rs.getInt("ore_lavoro"), false);
                     lavora_a.setPersonale(rs.getString("personale"), false);
@@ -217,6 +215,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ApplicationData.lavora_a.add(lavora_a);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Lavoro;");
                 while (rs.next()) {
                     Lavoro lavoro = new Lavoro(rs.getString("veicolo"), false);
@@ -227,8 +226,9 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     lavoro.setVeicolo(rs.getString("veicolo"), false);
                     ApplicationData.lavori.add(lavoro);
                 }
-                ApplicationData.splitWork();
 
+                ApplicationData.splitWork();
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Manutenzione;");
                 while (rs.next()) {
                     Manutenzione manutenzione = new Manutenzione(false);
@@ -237,6 +237,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ApplicationData.manutenzioni.add(manutenzione);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Modello;");
                 while (rs.next()) {
                     Modello modello = new Modello(rs.getString("codice_produzione"), rs.getString("marca"), false);
@@ -247,6 +248,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ApplicationData.modelli.add(modello);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Ordine;");
                 while (rs.next()) {
                     Ordine ordine = new Ordine(rs.getString("data_or"), rs.getString("fornitore"), false);
@@ -255,8 +257,9 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ordine.setArrivato(rs.getInt("arrivato"), false);
                     ApplicationData.ordini.add(ordine);
                 }
-                ApplicationData.splitOrdini();
 
+                ApplicationData.splitOrdini();
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Personale;");
                 while (rs.next()) {
                     Personale personale = new Personale(rs.getString("cf"), rs.getInt("edificio"), false);
@@ -264,14 +267,15 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     personale.setNome(rs.getString("nome"), false);
                     personale.setCognome(rs.getString("cognome"), false);
                     personale.setContratto(rs.getString("contratto"), false);
-                    personale.setEdificio(rs.getInt("id"), false);
-                    //personale.setIndirizzo(rs.getString("indirizzo"), false);
+                    personale.setEdificio(rs.getInt("edificio"), false);
+                    personale.setIndirizzo(Util.getAddress(rs.getString("indirizzo")), false);
                     personale.setTelefono(rs.getString("telefono"), false);
                     personale.setIban(rs.getString("iban"), false);
                     personale.setResponsabile(rs.getInt("responsabile"), false);
                     ApplicationData.personale.add(personale);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Pezzo;");
                 while (rs.next()) {
                     Pezzo pezzo = new Pezzo(false);
@@ -282,17 +286,19 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ApplicationData.pezzi.add(pezzo);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Privato;");
                 while (rs.next()) {
                     Privato privato = new Privato(rs.getString("cf"), false);
                     privato.setTelefono(rs.getString("telefono"), false);
-                    //privato.setIndirizzo(rs.getString("indirizzo"), false);
+                    privato.setIndirizzo(Util.getAddress(rs.getString("indirizzo")), false);
                     privato.setCf(rs.getString("cf"), false);
                     privato.setCognome(rs.getString("cognome"), false);
                     privato.setNome(rs.getString("nome"), false);
                     ApplicationData.privati.add(privato);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.R7;");
                 while (rs.next()) {
                     R7 r7 = new R7(rs.getInt("lavoro"), rs.getInt("guasto"), false);
@@ -301,6 +307,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ApplicationData.r7.add(r7);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.R8;");
                 while (rs.next()) {
                     R8 r8 = new R8(rs.getInt("lavoro"), rs.getInt("manutenzione"), false);
@@ -309,6 +316,7 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
                     ApplicationData.r8.add(r8);
                 }
 
+                st = con.createStatement();
                 rs = st.executeQuery("SELECT * FROM main.Usato;");
                 while (rs.next()) {
                     Usato usato = new Usato(rs.getInt("lavoro"), rs.getInt("pezzo"), false);
@@ -328,7 +336,8 @@ public class ConnectionWithDataBase extends AsyncTask<String, Void, String> {
             MainActivity.errorRetrievingData = false;
         } catch (Exception e) {
             MainActivity.errorRetrievingData = true;
-            s = "Errore di reperimento dei dati, contattare l'amministratore del servizio.";
+            System.out.println(s);
+            s = s + "Errore di reperimento dei dati, contattare l'amministratore del servizio.";
             return s;
         }
         return s;
